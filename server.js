@@ -12,8 +12,8 @@ http.createServer(function (req, res) {
 		if(req.url == '/') returnFile('./index.html', res);
 		else if(req.url == '/receive') //returnFile('./eng.txt', res);
 		{
-		resp.writeHead(200, {'Content-Type': 'text/plain' });
-		resp.end('(url: ' + req.url + ')'); return;
+		res.writeHead(200, {'Content-Type': 'text/plain' });
+		res.end('(url: ' + req.url + ')'); return;
 		}
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
