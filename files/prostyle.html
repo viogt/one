@@ -1,0 +1,259 @@
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>::: PROSTYLE :::ISO-8859-1</title>
+<style>
+TEXTAREA { font-size:9pt; width: 520px; border: 1px solid lightblue; }
+INPUT[type=button] { width:70px; background-color:white; border:1px solid grey; outline:none; }
+</style>
+<SCRIPT type="text/javascript">
+
+function id(x) { return document.getElementById(x); }
+function REP(){ var x = arguments, i = 1; return x[0].replace(/%%/g, function() { return x[i++]; }); }
+function Rnd(r){ return r>0?"border-radius: !px;-webkit-border-radius: !px;-moz-border-radius: !px;-khtml-border-radius: !px;".replace(/!/g, r):''; }
+
+function Check(){
+try {
+
+	var tNum = 0, tItem = false;
+	var S = JSON.parse('{' + id('Json').value + '}');
+	var Round = "border-radius: !px;-webkit-border-radius: !px;-moz-border-radius: !px;-khtml-border-radius: !px;";
+	var cnt = id('Txt').value;
+
+	if(cnt.indexOf('^')>=0) {
+		var s = S.HIGH + (S.HIGH_ROUND>0?Round.replace(/!/g, S.HIGH_ROUND):'');
+		var SPN = '<u style="text-decoration:none;' + s + 'padding-left:' + S.HIGH_PADDING + ';padding-right:' + S.HIGH_PADDING + '">';
+		cnt = cnt.replace(/\^((.|\n)*?)\^/g, function(m) { var x = m.substr(1,m.length-2); return SPN + x.replace(/ /g,'&nbsp;') + '</u>'; });
+	}
+
+	if(cnt.indexOf('_')>=0) {
+		var SPN = '<u style="text-decoration:none;' + S.UNDER + '">$1</u>';
+		cnt = cnt.replace(/\_((.|\n)*?)\_/g, SPN);
+	}
+
+	if(cnt.indexOf('|')>=0) {
+		var SPN = '<i style="' + S.ITALIC + '">$1</i>';
+		cnt = cnt.replace(/\|((.|\n)*?)\|/g, SPN);
+	}
+
+	var ls = cnt.split('\n');
+	cnt = REP('<BR/><BR/>\n<TABLE cellPadding="0" cellSpacing="0" border="0" style="%%"><TBODY>',S.BASE+Rnd(S.BASE_ROUND));
+	var tSTART = REP('\n<TR><TD><TABLE cellPadding="%%" cellSpacing="0" border="0" width="100%"><TBODY>',S.ITEM_PADDING), tEND = '</TBODY></TABLE></TD></TR>\n';
+	var R = '\n<TR><TD align="right" valign="top" style="%%">%%</TD><TD valign="top" style="%%">%%</TD></TR>\n';
+	var Rm = '\n<TR><TD valign="top" style="%%">%%</TD></TR>\n';
+	
+	for(var i in ls) {
+	
+		var St = ls[i].charAt(0), pd = 'padding:'+S.ITEM_PADDING+'px;';
+		
+		if(St == '#') {
+			if(tNum == 0) { if(tItem) { tItem = false; cnt += tEND; } cnt += tSTART; } tNum++;
+			cnt += REP( R, S.ITEM+pd, tNum, S.BASE_FONT+pd, ls[i].substr(1));
+		}
+		else if(St == '*') {
+			if(!tItem) { if(tNum>0) { tNum = 0; cnt += tEND; } cnt += tSTART; tItem = true; }
+			cnt += REP( R, S.ITEM+pd, S.ITEM_MARK, S.BASE_FONT+pd, ls[i].substr(1));
+		}
+		else {
+			if(tItem || tNum>0) { tItem = false; tNum = 0; cnt += tEND; }
+			if(ls[i] == '-') cnt += REP( Rm, 'height:'+(S.HR_PADDING*2)+'px;vertical-align:middle;', '<hr style="' + S.HR + '"/>');
+			else if(St == '>') { var p = tSTART; if(S.TITLE_PAD_TOP>0 || S.TITLE_PAD_BOTTOM>0) p = p.replace('<TD>','<TD style="padding-top:'+S.TITLE_PAD_TOP+'px;padding-bottom:'+S.TITLE_PAD_BOTTOM+'px;">');
+							cnt += p + REP( Rm, S.TITLE+Rnd(S.TITLE_ROUND), ls[i].substr(1)) + tEND; }
+			else if(St == '"') cnt += tSTART+ REP( R, S.BASE_FONT+S.QUOTE, S.QUOTE_MARK, S.BASE_FONT+S.QUOTE_TEXT, ls[i].substr(1)) + tEND;
+			else if(ls[i] !='') cnt += REP( Rm, S.BASE_FONT, ls[i]);
+		}
+	}
+	if(tItem || tNum>0) { tItem = false; tNum = 0; cnt += tEND; }
+	cnt += '</TBODY></TABLE>\n<BR/><BR/>';
+
+	id('Ins').innerHTML = cnt;
+	//id('Res').value = cnt;
+	
+} catch(e) { alert(e.message); }
+}
+var curJson = null, curBttn = null;
+function sch(n, bt) {
+
+	if(curBttn) curBttn.style.backgroundColor = 'white';
+	bt.style.backgroundColor = 'lightgrey'; curBttn = bt;
+
+	if(curJson) id(curJson).firstChild.data = id('Json').value; curJson = n;
+	id('Json').value = id(n).firstChild.data; Check();
+}
+function Simplify(ob){
+	var s;
+	if(ob.value == 'Sans!') { ob.value = 'Serif!'; s = 'font:normal 1em sans-serif;'; }
+	else { ob.value = 'Sans!'; s = 'font:normal 1.1em serif;'; }
+	id('Json').value = id('Json').value.replace(/font:.+?;/g, s);
+	Check();
+}
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="sch('Normal',id('Nl'))">
+	<TABLE border="0" cellPadding='8' cellSpacing='0'>
+		<TR><TD>
+<TEXTAREA id="Txt" rows=14 onChange="Check()" style="width:540px;font-size:10pt;">
+Acest este un text pentru _exemplificare_. Asa arata _sublinierea_, iar asa evidentierea prin ^highlight^, ca si in aceste |regiuni| mai simple.
+
+"Acesta este un citat de titlu sau un citiat pentru altceva.
+
+Acest este un text pentru _exemplificare_. Asa arata _sublinierea_, iar asa evidentierea prin |highlight|, ca si in aceste |regiuni| mai simple.
+-
+|Numerele:|
+
+#Primul. Acest este un text pentru exemplificare. Asa arata ^sublinierea^, iar asa evidentierea mai simpla. Asa arata _sublinierea_, iar asa evidentierea mai simpla.
+#Al doilea. Acest este un text pentru exemplificare.
+#Al treilea. Acest este un text pentru exemplificare. Asa evidentierea mai simpla. Asa arata |sublinierea|, iar asa evidentierea mai simpla.
+
+>Acesta este un titlu.
+
+*Al doilea. Acest este un text pentru exemplificare.
+*Al treilea. Acest este un text pentru exemplificare. Asa evidentierea mai simpla. Asa arata _sublinierea_, iar asa evidentierea mai simpla.
+</TEXTAREA>
+		</TD>
+		<TD>
+<INPUT id='Nl' type="button" value="Normal" onClick="sch('Normal',this)"/>
+<INPUT type="button" value="Yellow" onClick="sch('Yellow',this)"/>
+<INPUT type="button" value="Green" onClick="sch('Green',this)"/>
+<INPUT type="button" value="Blue" onClick="sch('Blue',this)"/>
+<INPUT type="button" value="Black" onClick="sch('Black',this)"/>
+<INPUT type="button" value="DarkBlue" onClick="sch('DarkBlue',this)"/>
+<INPUT type="button" value="Sans!" style='background-color:lightyellow' onClick="Simplify(this)"/><br/>
+<TEXTAREA id="Json" rows=12 onChange="Check()"></TEXTAREA>
+<DIV style='font:normal 10pt Arial;nowrap:true;'>^ high; _ under; - line; | italic; > title; * item; # numbered; " quote;<BR/> ✔✘✓☻☺➨▶❅✿★∎✎▉
+&#9679; &#9733; &#9742; &#9749; &#9760; &#9989; &#9993; &#9997; &#10048; &#10052; &#10084; &#10140; &#10148; &#10752; &#10754; &#0;</DIV>
+		</TD>
+<!-- <TD><TEXTAREA id="Res" rows=12></TEXTAREA></TD> -->
+		</TR>
+</TABLE>
+
+<DIV id='Ins'></DIV>
+<PRE id='Normal' style='display:none'>
+"BASE": "width:500px; padding:30px; border:1px solid #cccce0; background-color:#ededf0;",
+"BASE_FONT": "font:normal 1.1em 'Palatino Linotype',Palatino,Georgia,serif; color:black; background-color:#ededf0; padding:8px;",
+"BASE_ROUND": 10,
+"HIGH": "background-color:white; color:#0000cc; border:1px solid #cccce0;",
+"HIGH_ROUND": 8,
+"HIGH_PADDING": 6,
+"UNDER": "border-bottom: 2px solid orange;",
+"HR": "width:100%; border:none; border-top:1px dashed #aaaabb; height:0;",
+"HR_PADDING": 8,
+"ITEM": "width:20px; font:normal 1.1em 'Palatino Linotype',Palatino,Georgia,serif; color:red; background-color:#ededf0;",
+"ITEM_MARK": "*",
+"ITEM_PADDING": 4,
+"TITLE": "background-color:white; padding:18px; border:1px solid #cccce0; text-transform:uppercase; font:bold 1.2em 'Palatino Linotype',Palatino,Georgia,serif; color:black;",
+"TITLE_ROUND": 10,
+"TITLE_PAD_TOP": 20,
+"TITLE_PAD_BOTTOM": 10,
+"ITALIC": "font-style:italic; color:#0000aa; letter-spacing: 0px;",
+"QUOTE": "color:#aaaabb;  border-right:1px dotted #aaaabb; font-size:32pt; font-style:italic; padding:0px; width:60px;padding-right:8px;",
+"QUOTE_MARK": "&#8221;",
+"QUOTE_TEXT": "color:#0000aa; font-style:italic; padding:8px;"</PRE>
+<PRE id='Yellow' style='display:none'>
+"BASE": "width:470px; padding:40px; border:1px solid #bbbb66; background-color:#ffffc4;",
+"BASE_FONT": "font:normal 1.1em Candara,Arial,sans-serif; color:black; background-color:#ffffc4; padding:8px;",
+"BASE_ROUND": 10,
+"HIGH": "background-color:#ffff88; color:darkred; border:1px solid #eeaa99;",
+"HIGH_ROUND": 8,
+"HIGH_PADDING": 6,
+"UNDER": "border-bottom: 1px dotted red;",
+"HR": "width:100%; border:none; border-top:1px dashed #bbbb66; height:0",
+"HR_PADDING": 8,
+"ITEM": "font:normal 1.1em Candara,Arial,sans-serif; color:darkorange; background-color:#ffffc4;",
+"ITEM_MARK": "✔",
+"ITEM_PADDING": 4,
+"TITLE": "background-color:white; padding:18px; border:1px solid #bbbb66; text-transform:uppercase; font: bold 1.2em Candara,Arial,sans-serif; color:darkred;",
+"TITLE_ROUND": 10,
+"TITLE_PAD_TOP": 20,
+"TITLE_PAD_BOTTOM": 10,
+"ITALIC": "font-style:italic; color:brown; letter-spacing: 2px;",
+"QUOTE": "color:#bbbb66;  border-right:1px solid #bbbb66; font-size:32pt; font-style:italic; padding:0px; width:60px;padding-right:8px;",
+"QUOTE_MARK": "&#8221;",
+"QUOTE_TEXT": "color:brown; font-style:italic; padding:8px;"</PRE>
+<PRE id='Green' style='display:none'>
+"BASE": "width:500px; padding:40px; border:1px solid #aaddaa; background-color:#ccffcc;",
+"BASE_FONT": "font:normal 1.1em 'Franklin Gothic Book',Arial,sans-serif; color:#226622; background-color:#ccffcc; padding:8px;",
+"BASE_ROUND": 10,
+"HIGH": "background-color:white; color:#119911; border:1px solid #99bb99;",
+"HIGH_ROUND": 8,
+"HIGH_PADDING": 6,
+"UNDER": "border-bottom: 2px solid #22dd22;",
+"HR": "width:100%; border:none; border-top:1px dashed #88cc88; height:0",
+"HR_PADDING": 8,
+"ITEM": "font:normal 1.1em 'Franklin Gothic Book',Arial,sans-serif; color:#22dd22; background-color:#ccffcc;",
+"ITEM_MARK": "✔",
+"ITEM_PADDING": 4,
+"TITLE": "background-color:white; padding:8px; border:1px solid #aaddaa; text-transform:uppercase; font-weight:bold; font-size:1.2em; font-family:'Franklin Gothic Book',Arial,sans-serif; color:#119911;",
+"TITLE_ROUND": 10,
+"TITLE_PAD_TOP": 20,
+"TITLE_PAD_BOTTOM": 10,
+"ITALIC": "font-style:italic; color:brown; letter-spacing: 1px;",
+"QUOTE": "color:#aaddaa;  border-right:5px solid #aaddaa; font-size:32pt; font-style:italic; padding:0px; width:60px;padding-right:8px;",
+"QUOTE_MARK": "&#8221;",
+"QUOTE_TEXT": "color:brown; font-style:italic; padding:8px;"</PRE>
+<PRE id='Blue' style='display:none'>
+"BASE": "width:500px; padding:30px; border:1px solid #ccccef; background-color:#ebebff;",
+"BASE_FONT": "font:normal 1em Verdana,sans-serif; color:darkblue; background-color:#ebebff; padding:8px;",
+"BASE_ROUND": 10,
+"HIGH": "background-color:#7777e0; color:white;",
+"HIGH_ROUND": 8,
+"HIGH_PADDING": 6,
+"UNDER": "border-bottom: 2px solid #2222ff;",
+"HR": "width:100%; border:none; border-top:1px dashed #8888ee; height:0",
+"HR_PADDING": 8,
+"ITEM": "font:normal 1em Verdana,sans-serif; color:7777ff; background-color:#ebebff;",
+"ITEM_MARK": "&#8226;",
+"ITEM_PADDING": 4,
+"TITLE": "background-color:white; padding:18px; border:1px solid #ccccef; text-transform:uppercase; font:bold 1.1em Verdana,sans-serif; color:darkblue;",
+"TITLE_ROUND": 10,
+"TITLE_PAD_TOP": 20,
+"TITLE_PAD_BOTTOM": 10,
+"ITALIC": "font-style:italic; color:#4444ee; letter-spacing: 0px;",
+"QUOTE": "color:#bbbbee; border-right:2px solid #bbbbee; font-size:32pt; font-style:italic; padding:0px; width:60px;padding-right:8px;",
+"QUOTE_MARK": "&#8221;",
+"QUOTE_TEXT": "color:#4444ee; font-style:italic; padding:8px;"</PRE>
+<PRE id='Black' style='display:none'>
+"BASE": "width:540px; padding:40px; border:1px solid black; background-color:#444444;",
+"BASE_FONT": "font:normal 1em 'Courier New',Arial,sans-serif; color:#cccccc; background-color:#444444; padding:8px;",
+"BASE_ROUND": 10,
+"HIGH": "background-color:#444444; color:#cccccc; border:1px solid orange;",
+"HIGH_ROUND": 8,
+"HIGH_PADDING": 6,
+"UNDER": "border-bottom: 1px dotted yellow;",
+"HR": "width:100%; border:none; border-top:1px dashed black; height:0",
+"HR_PADDING": 8,
+"ITEM": "font:normal 1em 'Courier New',Arial,sans-serif; color:yellow; background-color:#444444;",
+"ITEM_MARK": ">",
+"ITEM_PADDING": 4,
+"TITLE": "background-color:#aaaaaa; padding:14px; border:1px solid black; text-transform:uppercase; font:bold 1.1em 'Courier New',Arial,sans-serif; color:#444444;",
+"TITLE_ROUND": 10,
+"TITLE_PAD_TOP": 20,
+"TITLE_PAD_BOTTOM": 10,
+"ITALIC": "font-style:italic; color:orange;",
+"QUOTE": "color:black;  border-right:1px dotted black; font-size:32pt; font-style:italic; padding:0px; width:60px;padding-right:8px;",
+"QUOTE_MARK": "&#8221;",
+"QUOTE_TEXT": "color:orange; font-style:italic; padding:8px;"</PRE>
+<PRE id='DarkBlue' style='display:none'>
+"BASE": "width:510px; padding:30px; border:1px solid #bbbb66; background-color:navy;",
+"BASE_FONT": "font:normal 1em 'Century Gothic',Arial,sans-serif; color:lightsteelblue; background-color:navy; line-height: 16pt; padding:8px;",
+"BASE_ROUND": 10,
+"HIGH": "background-color:navy; color:lightsteelblue; border:1px dotted #ffffaa;",
+"HIGH_ROUND": 4,
+"HIGH_PADDING": 6,
+"UNDER": "border-bottom: 3px solid blue;",
+"HR": "width:100%; border:none; border-top:1px dashed blue; height:0",
+"HR_PADDING": 8,
+"ITEM": "font:normal 1em 'Century Gothic',Arial,sans-serif; color:blue; background-color:navy; line-height: 16pt;",
+"ITEM_MARK": "&hearts;",
+"ITEM_PADDING": 4,
+"TITLE": "background-color:#111166; padding:14px; border:1px solid blue; text-transform:uppercase; font: bold 1.2em 'Century Gothic',Arial,sans-serif; color:lightsteelblue; padding:8px;",
+"TITLE_ROUND": 10,
+"TITLE_PAD_TOP": 20,
+"TITLE_PAD_BOTTOM": 10,
+"ITALIC": "font-style:italic; color:white; letter-spacing: 0px;",
+"QUOTE": "color:blue;  border-right:1px dotted blue; font-size:32pt; font-style:italic; padding:0px; width:60px;padding-right:8px;",
+"QUOTE_MARK": "&#8221;",
+"QUOTE_TEXT": "color:white; font-style:italic; padding:8px;"</PRE>
+</BODY>
+</HTML>

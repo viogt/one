@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>::: PRO-STYLE :::ISO-8859-1</title>
+<style>
+INPUT[type=button] { width:70px; background-color:white; border:1px solid grey; outline:none; }
+INPUT { font:normal 10pt Arial; }
+</style>
+<SCRIPT type="text/javascript">
+
+var W = {
+
+	obj: null, body: null, st: null,
+
+	init: function() {
+		this.obj = document.getElementById('Tbl');
+		this.body = document.getElementById('Ttd');
+		this.st = this.body.style;
+		this.auto( document.getElementsByTagName('input')[0] );
+		this.dim();
+		this.fonts();
+	},
+
+	extr: function(x,q) { return 'rgb(' + Math.floor(x[0]*q) + ',' + Math.floor(x[1]*q) + ',' + Math.floor(x[2]*q) + ')'; },
+
+	cauta: function() {
+		var h = this.body.innerHTML;
+		var f = document.getElementById('xBold1').checked?'bl':'bl2';
+
+		h = h.replace(/<i.*?>/g, '<i style="'+ this.vl('it') +'">');
+		h = h.replace(/(<b>)|(<b .*?>)/g, '<b style="'+ this.vl(f) +'">');
+		h = h.replace(/<span .*?>(.*?)<\/span>/g, '$1');
+		h = h.replace(/(<br>-<br>)|(<br><hr .*?>)/g, '<br><hr style="' + this.vl('ln') + '">');
+		
+		var x = this.vl('sg').split(','), L = x.length;
+		for(var i=0; i<L; i++) {
+			var rg = new RegExp(x[i].charAt(0), 'g');
+			h = h.replace(rg, '<span style="color:'+ x[i].substr(1) +'">' + x[i].charAt(0) + '</span>');
+		}
+		this.body.innerHTML = h;	
+	},
+
+	FromRGB: function(c) { var x = c.substr(4).split(','); return [ parseInt(x[0]), parseInt(x[1]), parseInt(x[2]) ]; },
+
+	auto: function(ob) {
+		var r = this.FromRGB(ob.style.backgroundColor);
+		this.st.backgroundColor = this.extr(r,1);
+		this.st.color = this.extr(r,.4);
+		this.st.border = '1px solid ' + this.extr(r,.8);		
+	},
+
+	dim: function(){
+		this.obj.style.width = this.vl('wid');
+		this.st.padding = this.vl('pad');
+		var x = this.vl('radix');
+		this.st.borderRadius = x;
+	},
+
+	vl: function(x) { return document.getElementById(x).value; }
+
+}
+
+function show(){ alert(document.getElementById('Ins').innerHTML); }
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="W.init()">
+
+<INPUT type="button" value="Grey" style='background-color:#ededf0;' onClick="W.auto(this)"/>
+<INPUT type="button" value="White" style='background-color:#ffffff;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Yellow" style='background-color:#FFFFCC;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Green" style='background-color:#BCFF8C;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Blue" style='background-color:#ebebff;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Orange" style='background-color:#FFB489;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Purple" style='background-color:#D0ADFF;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Pink" style='background-color:#FFCDDC;' onClick="W.auto(this)"/>
+<table cellpadding=2 cellspacing=0 border=0 style='font:normal 10pt Arial;'>
+<tr><td>Base:</td><td>
+width: <INPUT id="wid" type="text" style="width:40" value="500" onChange="W.dim(this)"/>
+padding: <INPUT id="pad" type="text" style="width:40" value="22" onChange="W.dim(this)"/>
+radix: <INPUT id="radix" type="text" style="width:40" value="12" onChange="W.dim(this)"/>
+fonts: <SELECT id='fSelect' style='width:70px; background-color:white; border:1px solid grey; outline:none;' onChange="W.st.font = W.vl('fSelect')">
+		<OPTION value='normal 13pt serif' selected>Serif</OPTION>
+		<OPTION value='normal 11pt sans-serif'>Sans</OPTION>
+		<OPTION value='normal 11pt "Courier New",Courier,monospaced'>Courier</OPTION>
+		<OPTION value='normal 11pt Arial,sans-serif'>Arial</OPTION>
+		<OPTION value='normal 10pt Verdana,sans-serif'>Verdana</OPTION>
+	</SELECT>
+<INPUT type="button" value="Renew!" style='background-color:white' onClick="W.cauta()"/>
+<INPUT type="button" value="Show!" style='background-color:white' onClick="show()"/>
+</td></tr>
+<tr><td>Italic:</td><td><INPUT id='it' type="text" value="color: darkblue;" style="width:160px" onChange="W.cauta()"/>
+Sings: <INPUT id='sg' type="text" value="✔orange,▶blue,✎black" style="width:220px" onChange="W.cauta()"/>
+</td></tr>
+<tr><td>
+	<input id='xBold1' type='radio' name='xBold' checked onClick='W.cauta()'>
+	Bold1:</td><td><INPUT id='bl' type="text" value="border-bottom: 2px solid orange; font-weight:normal;" style="width:440px" onChange="W.cauta()"/></td></tr>
+<tr><td>
+	<input id='xBold2' type='radio' name='xBold' onClick='W.cauta()'>
+	Bold2:</td><td><INPUT id='bl2' type="text" value="border: 1px solid lightgrey; background-color:white;padding-left:4;padding-right:4; font-weight:normal;" style="width:440px" onChange="W.cauta()"/></td></tr>
+<tr><td>Line:</td><td><INPUT id='ln' type="text" value="border:none; border-top:1px dashed #aaaabb; width:100%; height:0;" style="width:440px" onChange="W.cauta()"/></td></tr>
+</table>
+
+<DIV id='Ins'>
+<BR/><BR/>
+<TABLE id='Tbl' cellPading=0 cellSpacing=0 border=0 style=' width: ;'><TR>
+<TD id='Ttd' contentEditable='true' style='padding:; background-color:; color:; border:; border-radius:; -webkit-border-radius:; -moz-border-radius:; -khtml-border-radius:;'>
+Some text...</TD></TR></TABLE><BR/><BR/>
+</DIV>
+
+</BODY>
+</HTML>

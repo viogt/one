@@ -1,0 +1,224 @@
+<HTML><HEAD><TITLE><:::: Auto Email Proforma ::::></TITLE>
+<style>
+.sp { padding: 4px; background-color: #eeeeff;  }
+</style>
+<script type="text/javascript">
+
+var fFamily="Candara", fSize='11', bCol1="#dedede",bCol2="#ebebeb", lCol="#ffffff", dCol="#aaaaaa", bCol="#cccccc", fCol="#555599", hCol="#888899";
+
+function ImpData(culoare)
+{
+		var luni = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+		var zileSaptamana = ["Luni","Marti","Miercuri","Joi","Vineri","Sambata","Duminica"];
+		var h, m, x, z,	L = new Date(); x = L.getDate(); x = (x<10?'0'+x:x); z = L.getDay()-1; if(z<0) z=6;
+		h = L.getHours(); if(h<10) h = '0'+h; m = L.getMinutes(); if(m<10) m = '0'+m; h = (culoare==''?'':('<SPAN style="color:' + culoare + '">')) + h + ':' + m + (culoare==''?'':'</SPAN>');
+		document.write(zileSaptamana[z] + ', ' + x + ' ' + luni[L.getMonth()] + ' ' + L.getFullYear() + ', ' + h);
+}
+
+function WriteTable()
+{
+	var _rows=gE("_rows").value;
+	var _RPad=gE("_RPad");
+	var _padding=gE("_padding").value;
+	var _spacing=gE("_spacing").value;
+	var _width=gE("_width").value;
+	var _font=gE("_font").value;
+	var _headFont=gE("_headFont").value;
+	var _color=gE("_color").value;
+	var _header=gE("_header").checked;
+	var _footer=gE("_footer").checked;
+	var _ifRightPad=gE("_ifRightPad").checked;
+	var _alterRow=gE("_alterRow").checked;
+	var _border = getRadio('Chn');
+	var _ifSimple=gE("_ifSimple").checked;
+
+	var _radius='', _rx= gE('_ifR');
+	var _rounded = gE('_rounded').value;
+	if(gE('_ifRounded').checked)
+	{
+	_radius = 'border-radius: '+_rounded+'px;-webkit-border-radius: '+_rounded+'px;-moz-border-radius: '+_rounded+'px;-khtml-border-radius: '+_rounded+'px;'
+	_rx.style.display = ''; }
+	else { _rx.style.display='none'; _rounded = 0;}
+	
+	var pd = _padding*2+2;
+	var Brd, BrdOut = '', _lcl=getRadio('Lcl'), lcl = (_lcl=='0'?lCol:dCol);
+	switch(_border) {
+		case '0': Brd = "border:none"; pd-=2; break;
+		case '1': Brd = "border: 1px solid "+lcl+";" + _radius; break;
+		case '2': Brd = "border: 1px dotted "+lcl+";" + _radius; break;
+		case '3': BrdOut = "border:1px solid " + bCol; Brd = "border-left:1px solid "+lCol+"; border-top:1px solid "+lCol+"; border-right:1px solid "+dCol+"; border-bottom:1px solid "+dCol+";" + _radius; break;
+		case '4': Brd = "border-right:1px solid "+lCol+"; border-bottom:1px solid "+lCol+"; border-left:1px solid "+dCol+"; border-top:1px solid "+dCol+";" + _radius; break;
+		case '5': Brd = "border-top: 1px solid "+lcl+";"; break;
+		case '6': Brd = "border-top: 1px dashed "+lcl+";"; break;
+	}
+	var t = '<TABLE border="0" width="'+_width+'px" cellpadding="'+_padding+'" cellspacing="0" bgcolor="'+bCol1+'" style="color:'+_color+'; border:1px solid '+bCol+'">';
+	var ttl = '';
+	if(_header)
+	{
+		ttl += '<TR><TD><TABLE width="100%" cellPadding="'+_padding+'" cellSpacing="'+_spacing+'" border="0"><TR><TD bgColor="'+hCol+'" style="color:white;font:'+_headFont+';text-transform:uppercase;letter-spacing:2pt;'+  _radius+'">Header</TD></TR></TABLE></TD></TR>';
+	}
+	ttl += '<TR><TD style="font:'+_font+';color:'+_color+'; padding-left:'+pd+'; padding-right:'+pd+'; padding-top:'+(_padding*2)+'">Titlu...</TD></TR>';
+	ttl += '<TR><TD>';
+
+var preSimple='', _rP=gE("_rightPad").value; if(_ifSimple)
+{
+preSimple = '<TABLE border="0" width="'+_width+'px" cellpadding="'+_padding+'" cellspacing="'+_spacing+'" bgColor="'+bCol1+'" style="color:'+_color+';'+Brd+'"><TR>';
+if(_ifRightPad) preSimple += '<TD width="'+_rP+'px" valign="top" style="font:'+_font+'">Aaa:</TD>';
+preSimple += '<TD valign="top" style="font:'+_font+';">Bbb...</TD></TR></TABLE><BR>';
+}
+	
+	var t2 = '<TABLE border="0" width="'+(_width-pd)+'px" cellpadding="'+_padding+'" cellspacing="'+_spacing+'" style="color:'+_color+';'+BrdOut+'">';
+
+	var r ='<TR'+(_alterRow?' #BGR#':'')+'>';
+	if(_ifRightPad) { _RPad.style.display = ''; r += '<TD width="'+_rP+'px" valign="top" style="font:'+_font+';'+Brd+'">Aaa:</TD>'; }
+	else  _RPad.style.display = 'none';
+	r += '<TD valign="top" style="font:'+_font+';'+Brd+'">Bbb...</TD>';
+	r += '</TR>';
+	var R = r.replace('#BGR#','bgColor="'+bCol2+'"');
+	for(var i=1;i<_rows;i++)
+		if(_border>4 && i==_rows-1)
+		R += r.replace('#BGR#',(i%2==0?'bgColor="'+bCol2+'"':'')).replace(/border-top:(.+?);/g, 'border-bottom:$1;border-top:$1;');
+		else R += r.replace('#BGR#',(i%2==0?'bgColor="'+bCol2+'"':''));
+	
+	var sf = '</TABLE></TD></TR>'
+	sf += '<TR><TD style="font:'+_font+';color:'+_color+'; padding-left:'+pd+'; padding-right:'+pd+'; padding-bottom:'+(_padding*2)+'">Final...</TD></TR>';
+	if(_footer)
+	{
+		sf += '<TR><TD><TABLE width="100%" cellPadding="'+_padding+'" cellSpacing="'+_spacing+'" border="0"><TR><TD bgColor="#ffffff" style="color:'+_color+';font:'+_font+'; border:1px solid '+bCol+';'+  _radius+'">Footer</TD></TR></TABLE></TD></TR>';
+	}
+	sf += '</TABLE>';
+	
+	return preSimple + t + ttl + t2 + R + sf;
+}
+function gE(_id) { return document.getElementById(_id); }
+function putPad()
+{
+	gE("out").innerHTML = WriteTable();
+}
+function Simplify(ob){
+	var s, v;
+	if(ob.value == 'Sans!') {
+		ob.value = 'Serif!';
+		v = gE("_font").value.split(' '); gE("_font").value = v[0] + ' ' + v[1] + ' sans-serif';
+		v = gE("_headFont").value.split(' '); gE("_headFont").value = v[0] + ' ' + v[1] + ' sans-serif';
+	}
+	else {
+		ob.value = 'Sans!';
+		v = gE("_font").value.split(' '); gE("_font").value = v[0] + ' ' + v[1] + ' serif';
+		v = gE("_headFont").value.split(' '); gE("_headFont").value = v[0] + ' ' + v[1] + ' serif';
+	}
+	putPad();
+}
+function hexString(x)
+{
+	var R = parseInt(x.substr(1,2),16), G = parseInt(x.substr(3,2),16), B = parseInt(x.substr(5,2),16);
+	var res = '#' + R.toString(16) + G.toString(16) + B.toString(16); 
+	alert(x + '\n' + R + '.' + G + '.' + B + '\n' + res);
+}
+function widthVerific()
+{
+	var x = gE("out").getElementsByTagName("TABLE");
+	alert(x[0].width + '\n' + x[1].width );
+}
+function getRadio(nm)
+{
+	var a = document.getElementsByName(nm);
+	for(var x in a) if(a[x].checked) return a[x].value;
+}
+function modifColor(o){
+	var _look = o.options[o.selectedIndex].text;
+	switch(_look) {
+	case 'Standard': fFamily="Candara"; fSize='11'; hFamily = "Tahoma"; hSize = "14";
+			bCol1="#dedede"; bCol2="#ebebeb"; lCol="#ffffff"; dCol="#aaaaaa"; bCol="#cccccc"; fCol="#555599"; hCol="#888899"; break;
+	case 'Yellow': fFamily="Calibri"; fSize='11'; hFamily = "Trebuchet MS"; hSize = "14";
+			bCol1="#ffff88"; bCol2="#ffff00"; lCol="#ffffff"; dCol="#dddd00"; bCol="#f6f600"; fCol="#888800"; hCol="#bbbb00"; break;
+	case 'Blue': fFamily="Palatino Linotype"; fSize='11'; hFamily = "Franklin Gothic Medium"; hSize = "14";
+			bCol1="#ddddff"; bCol2="#ccccff"; lCol="#ffffff"; dCol="#bbbbff"; bCol="#aaaaff"; fCol="#000077"; hCol="#8888cc"; break;
+	case 'Green': fFamily="Verdana"; fSize='10'; hFamily = "Franklin Gothic Book"; hSize = "14";
+			bCol1="#d9ffd9"; bCol2="#c4ffc4"; lCol="#ffffff"; dCol="#bbeebb"; bCol="#cceecc"; fCol="#008800"; hCol="#99cc99"; break;
+	case 'Orange': fFamily="Franklin Gothic Book"; fSize='11'; hFamily = "Calibri"; hSize = "14";
+			bCol1="#ffddaa"; bCol2="#ffeebb"; lCol="#ffffff"; dCol="#ffcc77"; bCol="#ffcc88"; fCol="#886622"; hCol="#e0c080"; break;
+	case 'White': fFamily="Garamond"; fSize='12'; hFamily = "Calibri"; hSize = "14";
+			bCol1="#ffffff"; bCol2="#f2f2fa"; lCol="#ffffff"; dCol="#eeeeff"; bCol="#ddddf0"; fCol="#9999aa"; hCol="#d4d4d6";  break;
+	case 'Black': fFamily="Courier New"; fSize='12'; hFamily = "Garamond"; hSize = "14";
+			bCol1="#444444"; bCol2="#3a3a3a"; lCol="#666666"; dCol="#000000"; bCol="#333333"; fCol="#888888"; hCol="#000000";  break;
+	case 'Violet': fFamily="Candara"; fSize='11'; hFamily = "Franklin Gothic Book"; hSize = "14";
+			bCol1="#efdfff"; bCol2="#e1c4ff"; lCol="#ffffff"; dCol="#cd98ff"; bCol="#d1a4ff"; fCol="#9f40ff"; hCol="#b062ff";  break;
+			
+	default:   fFamily="Candara"; fSize='11'; hFamily = "Tahoma"; hSize = "14";
+			bCol1="#dedede"; bCol2="#ebebeb"; lCol="#ffffff"; dCol="#aaaaaa"; bCol="#cccccc"; fCol="#555599"; hCol="#888899";
+	}
+	gE("_color").value = fCol;
+	gE("_font").value = "normal " + fSize + "pt " + fFamily + ",Arial";
+	gE("_headFont").value = "bold " + hSize + "pt " + hFamily + ",Arial";
+	putPad();
+}
+</script>
+
+</HEAD>
+<BODY>
+<table cellPadding='2' cellSpaciing='0' style='font:normal 10pt Candara,Arial; border: 1px solid orange;'>
+<TR>
+	<TD colspan='2'><span style='border:3px solid orange; padding:4px;'>
+		Simple: <INPUT type='checkbox' id='_ifSimple' onClick='putPad()'>
+		  Rows: <INPUT type='text' id='_rows' value='3' style='width:24px' onChange='putPad()'></span></TD>
+	<TD colspan='2'><span class='sp'>LeftPad: <INPUT type='checkbox' checked id='_ifRightPad' onClick='putPad()'>
+	<SPAN id='_RPad'>width: <INPUT type='text' id='_rightPad' value='20' style='width:32px' onChange='putPad()'>px</SPAN></span></TD>
+	<TD colspan='2'>Padding: <INPUT type='text' id='_padding' value='12' style='width:24px' onChange='putPad()'>px
+	/Spacing: <INPUT type='text' id='_spacing' value='0' style='width:24px' onChange='putPad()'>px
+	</TD>
+</TR>
+<TR>
+	<TD>Width:</TD><TD><INPUT type='text' id='_width' value='480' style='width:40px' onChange='putPad()'>px</TD>
+	<TD>Font:</TD><TD><INPUT type='text' id='_font' value='normal 11pt Candara,Arial' style='width:160px' onChange='putPad()'></TD>
+	<TD>Font Color:</TD><TD><INPUT type='text' id='_color' value='#555599' style='width:60px' onChange='putPad()'></TD>
+</TR>
+<TR>
+	<TD colspan='6'><span class='sp'>Border:
+	<INPUT type='radio' name='Chn' value='0' onClick='putPad()'> None;
+	<INPUT type='radio' name='Chn' value='1' onClick='putPad()'> Solid;
+	<INPUT type='radio' name='Chn' value='2' onClick='putPad()'> Dotted;
+	<INPUT type='radio' name='Chn' checked value='3' onClick='putPad()'> Outset;
+	<INPUT type='radio' name='Chn' value='4' onClick='putPad()'> Inset;
+	<INPUT type='radio' name='Chn' value='5' onClick='putPad()'> Solid Dlm;
+	<INPUT type='radio' name='Chn' value='6' onClick='putPad()'> Dashed Dlm.
+	</span>
+</TD></TR>
+<TR>
+	<TD colspan='6'>
+	<span class='sp'>Rounded corners: <INPUT type='checkbox' id='_ifRounded' onClick='putPad()'>
+	<SPAN style='display:none' id='_ifR'>radius:<INPUT type='text' id='_rounded' value='8' style='width:24px' onChange='putPad()'>px</SPAN></span>
+	Line colors:
+	<INPUT type='radio' name='Lcl' value='0' onClick='putPad()'> Light;
+	<INPUT type='radio' name='Lcl' checked value='1' onClick='putPad()'> Dark.
+	<span class='sp'>Alter Row Colors: <INPUT type='checkbox' id='_alterRow' onClick='putPad()'></span>
+	<INPUT type="button" value="Sans!" style='background-color:lightyellow' onClick="Simplify(this)"/>
+</TD></TR>
+<TR>
+	<TD colspan='2'><span class='sp'>Header: <INPUT type='checkbox' id='_header' onClick='putPad()'>
+	Footer: <INPUT type='checkbox' id='_footer' onClick='putPad()'></span></TD>
+	<TD>Header Font:</TD><TD><INPUT type='text' id='_headFont' value='bold 14pt Candara,Arial' style='width:160px' onChange='putPad()'></TD>
+	<TD colspan='2'><span class='sp'>T e m p l a t e: 
+	<SELECT id='_template' style='width:120px' onChange='modifColor(this)'>
+	<OPTION>Standard</OPTION>
+	<OPTION>Yellow</OPTION>
+	<OPTION>Orange</OPTION>
+	<OPTION>Blue</OPTION>
+	<OPTION>Green</OPTION>
+	<OPTION>White</OPTION>
+	<OPTION>Black</OPTION>
+	<OPTION>Violet</OPTION>
+	</SELECT>
+	</span></TD>
+</TR>
+</table><BR>
+<!-- ----------------------- Tables --------------------- -->
+<DIV id='out'>
+<script type="text/javascript">
+	document.write(WriteTable());
+</script>
+</DIV>
+<BR>
+<!-- <input type='text' value='#ffa199' onChange='hexString(this.value)'>
+<input type='button' value='Width?' onClick='widthVerific()'> -->
+</BODY></HTML>
