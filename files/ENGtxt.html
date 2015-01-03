@@ -9,7 +9,7 @@ HR {  noshade size="5"; border: 0; color: orange; background-color: orange; heig
 function Send() {
 	try {
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-		xmlhttp.open('POST', 'files/save', false);
+		xmlhttp.open('POST', 'save', false);
 		var msg = document.getElementById('Continut').innerHTML;
 		xmlhttp.send(msg);
 		document.getElementById('out').innerHTML = xmlhttp.responseText;
@@ -18,7 +18,7 @@ function Send() {
 function Receive() {
 	try {
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-		xmlhttp.open('GET', 'files/get', false);
+		xmlhttp.open('GET', 'get', false);
 		xmlhttp.send('-');
 		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
 	} catch(e) { alert(e.message); return 'Error!'; }
