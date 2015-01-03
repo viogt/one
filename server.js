@@ -10,12 +10,16 @@ http.createServer(function (req, res) {
 
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
-		else if(req.url == '/get') returnFile('./eng.txt', res);
+		else if(req.url == '/get') //returnFile('./eng.txt', res);
+		{
+		resp.writeHead(200, {'Content-Type': 'text/plain' });
+		resp.end('(url: ' + req.url + ')'); return;
+		}
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
     	return;
   	}
-	if(req.url == '/files/save') {
+	if(req.url == '/save') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile( body, res); });
