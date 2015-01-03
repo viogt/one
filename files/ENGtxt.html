@@ -18,7 +18,7 @@ function Send() {
 function Receive() {
 	try {
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-		xmlhttp.open('GET', 'receive', false);
+		xmlhttp.open('GET', 'eng.txt', false);
 		xmlhttp.send('x');
 		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
 	} catch(e) { alert(e.message); return 'Error!'; }
