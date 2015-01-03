@@ -32,7 +32,7 @@ function returnFile(fl, resp){
 	fs.readFile(fl, function (err,data) {
 	if (err) {
 		resp.writeHead(200, {'Content-Type': 'text/plain' });
-		resp.end('Error retreiving the file ' + fl + '... (url: ' + req.url + ')'); return;
+		resp.end('Error retreiving the file ' + fl + '...'); return;
 	}
 	resp.writeHead(200, {'Content-Type': 'text/html' });
 	resp.end(data);
