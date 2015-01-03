@@ -17,8 +17,6 @@ http.createServer(function (req, res) {
   
 }).listen(port, ipaddress);
 
-console.log('\n\t<...Working on 8080...>\n');
-
 function returnFile(fl, resp){
 	fs.readFile(fl, function (err,data) {
 	if (err) {
