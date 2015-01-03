@@ -10,17 +10,16 @@ http.createServer(function (req, res) {
 
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
-		//else if(req.url == '/receive') returnFile('./files/eng.txt', res);
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
     	return;
   	}
-	if(req.url == '/save') {
+	if(req.url == '/files/save') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile( body, res); });
   	}
-	else res.end('Error: unknown request!');
+	else res.end('Error: unknown request! (' + req.url + ')');
   
 }).listen(port, ipadd);
 
@@ -36,7 +35,7 @@ function returnFile(fl, resp){
 }
 
 function saveFile( bd, resp ){
-	fs.writeFile("./eng.txt", bd, function(err) {
+	fs.writeFile("./files/eng.txt", bd, function(err) {
 	if (err) {
 		resp.writeHead(200, {'Content-Type': 'text/plain' });
 		resp.end('Error writing the file.'); return;
