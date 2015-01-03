@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
 
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
-		else if(req.url == '/files/get') returnFile('./eng.txt', res);
+		else if(req.url == '/files/get') returnFile('eng.txt', res);
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
     	return;
@@ -28,7 +28,7 @@ function returnFile(fl, resp){
 	fs.readFile(fl, function (err,data) {
 	if (err) {
 		resp.writeHead(200, {'Content-Type': 'text/plain' });
-		resp.end('Error retreiving the file ' + fl + '...'); return;
+		resp.end('Error retreiving the file ' + fl + '... (url: ' + req.url + ')'); return;
 	}
 	resp.writeHead(200, {'Content-Type': 'text/html' });
 	resp.end(data);
@@ -36,7 +36,7 @@ function returnFile(fl, resp){
 }
 
 function saveFile( bd, resp ){
-	fs.writeFile("./files/eng.txt", bd, function(err) {
+	fs.writeFile("eng.txt", bd, function(err) {
 	if (err) {
 		resp.writeHead(200, {'Content-Type': 'text/plain' });
 		resp.end('Error writing the file.'); return;
