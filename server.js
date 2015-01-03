@@ -18,8 +18,7 @@ http.createServer(function (req, res) {
 	if(req.url == '/files/save') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
-		req.on('end', function () saveFile( body, res);
-		});
+		req.on('end', function () { saveFile( body, res); });
   	}
 	else res.end('Error: unknown request!');
   
