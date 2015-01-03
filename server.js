@@ -9,14 +9,14 @@ http.createServer(function (req, res) {
 	console.log(' >> ' + req.method + ' > ' + req.url);
 
 	if(req.method == 'GET') {
+		req.end(req.url);
 		if(req.url == '/') returnFile('./index.html', res);
+		else req.end(req.url);
+/*
 		else if(req.url == '/receive') returnFile('eng.txt', res);
-		/*{
-		res.writeHead(200, {'Content-Type': 'text/plain' });
-		res.end('(url: ' + req.url + ')'); return;
-		}*/
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
+*/
     	return;
   	}
 	if(req.url == '/save') {
