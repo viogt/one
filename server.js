@@ -9,9 +9,8 @@ http.createServer(function (req, res) {
 	console.log(' >> ' + req.method + ' > ' + req.url);
 
 	if(req.method == 'GET') {
-		req.end(req.url);
 		if(req.url == '/') returnFile('./index.html', res);
-		else req.end(req.url);
+		else res.end(req.url);
 /*
 		else if(req.url == '/receive') returnFile('eng.txt', res);
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
