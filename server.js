@@ -10,12 +10,9 @@ http.createServer(function (req, res) {
 
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
-		else res.end(req.url);
-/*
 		else if(req.url == '/receive') returnFile('eng.txt', res);
-    	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
+    	else if(req.url.substr(0,6)=='/files') { res.write(req.url); returnFile('.' + req.url, res); }
     	else res.end('Error: unknown request!');
-*/
     	return;
   	}
 	if(req.url == '/save') {
