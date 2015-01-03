@@ -19,7 +19,7 @@ function Receive() {
 	try {
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
 		xmlhttp.open('GET', 'get', false);
-		xmlhttp.send('-');
+		xmlhttp.send('');
 		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
