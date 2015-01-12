@@ -1,5 +1,6 @@
 var http	= require('http'),
     fs		= require('fs'),
+    path = require('path'),
     ipadd	= process.env.OPENSHIFT_NODEJS_IP,
     port	= process.env.OPENSHIFT_NODEJS_PORT || 8080,
     body	= '';
@@ -47,8 +48,9 @@ function saveFile( bd, resp ){
 }
 
 function download( resp ){
-	//var file = __dirname + '/upload-folder/dramaticpenguin.MOV';
-	res.setHeader('Content-disposition', 'attachment; filename=' + 'eng.txt');
-	var filestream = fs.createReadStream("./files/eng.txt");
+	var file = __dirname + '/files/eng.txt';
+	var filename = path.basename(file);
+	res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+	var filestream = fs.createReadStream(file);
 	filestream.pipe(resp);
 } 

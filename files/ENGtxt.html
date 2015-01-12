@@ -11,14 +11,12 @@ INPUT[type=button]:hover { border:1px solid red; }
 function Save() {
 	try {
 		
-		var b = document.getElementById('out');
-		//window.setTimeout("document.getElementById('out').value='Saving...';document.getElementById('out').style.backgroundColor='orange';", 100);
-		
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
 		xmlhttp.open('POST', 'save', false);
 		var msg = document.getElementById('Continut').innerHTML;
 		xmlhttp.send(msg);
 		
+		var b = document.getElementById('out');
 		b.style.backgroundColor = 'lightgreen';
 		b.value = xmlhttp.responseText;
 		window.setTimeout("document.getElementById('out').value='Save Content';document.getElementById('out').style.backgroundColor='';", 2000);
@@ -43,6 +41,6 @@ function Receive( fl ) {
 <hr>
 <DIV id='Continut' contentEditable='true'></DIV>
 <hr>
-<INPUT id='out' type='button' value='Save Content' onClick='this.value="Saving...";Save();'/>
+<INPUT id='out' type='button' value='Save Content' onClick='Save()'/>
 </body>
 </html>
