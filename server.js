@@ -47,6 +47,6 @@ function saveFile( bd, resp ){
 }
 
 function download( resp ){
-	var file = fs.createWriteStream("./files/eng.txt");
-    resp.pipe(file);
+	var filestream = fs.createReadStream("./files/eng.txt");
+	filestream.pipe(resp);
 } 
