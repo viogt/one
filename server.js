@@ -50,7 +50,7 @@ function saveFile( bd, resp ){
 function download( resp ){
 	var file = __dirname + '/files/eng.txt';
 	var filename = path.basename(file);
-	res.writeHead(200, {'Content-disposition': 'attachment; filename=' + filename});
+	resp.writeHead(200, {'Content-disposition': 'attachment; filename=' + filename});
 	var filestream = fs.createReadStream(file);
 	filestream.pipe(resp);
 } 
