@@ -3,33 +3,46 @@
 P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
 i { border-bottom: 2px solid orange; font-style: normal; }
 HR {  noshade size="5"; border: 0; color: orange; background-color: orange; height: 5px; width: 100%; }
+INPUT[type=button] { padding: 8px; background-color: white; border:1px solid orange; font: normal 11pt Arial, sans-serif; width: 120px; }
 </style>
 <script type="text/javascript">
 
 function Save() {
 	try {
+		
+		var b = document.getElementById('out');
+		b.style.backgroundColor = 'orange';
+		b.innerHTML = 'Saving...';
+		
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
 		xmlhttp.open('POST', 'save', false);
 		var msg = document.getElementById('Continut').innerHTML;
 		xmlhttp.send(msg);
-		document.getElementById('out').innerHTML = xmlhttp.responseText;
+		
+		b.style.backgroundColor = 'lightgreen';
+		b.innerHTML = xmlhttp.responseText;
+		setTimeout("document.getElementById('out').innerHTML='Save Content';document.getElementById('out').style.backgroundColor='';", 2000);
+		
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
-function Receive() {
+
+function Receive( fl ) {
 	try {
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-		xmlhttp.open('GET', 'eng.txt', false);
+		xmlhttp.open('GET', fl?'eng.txt':'down', false);
 		xmlhttp.send('x');
-		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
+		if(fl) document.getElementById('Continut').innerHTML = xmlhttp.responseText;
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 </script>
 
 </head>
-<body onLoad='Receive()'>
-
+<body onLoad='Receive(true)'>
+<INPUT type='button' value='Download' onClick='Receive(false)'/>
+<INPUT type='button' value='Refresh' onClick='Receive(true)'/>
+<hr>
 <DIV id='Continut' contentEditable='true'></DIV>
 <hr>
-<INPUT type='button' value=' Save Content ' onClick='Save()'/><span id='out'></span>
+<INPUT id='out' type='button' value='Save Content' onClick='Save()'/>
 </body>
 </html>

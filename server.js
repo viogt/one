@@ -11,6 +11,7 @@ http.createServer(function (req, res) {
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
+    	else if(req.url=='/down') download(res);
     	else res.end('Error: unknown request!');
     	return;
   	}
@@ -41,6 +42,11 @@ function saveFile( bd, resp ){
 		resp.end('Error writing the file.'); return;
 	}
 	resp.writeHead(200, {'Content-Type': 'text/plain' });
-	resp.end(' ...File saved!');
+	resp.end('File saved!');
     });
 }
+
+function download( resp ){
+	var file = fs.createWriteStream("./files/eng.txt");
+    resp.pipe(file);
+} 
