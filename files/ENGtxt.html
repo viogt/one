@@ -12,7 +12,7 @@ function Save() {
 	try {
 		
 		var b = document.getElementById('out');
-		window.setTimeout("document.getElementById('out').value='Saving...';document.getElementById('out').style.backgroundColor='orange';", 100);
+		//window.setTimeout("document.getElementById('out').value='Saving...';document.getElementById('out').style.backgroundColor='orange';", 100);
 		
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
 		xmlhttp.open('POST', 'save', false);
@@ -43,6 +43,6 @@ function Receive( fl ) {
 <hr>
 <DIV id='Continut' contentEditable='true'></DIV>
 <hr>
-<INPUT id='out' type='button' value='Save Content' onClick='Save()'/>
+<INPUT id='out' type='button' value='Save Content' onClick='this.value="Saving...";Save();'/>
 </body>
 </html>

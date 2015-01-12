@@ -47,6 +47,8 @@ function saveFile( bd, resp ){
 }
 
 function download( resp ){
+	//var file = __dirname + '/upload-folder/dramaticpenguin.MOV';
+	res.setHeader('Content-disposition', 'attachment; filename=' + 'eng.txt');
 	var filestream = fs.createReadStream("./files/eng.txt");
 	filestream.pipe(resp);
 } 
