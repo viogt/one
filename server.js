@@ -11,8 +11,9 @@ http.createServer(function (req, res) {
 
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
+    	else if(req.url=='/files/down') download(res);
     	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
-    	else if(req.url=='/down') download(res);
+    	else if(req.url=='/files/down') download(res);
     	else res.end('Error: unknown request!');
     	return;
   	}
