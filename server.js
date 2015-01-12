@@ -48,9 +48,10 @@ function saveFile( bd, resp ){
 }
 
 function download( resp ){
-	var file = __dirname + '/files/eng.txt';
-	var filename = path.basename(file);
-	resp.writeHead(200, {'Content-disposition': 'attachment; filename=' + filename});
+	//var file = __dirname + '/files/eng.txt';
+	var file = './files/eng.txt';
+	//var filename = path.basename(file);
+	resp.writeHead(200, {'Content-disposition': 'attachment; filename=' + 'eng.txt'});
 	var filestream = fs.createReadStream(file);
 	filestream.pipe(resp);
 } 
