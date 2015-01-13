@@ -3,11 +3,17 @@
 P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
 i { border-bottom: 2px solid orange; font-style: normal; }
 HR {  noshade size="5"; border: 0; color: orange; background-color: orange; height: 5px; width: 100%; }
-INPUT[type=button] { padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; }
-INPUT[type=button]:hover { border:1px solid red; }
+Inp { padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; text-decoration:none; }
+Inp:hover { border:1px solid red; }
 </style>
 <script type="text/javascript">
 
+function rSave(){
+		var b = document.getElementById('out');
+		b.style.backgroundColor = 'yellow';
+		b.value = 'Saving...';
+		window.setTimeout(Save, 10);
+}
 function Save() {
 	try {
 		
@@ -24,21 +30,22 @@ function Save() {
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 
-function Receive( fl ) {
+function Receive() {
 	try {
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-		xmlhttp.open('GET', fl?'eng.txt':'down', false);
+		xmlhttp.open('GET','eng.txt', false);
 		xmlhttp.send('x');
-		if(fl) document.getElementById('Continut').innerHTML = xmlhttp.responseText;
+		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
+		window.scrollTo(0, document.body.scrollHeight);
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 </script>
 
 </head>
-<body onLoad='Receive(true)'>
+<body onLoad='Receive()'>
 <DIV id='Continut' contentEditable='true'></DIV>
 <hr>
-<INPUT id='out' type='button' value='Save Content' onClick='Save()'/>
-<a href='down' style='font:normal 11pt Arial, sans-serif;'>[ Download eng.txt ]</a>
+<INPUT id='out' class='Inp' type='button' value='Save Content' onClick='rSave()'/>
+<a href='down' class='Inp'>Download eng.txt</a>
 </body>
 </html>
