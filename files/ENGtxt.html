@@ -3,13 +3,14 @@
 P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
 i { border-bottom: 2px solid orange; font-style: normal; }
 HR {  noshade size="5"; border: 0; color: orange; background-color: orange; height: 5px; width: 100%; }
-Inp { padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; text-decoration:none; }
-Inp:hover { border:1px solid red; }
+.Inp { padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; text-decoration:none; }
+.Inp:hover { border:1px solid red; }
 </style>
 <script type="text/javascript">
 
 function rSave(){
 		var b = document.getElementById('out');
+		b.disabled = true;
 		b.style.backgroundColor = 'yellow';
 		b.value = 'Saving...';
 		window.setTimeout(Save, 10);
@@ -26,6 +27,7 @@ function Save() {
 		b.style.backgroundColor = 'lightgreen';
 		b.value = xmlhttp.responseText;
 		window.setTimeout("document.getElementById('out').value='Save Content';document.getElementById('out').style.backgroundColor='';", 2000);
+		b.disabled = false;
 		
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
