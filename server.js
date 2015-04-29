@@ -12,15 +12,14 @@ http.createServer(function (req, res) {
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
     	else if(req.url=='/files/down') download(res);
-    	else if(req.url.substr(0,6)=='/files') returnFile('.' + req.url, res);
-    	else if(req.url=='/files/down') download(res);
+    	else if(req.url.substr(0,7)=='/files/') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
     	return;
   	}
-	if(req.url == '/files/save') {
+	if(req.url.substr(0,7)=='/files/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
-		req.on('end', function () { saveFile( body, res); });
+		req.on('end', function () { saveFile('.' + req.url, body, res); });
   	}
 	else res.end('Error: unknown request! (' + req.url + ')');
   
@@ -28,31 +27,34 @@ http.createServer(function (req, res) {
 
 function returnFile(fl, resp){
 	fs.readFile(fl, function (err,data) {
-	if (err) {
-		resp.writeHead(200, {'Content-Type': 'text/plain' });
-		resp.end('Error retreiving the file ' + fl + '...'); return;
-	}
-	resp.writeHead(200, {'Content-Type': 'text/html' });
-	resp.end(data);
-    });
+	  if (err) {
+		  resp.writeHead(200, {'Content-Type': 'text/plain' });
+		  resp.end('Error retreiving the file ' + fl + '...'); return;
+	  }
+	  resp.writeHead(200, {'Content-Type': 'text/html' });
+	  resp.end(data);
+  });
 }
 
-function saveFile( bd, resp ){
-	fs.writeFile("./files/eng.txt", bd, function(err) {
-	if (err) {
-		resp.writeHead(200, {'Content-Type': 'text/plain' });
-		resp.end('Error writing the file.'); return;
-	}
-	resp.writeHead(200, {'Content-Type': 'text/plain' });
-	resp.end('File saved!');
-    });
+/*function returnFile(fl, resp){
+  var file = fs.createReadStream(fl);
+  file.pipe(resp);
+}*/
+
+function saveFile( fl, bd, resp ){
+	fs.writeFile(fl, bd, function(err) {
+	  if (err) {
+		  resp.writeHead(200, {'Content-Type': 'text/plain' });
+		  resp.end('Error writing the file.'); return;
+	  }
+	  resp.writeHead(200, {'Content-Type': 'text/plain' });
+	  resp.end('File saved!');
+  });
 }
 
 function download( resp ){
-	//var file = __dirname + '/files/eng.txt';
 	var file = './files/eng.txt';
-	//var filename = path.basename(file);
-	resp.writeHead(200, {'Content-disposition': 'attachment; filename=' + 'eng.txt'});
+	resp.writeHead(200, {'Content-disposition': 'attachment; filename=eng.txt'});
 	var filestream = fs.createReadStream(file);
 	filestream.pipe(resp);
-} 
+}

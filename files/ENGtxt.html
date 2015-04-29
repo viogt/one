@@ -3,7 +3,7 @@
 P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
 i { border-bottom: 2px solid orange; font-style: normal; }
 HR {  noshade size="5"; border: 0; color: orange; background-color: orange; height: 5px; width: 100%; }
-.Inp { padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; text-decoration:none; }
+.Inp { color: black; padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; text-decoration:none; }
 .Inp:hover { border:1px solid red; }
 </style>
 <script type="text/javascript">
@@ -19,7 +19,7 @@ function Save() {
 	try {
 		
 		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-		xmlhttp.open('POST', 'save', false);
+		xmlhttp.open('POST', 'eng.txt', false);
 		var msg = document.getElementById('Continut').innerHTML;
 		xmlhttp.send(msg);
 		

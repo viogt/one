@@ -18,7 +18,7 @@ var W = {
 		this.st = this.body.style;
 		this.auto( document.getElementsByTagName('input')[0] );
 		this.dim();
-		this.fonts();
+		this.st.font = this.vl('fSelect');
 	},
 
 	extr: function(x,q) { return 'rgb(' + Math.floor(x[0]*q) + ',' + Math.floor(x[1]*q) + ',' + Math.floor(x[2]*q) + ')'; },
@@ -30,7 +30,7 @@ var W = {
 		h = h.replace(/<i.*?>/g, '<i style="'+ this.vl('it') +'">');
 		h = h.replace(/(<b>)|(<b .*?>)/g, '<b style="'+ this.vl(f) +'">');
 		h = h.replace(/<span .*?>(.*?)<\/span>/g, '$1');
-		h = h.replace(/(<br>-<br>)|(<br><hr .*?>)/g, '<br><hr style="' + this.vl('ln') + '">');
+		h = h.replace(/((<br>|><p>)-(<br>|<\/p>))|(<hr .*?>)/g, '<br><hr style="' + this.vl('ln') + '">');
 		
 		var x = this.vl('sg').split(','), L = x.length;
 		for(var i=0; i<L; i++) {
@@ -52,8 +52,7 @@ var W = {
 	dim: function(){
 		this.obj.style.width = this.vl('wid');
 		this.st.padding = this.vl('pad');
-		var x = this.vl('radix');
-		this.st.borderRadius = x;
+		this.st.borderRadius = this.vl('radix')+'px';
 	},
 
 	vl: function(x) { return document.getElementById(x).value; }
@@ -69,23 +68,23 @@ function show(){ alert(document.getElementById('Ins').innerHTML); }
 <INPUT type="button" value="Grey" style='background-color:#ededf0;' onClick="W.auto(this)"/>
 <INPUT type="button" value="White" style='background-color:#ffffff;' onClick="W.auto(this)"/>
 <INPUT type="button" value="Yellow" style='background-color:#FFFFCC;' onClick="W.auto(this)"/>
-<INPUT type="button" value="Green" style='background-color:#BCFF8C;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Green" style='background-color:#CEFDCE;' onClick="W.auto(this)"/>
 <INPUT type="button" value="Blue" style='background-color:#ebebff;' onClick="W.auto(this)"/>
-<INPUT type="button" value="Orange" style='background-color:#FFB489;' onClick="W.auto(this)"/>
-<INPUT type="button" value="Purple" style='background-color:#D0ADFF;' onClick="W.auto(this)"/>
-<INPUT type="button" value="Pink" style='background-color:#FFCDDC;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Orange" style='background-color:#FFD8AF;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Purple" style='background-color:#DDD3FA;' onClick="W.auto(this)"/>
+<INPUT type="button" value="Pink" style='background-color:#FEDBF5;' onClick="W.auto(this)"/>
 <table cellpadding=2 cellspacing=0 border=0 style='font:normal 10pt Arial;'>
 <tr><td>Base:</td><td>
 width: <INPUT id="wid" type="text" style="width:40" value="500" onChange="W.dim(this)"/>
 padding: <INPUT id="pad" type="text" style="width:40" value="22" onChange="W.dim(this)"/>
 radix: <INPUT id="radix" type="text" style="width:40" value="12" onChange="W.dim(this)"/>
 fonts: <SELECT id='fSelect' style='width:70px; background-color:white; border:1px solid grey; outline:none;' onChange="W.st.font = W.vl('fSelect')">
-		<OPTION value='normal 13pt serif' selected>Serif</OPTION>
-		<OPTION value='normal 11pt sans-serif'>Sans</OPTION>
-		<OPTION value='normal 11pt "Courier New",Courier,Monospace'>Courier</OPTION>
-		<OPTION value='normal 11pt Arial,sans-serif'>Arial</OPTION>
+		<OPTION value='normal 12pt serif' selected>Serif</OPTION>
+		<OPTION value='normal 10pt sans-serif'>Sans</OPTION>
+		<OPTION value='normal 10pt "Courier New",Courier,Monospace'>Courier</OPTION>
+		<OPTION value='normal 10pt Arial,sans-serif'>Arial</OPTION>
 		<OPTION value='normal 10pt Verdana,sans-serif'>Verdana</OPTION>
-		<OPTION value='normal 11pt "Lucida Console",Monospace'>Lucida</OPTION>
+		<OPTION value='normal 10pt "Lucida Console",Monospace'>Lucida</OPTION>
 		<OPTION value='normal 12pt Georgia,serif'>Georgia</OPTION>
 	</SELECT>
 <INPUT type="button" value="Renew!" style='background-color:white' onClick="W.cauta()"/>

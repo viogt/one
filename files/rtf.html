@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Rich Text Editor</title>
+  <script type="text/javascript">
+
+var oDoc, sDefTxt, isDirty, isNasty, sBut, currentIndex = -1;
+
+function id(x) { return document.getElementById(x); }
+function Ch() { isDirty = true; sBut.style.color = 'red'; }
+
+function initDoc() {
+  oDoc = id("textBox"), sDefTxt = oDoc.innerHTML, sBut = id('saveButton');
+  if(id('switchBox').checked) setDocMode(true);
+  Receive();
+}
+
+function formatDoc(sCmd, sValue) {
+  if (validateMode()) { document.execCommand(sCmd, false, sValue); oDoc.focus(); }
+}
+
+function validateMode() {
+  if (!id('switchBox').checked) { return true ; }
+  alert("Uncheck \"Show HTML\".");
+  oDoc.focus();
+  return false;
+}
+
+function setDocMode(bToSource) {
+  var oContent;
+  if (bToSource) {
+    oContent = document.createTextNode(oDoc.innerHTML);
+    oDoc.innerHTML = "";
+    var oPre = document.createElement("pre");
+    oDoc.contentEditable = false;
+    oPre.id = "sourceText";
+    oPre.contentEditable = true;
+    oPre.appendChild(oContent);
+    oDoc.appendChild(oPre);
+  } else {
+    if (document.all) {
+      oDoc.innerHTML = oDoc.innerText || oDoc.textContent;
+    } else {
+      oContent = document.createRange();
+      oContent.selectNodeContents(oDoc.firstChild);
+      oDoc.innerHTML = oContent.toString();
+    }
+    oDoc.contentEditable = true;
+  }
+  oDoc.focus();
+}
+
+function makeH(allEl, whr) {
+  var e = oDoc.getElementsByTagName(allEl); if(e.length<1) return;
+  var x = document.getElementById(whr).value;
+  for(var i=0;i<e.length;i++) e[i].style.cssText = x;
+}
+function setBasic() { id('basic').style.cssText=id('basicDiv').value; }
+
+function removeFormat() {
+  var x = id('basic'); x.innerHTML = (x.innerText || x.textContent).replace(/\n/g,'<br>');
+}
+
+function insertTable() {
+  var v = id('makeTb').value.split('|'), vL = v.length;
+  var rs = v[0], clTb = v[vL-2], clCl = v[vL-1], cs = vL-3;
+  var x = '<table cellPadding=0 cellSpacing=0 border=0 width="100%" style="border-collapse: collapse;'+clTb+'">';
+  for(var r = 0; r<rs; r++) {
+    x += '<tr>';
+    for(var c = 0; c<cs; c++) x += '<td valign="top" width="'+v[c+1]+'" style="'+clCl+'">' + '...' + '</td>';
+    x += '</tr>';
+  }
+  x += '</table>';
+  formatDoc('insertHTML', x);
+}
+
+function Compose() {
+  var x = document.querySelectorAll('input[type=text]'), L = x.length, b = x[0].value;
+  for(var i=1; i<L; i++) b += '||' + x[i].value;
+  return b;
+}
+
+function Receive() {
+	try {
+		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
+    xmlhttp.onerror = function(e) { alert("Error Status: " + e.target.status + '\n' + e.error); };
+		xmlhttp.open('GET','styles.txt', false);
+		xmlhttp.send('x');
+		Distribute(xmlhttp.responseText);
+	} catch(e) { alert(e.message); return 'Error!'; }
+}
+
+function Distribute( wt ) {
+  var s = id('styles'), tt = wt.split('\n'), ttL = tt.length;
+  isDirty = false; isNasty = false;
+  for(var i=s.options.length-1;i>=0;i--) s.remove(i);
+  for(var i=0; i<ttL; i++) {
+    var ln = tt[i].trim();
+    if(ln == '') continue;
+    var opt = document.createElement("option");
+    opt.text = ln.split('||')[0];
+    opt.value = ln;
+    s.add(opt);
+  }
+  if(currentIndex < 0) s.selectedIndex = currentIndex = 0;
+  changeStyle();
+}
+
+function changeStyle() {
+  var s = id('styles'), ln = s[s.selectedIndex].value, w = ln.split('||');
+  if(isDirty) { s.options[currentIndex].value = Compose(); isNasty = true; isDirty = false; }
+  currentIndex = s.selectedIndex;
+  var x = document.querySelectorAll('input[type=text]'), L = x.length;
+  var Arr = ['','','H1', 'H2', 'b', 'i', 'u', 'blockquote', 'hr', 'sup', ''];
+  for(var i=0; i<L; i++) {
+    x[i].value = w[i];
+    if(i==1) setBasic();
+    else if(Arr[i]!='') makeH(Arr[i],x[i].id);
+  }
+}
+
+function saveStyle() {
+  var fl = true, lb = id('cpy').value;
+  var s = id('styles'), opts = s.options, oL = opts.length;
+  for(var i=0; i< oL; i++) if(lb == opts[i].text) fl = false;
+  if(fl) {
+    var opt = document.createElement("option");
+    opt.text = lb;
+    opt.value = Compose();
+    s.add(opt);
+    opts = s.options; oL++;
+    isNasty = true;
+  }
+  else if(isDirty) {
+    s.options[currentIndex].value = Compose();
+    isNasty = true; isDirty = false;
+  }
+  if(!isNasty) return;
+  var fileCnt = '';
+  for(var i=0; i<oL; i++) fileCnt += opts[i].value + '\n';
+  if( fileSave(fileCnt) ) {
+    sBut.style.color = '';
+    isDirty = false; isNasty = false;
+  }
+}
+
+function fileSave(msg) {
+	try {
+		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
+    xmlhttp.onerror = function(e) { alert("Error Status: " + e.target.status + '\n' + e.error); };
+		xmlhttp.open('POST', 'styles.txt', false);
+		xmlhttp.send(msg);
+		var r = xmlhttp.responseText;
+		alert(r);
+		return (r == 'File saved!')?true:false;
+	} catch(e) { alert(e.message); return 'Error!'; }
+}
+function removeContent() { id('basic').innerHTML='.'; }
+</script>
+<style type="text/css">
+.intLink { cursor: pointer; border: 1px solid white; }
+.intLink:hover { border: 1px solid red; }
+</style>
+</head>
+<body style="margin: 0px 0px 0px 0px;padding:0px" onload="initDoc();">
+
+<div id="textBox" style='height:600px; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true">
+<table><TR><TD id='basic'>
+He has favored building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house. Several mainstream publications have compared him with Henry Ford for his work on advanced vehicle power trains.
+<br><br>
+First conference announced
+<br><br>
+To overcome the range limitations of electric cars, Musk said in an interview with All Things Digital in May 2013 that Tesla is "dramatically accelerating" their network of supercharger stations, tripling the number on the East and West coasts of the U.S. that June, with plans for more expansion across North America, including Canada, throughout the year.
+<br><br>
+Debating the results
+<br><br>
+He is reported to have a 32% stake in Tesla, which is valued at US$18 billion, as of November 2013.His annual salary at Tesla is one dollar, and similar to Steve Jobs and others, the remainder of his compensation is in the form of stock and performance-based bonuses.
+<br><br>
+It is valued at US$18 billion, as of November 2013. His annual salary at Tesla is one dollar, and similar to Steve Jobs and others, the remainder of his compensation is in the form of stock and performance-based bonuses.
+</TD></TR></table></div>
+
+<table style='font: normal 9pt Sans-Serif;position:absolute; top:10px; left:590px;'>
+<tr>
+  <td>
+      <img class="intLink" title="Copy to clipboard" onclick="oDoc.focus();formatDoc('selectAll','');formatDoc('copy','')" src="data:image/gif;base64,R0lGODlhFgAWAIQSAB1ChBFNsRJTySJYwjljwkxwl19vj1dusYODhl6MnHmOrpqbmpGjuaezxrCztcDCxL/I18rL1P///////////////////////////////////////////////////////yH5BAEAAB8ALAAAAAAWABYAAAVu4CeOZGmeaKqubDs6TNnEbGNApNG0kbGMi5trwcA9GArXh+FAfBAw5UexUDAQESkRsfhJPwaH4YsEGAAJGisRGAQY7UCC9ZAXBB+74LGCRxIEHwAHdWooDgGJcwpxDisQBQRjIgkDCVlfmZqbmiEAOw==" />
+  </td>
+  <td>
+    <label for="styles">Theme:</label> <select id='styles' onchange='changeStyle()'></select>
+    <label for="cpy">Save as:</label> <INPUT type='text' id='cpy' style="width:60px" /> <INPUT type='button' id='saveButton' value='save' onClick='saveStyle()' />
+    <input type="checkbox" name="switchMode" id="switchBox" onchange="setDocMode(this.checked);" /> <label for="switchBox">to toggle HTML</label>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td>
+    <img class="intLink" title="Clean" onclick="removeFormat()" src="data:image/gif;base64,R0lGODlhFgAWAIQbAD04KTRLYzFRjlldZl9vj1dusY14WYODhpWIbbSVFY6O7IOXw5qbms+wUbCztca0ccS4kdDQjdTLtMrL1O3YitHa7OPcsd/f4PfvrvDv8Pv5xv///////////////////yH5BAEKAB8ALAAAAAAWABYAAAV84CeOZGmeaKqubMteyzK547QoBcFWTm/jgsHq4rhMLoxFIehQQSAWR+Z4IAyaJ0kEgtFoLIzLwRE4oCQWrxoTOTAIhMCZ0tVgMBQKZHAYyFEWEV14eQ8IflhnEHmFDQkAiSkQCI2PDC4QBg+OAJc0ewadNCOgo6anqKkoIQA7" />
+    <img class="intLink" title="Undo" onclick="formatDoc('undo');" src="data:image/gif;base64,R0lGODlhFgAWAOMKADljwliE33mOrpGjuYKl8aezxqPD+7/I19DV3NHa7P///////////////////////yH5BAEKAA8ALAAAAAAWABYAAARR8MlJq7046807TkaYeJJBnES4EeUJvIGapWYAC0CsocQ7SDlWJkAkCA6ToMYWIARGQF3mRQVIEjkkSVLIbSfEwhdRIH4fh/DZMICe3/C4nBQBADs=" />
+    <img class="intLink" title="Redo" onclick="formatDoc('redo');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAB1ChDljwl9vj1iE34Kl8aPD+7/I1////yH5BAEKAAcALAAAAAAWABYAAANKeLrc/jDKSesyphi7SiEgsVXZEATDICqBVJjpqWZt9NaEDNbQK1wCQsxlYnxMAImhyDoFAElJasRRvAZVRqqQXUy7Cgx4TC6bswkAOw==" />
+    <img class="intLink" title="Left align" onclick="formatDoc('justifyleft');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIghI+py+0Po5y02ouz3jL4D4JMGELkGYxo+qzl4nKyXAAAOw==" />
+    <img class="intLink" title="Center align" onclick="formatDoc('justifycenter');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIfhI+py+0Po5y02ouz3jL4D4JOGI7kaZ5Bqn4sycVbAQA7" />
+    <img class="intLink" title="Right align" onclick="formatDoc('justifyright');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIghI+py+0Po5y02ouz3jL4D4JQGDLkGYxouqzl43JyVgAAOw==" />
+    <img class="intLink" title="Numbered list" onclick="formatDoc('insertorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAADljwliE35GjuaezxtHa7P///////yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKSespwjoRFvggCBUBoTFBeq6QIAysQnRHaEOzyaZ07Lu9lUBnC0UGQU1K52s6n5oEADs=" />
+    <img class="intLink" title="Dotted list" onclick="formatDoc('insertunorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAAB1ChF9vj1iE33mOrqezxv///////yH5BAEAAAcALAAAAAAWABYAAAMyeLrc/jDKSesppNhGRlBAKIZRERBbqm6YtnbfMY7lud64UwiuKnigGQliQuWOyKQykgAAOw==" />
+    <img class="intLink" title="Add indentation" onclick="formatDoc('indent');" src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
+    <img class="intLink" title="Delete indentation" onclick="formatDoc('outdent');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
+    <img class="intLink" title="Hyperlink" onclick="var sLnk=prompt('Write the URL here','http:\/\/');if(sLnk&&sLnk!=''&&sLnk!='http://'){formatDoc('createlink',sLnk)}" src="data:image/gif;base64,R0lGODlhFgAWAOMKAB1ChDRLY19vj3mOrpGjuaezxrCztb/I19Ha7Pv8/f///////////////////////yH5BAEKAA8ALAAAAAAWABYAAARY8MlJq7046827/2BYIQVhHg9pEgVGIklyDEUBy/RlE4FQF4dCj2AQXAiJQDCWQCAEBwIioEMQBgSAFhDAGghGi9XgHAhMNoSZgJkJei33UESv2+/4vD4TAQA7" />
+    <img class="intLink" title="Empty content" onclick="removeContent()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB9oECQMCKPI8CIIAAAAIdEVYdENvbW1lbnQA9syWvwAAAuhJREFUOMtjYBgFxAB501ZWBvVaL2nHnlmk6mXCJbF69zU+Hz/9fB5O1lx+bg45qhl8/fYr5it3XrP/YWTUvvvk3VeqGXz70TvbJy8+Wv39+2/Hz19/mGwjZzuTYjALuoBv9jImaXHeyD3H7kU8fPj2ICML8z92dlbtMzdeiG3fco7J08foH1kurkm3E9iw54YvKwuTuom+LPt/BgbWf3//sf37/1/c02cCG1lB8f//f95DZx74MTMzshhoSm6szrQ/a6Ir/Z2RkfEjBxuLYFpDiDi6Af///2ckaHBp7+7wmavP5n76+P2ClrLIYl8H9W36auJCbCxM4szMTJac7Kza////R3H1w2cfWAgafPbqs5g7D95++/P1B4+ECK8tAwMDw/1H7159+/7r7ZcvPz4fOHbzEwMDwx8GBgaGnNatfHZx8zqrJ+4VJBh5CQEGOySEua/v3n7hXmqI8WUGBgYGL3vVG7fuPK3i5GD9/fja7ZsMDAzMG/Ze52mZeSj4yu1XEq/ff7W5dvfVAS1lsXc4Db7z8C3r8p7Qjf///2dnZGxlqJuyr3rPqQd/Hhyu7oSpYWScylDQsd3kzvnH738wMDzj5GBN1VIWW4c3KDon7VOvm7S3paB9u5qsU5/x5KUnlY+eexQbkLNsErK61+++VnAJcfkyMTIwffj0QwZbJDKjcETs1Y8evyd48toz8y/ffzv//vPP4veffxpX77z6l5JewHPu8MqTDAwMDLzyrjb/mZm0JcT5Lj+89+Ybm6zz95oMh7s4XbygN3Sluq4Mj5K8iKMgP4f0////fv77//8nLy+7MCcXmyYDAwODS9jM9tcvPypd35pne3ljdjvj26+H2dhYpuENikgfvQeXNmSl3tqepxXsqhXPyc666s+fv1fMdKR3TK72zpix8nTc7bdfhfkEeVbC9KhbK/9iYWHiErbu6MWbY/7//8/4//9/pgOnH6jGVazvFDRtq2VgiBIZrUTIBgCk+ivHvuEKwAAAAABJRU5ErkJggg==">
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Body settings" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAAvklEQVQ4ja1UwRHEIAhcbq4BaSVdkxYswbSQEkwJ5GHGU0+9i4YHOgy7rKiQqmLOXpN4AO+wHMc9mDHTKratS8FMVVgRjywlBTN5X2+w91plzyhSfMhOfYslo0gzAlfqWxrLg7TUtvAVirTmn/EHntaHgpmYydoVgLVr3KfxoruXqaqqfjev751T5wJUy0sVkY5mEank3FIRN79VFNX66ijMi7s/dd8BYFmAhy912K6RY0w2AgZVhIMNGM2P3xNEa6aAGUWPFQAAAABJRU5ErkJggg==" />
+  </td>
+  <td>
+    <INPUT type='text' id='basicDiv' style="width:400px" onChange="setBasic();Ch();" value='font-family: serif; color: brown; background-color: lightyellow; border-radius:8px; padding: 40px; border:1px solid gold'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Title" onclick="formatDoc('formatblock','H1');makeH('H1','makeH1')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAIAAAAGHlpnAAAArElEQVQ4jc1UwRHEIAjcOGmAFtKCNVBCekotaSEtYAspQUrgHjrGy8w9JPfIPhhEWBhQJjPDM8wAUkqOyBjjRQHgPONQ/LIkVSUiAMGRv0FVn1IU/IGi9mJdx8L6AVQK5no+DjBXebN8e8Z916KF5tfkL0t/tW1XGZ5etAL9FLfS5qHMJZgZfS9gZiJigxCRnHPO2cze8bTeQVEn4lsZBVPZWuXbOkBEoWnuKj4GFHUndSsusgAAAABJRU5ErkJggg==" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeH1' style="width:400px" onChange="makeH('H1','makeH1');Ch();" value='color: white;background-color:orange;border-radius:8px;padding:8px;font: normal 24pt serif;border:1px solid darkorange; margin:0px;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Subtitle" onclick="formatDoc('formatblock','H2');makeH('H2','makeH2')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAIAAAAGHlpnAAAAxElEQVQ4jaWU4Q2FIAyED+MCrOAKrCAzsYKs4CquYFdwBUbg/QCUICUPvBByJvRrpYDw3uObZgBENBCplHoQAK5LdcUvCznnpJQApoH8t5xzXxFB8Uf2vS9s216I44jfWj++obwBM7dI684qquLKKegVRDv/WyUi35RBxEA5LKLdl7wj6WhZEUfw+RwMr+x0Gg9Tu7XGtykZgktoRR1dIrgS/qgibWdaRERYT2UFrSeIFIDkOYQIr1a4tgOSUk63G0MA+AFys0Nkp4pFqgAAAABJRU5ErkJggg==" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeH2' style="width:400px" onChange="makeH('H2','makeH2');Ch();" value='color:brown;background-color: white; border-radius:6px;padding:8px;font:normal 16pt Serif;border:1px solid gold; margin:0px;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Bold" onclick="formatDoc('bold');makeH('b','makeBd')" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeBd' style="width:400px" onChange="makeH('b','makeBd');Ch();" value='border: 1px solid gold; background-color: yellow;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Italic" onclick="formatDoc('italic');makeH('i','makeIt')" src="data:image/gif;base64,R0lGODlhFgAWAKEDAAAAAF9vj5WIbf///yH5BAEAAAMALAAAAAAWABYAAAIjnI+py+0Po5x0gXvruEKHrF2BB1YiCWgbMFIYpsbyTNd2UwAAOw==" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeIt' style="width:400px" onChange="makeH('i','makeIt');Ch();" value='color:red;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Underline" onclick="formatDoc('underline');makeH('u','makeUn')" src="data:image/gif;base64,R0lGODlhFgAWAKECAAAAAF9vj////////yH5BAEAAAIALAAAAAAWABYAAAIrlI+py+0Po5zUgAsEzvEeL4Ea15EiJJ5PSqJmuwKBEKgxVuXWtun+DwxCCgA7" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeUn' style="width:400px" onChange="makeH('u','makeUn');Ch();" value='border-bottom: 2px solid orange; text-decoration:none;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Quote" onclick="formatDoc('formatblock','blockquote');makeH('blockquote','makeQt')" src="data:image/gif;base64,R0lGODlhFgAWAIQXAC1NqjFRjkBgmT9nqUJnsk9xrFJ7u2R9qmKBt1iGzHmOrm6Sz4OXw3Odz4Cl2ZSnw6KxyqO306K63bG70bTB0rDI3bvI4P///////////////////////////////////yH5BAEKAB8ALAAAAAAWABYAAAVP4CeOZGmeaKqubEs2CekkErvEI1zZuOgYFlakECEZFi0GgTGKEBATFmJAVXweVOoKEQgABB9IQDCmrLpjETrQQlhHjINrTq/b7/i8fp8PAQA7" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeQt' style="width:400px" onChange="makeH('blockquote','makeQt');Ch();" value='margin:0px; margin-left:40px; border-left: 5px solid orange; padding: 0px; padding-left: 14px; font-style: italic;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Horizontal line (HR)" onclick="formatDoc('insertHorizontalRule','');makeH('hr','makeHr')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAj0lEQVQ4jcWU3Q2AIAyED0dhBWZhBZypK+gqZQVWqQ81pgaNKBq/EFIIx6X81IkIOhgA5Jwf9+41/41xnOtAm12mqgFACOHShygSRbuFqg78GznN35oQRTujwx0iwsxiSGm6DDZVa/41q6r2b0RVLqWu+3fM3KXX8y+l3FV674H+/OX199/IZ//vJ/9/6s8CopopXvchMpIAAAAASUVORK5CYII=" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeHr' style="width:400px" onChange="makeH('hr','makeHr');Ch();" value='border:none; border-top:1px dashed orange; height:0px;'/>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Superscript" onclick="formatDoc('superscript','');makeH('sup','makeSp')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAA0UlEQVQ4jbVU0RHDIAjFXhdwBVfI1rqKrsAIMAL90FKTqCmX9h0fOYR3zwfRiQjcw8NQmxI41yIlTTuDCudAi7tviwrt7yTU/NeIUQBaxKhpC8W+U/GsWphZdSEiAGzb1otlZr+v9N4PLkJERJRznqro442dnZU4hFBKOVjJzExUcgaRFgs7z1rW6sZ29j0XtxOZrla1DRFDCIh4cLfHajsH5o8w3U5VAQBnd68ptL/qH87og99PZFa9YDFs5+y0TWT9j/Sn5wLLkzOB5cn5H8ULQ2VQqpt0IqIAAAAASUVORK5CYII=" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeSp' style="width:400px" onChange="makeH('sup','makeSp');Ch();" value='color:red; font:bold 10px Sans-Serif'/>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td>
+<INPUT type='button' value='✔' onClick="formatDoc('insertText','✔');makeH('H1','makeH1')"/>
+<INPUT type='button' value='✘' onClick="formatDoc('insertText','✘');makeH('H1','makeH1')"/>
+<INPUT type='button' value='✎' onClick="formatDoc('insertText','✎');makeH('H1','makeH1')"/>
+<INPUT type='button' value='⚑' onClick="formatDoc('insertText','⚑');makeH('H1','makeH1')"/>
+<INPUT type='button' value='★' onClick="formatDoc('insertText','★');makeH('H1','makeH1')"/>
+<INPUT type='button' value='▶' onClick="formatDoc('insertText','▶');makeH('H1','makeH1')"/>
+<INPUT type='button' value='▉' onClick="formatDoc('insertText','▉');makeH('H1','makeH1')"/>
+<INPUT type='button' value='✓' onClick="formatDoc('insertText','✓');makeH('H1','makeH1')"/>
+<INPUT type='button' value='☎' onClick="formatDoc('insertText','☎');makeH('H1','makeH1')"/>
+
+<INPUT type='button' value='①' onClick="formatDoc('insertText','①');makeH('H1','makeH1')"/>
+<INPUT type='button' value='②' onClick="formatDoc('insertText','②');makeH('H1','makeH1')"/>
+<INPUT type='button' value='③' onClick="formatDoc('insertText','③');makeH('H1','makeH1')"/>
+<INPUT type='button' value='④' onClick="formatDoc('insertText','④');makeH('H1','makeH1')"/>
+<INPUT type='button' value='⑤' onClick="formatDoc('insertText','⑤');makeH('H1','makeH1')"/>
+
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td>
+    <select onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
+      <option class="heading" selected>- font -</option>
+      <option>Arial</option>
+      <option>Verdana</option>
+      <option>Garamond</option>
+      <option>Arial Black</option>
+      <option>Courier New</option>
+      <option>Times New Roman</option>
+    </select>
+
+    <select onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
+      <option class="heading" selected>- size -</option>
+      <option value="1">Very small</option>
+      <option value="2">A bit small</option>
+      <option value="3">Normal</option>
+      <option value="4">Medium-large</option>
+      <option value="5">Big</option>
+      <option value="6">Very big</option>
+      <option value="7">Maximum</option>
+    </select>
+
+    <select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
+      <option class="heading" selected>- color -</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="black">Black</option>
+      <option value="white">White</option>
+      <option value="yellow">Yellow</option>
+      <option value="orange">Orange</option>
+      <option value="gold">Gold</option>
+      <option value="brown">Brown</option>
+      <option value="gray">Gray</option>
+      <option value="purple">Purple</option>
+    </select>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img class="intLink" title="Insert Table" onclick="insertTable()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAApElEQVQ4je2UQRGAIBBFP44FqIARtoIVqGAXK1iBLETQCkZYD6CoK+OgHn0XmGH/Z/9hVzEz3lG91AOow6GUA6x4dTkZcyredyEF0hTrl8OlRZlL38/hEoOMY2uMPhVNUyhqpb5pHADvQbTrYhUkjNHSVxK78F4H1ytuXKIF0ZwPcsMfRHTxB0kW1h6Gr4h6uzF32/AVoU6LL5MlC5GweMAHu3MBFuBJXeryqLsAAAAASUVORK5CYII=" />
+  </td>
+  <td>
+    <INPUT type='text' id='makeTb' style="width:400px" onChange='Ch();' value='3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;'/>
+  </td>
+</tr>
+</table>
+
+
+</body>
+</html>
