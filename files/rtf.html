@@ -13,6 +13,7 @@ function Ch() { isDirty = true; sBut.style.color = 'red'; }
 function initDoc() {
   oDoc = id("textBox"), sDefTxt = oDoc.innerHTML, sBut = id('saveButton');
   if(id('switchBox').checked) setDocMode(true);
+  oDoc.style.height = ((window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 46) + 'px';
   Receive();
 }
 
@@ -75,6 +76,17 @@ function insertTable() {
   formatDoc('insertHTML', x);
 }
 
+function changeTable() {
+  var ts = id('basic').getElementsByTagName('TABLE'), tL = ts.length;
+  if(tL<1) return;
+  var v = id('makeTb').value.split('|'), vL = v.length;
+  for(var i=0; i<tL; i++) {
+    ts[i].style.cssText = 'border-collapse: collapse;' + v[vL-2];
+    var d = ts[i].getElementsByTagName('TD'), dL = d.length;
+    for(var j=0; j<dL; j++) d[j].style.cssText = v[vL-1];
+  }
+}
+
 function Compose() {
   var x = document.querySelectorAll('input[type=text]'), L = x.length, b = x[0].value;
   for(var i=1; i<L; i++) b += '||' + x[i].value;
@@ -115,7 +127,7 @@ function changeStyle() {
   var Arr = ['','','H1', 'H2', 'b', 'i', 'u', 'blockquote', 'hr', 'sup', ''];
   for(var i=0; i<L; i++) {
     x[i].value = w[i];
-    if(i==1) setBasic();
+    if(i==1) setBasic(); else if(i==10) changeTable();
     else if(Arr[i]!='') makeH(Arr[i],x[i].id);
   }
 }
@@ -165,19 +177,27 @@ function removeContent() { id('basic').innerHTML='.'; }
 </head>
 <body style="margin: 0px 0px 0px 0px;padding:0px" onload="initDoc();">
 
-<div id="textBox" style='height:600px; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true">
+<div id="textBox" style='height:600; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true">
 <table><TR><TD id='basic'>
-He has favored building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house. Several mainstream publications have compared him with Henry Ford for his work on advanced vehicle power trains.
+
+He has favored building a sub-$30,000 subcompact and building and selling <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">electric vehicle</b> power train components so that other automakers can produce electric vehicles at <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">affordable</b> prices without <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">having</b> to develop the products in house.
 <br><br>
-First conference announced
+<hr style="font-family: serif; border-style: dashed none none; border-top-width: 1px; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-color: rgb(153, 153, 170); border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; height: 0px;">
+<br>
+Several <i style="font-family: serif; color: rgb(68, 68, 187);">mainstream</i> publications<sup style="font-family: sans-serif; color: blue; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 10px; line-height: normal;">2</sup> have <i style="font-family: serif; color: rgb(68, 68, 187);">compared</i> him with Henry Ford for his work on advanced vehicle power trains.
+<br><br><h1 style="color: white; border-radius: 8px; padding: 8px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 24pt; line-height: normal; font-family: serif; border: 1px solid rgb(68, 68, 68); margin: 0px; background-color: rgb(136, 136, 136);">
+First conference announced</h1><br>
+To overcome the range <u style="font-family: serif; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: orange; text-decoration: none;">limitations</u> of electric cars, <u style="font-family: serif; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: orange; text-decoration: none;">Musk</u> said in an interview with All Things Digital in May 2013 that Tesla is "<u style="font-family: serif; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: orange; text-decoration: none;">dramatically accelerating</u>" their network of supercharger stations, tripling the number on the East and West coasts of the U.S. that June, with plans for more expansion across North America, including Canada, throughout the year.
 <br><br>
-To overcome the range limitations of electric cars, Musk said in an interview with All Things Digital in May 2013 that Tesla is "dramatically accelerating" their network of supercharger stations, tripling the number on the East and West coasts of the U.S. that June, with plans for more expansion across North America, including Canada, throughout the year.
-<br><br>
-Debating the results
-<br><br>
-He is reported to have a 32% stake in Tesla, which is valued at US$18 billion, as of November 2013.His annual salary at Tesla is one dollar, and similar to Steve Jobs and others, the remainder of his compensation is in the form of stock and performance-based bonuses.
-<br><br>
+<h2 style="color: black; border-radius: 6px; padding: 8px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16pt; line-height: normal; font-family: serif; border: 1px solid rgb(208, 208, 208); margin: 0px; background-color: white;">Debating the results
+</h2><br>
+He is reported to have a 32% stake in Tesla, which is valued at US$18 billion, as of November 2013.<br><br><blockquote style="margin: 0px 0px 0px 40px; border-left-width: 5px; border-left-style: solid; border-left-color: orange; padding: 0px 0px 0px 14px; font-style: italic;">His annual salary at Tesla is one dollar, and similar to Steve Jobs and others, the remainder of his compensation is in the form of stock and performance-based bonuses.
+</blockquote><br>
 It is valued at US$18 billion, as of November 2013. His annual salary at Tesla is one dollar, and similar to Steve Jobs and others, the remainder of his compensation is in the form of stock and performance-based bonuses.
+<br><br>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-family: serif; border-collapse: collapse; border: 1px solid red; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"><tbody><tr><td valign="top" width="20%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;"><font color="#008000">✔&nbsp;</font>Start</td><td valign="top" width="40%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;">Plans for more expansion across North America.</td><td valign="top" width="40%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;">*Including Canada, throughout the year.</td></tr><tr><td valign="top" width="20%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;"><font color="#0000ff">⚑&nbsp;</font>Operation</td><td valign="top" width="40%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;">All Things Digital in May 2013 that Tesla.</td><td valign="top" width="40%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;">*To overcome the range limitations of electric cars.</td></tr><tr><td valign="top" width="20%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;"><font color="#ffa500">✘</font> Finish</td><td valign="top" width="40%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;">The number on the East and West coasts of the U.S. that June.<br></td><td valign="top" width="40%" style="padding: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: red; background-color: white;">*Including Canada, throughout the year.</td></tr></tbody></table>
+<br>Plans for more expansion across North America.<br>
+
 </TD></TR></table></div>
 
 <table style='font: normal 9pt Sans-Serif;position:absolute; top:10px; left:590px;'>
@@ -346,7 +366,7 @@ It is valued at US$18 billion, as of November 2013. His annual salary at Tesla i
     <img class="intLink" title="Insert Table" onclick="insertTable()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAApElEQVQ4je2UQRGAIBBFP44FqIARtoIVqGAXK1iBLETQCkZYD6CoK+OgHn0XmGH/Z/9hVzEz3lG91AOow6GUA6x4dTkZcyredyEF0hTrl8OlRZlL38/hEoOMY2uMPhVNUyhqpb5pHADvQbTrYhUkjNHSVxK78F4H1ytuXKIF0ZwPcsMfRHTxB0kW1h6Gr4h6uzF32/AVoU6LL5MlC5GweMAHu3MBFuBJXeryqLsAAAAASUVORK5CYII=" />
   </td>
   <td>
-    <INPUT type='text' id='makeTb' style="width:400px" onChange='Ch();' value='3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;'/>
+    <INPUT type='text' id='makeTb' style="width:400px" onChange='changeTable();Ch();' value='3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;'/>
   </td>
 </tr>
 </table>
