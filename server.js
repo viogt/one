@@ -11,7 +11,7 @@ http.createServer(function (req, res) {
 
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
-    	else if(req.url=='/files/down') download(res);
+    	else if(req.url.substr(0,12)=='/files/down/') download('./files/'+req.url.substr(12) ,res);
     	else if(req.url.substr(0,7)=='/files/') returnFile('.' + req.url, res);
     	else res.end('Error: unknown request!');
     	return;
@@ -52,9 +52,8 @@ function saveFile( fl, bd, resp ){
   });
 }
 
-function download( resp ){
-	var file = './files/eng.txt';
-	resp.writeHead(200, {'Content-disposition': 'attachment; filename=eng.txt'});
+function download( file, resp ){
+	resp.writeHead(200, {'Content-disposition': 'attachment; filename='+file.substr(file.lastIndexOf('/')+1)});
 	var filestream = fs.createReadStream(file);
 	filestream.pipe(resp);
 }
