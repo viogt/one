@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>- EUR:USD Exchange Rates -</title>
+  <script type="text/javascript">
+    function Receive() {
+      var url = "http://download.finance.yahoo.com/d/quotes.csv?s=EURUSD=X&f=sl1d1t1ba&e=.csv";
+	    try {
+		    var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
+        xmlhttp.onerror = function(e) { alert("Error Status: " + e.target.status + '\n' + e.error); };
+		    xmlhttp.open('POST', url, false);
+		    xmlhttp.send(null);
+		      document.getElementById('out').innerText = xmlhttp.responseText;
+	    } catch(e) { alert(e.message); return 'Error!'; }
+    }
+    
+    function id(x) { return document.getElementById(x); }
+    function getRate(from, to) {
+      var docId = id('SCR_Exch'); if(docId) docId.parentElement.removeChild(docId);
+      var script = document.createElement('script');
+      var x = "http://query.yahooapis.com/v1/public/yql?q=select%20rate%2Cname%20from%20csv%20where%20url%3D'http%3A%2F%2Fdownload.finance.yahoo.com%2Fd%2Fquotes%3Fs%3D"+from+to+"%253DX%26f%3Dl1n'%20and%20columns%3D'rate%2Cname'&format=json&callback=parseExchangeRate";
+      script.setAttribute('src', x);
+      script.id = 'SCR_Exch';
+      document.body.appendChild(script);
+    }
+
+    function parseExchangeRate(data) {
+      var name = data.query.results.row.name;
+      var rate = data.query.results.row.rate;
+      var d = (new Date()).toString().split(' ')[4];
+      var maxRows = parseInt(id('maxR').value,10);
+      var t = id('out');
+      
+      if(prevRate != rate) {
+        while(t.rows.length >= maxRows) t.deleteRow(0);
+        var r = t.insertRow(-1);
+        r.insertCell(0).innerHTML = d;
+        r.insertCell(1).innerHTML = rate;
+      }
+      //id('out').innerText += D + ": " + name + " is " + rate + '\n';
+      prevRate = rate;
+    }
+    
+    function setDatum() {
+      var d = (new Date()).toString().split(' ');
+      id('acum').innerHTML = d[0] + ', ' + d[2] + ' ' + d[1]; //+ ' ' + d[3];
+    }
+    
+    function upDate() { getRate('EUR', 'USD') };
+    function toggleUpdate(obj) {
+      if(obj.value.substr(0,4) == 'Stop') {
+        window.clearInterval(interval);
+        obj.value = 'Restart updating';
+      }
+      else {
+        interval = window.setInterval(upDate, 1000);
+        obj.value = 'Stop updating';
+      }
+    }
+    
+    var prevRate = 0;
+    var interval = window.setInterval(upDate, 1000);
+  </script>
+</head>
+<body onLoad='setDatum()'>
+  (USD:EUR) <INPUT type="button" value="Stop updating" onClick="toggleUpdate(this)" style="width:120px;background-color:lightyellow;border:1px solid;"/><br/>
+  <span id="acum"></span>; Max rows: <INPUT id="maxR" type="text" value="10" style="width:30px;text-align:center;background-color:lightyellow;border:1px solid;"/>
+  <TABLE id='out' cellPadding='6' cellSpacing='0' border='1'>
+    <colgroup>
+    <col style="background-color:white">
+    <col style="background-color:lightyellow">
+    </colgroup>
+  </TABLE>
+</body>
+</html>
