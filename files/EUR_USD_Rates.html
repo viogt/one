@@ -4,17 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>- EUR:USD Exchange Rates -</title>
   <script type="text/javascript">
-    function Receive() {
-      var url = "http://download.finance.yahoo.com/d/quotes.csv?s=EURUSD=X&f=sl1d1t1ba&e=.csv";
-	    try {
-		    var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
-        xmlhttp.onerror = function(e) { alert("Error Status: " + e.target.status + '\n' + e.error); };
-		    xmlhttp.open('POST', url, false);
-		    xmlhttp.send(null);
-		      document.getElementById('out').innerText = xmlhttp.responseText;
-	    } catch(e) { alert(e.message); return 'Error!'; }
-    }
-    
+
     function id(x) { return document.getElementById(x); }
     function getRate(from, to) {
       var docId = id('SCR_Exch'); if(docId) docId.parentElement.removeChild(docId);
@@ -28,15 +18,22 @@
     function parseExchangeRate(data) {
       var name = data.query.results.row.name;
       var rate = data.query.results.row.rate;
-      var d = (new Date()).toString().split(' ')[4];
+      var DD = new Date(), d = DD.toString().split(' ')[4];
       var maxRows = parseInt(id('maxR').value,10);
-      var t = id('out');
-      
+      var mins, msecs, def, dw, t = id('out');
+
+      if(!firstDate) { firstDate = DD; firstRate = rate; }
       if(prevRate != rate) {
         while(t.rows.length >= maxRows) t.deleteRow(0);
         var r = t.insertRow(-1);
         r.insertCell(0).innerHTML = d;
         r.insertCell(1).innerHTML = rate;
+        msecs = (DD.getTime()-firstDate.getTime())/1000;
+        def = (rate - firstRate);
+        if(def<0) dw = ' <span style="color:red;background-color:lightyellow;border:1px solid black;">' + def.toFixed(4) + '⬇' + '</span> ' + (def/firstRate*1000).toFixed(2) + '‰';
+        else dw = ' <span style="color:green;background-color:lightyellow;border:1px solid black;">+' + def.toFixed(4) + '⬆' + '</span> +' + (def/firstRate*1000).toFixed(2) + '‰';
+        mins = Math.floor(msecs/60) +"'"+ Math.ceil(msecs%60) +'": ' + firstRate + '➞' + rate + dw;
+        id('rastimp').innerHTML = mins;
       }
       //id('out').innerText += D + ": " + name + " is " + rate + '\n';
       prevRate = rate;
@@ -59,13 +56,14 @@
       }
     }
     
-    var prevRate = 0;
+    var prevRate = 0, firstDate = null, firstRate = null;
     var interval = window.setInterval(upDate, 1000);
   </script>
 </head>
-<body onLoad='setDatum()'>
+<body style="font:normal 10pt sans-serif" onLoad='setDatum()'>
   (USD:EUR) <INPUT type="button" value="Stop updating" onClick="toggleUpdate(this)" style="width:120px;background-color:lightyellow;border:1px solid;"/><br/>
   <span id="acum"></span>; Max rows: <INPUT id="maxR" type="text" value="10" style="width:30px;text-align:center;background-color:lightyellow;border:1px solid;"/>
+  <div id='rastimp' style='height:30px;'></div>
   <TABLE id='out' cellPadding='6' cellSpacing='0' border='1'>
     <colgroup>
     <col style="background-color:white">
