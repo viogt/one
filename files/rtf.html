@@ -9,6 +9,8 @@ var oDoc, sDefTxt, isDirty, isNasty, sBut, currentIndex = -1;
 
 function id(x) { return document.getElementById(x); }
 function Ch() { isDirty = true; sBut.style.color = 'red'; }
+function uniKeyCode(event) { var key = event.which || event.keyCode; if(key==8 || key==46) window.setTimeout(checkEmpty,40); }
+function checkEmpty() { if(oDoc.children[0].tagName != 'TABLE') { oDoc.innerHTML = "<TABLE><TR><TD id='basic'>&nbsp;</TD></TR></TABLE>"; setBasic();}}
 
 function initDoc() {
   oDoc = id("textBox"), sDefTxt = oDoc.innerHTML, sBut = id('saveButton');
@@ -177,7 +179,7 @@ function removeContent() { id('basic').innerHTML='.'; }
 </head>
 <body style="margin: 0px 0px 0px 0px;padding:0px" onload="initDoc();">
 
-<div id="textBox" style='height:600; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true">
+<div id="textBox" style='height:600; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true" onkeydown="uniKeyCode(event)">
 <table><TR><TD id='basic'>
 
 He has favored building a sub-$30,000 subcompact and building and selling <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">electric vehicle</b> power train components so that other automakers can produce electric vehicles at <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">affordable</b> prices without <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">having</b> to develop the products in house.

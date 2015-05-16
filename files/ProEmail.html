@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <HTML><HEAD>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <TITLE>* Email Proforma *</TITLE>
@@ -11,17 +12,28 @@ function ImpData(culoare)
 		document.write(zileSaptamana[z] + ', ' + x + ' ' + luni[L.getMonth()] + ' ' + L.getFullYear() + ', ' + h);
 }
 function Simplify(ob){
-	var s, b = document.body;
-	if(ob.value == 'Sans!') { ob.value = 'Serif!'; s = 'font:normal 10.5pt sans-serif;'; }
-	else { ob.value = 'Sans!'; s = 'font:normal 12pt serif;'; }
-	b.innerHTML = b.innerHTML.replace(/font:.+?;/g, s);
+	var ff, fs, ts, TL;
+	if(ob.value == 'Sans!') { ob.value = 'Serif!'; ff='sans-serif'; fs='10pt';}
+	else { ob.value = 'Sans!'; ff='serif'; fs='12pt';}
+	ts = document.querySelectorAll('TD[style]');
+	for(var i=0, TL = ts.length; i<TL; i++) { ts[i].style.fontFamily = ff; ts[i].style.fontSize = fs; }
+	
+	ts = document.getElementsByTagName("TABLE");
+	for(var i=0, TL = ts.length; i<TL; i++) {
+		if('width' in ts[i]) ts[i].width = null;
+		if('style' in ts[i]) ts[i].style.width = null;
+	}
+}
+function xPad(v){
+	var ts = document.getElementsByTagName("TABLE"); v+='px';
+	for(var i in ts) ts[i].cellPadding = v;
 }
 </script>
 
 </HEAD>
 <BODY style='font:normal 1em Arial;'>
 
-<BR/>✔✘✓☻☺➨▶❅✿★∎✎▉
+<BR/>✔✘✓☻☺➨▶▼▲❅✿★∎✎▉⚑
 . <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTM5jWRgMAAAAVdEVYdENyZWF0aW9uIFRpbWUAMi8xNy8wOCCcqlgAAAQRdEVYdFhNTDpjb20uYWRvYmUueG1wADw/eHBhY2tldCBiZWdpbj0iICAgIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDQuMS1jMDM0IDQ2LjI3Mjk3NiwgU2F0IEphbiAyNyAyMDA3IDIyOjExOjQxICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4YXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPgogICAgICAgICA8eGFwOkNyZWF0b3JUb29sPkFkb2JlIEZpcmV3b3JrcyBDUzM8L3hhcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhhcDpDcmVhdGVEYXRlPjIwMDgtMDItMTdUMDI6MzY6NDVaPC94YXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhhcDpNb2RpZnlEYXRlPjIwMDktMDUtMjVUMDU6MzE6NDJaPC94YXA6TW9kaWZ5RGF0ZT4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAQDy8MAAADOSURBVDiNxZMtDsJAEIXf9BIMBoNBgeAQGLgCR+ohEFxgMQiOgICEBIPBUFKDwSB4iKbd7g+BUsEkI3Z3vrczO7NCEm0saUUDkKaAn3HjDLqr5Pea1QgPD1CNkGSQzUd4c0flpUgQFFNVI1zeUHk0AzXCNC8OfTjNUXkdJll0QY1wPrbcYivIZpTY/mX6dDon9ZsmQxu83gv8dTaj+CU6amqEo0H4BrtjAQPhHASDpEbY6dug68nCXwmUIugROLtwTOCt+d2oCzhd+PtvfAG76Zui5ezZQwAAAABJRU5ErkJggg=='/></SPAN>
  <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGGSURBVHjapFK7SgNREJ0VSQwKCroQUQsfGyNYmXSCmCofINHCH7CwtLLZtfEztDEiBD8ghWgTrAyWgsRWJYJFiryzzpnsvcldLYQMnN0zM2fmzu4dy/d9GsUsNHgrWH/ldhn3Ac8wHsKClRwfjgavN3hXDHCMUxVBwMN5qR1Dp06HH92axkt+1ZtJHmkfHLFhjdSwSYNuF12+Ndh355IH2gdHLKQZNGi38fgSPF9lvNn1feEFN0Pp7RPhiCGndFKjGsg47U8Bczee2On7ypgjhtyQLjRB650e88eeFDMXKAt85KABNybof4IE3UVnTThgL8xTanNK+8hBE2jNBnfXF96S4wxOZ9jxSUpt+EYMGmhVA1mk4rkskp/d2/rX9hVvy1KbPfX1BN6yM61vQqFwWab0ofUrDi1qhvfATTg9YxcEykJxaGUv2MbVNVY/amTb5qi5HPDEJ5jxapX0NUqDXo/OSiVyJyaIgFiMKBolikSCW2wRNZtE9TpRo9EHavRPHMV+BBgAs54vms2ZX4QAAAAASUVORK5CYII='/></SPAN>
  <SPAN><IMG src='data:image/png;base64,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'/></SPAN>
@@ -58,19 +70,20 @@ function Simplify(ob){
 &#9679; &#9733; &#9742; &#9749; &#9760; &#9989; &#9993; &#9997; &#9998; &#10003;
 &#10004; &#10008; &#10048; &#10052; &#10084; &#10140; &#10148; &#10752; &#10754; &#0;
 &#x25C9; &#9888; &#x2622; &#x2042; &#9617; &#9635; &#x261D;
-<INPUT type="button" value="Sans!" style='background-color:lightyellow' onClick="Simplify(this)"/><BR/><BR/>
+<INPUT type="button" value="Sans!" style='background-color:lightyellow' onClick="Simplify(this)"/>
+<INPUT type="text" value="20" style='background-color:lightyellow;width:20px' onChange="xPad(this.value)"/><BR/><BR/>
 
 <TABLE cellpadding="12px" cellspacing="0" style="border:1px solid #cccfcc;width:480px; border-radius: 8px;-webkit-border-radius: 8px;-moz-border-radius: 8px;-khtml-border-radius: 8px;"><TR>
-<TD valign="top" width="30"style="border-right:1px solid #cccfcc">
+<TD valign="top" width="30px"style="border-right:1px solid #cccfcc">
 </TD><TD valign="top" style="font:normal 11pt 'Palatino Linotype',Palatino,serif;color:#6666aa;">Db...</TD></TR></TABLE>
 
 <BR>
-<TABLE style="border:1px solid #eeeeee;background-color:#dddddd;width:480" cellPadding='12' cellSpacing='3'>
-<TR><TD style="border:1px solid #ffffff;background-color:#eeeeee;font:normal 11pt Candara,Arial,sans-serif;color:777799;">Grey.</TD></TR></TABLE>
+<TABLE style="border:1px solid #eeeeee;background-color:#dddddd;width:480px" cellPadding='12px' cellSpacing='3px'>
+<TR><TD style="border:1px solid #ffffff;background-color:#eeeeee;font:normal 11pt Candara,Arial,sans-serif;color:#777799;">Grey.</TD></TR></TABLE>
 
 <BR>
-<TABLE style="background-color:#7777aa;width:480" cellPadding='12' cellSpacing='10'>
-<TR><TD style="border:1px solid #9999cc;font:normal 11pt Candara,Arial,sans-serif;color:ddddff">Mov.</TD></TR></TABLE>
+<TABLE style="background-color:#7777aa;width:480px" cellPadding='12px' cellSpacing='10px'>
+<TR><TD style="border:1px solid #9999cc;font:normal 11pt Candara,Arial,sans-serif;color:#ddddff">Mov.</TD></TR></TABLE>
 
 <BR />
 <TABLE cellpadding="8px" cellspacing="0" style="background-color:#eeeeff; width:400px; border:1px solid #bbbbff;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;-khtml-border-radius: 5px;"><TR>
@@ -101,7 +114,7 @@ font:normal 11pt Candara,Arial,sans-serif;color:#777788">Sur...</TD></TR></TABLE
 <TR><TD style="font:normal 12pt Candara,Arial,sans-serif;color:#f6b26b">Brun...</TD></TR></TABLE>
 <BR>
 <TABLE cellpadding="2px" cellspacing="0" style="background-color:#448844;border:1px solid #224422;width:430px; padding:8px; border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;-khtml-border-radius: 5px;"><TR>
-<TD style="font-family:'Arial Narrow',Arial,sans-serif;color:#99FF99;letter-spacing: 2pt">Verde...</TD></TR></TABLE>
+<TD style="font:normal 10pt 'Arial Narrow',Arial,sans-serif;color:#99FF99;letter-spacing: 2pt">Verde...</TD></TR></TABLE>
 
 <BR />
 <TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:460px;border:1px solid #CCCCDD;
@@ -119,7 +132,7 @@ Text...</TD></TR></TABLE><BR/>
 <TR><TD style="font:normal 11pt Candara,Arial,sans-serif;">R...</TD></TR></TABLE><BR/>
 
 <TABLE cellpadding="12" cellspacing="0" style="background-color:#FFD8B0;width:520px;border:1px dotted orange;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
-<TR><TD valign="top" width="20"></TD><TD valign="top" style="font-family:Arial,sans-serif;color:brown">#1</TD></TR></TABLE><BR>
+<TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 10pt Arial,sans-serif;color:brown">#1</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF; border:1px dotted #7788FF;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
 <TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 11pt 'Franklin Gothic Book',sans-serif;color:#666699">#2</TD></TR></TABLE><BR>
@@ -128,11 +141,11 @@ Text...</TD></TR></TABLE><BR/>
 <TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 12pt Garamond,serif;color:#444466">#3 Garamond</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="4" cellspacing="0" style="background-color:#FFFFFF;width:460px;border:1px dotted #999999;">
-<TR><TD style="font-family:'Century Gothic',Arial,sans-serif;color:#666677">Chenar...</TD></TR></TABLE><BR>
+<TR><TD style="font: normal 10pt 'Century Gothic',Arial,sans-serif;color:#666677">Chenar...</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#BBFFBB; border:1px dotted #669966;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
 <TR><TD valign="top" width="20"></TD>
-<TD valign="top" style="font-family:'Century Gothic',serif;color:#449944">#4</TD></TR></TABLE><BR>
+<TD valign="top" style="font: normal 10pt 'Century Gothic',serif;color:#449944">#4</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="22" cellspacing="0" width="520px" style="background-color:#666677; border:1px solid #000000;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
 <TR><TD valign="top" width="4"></TD>
@@ -140,17 +153,17 @@ Text...</TD></TR></TABLE><BR/>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#000000">
 <TR><TD valign="top" width="20"></TD>
-<TD valign="top" style="font-family:'Courier New',Arial,sans-serif;color:#99FF99">Eyes</TD></TR></TABLE>
+<TD valign="top" style="font: normal 10pt 'Courier New',Arial,sans-serif;color:#99FF99">Eyes</TD></TR></TABLE>
 
 <BR/>
 <TABLE cellpadding="10px" cellspacing="0" style="background-color:#FF6633;width:430px;border:1px solid red;
 padding:10px; border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;-khtml-border-radius: 10px;">
-<TR><TD style="font-family:Verdana,Arial,sans-serif;color:yellow">Rosu...</TD></TR></TABLE>
+<TR><TD style="font:normal 10pt Verdana,Arial,sans-serif;color:yellow">Rosu...</TD></TR></TABLE>
 <BR>
 
 <TABLE cellpadding="4" cellspacing="8" style="background-color:#FFFFDD; width:520px;border:1px solid orange;"><TR>
 	<TD valign="top" width="46"></TD><TD valign="top" width="432" style="font:normal 11pt Calibri,Arial,sans-serif;color:brown">...aici...</TD></TR>
-<tr><td colspan="2" valign="middle" style="border:1px dotted orange;background-color:#FFFFAA;padding:6px;font-family:Verdana,Arial,sans-serif;color:brown"><INPUT type="checkbox" checked /> receptionarea acestui mesaj necesita confirmare.</td></tr></TABLE>
+<tr><td colspan="2" valign="middle" style="border:1px dotted orange;background-color:#FFFFAA;padding:6px;font:normal 10pt Verdana,Arial,sans-serif;color:brown"><INPUT type="checkbox" checked /> receptionarea acestui mesaj necesita confirmare.</td></tr></TABLE>
 <BR>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF;border:1px solid #7788FF;">
@@ -160,8 +173,8 @@ Titlul-1...</TD></TR><TR><TD style="font:normal 11pt Calibri,Arial,sans-serif;co
 
 <TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:520px;border:1px solid #CCCCDD;">
 <TR><TD colspan='2' style="text-transform:uppercase;letter-spacing:2pt;border:1px solid #CCCCDD;border-bottom:8px solid #CCCCDD;background-color:#FFFFFF;color:#9999AA;font:bold 12pt Arial,sans-serif;">Gri...</TD></TR>
-<TR><TD valign='top' width='40'></TD><TD valign='top' style="font-family:Verdana,Arial,sans-serif;color:black">...aici...</TD></TR>
-<tr><td colspan='2' style="background-color:#FFFFFF;border:1px dotted #AAAABB;padding:2px;text-align:center;font-family:'Times New Roman',Times,serif;color:#9999AA">*comentariu...</td></tr>
+<TR><TD valign='top' width='40'></TD><TD valign='top' style="font: normal 10pt Verdana,Arial,sans-serif;color:black">...aici...</TD></TR>
+<tr><td colspan='2' style="background-color:#FFFFFF;border:1px dotted #AAAABB;padding:2px;text-align:center;font:normal 12pt 'Times New Roman',Times,serif;color:#9999AA">*comentariu...</td></tr>
 </TABLE>
 <BR>
 
@@ -169,7 +182,7 @@ Titlul-1...</TD></TR><TR><TD style="font:normal 11pt Calibri,Arial,sans-serif;co
 <TR><TD colspan='2' style="text-transform:uppercase;border:1px solid #FF771C;border-bottom:8px solid #FF771C;font:bold 14pt 'Trebuchet MS', Arial,sans-serif;background-color:#FFB380;color:#FFFFFF;letter-spacing: 2pt">
 Caramiziu...</TD></TR>
 <TR><TD valign='top' width='40'></TD><TD valign='top' style="font:normal 11pt Calibri,Arial,sans-serif;color:#CA5100">...aici...</TD></TR>
-<tr><td colspan='2' style="background-color:#FFFFFF;border:1px dotted #FF771C;padding:2px;text-align:center;font-family:'Times New Roman',Times,serif;color:#CA5100">*comentariu...</td></tr>
+<tr><td colspan='2' style="background-color:#FFFFFF;border:1px dotted #FF771C;padding:2px;text-align:center;font: normal 12pt 'Times New Roman',Times,serif;color:#CA5100">*comentariu...</td></tr>
 </TABLE>
 <BR>
 
