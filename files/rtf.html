@@ -9,8 +9,11 @@ var oDoc, sDefTxt, isDirty, isNasty, sBut, currentIndex = -1;
 
 function id(x) { return document.getElementById(x); }
 function Ch() { isDirty = true; sBut.style.color = 'red'; }
-function uniKeyCode(event) { var key = event.which || event.keyCode; if(key==8 || key==46) window.setTimeout(checkEmpty,40); }
+function uniKeyCode(event) { var key = event.which || event.keyCode; if(key==8 || key==46) window.setTimeout(checkEmpty,40);
+  else if(event.metaKey || event.ctrlKey) { setTimeout(checkPress, 40, key); }
+}
 function checkEmpty() { if(oDoc.children[0].tagName != 'TABLE') { oDoc.innerHTML = "<TABLE><TR><TD id='basic'>&nbsp;</TD></TR></TABLE>"; setBasic();}}
+function checkPress(k) { if(k==66) makeH('b','makeBd'); else if(k==73) makeH('i','makeIt'); if(k==85) {formatDoc('underline');makeH('u','makeUn');} }
 
 function initDoc() {
   oDoc = id("textBox"), sDefTxt = oDoc.innerHTML, sBut = id('saveButton');
@@ -62,7 +65,9 @@ function makeH(allEl, whr) {
 function setBasic() { id('basic').style.cssText=id('basicDiv').value; }
 
 function removeFormat() {
-  var x = id('basic'); x.innerHTML = (x.innerText || x.textContent).replace(/\n/g,'<br>');
+  formatDoc('insertText', window.getSelection().toString());
+  if(oDoc.children[0].tagName != 'TABLE') { oDoc.innerHTML = "<TABLE><TR><TD id='basic'>"+oDoc.innerHTML+"</TD></TR></TABLE>"; setBasic();}
+  //var x = id('basic'); x.innerHTML = (x.innerText || x.textContent).replace(/\n/g,'<br>');
 }
 
 function insertTable() {
