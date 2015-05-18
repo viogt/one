@@ -11,18 +11,19 @@ function ImpData(culoare)
 		h = L.getHours(); if(h<10) h = '0'+h; m = L.getMinutes(); if(m<10) m = '0'+m; h = (culoare==''?'':('<SPAN style="color:' + culoare + '">')) + h + ':' + m + (culoare==''?'':'</SPAN>');
 		document.write(zileSaptamana[z] + ', ' + x + ' ' + luni[L.getMonth()] + ' ' + L.getFullYear() + ', ' + h);
 }
+var fntsNum = -1;
 function Simplify(ob){
-	var ff, fs, ts, TL;
-	if(ob.value == 'Sans!') { ob.value = 'Serif!'; ff='sans-serif'; fs='10pt';}
-	else { ob.value = 'Sans!'; ff='serif'; fs='12pt';}
-	ts = document.querySelectorAll('TD[style]');
-	for(var i=0, TL = ts.length; i<TL; i++) { ts[i].style.fontFamily = ff; ts[i].style.fontSize = fs; }
+  var fnts = [{'name':'Serif!', 'value':'serif', 'size':'12pt'},
+    {'name':'Sans!', 'value':'sans-serif', 'size':'10pt'},
+    {'name':'Verdana', 'value':'Verdana', 'size':'10pt'},
+    {'name':'None!', 'value':null, 'size':null}
+  ];
+  fntsNum++; if(fntsNum >= fnts.length) fntsNum = 0; ob.value = fnts[fntsNum].name;
+	for(var i=0, ts = document.querySelectorAll('TD[style]'), TL = ts.length; i<TL; i++)
+	{ ts[i].style.fontFamily = fnts[fntsNum].value; ts[i].style.fontSize = fnts[fntsNum].size; }
 	
-	ts = document.getElementsByTagName("TABLE");
-	for(var i=0, TL = ts.length; i<TL; i++) {
-		if('width' in ts[i]) ts[i].width = null;
-		if('style' in ts[i]) ts[i].style.width = null;
-	}
+	for(var i=0, ts = document.getElementsByTagName("TABLE"), TL = ts.length; i<TL; i++)
+	{ if('width' in ts[i]) ts[i].width = null; if('style' in ts[i]) ts[i].style.width = null; }
 }
 function xPad(v){
 	var ts = document.getElementsByTagName("TABLE"); v+='px';
@@ -37,7 +38,9 @@ function xPad(v){
 . <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTM5jWRgMAAAAVdEVYdENyZWF0aW9uIFRpbWUAMi8xNy8wOCCcqlgAAAQRdEVYdFhNTDpjb20uYWRvYmUueG1wADw/eHBhY2tldCBiZWdpbj0iICAgIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDQuMS1jMDM0IDQ2LjI3Mjk3NiwgU2F0IEphbiAyNyAyMDA3IDIyOjExOjQxICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4YXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPgogICAgICAgICA8eGFwOkNyZWF0b3JUb29sPkFkb2JlIEZpcmV3b3JrcyBDUzM8L3hhcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhhcDpDcmVhdGVEYXRlPjIwMDgtMDItMTdUMDI6MzY6NDVaPC94YXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhhcDpNb2RpZnlEYXRlPjIwMDktMDUtMjVUMDU6MzE6NDJaPC94YXA6TW9kaWZ5RGF0ZT4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAQDy8MAAADOSURBVDiNxZMtDsJAEIXf9BIMBoNBgeAQGLgCR+ohEFxgMQiOgICEBIPBUFKDwSB4iKbd7g+BUsEkI3Z3vrczO7NCEm0saUUDkKaAn3HjDLqr5Pea1QgPD1CNkGSQzUd4c0flpUgQFFNVI1zeUHk0AzXCNC8OfTjNUXkdJll0QY1wPrbcYivIZpTY/mX6dDon9ZsmQxu83gv8dTaj+CU6amqEo0H4BrtjAQPhHASDpEbY6dug68nCXwmUIugROLtwTOCt+d2oCzhd+PtvfAG76Zui5ezZQwAAAABJRU5ErkJggg=='/></SPAN>
  <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGGSURBVHjapFK7SgNREJ0VSQwKCroQUQsfGyNYmXSCmCofINHCH7CwtLLZtfEztDEiBD8ghWgTrAyWgsRWJYJFiryzzpnsvcldLYQMnN0zM2fmzu4dy/d9GsUsNHgrWH/ldhn3Ac8wHsKClRwfjgavN3hXDHCMUxVBwMN5qR1Dp06HH92axkt+1ZtJHmkfHLFhjdSwSYNuF12+Ndh355IH2gdHLKQZNGi38fgSPF9lvNn1feEFN0Pp7RPhiCGndFKjGsg47U8Bczee2On7ypgjhtyQLjRB650e88eeFDMXKAt85KABNybof4IE3UVnTThgL8xTanNK+8hBE2jNBnfXF96S4wxOZ9jxSUpt+EYMGmhVA1mk4rkskp/d2/rX9hVvy1KbPfX1BN6yM61vQqFwWab0ofUrDi1qhvfATTg9YxcEykJxaGUv2MbVNVY/amTb5qi5HPDEJ5jxapX0NUqDXo/OSiVyJyaIgFiMKBolikSCW2wRNZtE9TpRo9EHavRPHMV+BBgAs54vms2ZX4QAAAAASUVORK5CYII='/></SPAN>
  <SPAN><IMG src='data:image/png;base64,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'/></SPAN>
- <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEcSURBVHjalFM7boQwEH2D9iSmTwPdtlzBOQLpts0VNtI2oTNHWF8hbTq4QCTcZTnGxGMCgg14w0gjPMZv3nyJmbElRPTnzhjDZduOBiXYIQIuigLWq/N2m+ecrLGOOpfuCi7LAq1nV0rBehU5xBi5Gb7OgZXugNs7tKrw9nFGlmWo/Q9IDeZ670CYmTvm7xN7m8Ueoik5vF9zIMAY+PqK8DDq4BF4dLDahXnO6Cuxg0j3tAZN7Msiuqnaj8BzWUTgbLoJ9kUnsSm/b9Vv7rGcx6LO34+aDMy0n3lKoX5hdWzwWaWrYDmnz9vDltz6PhyOTwbWLgsm0xoDh9H3I8nNpQS+hg2zroY+M/13wYIDOXgXEjIy09CeDf0RYACMOQ+6M0sTRQAAAABJRU5ErkJggg=='/></SPAN>
+ <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAC0WlDQ1BJQ0MgUHJvZmlsZQAAKJGNlM9LFGEYx7+zjRgoQWBme4ihQ0ioTBZlROWuv9i0bVl/lBLE7Oy7u5Ozs9PM7JoiEV46ZtE9Kg8e+gM8eOiUl8LALALpblFEgpeS7Xlnxt0R7ccLM/N5nx/f53nf4X2BGlkxTT0kAXnDsZJ9Uen66JhU+xEhHEEdwqhTVNuMJBIDoMFjsWtsvofAvyute/v/OurStpoHhP1A6Eea2Sqw7xfZC1lqBBC5XsOEYzrE9zhbnv0x55TH8659KNlFvEh8QDUtHv+auEPNKWmgRiRuyQZiUgHO60XV7+cgPfXMGB6k73Hq6S6ze3wWZtJKdz9xG/HnNOvu4ZrE8xmtN0bcTM9axuod9lg4oTmxIY9DI4YeH/C5yUjFr/qaoulEk9v6dmmwZ9t+S7mcIA4TJ8cL/TymkXI7p3JD1zwW9KlcV9znd1Yxyeseo5g5U3f/F/UWeoVR6GDQYNDbgIQk+hBFK0xYKCBDHo0iNLIyN8YitjG+Z6SORIAl8q9TzrqbcxtFyuZZI4jGMdNSUZDkD/JXeVV+Ks/JX2bDxeaqZ8a6qanLD76TLq+8ret7/Z48fZXqRsirI0vWfGVNdqDTQHcZYzZcVeI12P34ZmCVLFCpFSlXadytVHJ9Nr0jgWp/2j2KXZpebKrWWhUXbqzUL03v2KvCrlWxyqp2zqtxwXwmHhVPijGxQzwHSbwkdooXxW6anRcHKhnDpKJhwlWyoVCWgUnymjv+mRcL76y5o6GPGczSVImf/4RVyGg6CxzRf7j/c/B7xaOxIvDCBg6frto2ku4dIjQuV23OFeDCN7oP3lZtzXQeDj0BFs6oRavkSwvCG4pmdxw+6SqYk5aWzTlSuyyflSJ0JTEpZqhtLZKi65LrsiWL2cwqsXQb7Mypdk+lnnal5lO5vEHnr/YRsPWwXP75rFzeek49rAEv9d/AvP1FThgxSQAAAAlwSFlzAAALEwAACxMBAJqcGAAAANVQTFRF////jlUmllot0lUekFInlFkrkVQml14y0FUfkVMmklUoxGQswGIsz1cegU0jiYWAi4h6jIuIjoV6joZ7k4d7lId7nmQxpXNOqXdKq3Y8q3c8q3hOq4NUrHhErXlArX5arn1SroFWrolpr3tBsH1EsX9GsYJZs4JJs4ZdtYhgtbW1t7e3uIhHvb29vpNsx6A7zs7O0FYe0Kl01bE+2Kgw260657Qo58mZ6r007MNE7c+T7t297uDM8Nm18vLy89ux89zC8+S39OS39OS49OW49ePP/fv47Z7CzQAAAA50Uk5TABszM2OKrszP0tLX6fR0tCd7AAAAgElEQVQY02Ng5uDlZkAGHIaG8qLIAryGslraIkgCPOJadgaCSkgiwroGAsYumkgiQvz6ZhbOGkgiMjomQBE1JBF1kIiTIpKIKkjEUQFJRAWsRhpJRBmsRgJJRA4oYmnNjiQipWNq76bHhCQiaeXgasOK7C0xI3NbLmQBRhY2Tj4AB1MPtSRiwAEAAAAASUVORK5CYII='/></SPAN>
+ <SPAN><IMG src='data:image/png;base64,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'/></SPAN>
+
  <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD1SURBVHjaYvz//z/DqRZFBjTwnwE7YETmmNXcZ2DBoui/WdkJrLpPdVn8RzeECUNz8UEGhr8/sWKwHJrrMF3w9wfEtgnuKMJmBTuxugqLAV+x+fk/mjgeA/5gV4hLnAU95O/unow1NrCIMyIb8N8svhPFZGXrYKw2wsRPLSwHG4JwgWwY0JmfGRh+vWNg+PEaiF8A8XMGhm/PGBi+P4WwwWKvIWoYhNG8cKsfu9/Z+CCYXxNV/PokNAPUCil0wcVyBpyATRCC+bSQXLAKzQD9TgpdcDqFAS/gEIdguAv2ohjAeGrn3v8MpAFwOmAEZWdKAECAAQB8HIgH0M94wgAAAABJRU5ErkJggg=='/></SPAN>
  <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGgSURBVHjapFPLSsNAFD2T9KXFB2I3goKii66Kgrhy5QN06ULduBB/oSDiFwhdiVv34gcoKAiCbgUR7E5BBV9VaGrT5jEZ7yQm0DZ9gAfCTO4998zJvRMmhMDWyRIksk9l/EGgEczf5EaSOFw+dfdKCDEo7puYR2p6s5UoImHFg1PrMLVP6K93GJrbheAVFG6O/DxrJYD06h6QHAViA0RVqYQjlVlBanwS+ePttg6AagGI9np7NQ5wAzC/vHgHnwBUXrw1oVGHSMAxvGI/3l7gHbArVESrEiUBC7A07wlB/RRY/urCI+t04s+jt9K7G69rYIMDmq87haxHrm3Nxg4OLvcF3ZWmUxBrM4voUvuhzfYgoiTIngoHHLZThWm9QeZzOKsZpS8gFjJjKFsfRK4gyjUSiBNLocE7FDNgOWUYvATJO799CEQCB4ZdhEMNsxwdEZaAymJgjAQEeRAmbFGFTRdK5kM/gQsLnBehkgOVuq/IFKNDhOsBnMSlUNMm5p91pIe7XRLnJppB8sIE2HfJFtf3GjpE0EQmf+f/4FeAAQA7ErtXHsISFwAAAABJRU5ErkJggg=='/></SPAN>
  <SPAN><IMG src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD2SURBVHjaxFM7DoMwDH2pOESHHgDPcB223gKpAxK34EAMMIe1FCQOgFQxuflARVBSVepQS5Ht2PHn2RHMjF/ohB8p2gSZpprtyxEHX8dGTeMG0A5UlsD5rCSGvF55F4SpqpSm1GmCzPO3LXJy1LXllwvodoMsCpNVy2hbYBjCLRiaZ8u7Dng+QXlu9b4H7ncvBmKbwoYBWR4kaXv3YmAMyoEpjv2PdWUHcP1j1ECqFpyj777YA6Yss9KyuEeDaW0cCsCUJMDjYUE8kr5TNuOzC+JiMI5uz2rmJvNWvidwcJXXx8IAuwb6uMqrY2iVgzbx99/4EmAAarFu0IJle5oAAAAASUVORK5CYII='/></SPAN>
@@ -70,11 +73,11 @@ function xPad(v){
 &#9679; &#9733; &#9742; &#9749; &#9760; &#9989; &#9993; &#9997; &#9998; &#10003;
 &#10004; &#10008; &#10048; &#10052; &#10084; &#10140; &#10148; &#10752; &#10754; &#0;
 &#x25C9; &#9888; &#x2622; &#x2042; &#9617; &#9635; &#x261D;
-<INPUT type="button" value="Sans!" style='background-color:lightyellow' onClick="Simplify(this)"/>
+<INPUT type="button" value="Serif!" style='background-color:lightyellow' onClick="Simplify(this)"/>
 <INPUT type="text" value="20" style='background-color:lightyellow;width:20px' onChange="xPad(this.value)"/><BR/><BR/>
 
 <TABLE cellpadding="12px" cellspacing="0" style="border:1px solid #cccfcc;width:480px; border-radius: 8px;-webkit-border-radius: 8px;-moz-border-radius: 8px;-khtml-border-radius: 8px;"><TR>
-<TD valign="top" width="30px"style="border-right:1px solid #cccfcc">
+<TD valign="top" width="20px"style="border-right:1px solid #cccfcc">
 </TD><TD valign="top" style="font:normal 11pt 'Palatino Linotype',Palatino,serif;color:#6666aa;">Db...</TD></TR></TABLE>
 
 <BR>
@@ -87,27 +90,27 @@ function xPad(v){
 
 <BR />
 <TABLE cellpadding="8px" cellspacing="0" style="background-color:#eeeeff; width:400px; border:1px solid #bbbbff;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;-khtml-border-radius: 5px;"><TR>
-<TD bgcolor="#ccccff" valign="top" width="40px"></TD><TD valign="top" style="font:normal 11pt Calibri,Arial,sams-serif; color:darkblue">...albastru...</TD></TR></TABLE>
+<TD bgcolor="#ccccff" valign="top" width="20px"></TD><TD valign="top" style="font:normal 11pt Calibri,Arial,sams-serif; color:darkblue">...albastru...</TD></TR></TABLE>
 <br />
 <TABLE cellpadding="6px" cellspacing="0" bgColor="#EEEEEE" width="480px"><TR>
-<TD bgcolor="#FFFFFF" valign="top" width="40px" align="right" style="font:bold 16pt Arial,sans-serif;color:orange">></TD><TD valign="top" style="border:1px dotted #BBBBBB;
+<TD bgcolor="#FFFFFF" valign="top" width="20px" align="right" style="font:bold 16pt Arial,sans-serif;color:orange">▶</TD><TD valign="top" style="border:1px dotted #BBBBBB;
 font:normal 11pt Candara,Arial,sans-serif;color:#777788">Sur...</TD></TR></TABLE>
 <BR>
-<TABLE cellpadding="6px" cellspacing="0" width="440px" style="border:1px solid #ECB0FF">
-	<TR><TD valign="top" bgcolor="#ECB0FF" width="40px"></TD>
-		<TD valign="top" bgcolor="#F7DDFF" style="font:normal 11pt 'Franklin Gothic Book',Arial,sans-serif; color:#884488">Violet...</TD>
+<TABLE cellpadding="6px" cellspacing="0" style="width:440px;border-radius: 5px; border:1px solid #ECB0FF;background-color:#F7DDFF">
+	<TR><TD valign="top" bgcolor="#ECB0FF" width="20px"></TD>
+		<TD valign="top" style="font:normal 11pt 'Franklin Gothic Book',Arial,sans-serif; color:#884488">Violet...</TD>
 </TR>
 </TABLE><BR>
 <TABLE cellpadding="12px" cellspacing="0" style="background-color:#ffffbb;width:440px;border:1px solid orange; border-top: 8px solid orange;">
 <TR><TD style="font:normal 11pt Candara,Arial,sans-serif; color:brown">>aici...</TD></TR></TABLE>
 <BR>
 
-<TABLE cellpadding="8px" cellspacing="0" style="background-color:#FFFFFF; width:430px;border:1px dotted orange; border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;-khtml-border-radius: 10px;">
+<TABLE cellpadding="8px" cellspacing="0" style="background-color:#FFFFFF; width:430px;border-radius: 8px; border:1px dotted orange;">
 <TR><TD style="font:normal 11pt Corbel,Arial,sans-serif; color:brown">Chenar...</TD></TR></TABLE>
 <BR>
 
-<TABLE cellpadding="10px" cellspacing="0" style="background-color:#ffffaa;border:1px solid #eeddaa;width:480px; border-radius: 8px;-webkit-border-radius: 8px;-moz-border-radius: 8px;-khtml-border-radius: 8px;"><TR>
-<TD valign="top" width="30"></TD><TD valign="top" style="font:normal 11pt 'Palatino Linotype',Palatino,serif;color:brown">Db...</TD></TR></TABLE>
+<TABLE cellpadding="10px" cellspacing="0" style="background-color:#ffffaa;border:1px solid #eeddaa;width:480px; border-radius: 8px;"><TR>
+<TD valign="top" width="10"></TD><TD valign="top" style="font:normal 11pt 'Palatino Linotype',Palatino,serif;color:brown">Db...</TD></TR></TABLE>
 <BR>
 
 <TABLE cellpadding="16px" cellspacing="0" style="background-color:brown;border:1px solid brown;width:480px; border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;-khtml-border-radius: 10px;">
@@ -121,12 +124,10 @@ font:normal 11pt Candara,Arial,sans-serif;color:#777788">Sur...</TD></TR></TABLE
 padding:6px; border-radius: 6px;-webkit-border-radius: 6px;-moz-border-radius: 6px;-khtml-border-radius: 6px;">
 <TR><TD style="font:normal 11pt Candara,Arial,sans-serif;">Gri...</TD></TR></TABLE><BR />
 
-<TABLE style="width:480px;height:100px;background-color:#ffffaa;border:1px solid #eeeeaa;-webkit-border-radius: 10px;-moz-border-radius: 10px;-khtml-border-radius: 10px;border-radius: 10px;">
-<TR><TD align="center" style="padding-top:10pt;">
-<p style="text-align:left; color:brown;font:normal 14pt 'Franklin Gothic Book',serif; text-transform:uppercase;letter-spacing:2pt; width:430px; padding:8pt;background-color:#eeee99;border:1px solid #dddd44; border-radius: 6px;-webkit-border-radius: 6px;-moz-border-radius: 6px;-khtml-border-radius: 6px;">
-title...</p></TD></TR>
-<TR><TD style="padding:18pt;padding-top:6pt;color:brown;font:normal 11pt 'Palatino Linotype',Palatino,serif;">
-Text...</TD></TR></TABLE><BR/>
+<TABLE cellSpacing='18px' cellPadding='8px' style="width:480px;font:normal 11pt 'Palatino Linotype',Palatino,serif;background-color: lightyellow;border:1px solid #eeddaa;border-radius:10px;color:brown;">
+<TR><TD style="font-size:14pt; background-color:#ffffaa;text-transform:uppercase;letter-spacing:2pt; border:1px solid #eeddaa; border-radius: 6px;">
+title...</TD></TR>
+<TR><TD>Text...</TD></TR></TABLE><BR/>
 
 <TABLE style="color:brown;width:450px;padding:10pt;background-color:#ffffaa; border:1px solid #eeeeaa;border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;-khtml-border-radius: 10px;">
 <TR><TD style="font:normal 11pt Candara,Arial,sans-serif;">R...</TD></TR></TABLE><BR/>
@@ -140,7 +141,7 @@ Text...</TD></TR></TABLE><BR/>
 <TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:520px;border:1px solid #CCCCDD;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
 <TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 12pt Garamond,serif;color:#444466">#3 Garamond</TD></TR></TABLE><BR>
 
-<TABLE cellpadding="4" cellspacing="0" style="background-color:#FFFFFF;width:460px;border:1px dotted #999999;">
+<TABLE cellpadding="4" cellspacing="0" style="background-color:#FFFFFF;width:460px;border:1px dotted #999999;border-radius: 8px;">
 <TR><TD style="font: normal 10pt 'Century Gothic',Arial,sans-serif;color:#666677">Chenar...</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#BBFFBB; border:1px dotted #669966;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
@@ -161,27 +162,28 @@ padding:10px; border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius
 <TR><TD style="font:normal 10pt Verdana,Arial,sans-serif;color:yellow">Rosu...</TD></TR></TABLE>
 <BR>
 
-<TABLE cellpadding="4" cellspacing="8" style="background-color:#FFFFDD; width:520px;border:1px solid orange;"><TR>
-	<TD valign="top" width="46"></TD><TD valign="top" width="432" style="font:normal 11pt Calibri,Arial,sans-serif;color:brown">...aici...</TD></TR>
-<tr><td colspan="2" valign="middle" style="border:1px dotted orange;background-color:#FFFFAA;padding:6px;font:normal 10pt Verdana,Arial,sans-serif;color:brown"><INPUT type="checkbox" checked /> receptionarea acestui mesaj necesita confirmare.</td></tr></TABLE>
+<TABLE cellpadding="4" cellspacing="8" style="background-color:#FFFFDD; width:520px;border:1px solid orange;border-radius: 10px;"><TR>
+	<TD valign="top" width="20px"></TD><TD valign="top" style="font:normal 11pt Calibri,Arial,sans-serif;color:brown">...aici...</TD></TR>
+<tr><td colspan="2" style="border:1px solid gold;border-radius: 6px;background-color:#FFFFAA;padding:6px;font:normal 10pt Verdana,Arial,sans-serif;color:brown">
+✔ receptionarea acestui mesaj necesita confirmare.</td></tr></TABLE>
 <BR>
 
-<TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF;border:1px solid #7788FF;">
+<TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF;border:1px solid #7788FF;border-radius: 10px;">
 <TR><TD valign="top" style="background-color:#FFFFFF;border:1px dotted #7788FF;letter-spacing: 2pt;font:normal 14pt 'Trebuchet MS',Arial,sans-serif;color:#666699">
 Titlul-1...</TD></TR><TR><TD style="font:normal 11pt Calibri,Arial,sans-serif;color:#666699">...aici...</TD></TR></TABLE>
 <BR>
 
-<TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:520px;border:1px solid #CCCCDD;">
+<TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:520px;border:1px solid #CCCCDD;border-radius: 10px;">
 <TR><TD colspan='2' style="text-transform:uppercase;letter-spacing:2pt;border:1px solid #CCCCDD;border-bottom:8px solid #CCCCDD;background-color:#FFFFFF;color:#9999AA;font:bold 12pt Arial,sans-serif;">Gri...</TD></TR>
-<TR><TD valign='top' width='40'></TD><TD valign='top' style="font: normal 10pt Verdana,Arial,sans-serif;color:black">...aici...</TD></TR>
+<TR><TD valign='top' width='20'></TD><TD valign='top' style="font: normal 10pt Verdana,Arial,sans-serif;color:black">...aici...</TD></TR>
 <tr><td colspan='2' style="background-color:#FFFFFF;border:1px dotted #AAAABB;padding:2px;text-align:center;font:normal 12pt 'Times New Roman',Times,serif;color:#9999AA">*comentariu...</td></tr>
 </TABLE>
 <BR>
 
-<TABLE cellpadding="6" cellspacing="8" style="background-color:#FFDBC4;width:520px;border:1px solid #FF771C;">
+<TABLE cellpadding="6" cellspacing="8" style="background-color:#FFDBC4;width:520px;border:1px solid #FF771C;border-radius: 10px;">
 <TR><TD colspan='2' style="text-transform:uppercase;border:1px solid #FF771C;border-bottom:8px solid #FF771C;font:bold 14pt 'Trebuchet MS', Arial,sans-serif;background-color:#FFB380;color:#FFFFFF;letter-spacing: 2pt">
 Caramiziu...</TD></TR>
-<TR><TD valign='top' width='40'></TD><TD valign='top' style="font:normal 11pt Calibri,Arial,sans-serif;color:#CA5100">...aici...</TD></TR>
+<TR><TD valign='top' width='20'></TD><TD valign='top' style="font:normal 11pt Calibri,Arial,sans-serif;color:#CA5100">...aici...</TD></TR>
 <tr><td colspan='2' style="background-color:#FFFFFF;border:1px dotted #FF771C;padding:2px;text-align:center;font: normal 12pt 'Times New Roman',Times,serif;color:#CA5100">*comentariu...</td></tr>
 </TABLE>
 <BR>
@@ -228,7 +230,7 @@ Textul...</td></tr></table>
 <BR><BR>
 -->
 
-<!-- --------------- TABLE ALBASTRU ---------------------------------- -->
+<!-- --------------- TABLE ALBASTRU ----------------------------------
 <table cellpadding="4" cellspacing="10" width="700px" style="color: #3D545F; font:normal 10pt Calibri,Verdana; background-color: #B9CAD2">
 <tr>
 	<td align="right" valign="top" width='20px'></td>
@@ -252,7 +254,7 @@ Textul...</td></tr></table>
 </tr>
 </table>
 <br>
-<!-- --------------- TABLE GRI/ALB-NEGRU ---------------------------------- -->
+<!-- --------------- TABLE GRI/ALB-NEGRU ----------------------------------
 <table cellpadding="6" cellspacing="14" width="720px" bgcolor='#EEEEEE' style="font:normal 10pt Calibri,Arial;color:#000000">
 <tr>
 	<td align="right" valign="top" width='20px'></td>
@@ -277,7 +279,7 @@ Textul...</td></tr></table>
 </table>
 <br>
 
-<!-- --------------- TABLE GALBEN ---------------------------------- -->
+<!-- --------------- TABLE GALBEN ----------------------------------
 <table cellpadding="0" cellspacing="0" width="760px" bgcolor='#FFFEAA' style="font:normal 11pt Calibri,Arial;color:#BB8811">
 <tr>
 	<td align="right" valign="top" width='20px'></td>
@@ -301,6 +303,6 @@ Textul...</td></tr></table>
 </tr>
 </table>
 <br>
-
+-->
 
 </BODY></HTML>
