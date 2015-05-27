@@ -67,36 +67,79 @@ function setBasic() { id('basic').style.cssText=id('basicDiv').value; }
 function removeFormat() {
   formatDoc('insertText', window.getSelection().toString());
   if(oDoc.children[0].tagName != 'TABLE') { oDoc.innerHTML = "<TABLE><TR><TD id='basic'>"+oDoc.innerHTML+"</TD></TR></TABLE>"; setBasic();}
-  //var x = id('basic'); x.innerHTML = (x.innerText || x.textContent).replace(/\n/g,'<br>');
 }
 
 function insertTable() {
-  var v = id('makeTb').value.split('|'), vL = v.length;
-  var rs = v[0], clTb = v[vL-2], clCl = v[vL-1], cs = vL-3;
-  var x = '<table cellPadding=0 cellSpacing=0 border=0 width="100%" style="border-collapse: collapse;'+clTb+'">';
-  for(var r = 0; r<rs; r++) {
+  var rS, notCol, v = getJson(id('makeTb'));
+  var x = '<table cellPadding="0px" cellSpacing="0px" border="0px" width="100%" style="'+ v.table +'">';
+  for(var r = 0; r < v.rows; r++) {
     x += '<tr>';
-    for(var c = 0; c<cs; c++) x += '<td valign="top" width="'+v[c+1]+'" style="'+clCl+'">' + '...' + '</td>';
+      if(r==0 && v.first_row) { rS = v.first_row; notCol = false; }
+      else if(r==v.rows-1 && v.last_row) { rS = v.last_row; notCol = false; }
+      else { rS = v.cell;  notCol = true; }
+      
+    if(notCol && v.first_col) x += '<td valign="top" width="'+ v.cols[0] +'" style="'+ v.first_col +'">' + '...' + '</td>';
+    for(var c = v.first_col?1:0, cs=v.cols.length; c<cs; c++) x += '<td valign="top" width="'+ v.cols[c] +'" style="'+ rS +'">' + '...' + '</td>';
     x += '</tr>';
   }
   x += '</table>';
   formatDoc('insertHTML', x);
 }
 
-function changeTable() {
-  var ts = id('basic').getElementsByTagName('TABLE'), tL = ts.length;
-  if(tL<1) return;
-  var v = id('makeTb').value.split('|'), vL = v.length;
-  for(var i=0; i<tL; i++) {
-    ts[i].style.cssText = 'border-collapse: collapse;' + v[vL-2];
-    var d = ts[i].getElementsByTagName('TD'), dL = d.length;
-    for(var j=0; j<dL; j++) d[j].style.cssText = v[vL-1];
+function getJson(ob) {
+  var x;
+  try {
+    x = JSON.parse( '{' + ob.innerText + '}');
+    if(!x.rows) x.rows=1; if(!x.cols) x.cols = ["100%"];
+    if(!x.table) x.table=""; if(!x.cell) x.cell="";
   }
+  catch(e) {
+    x = {"rows":3, "cols":["20%","40%","40%"], "table": "border:1px solid black;background-color: white; border-collapse:collapse;",
+    "cell": "padding:6px; border-top:1px solid black;", "first_row": "", "last_row": ""};
+    alert('--- JSON ERROR: ---\n' + e.message);
+  }
+  return x;
+}
+
+var memoTable = null;
+function memorize(ob) { memoTable = ob.innerText; }
+function norm(ob) { ob.innerText = ob.innerText.replace(/\s/g,' ').replace(/ +/g,' ').replace(/^ | $/g,''); }
+
+function changeTable() {
+  var obj = id('makeTb'); if(memoTable != obj.innerText) norm(obj); else return;
+  
+  var fCell, notCol, rS, ts = id('basic').getElementsByTagName('TABLE'), tL = ts.length;
+  if(tL<1) return;
+  var v = getJson(obj);
+  try {
+    for(var i=0; i<tL; i++) {
+      ts[i].style.cssText = v.table;
+
+      for(var r = 0; r < ts[i].rows.length; r++) {
+        if(r==0 && v.first_row) { rS = v.first_row; notCol = false; }
+        else if(r==v.rows-1 && v.last_row) { rS = v.last_row; notCol = false; }
+        else { rS = v.cell;  notCol = true; }
+
+        if(notCol && v.first_col) {
+          ts[i].rows[r].cells[0].style.cssText = v.first_col;
+          if(v.cols) ts[i].rows[r].cells[0].style.width = v.cols[0];
+          fCell = 1;
+        }
+        else fCell = 0;
+        
+        for(var c = fCell, cls=ts[i].rows[r].cells, cs=cls.length; c<cs; c++) {
+          cls[c].style.cssText = rS;
+          if(c<v.cols.length) cls[c].style.width = v.cols[c];
+        }
+      }
+    }
+  } catch(e) { alert('ERROR: ' + e.message); }
 }
 
 function Compose() {
   var x = document.querySelectorAll('input[type=text]'), L = x.length, b = x[0].value;
   for(var i=1; i<L; i++) b += '||' + x[i].value;
+  b += '||' + id('makeTb').innerText;
   return b;
 }
 
@@ -134,9 +177,10 @@ function changeStyle() {
   var Arr = ['','','H1', 'H2', 'b', 'i', 'u', 'blockquote', 'hr', 'sup', ''];
   for(var i=0; i<L; i++) {
     x[i].value = w[i];
-    if(i==1) setBasic(); else if(i==10) changeTable();
+    if(i==1) setBasic(); //else if(i==10) changeTable();
     else if(Arr[i]!='') makeH(Arr[i],x[i].id);
   }
+  id('makeTb').innerText = w[10]; changeTable();
 }
 
 function saveStyle() {
@@ -372,11 +416,11 @@ It is valued at US$18 billion, as of November 2013. His annual salary at Tesla i
   </td>
 </tr>
 <tr>
-  <td>
+  <td valign='top'>
     <img class="intLink" title="Insert Table" onclick="insertTable()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAApElEQVQ4je2UQRGAIBBFP44FqIARtoIVqGAXK1iBLETQCkZYD6CoK+OgHn0XmGH/Z/9hVzEz3lG91AOow6GUA6x4dTkZcyredyEF0hTrl8OlRZlL38/hEoOMY2uMPhVNUyhqpb5pHADvQbTrYhUkjNHSVxK78F4H1ytuXKIF0ZwPcsMfRHTxB0kW1h6Gr4h6uzF32/AVoU6LL5MlC5GweMAHu3MBFuBJXeryqLsAAAAASUVORK5CYII=" />
   </td>
   <td>
-    <INPUT type='text' id='makeTb' style="width:400px" onChange='changeTable();Ch();' value='3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;'/>
+    <DIV id='makeTb' style="width:400px;padding:4px;border:1px solid lightgray;" contentEditable="true" onFocus='memorize(this)' onBlur='changeTable();Ch();'>3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;</DIV>
   </td>
 </tr>
 </table>

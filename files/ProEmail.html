@@ -11,15 +11,22 @@ function ImpData(culoare)
 		h = L.getHours(); if(h<10) h = '0'+h; m = L.getMinutes(); if(m<10) m = '0'+m; h = (culoare==''?'':('<SPAN style="color:' + culoare + '">')) + h + ':' + m + (culoare==''?'':'</SPAN>');
 		document.write(zileSaptamana[z] + ', ' + x + ' ' + luni[L.getMonth()] + ' ' + L.getFullYear() + ', ' + h);
 }
-var fntsNum = -1;
+var fntsNum = 4, arr = [];
 function Simplify(ob){
-  var fnts = [{'name':'Serif!', 'value':'serif', 'size':'12pt'},
+  var ts, fnts = [{'name':'Serif!', 'value':'serif', 'size':'12pt'},
     {'name':'Sans!', 'value':'sans-serif', 'size':'10pt'},
-    {'name':'Verdana', 'value':'Verdana', 'size':'10pt'},
+    {'name':'Verdana', 'value':'Verdana,sans-serif', 'size':'10pt'},
+    {'name':'Courier', 'value':'"Courier New",Courier', 'size':'10pt'},
     {'name':'None!', 'value':null, 'size':null}
   ];
   fntsNum++; if(fntsNum >= fnts.length) fntsNum = 0; ob.value = fnts[fntsNum].name;
-	for(var i=0, ts = document.querySelectorAll('TD[style]'), TL = ts.length; i<TL; i++)
+  ts = document.querySelectorAll('TD[style]');
+  
+  if(arr.length<1) for(var i=0, TL = ts.length; i<TL; i++) arr.push(ts[i].style.fontFamily + '/' + ts[i].style.fontSize);
+
+  if(fnts[fntsNum].name == 'None!') for(var i=0, TL = ts.length; i<TL; i++)
+	{ var sp = arr[i].split('/'); ts[i].style.fontFamily = sp[0]; ts[i].style.fontSize = sp[1]; }
+  else for(var i=0, TL = ts.length; i<TL; i++)
 	{ ts[i].style.fontFamily = fnts[fntsNum].value; ts[i].style.fontSize = fnts[fntsNum].size; }
 	
 	for(var i=0, ts = document.getElementsByTagName("TABLE"), TL = ts.length; i<TL; i++)
@@ -71,13 +78,13 @@ function xPad(v){
 &#9398; &#9399; &#9400; &#9401; &#9402; &#9403; &#9404; &#9405; &#9406; &#9407;
 &#10122; &#10123; &#10124; &#10125; &#10126; &#10127; &#10128; &#10129; &#10130; &#10131;<BR/>
 &#9679; &#9733; &#9742; &#9749; &#9760; &#9989; &#9993; &#9997; &#9998; &#10003;
-&#10004; &#10008; &#10048; &#10052; &#10084; &#10140; &#10148; &#10752; &#10754; &#0;
+&#10004; &#10008; &#10048; &#10052; &#10084; &#10140; &#10148; &#10752; &#10754;
 &#x25C9; &#9888; &#x2622; &#x2042; &#9617; &#9635; &#x261D;
-<INPUT type="button" value="Serif!" style='background-color:lightyellow' onClick="Simplify(this)"/>
+<INPUT type="button" value="None!" style='background-color:lightyellow' onClick="Simplify(this)"/>
 <INPUT type="text" value="20" style='background-color:lightyellow;width:20px' onChange="xPad(this.value)"/><BR/><BR/>
 
 <TABLE cellpadding="12px" cellspacing="0" style="border:1px solid #cccfcc;width:480px; border-radius: 8px;-webkit-border-radius: 8px;-moz-border-radius: 8px;-khtml-border-radius: 8px;"><TR>
-<TD valign="top" width="20px"style="border-right:1px solid #cccfcc">
+<TD valign="top" width="20px" style="border-right:1px solid #cccfcc">
 </TD><TD valign="top" style="font:normal 11pt 'Palatino Linotype',Palatino,serif;color:#6666aa;">Db...</TD></TR></TABLE>
 
 <BR>
@@ -124,32 +131,32 @@ font:normal 11pt Candara,Arial,sans-serif;color:#777788">Sur...</TD></TR></TABLE
 padding:6px; border-radius: 6px;-webkit-border-radius: 6px;-moz-border-radius: 6px;-khtml-border-radius: 6px;">
 <TR><TD style="font:normal 11pt Candara,Arial,sans-serif;">Gri...</TD></TR></TABLE><BR />
 
-<TABLE cellSpacing='18px' cellPadding='8px' style="width:480px;font:normal 11pt 'Palatino Linotype',Palatino,serif;background-color: lightyellow;border:1px solid #eeddaa;border-radius:10px;color:brown;">
+<TABLE cellSpacing='18px' cellPadding='8px' style="width:480px;font:bold 14pt 'Palatino Linotype',Palatino,serif;background-color: lightyellow;border:1px solid #eeddaa;border-radius:10px;color:brown;">
 <TR><TD style="font-size:14pt; background-color:#ffffaa;text-transform:uppercase;letter-spacing:2pt; border:1px solid #eeddaa; border-radius: 6px;">
 title...</TD></TR>
-<TR><TD>Text...</TD></TR></TABLE><BR/>
+<TR><TD style="font:normal 11pt 'Palatino Linotype',Palatino,serif">Text...</TD></TR></TABLE><BR/>
 
 <TABLE style="color:brown;width:450px;padding:10pt;background-color:#ffffaa; border:1px solid #eeeeaa;border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;-khtml-border-radius: 10px;">
 <TR><TD style="font:normal 11pt Candara,Arial,sans-serif;">R...</TD></TR></TABLE><BR/>
 
-<TABLE cellpadding="12" cellspacing="0" style="background-color:#FFD8B0;width:520px;border:1px dotted orange;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
-<TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 10pt Arial,sans-serif;color:brown">#1</TD></TR></TABLE><BR>
+<TABLE cellpadding="12" cellspacing="0" style="background-color:#FFD8B0;width:520px;border:1px solid orange;border-radius:6px;">
+<TR><TD valign="top" width="10px"></TD><TD valign="top" style="font:normal 10pt Arial,sans-serif;color:brown">#1</TD></TR></TABLE><BR>
 
-<TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF; border:1px dotted #7788FF;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
-<TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 11pt 'Franklin Gothic Book',sans-serif;color:#666699">#2</TD></TR></TABLE><BR>
+<TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF; border:1px solid #ccccFF;border-radius:6px;">
+<TR><TD valign="top" width="10px"></TD><TD valign="top" style="font:normal 11pt 'Franklin Gothic Book',sans-serif;color:#666699">#2</TD></TR></TABLE><BR>
 
-<TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:520px;border:1px solid #CCCCDD;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
-<TR><TD valign="top" width="20"></TD><TD valign="top" style="font:normal 12pt Garamond,serif;color:#444466">#3 Garamond</TD></TR></TABLE><BR>
+<TABLE cellpadding="6" cellspacing="8" style="background-color:#EEEEEE;width:520px;border:1px solid #CCCCDD;border-radius:6px;">
+<TR><TD valign="top" width="10px"></TD><TD valign="top" style="font:normal 12pt Garamond,serif;color:#444466">#3 Garamond</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="4" cellspacing="0" style="background-color:#FFFFFF;width:460px;border:1px dotted #999999;border-radius: 8px;">
 <TR><TD style="font: normal 10pt 'Century Gothic',Arial,sans-serif;color:#666677">Chenar...</TD></TR></TABLE><BR>
 
-<TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#BBFFBB; border:1px dotted #669966;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
-<TR><TD valign="top" width="20"></TD>
+<TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#BBFFBB; border:1px solid #88ee88;border-radius:6px;">
+<TR><TD valign="top" width="10px"></TD>
 <TD valign="top" style="font: normal 10pt 'Century Gothic',serif;color:#449944">#4</TD></TR></TABLE><BR>
 
-<TABLE cellpadding="22" cellspacing="0" width="520px" style="background-color:#666677; border:1px solid #000000;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-khtml-border-radius:6px;">
-<TR><TD valign="top" width="4"></TD>
+<TABLE cellpadding="22" cellspacing="0" width="520px" style="background-color:#666677; border:1px solid #000000;border-radius:6px;">
+<TR><TD valign="top" width="10px"></TD>
 <TD valign="top" style="font:normal 11pt Candara,Arial,sans-serif;color:#CCCCFF">#5</TD></TR></TABLE><BR>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#000000">
@@ -169,7 +176,7 @@ padding:10px; border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius
 <BR>
 
 <TABLE cellpadding="6" cellspacing="8" width="520px" style="background-color:#EEEEFF;border:1px solid #7788FF;border-radius: 10px;">
-<TR><TD valign="top" style="background-color:#FFFFFF;border:1px dotted #7788FF;letter-spacing: 2pt;font:normal 14pt 'Trebuchet MS',Arial,sans-serif;color:#666699">
+<TR><TD valign="top" style="background-color:#FFFFFF;border:1px dotted #7788FF;letter-spacing: 2pt;font:bold 14pt 'Trebuchet MS',Arial,sans-serif;color:#666699">
 Titlul-1...</TD></TR><TR><TD style="font:normal 11pt Calibri,Arial,sans-serif;color:#666699">...aici...</TD></TR></TABLE>
 <BR>
 
