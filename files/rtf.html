@@ -105,14 +105,23 @@ var memoTable = null;
 function memorize(ob) { memoTable = ob.innerText; }
 function norm(ob) { ob.innerText = ob.innerText.replace(/\s/g,' ').replace(/ +/g,' ').replace(/^ | $/g,''); }
 
+var whichTable = null;
+function currentTable(ch) {
+  var x; if(!ch.checked) return;
+  if(!window.getSelection || !(x = window.getSelection().anchorNode)) { ch.checked=false; return; }
+  while( x.tagName != 'TABLE' && x.tagName != 'BODY') x = x.parentElement;
+  if(x.tagName=='BODY' || x.id=='preBasic') { whichTable=null; ch.checked = false; return; }
+  whichTable=x; ch.checked = true;
+}
+
 function changeTable() {
   var obj = id('makeTb'); if(memoTable != obj.innerText) norm(obj); else return;
-  
-  var fCell, notCol, rS, ts = id('basic').getElementsByTagName('TABLE'), tL = ts.length;
-  if(tL<1) return;
+  var fCell, notCol, rS, ts, tL;
+
+  if(id('thisTable').checked) ts = [whichTable];
+  else { ts = id('basic').getElementsByTagName('TABLE'); if(ts.length<1) return; }
   var v = getJson(obj);
-  try {
-    for(var i=0; i<tL; i++) {
+    for(var i=0, tL = ts.length; i<tL; i++) {
       ts[i].style.cssText = v.table;
 
       for(var r = 0; r < ts[i].rows.length; r++) {
@@ -133,7 +142,6 @@ function changeTable() {
         }
       }
     }
-  } catch(e) { alert('ERROR: ' + e.message); }
 }
 
 function Compose() {
@@ -229,7 +237,7 @@ function removeContent() { id('basic').innerHTML='.'; }
 <body style="margin: 0px 0px 0px 0px;padding:0px" onload="initDoc();">
 
 <div id="textBox" style='height:600; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true" onkeydown="uniKeyCode(event)">
-<table><TR><TD id='basic'>
+<table id='preBasic'><TR><TD id='basic'>
 
 He has favored building a sub-$30,000 subcompact and building and selling <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">electric vehicle</b> power train components so that other automakers can produce electric vehicles at <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">affordable</b> prices without <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">having</b> to develop the products in house.
 <br><br>
@@ -418,6 +426,7 @@ It is valued at US$18 billion, as of November 2013. His annual salary at Tesla i
 <tr>
   <td valign='top'>
     <img class="intLink" title="Insert Table" onclick="insertTable()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAApElEQVQ4je2UQRGAIBBFP44FqIARtoIVqGAXK1iBLETQCkZYD6CoK+OgHn0XmGH/Z/9hVzEz3lG91AOow6GUA6x4dTkZcyredyEF0hTrl8OlRZlL38/hEoOMY2uMPhVNUyhqpb5pHADvQbTrYhUkjNHSVxK78F4H1ytuXKIF0ZwPcsMfRHTxB0kW1h6Gr4h6uzF32/AVoU6LL5MlC5GweMAHu3MBFuBJXeryqLsAAAAASUVORK5CYII=" />
+    <br><input id='thisTable' type="checkbox" onClick='currentTable(this)'>
   </td>
   <td>
     <DIV id='makeTb' style="width:400px;padding:4px;border:1px solid lightgray;" contentEditable="true" onFocus='memorize(this)' onBlur='changeTable();Ch();'>3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;</DIV>
