@@ -34,22 +34,35 @@ function CHNG(fl) { if(interval!=null) { clearInterval(interval); interval=null;
 if(fl) { interval = setInterval( GT, parseInt(id('chng').value,10) ); oneR(true); } else oneR(false); }
 
 function onCh(){
-	var c = id('ch').checked; if(c) Dr=1;
+	var c = id('ch').checked;
+	if(c) {
+		Dr=1; id('non-auto').style.display = 'none'; id('auto').style.display = '';
+	}
+	else {
+		id('non-auto').style.display = ''; id('auto').style.display = 'none';
+	}
 	CHNG(c); id('fw').disabled=c; id('bw').disabled=c; id('chng').disabled=!c;
 }
 function onMv(unde){ Dr=unde; GT(); }
 function oneR(fl) { var ms = Math.ceil(id('chng').value/1000/60 * L); id('rnd').value = fl?(ms + ' min.'):'Unknown'; }
 
 </script>
+<STYLE type="text/css">
+INPUT[type=button] { height:50px; width:140px; background-color:lightyellow; border:1px solid lightgray; font-size:18px; border-radius:8px; }
+#non-auto,#auto { padding: 12px; }
+</STYLE>
 </head>
-<BODY onLoad='setInt()' onUnload='CHNG(false)'>
+<BODY onLoad='setInt()' onUnload='CHNG(false)' style='height:40px;font-family:Calibri,Arial'>
 
-<DIV style='height:40px;font-family:Calibri,Arial'>
-&#10004; Interval: <INPUT id='chng' type='text' style='width:50px;text-align:center;' value='3500' onchange='CHNG(true)'/> ms. |
-Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
-&#0; Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | 
-<INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' /> <INPUT id='fw' type='button' value='Forward &#9654;' onClick='onMv(1)' />
- | <INPUT id='bw' type='button' value='&#10008; Reset!' onClick='setInt()' />
+Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
+
+<DIV id='non-auto'>
+<INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' />
+<INPUT id='fw' type='button' value='Forward &#9654;' onClick='onMv(1)' />
+<INPUT id='bw' type='button' value='&#10008; Reset!' onClick='setInt()' />
+</DIV>
+<DIV id='auto'>
+&#10004; Interval: <INPUT id='chng' type='text' style='width:50px;text-align:center;' value='3500' onchange='CHNG(true)'/> ms.
  | &#9998; One round takes: <INPUT id='rnd' type='text' style='width:100px;text-align:center;' value='' readOnly />
 </DIV>
 <DIV id='divId' style='font:bold 64pt Calibri; background-color:yellow; padding:42px; border:1px solid black; text-align:center;'></DIV>
@@ -66,8 +79,9 @@ Was heisst Das?@what is that called?
 Entschuldigung. Es tut mir leid.@I'm sorry.
 Können Sie das wiederholen?@Can you repeat that?
 Wie bitte?@Pardon?
+Ich habe gegeben. Ich habe genommen.@I gave. I took.
 Das macht nichts.@Never mind.
-Ich bin krank und mude.@I'm sick and tired.
+Ich bin krank und müde.@I'm sick and tired.
 Wann sollen wir uns treffen?@When shall we meet?
 Mir ist schlecht!@I feel sick!
 Wie schade!@What a pity!
@@ -94,14 +108,14 @@ Wichtige Ankündigung.@Important announcement.
 Besprechen und versprechen.@Discuss and promise.
 Es gefällt mir!@I like it!
 Freut mich, die Bekanntschaft zu machen.@Glad to make the acquaintance.
-Fur Sie auch.@For you also.
+Für Sie auch.@For you also.
 Und so weiter.@And so on.
 Es hängt von…@It depends on…
 Keine Ahnung!@No idea!
 Ich kann mich nicht erinnern.@I can't remember.
 Viele Dinge.@Many things.
 Was soll ich wählen?@What should I choose?
-An welchem ​​Tag?@On what day?
+An welchem Tag?@On what day?
 Wo kann ich es finden?@Where can I find it?
 Ist das ein Witz?@Is this a joke?
 Nicht wahr?@Isn't so?
@@ -127,7 +141,7 @@ Er sagt, was er denkt.@He says what he means/thinks.
 Das sagt mir nichts.@That doesn't mean anything to me.
 Wo hast du ihn gesehen?@Where did you see him?
 Lassen Sie das!@Stop that! Leave that alone!
-Ich finde die Suppe gut.@I like the soup. Wir finden keinen Platz.@We can't find a seat.
+Ich finde die Suppe gut.@I like the soup. Wir finden keinen Platz.@We can't find a seat.
 Bitte, bleiben Sie sitzen!@Please remain seated!
 Nehmen Sie Platz!@Have a seat!
 Wir haben den Tag freigenommen.@We took the day off.
@@ -144,6 +158,8 @@ Kann Ich eine Nachricht hinterlassen?@Can I leave a message?
 Können Sie mich unter dieser Nummer anrufen?@You can call me at this number?
 Gehen Sie weiter bis zur Ampel!@Go to the traffic light!
 Ich weiß es nicht! Ich bin hier fremd.@I dont know! I'm a stranger here.
+Ich habe gesagt, gehört, gelesen, geschrieben.@I have said, heard, read, written.
+Woher kommen Sie? Wohin gehen Sie?@Where from/where to.
 Nah, weit. Früh, spät. Schnell, langsam.@Near, far. Early, late. Quickly, slowly.</PRE>
 
 </BODY>
