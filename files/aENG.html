@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+var interval=null, divId, txt, INDX, IX, L, Dr=1;
+
+function id(x) { return document.getElementById(x); }
+function setInt() {
+	divId = document.getElementById('divId');
+	txt = document.getElementById('preformat').innerText.split('\n');
+	L = txt.length;
+
+		var bool = Array(L); for(var i=0;i<L;i++) bool[i]=i;
+		var x, J = L; INDX=[]; IX=-1;
+		for(var j=0; j<L; j++, J--){
+			x = Math.floor(Math.random() * J);
+			INDX.push(bool[x]);
+			bool.splice(x,1);
+		}
+	onCh(); GT();
+}
+function GT(){ divId.innerText = txt[Rot()]; }
+
+function Rot(){
+	IX+=Dr; if(IX==L) IX=0; else if(IX<0) IX = L-1;
+	document.getElementById('crr').value = INDX[IX] + ': ' + (IX+1) + '/' + L + ' (' + Math.round((IX+1)/L*100) + '%)';
+	return INDX[IX];
+}
+function CHNG(fl) { if(interval!=null) { clearInterval(interval); interval=null; }
+if(fl) { interval = setInterval( GT, parseInt(document.getElementById('chng').value,10) ); oneR(true); } else oneR(false); }
+
+function onCh(){
+	var c = document.getElementById('ch').checked; if(c) Dr=1;
+	CHNG(c); document.getElementById('fw').disabled=c; document.getElementById('bw').disabled=c; document.getElementById('chng').disabled=!c;
+}
+function onMv(unde){ Dr=unde; GT(); }
+function oneR(fl) { var ms = Math.ceil(id('chng').value/1000/60 * L); id('rnd').value = fl?(ms + ' min.'):'Unknown'; }
+
+</script>
+</head>
+<BODY onLoad='setInt()' onUnload='CHNG(false)'>
+
+<DIV style='height:40px;font-family:Calibri,Arial'>
+&#10004; Interval: <INPUT id='chng' type='text' style='width:50px;text-align:center;' value='3500' onchange='CHNG(true)'/> ms. |
+Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
+&#0; Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | 
+<INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' /> <INPUT id='fw' type='button' value='Forward &#9654;' onClick='onMv(1)' />
+ | <INPUT id='bw' type='button' value='&#10008; Reset!' onClick='setInt()' />
+ | &#9998; One round takes: <INPUT id='rnd' type='text' style='width:100px;text-align:center;' value='' readOnly />
+</DIV>
+<DIV id='divId' style='font:bold 64pt Calibri; background-color:yellow; padding:42px; border:1px solid black; text-align:center;'></DIV>
+
+<DIV id='shw' style='font-size:10px;'></DIV>
+
+<PRE id='preformat' style='display:none'>
+On the assumption that.
+As it turned out... later.
+It is worth recalling... evocative.
+Your attempt resulted in...
+I lean toward...
+Provided that...
+Sensible, judicious, sensitive data.
+To ponder the prospects...
+It lies at the root of...
+It feeds my suspicion, imagination.
+Rude and impolite.
+You talk in riddles.
+You make a fool/idiot of me.
+It is gratifying, I feel valued, content, indulged myself.
+Supposing I do it, what would...
+It purports to be...
+Flowed immunity system.
+Grasp the meaning.
+Regardless of... despite.
+Reckless/oblivious/unaware employee.
+Wielding effective techniques.
+Pursue a goal, still elusive.
+The court ruled that...
+Bend the rules.
+Persist in seeking...
+Academic abilities are largely irrelevant.
+Passing fad.
+Thoroughly examined.
+Reasoning behind it.
+Harshly critical, abrasive sarcasm.
+Embrace, espouse the elevated principles.
+Committed to the principles.
+Feedback lies at the heart.
+Keeps us on track.
+Drawing analogies.
+Gear up for... make due preparations.
+Uneven application merits focus.
+From a logical/sensitive standpoint.
+Underlying unity.
+Brought ostensibly.
+Address squarely.
+Preconceived statement/assertion.
+Manifestly ill-founded and misjudged.
+In this fashion.
+A keen awareness of the problem.
+Respond to a query.
+Give credence to...
+Gain more leverage.
+Puzzled, something amiss with the project.
+Cluster, flock/crowd around, gathered, rally.
+To prompt debate.
+Support or refute, reject.
+To differ, suffice, necessitate.
+Reluctant to explain.
+Freak of nature.
+Theory fits the facts.
+To ensure it is adequately...
+Intimately related to... in respect to...
+Enforce our own views.
+Dwelling/hover over....
+Reticence of facts.
+Overcome a hardship.
+Wide disagreement, vastly disagreed.
+Scant or non-existent at all.
+Lift the fog and fuzziness around. Blur.
+Unaided/bare eye.
+Shed, drop, cast, discard.
+Clueless about.
+Obey the principles.
+Influence exerted.
+A commonsense opinion.
+Irreducible, invasive observation.
+Mere metaphor.
+Pivotal, enrich your perception.
+Dressed in complexity.
+Fluctuating randomly.
+Place strong restrictions.
+Random thoughts.
+It awaits discovery.
+It confines us in actions.
+Overthrow by new facts.
+Insight, introspection, odd.
+Unattainable, irony of fate.
+Irresistibly abusing of it.
+A weird, queer, spooky, quaint.
+To unearth the truth.
+It transcends the limits.
+Quirks of fate.
+To cut into... trespass into your time.
+Having a hunch, a gleam, on the fringe.
+Figure this out, sort it out.
+Inbuilt bias, mindset.
+The habitat of crooks.
+Feeble or strong mind.
+On verge of fraud, under the veneer of...
+Disguised, under the guise of...
+Ascribe significance, unimpeachable witness.
+Afflicted people, inflict pain, cause damages.
+Stand up for, contend for, confront fearlessly.
+The defense mechanism kicks in.
+Embellish the facts.
+Try to cope with his rudeness.
+Twofold or manyfold.
+Incidentally, fortuitous, accidental.
+Jammed between.
+Sloppy speech. Water-down.
+Leave aside, apart from, bring to the forefront.
+Stray from original intents.
+Steadily, overwhelming, futile, worthwhile.
+A noteworthy addition.
+To recount, narrate, relate, lay down.
+To conceal, shroud.
+Embroil, entangle, unravel the node.
+Compelling, sustainable and untenable argument.
+Under his sway, at his behest.
+Swamped, bogged down, flood, overloaded.
+A strand of... evidence, piece of.
+Witty, catty, spiteful remark.
+Prolific writer, prominent thief.
+Disdain for legality.
+Ill-formed, wrongly construed.
+Relief from injury.
+Remotely akin to...
+Rest assured that.
+Thwart/hinder/impede the plan.
+In a looser sense.
+To give credence, reassert.
+To spawn many rumors.
+Deter from doing this.
+Reignite the debate.
+Extinct, defunct, extant.
+Proponent, perpetrator.
+Deep-seated rancor.
+Relinquish possession.
+It emboldens us...
+In the midst of... amid of...
+Drift toward... slid into...
+Testimonies, ostensibly, wanton.
+Infer/derive from. Falter.
+Blunder, error.
+Switch emphasis.
+Utterly hollow pretext.
+Doom, grim, gloomy. Looming.
+Grip of power. Grip your attention.
+Mainstream/maverick.
+Beneath our dignity.
+Engaged in contention.
+Bold conjecture. Audacity.
+Tragedy befell him.
+Revere. Irreverent.
+Deceptively simple.
+Gain impetus.
+Prerequisite, premise.
+Erode. Steer. The faintest star.
+Reflect on facts.
+Encounter or bump into somebody.
+Scramle through a path.
+Cluttered by failures.
+Stumble on an obstacle.
+Scatter, crack, schatter, crumble.
+Contrivance, contrive.
+Head toward, hand down the docs.
+Hasty, expeditious.
+Trivial matters.
+Render a decision, deliberate.
+Cornerstone. Needle of the compass.
+Withstand aggression.
+Squeeze confession from witnesses.
+Misleading fallacy.
+We estimate... an estimation.
+Supportive, confluence.
+Assent to or dissent from.
+Clear/acquit of all allegations.
+Yet another thing...
+En route, detour, bypass, circumvent.
+Impairs the right. Suchlike.
+In so far as they are referable to.
+To what extend.
+Irrespective of.
+To mitigate the effects.
+Around the corner.
+Ousted from their positions.
+The perpetrator and his proxies.
+It stinks, reputation smeared with...
+Inadvertently.
+Teemed or littered with...
+Scourge of corruption.
+Giving rise to.
+To address squarely.
+Gross distortion of...
+This entails an objective test.
+Misapplication of substantive laws.
+Depart from...
+Adversarial proceedings.
+Must be afforded a reasonable opportunity.
+Operating on assumption that...
+Impending trouble...
+For the dread of... quintessence.
+Grounded in fact, issues in dispute.
+In lieu of...
+Cram into a single page.
+Appearances deceive.
+Self-bestowed. Notorious.
+Resist advances to women.
+Man is prone to superstitions.
+Tapped into a new market.
+To underpin the argument.
+To vindicate the imputations.
+To rebut charges.
+To be struck off.
+Verisimilar.
+To be reckoned with/as.
+You tease me?
+Inbuilt bias, sham.
+Take credit for.
+Shows fatigue.
+Malleable, robust, mold.
+It harbors life.
+Pure and plain, clear and crisp, clear-cut.
+Bluff myself.
+He outfoxes you.
+Put mildly.
+Run out of... wishful thinking.
+Unattainable goal.
+To hail the results.
+It heralded new beginnings.
+Unbeknown. Colloquial language.
+Then he relented.
+Unpalatable truth.
+Tedious, boring, tiresome.
+To concede to...
+To my knowledge.
+Have a nerve, effrontery.
+Scarcely, barely, hardly.
+Reform-minded.
+To confide.
+The plan crumbles, glass shatters.
+In due course.
+Nothing is certain.
+Get the limelight (focus of attention).
+Tort of defamation.
+It astonish me.
+I'm baffled by what I hear.
+We are enthralled by.
+I'm thrilled to announce.
+We're stunning, confused, speechless.
+Banish from my mind.
+He muddies waters.
+You mingle truth and fallacy.
+Heed my advice.
+It rocks the foundation.
+The subject lies outside the scope.
+Data are outdated.
+The composite of X and Y.
+It is way bigger.
+They are pretty much the same.
+On the contrary.
+Buzzword or buzz-phrase.
+Blandishment and inducement.
+Off topics, out of consideration.
+The allegation is patently false.
+Dashboard, pants on fire.
+Our ruling is...
+To assauge grief.
+To waive privilege.
+Gifted, endowed by Nature.
+Slowly but steadily, incrementally.
+To solicit your views.
+Threshold unknowingly crossed.
+Recommendation with many caveats.
+Refrain from actions.
+It proves incorrect.
+As it proved to be.
+Raise the bar.
+To resort to a subterfuge.
+Is devoid of emotions.
+Temper and attenuate.</PRE>
+
+</BODY>
+</html>

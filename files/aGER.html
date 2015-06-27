@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+var interval=null, divId, divTrans, txt, INDX, IX, L, Dr=1;
+
+function id(x) { return document.getElementById(x); }
+function setInt() {
+	divId = id('divId'), divTrans = id('divTrans');
+	txt = id('preformat').innerText.split('\n');
+	L = txt.length;
+
+		var bool = Array(L); for(var i=0;i<L;i++) bool[i]=i;
+		var x, J = L; INDX=[]; IX=-1;
+		for(var j=0; j<L; j++, J--){
+			x = Math.floor(Math.random() * J);
+			INDX.push(bool[x]);
+			bool.splice(x,1);
+		}
+	onCh(); GT();
+}
+function GT(){
+	var x = txt[Rot()].split('@'); divId.innerText = x[0];
+	divTrans.innerText = x.length>1?x[1]:'';
+}
+
+function Rot(){
+	IX+=Dr; if(IX==L) IX=0; else if(IX<0) IX = L-1;
+	id('crr').value = INDX[IX] + ': ' + (IX+1) + '/' + L + ' (' + Math.round((IX+1)/L*100) + '%)';
+	return INDX[IX];
+}
+function CHNG(fl) { if(interval!=null) { clearInterval(interval); interval=null; }
+if(fl) { interval = setInterval( GT, parseInt(id('chng').value,10) ); oneR(true); } else oneR(false); }
+
+function onCh(){
+	var c = id('ch').checked; if(c) Dr=1;
+	CHNG(c); id('fw').disabled=c; id('bw').disabled=c; id('chng').disabled=!c;
+}
+function onMv(unde){ Dr=unde; GT(); }
+function oneR(fl) { var ms = Math.ceil(id('chng').value/1000/60 * L); id('rnd').value = fl?(ms + ' min.'):'Unknown'; }
+
+</script>
+</head>
+<BODY onLoad='setInt()' onUnload='CHNG(false)'>
+
+<DIV style='height:40px;font-family:Calibri,Arial'>
+&#10004; Interval: <INPUT id='chng' type='text' style='width:50px;text-align:center;' value='3500' onchange='CHNG(true)'/> ms. |
+Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
+&#0; Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | 
+<INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' /> <INPUT id='fw' type='button' value='Forward &#9654;' onClick='onMv(1)' />
+ | <INPUT id='bw' type='button' value='&#10008; Reset!' onClick='setInt()' />
+ | &#9998; One round takes: <INPUT id='rnd' type='text' style='width:100px;text-align:center;' value='' readOnly />
+</DIV>
+<DIV id='divId' style='font:bold 64pt Calibri; background-color:yellow; padding:42px; border:1px solid black; text-align:center;'></DIV>
+<DIV id='divTrans' style='font:normal 24pt Calibri; padding:12px; text-align:center;'></DIV>
+
+<DIV id='shw' style='font-size:10px;'></DIV>
+
+<PRE id='preformat' style='display:none'>
+Um wieviel Uhr?@At what time?
+Wie spät ist es?@What time is it?
+Ein bisschen, ein wenig.@A little.
+Was bedeutet Das?@What does this mean?
+Was heisst Das?@what is that called?
+Entschuldigung. Es tut mir leid.@I'm sorry.
+Können Sie das wiederholen?@Can you repeat that?
+Wie bitte?@Pardon?
+Das macht nichts.@Never mind.
+Ich bin krank und mude.@I'm sick and tired.
+Wann sollen wir uns treffen?@When shall we meet?
+Mir ist schlecht!@I feel sick!
+Wie schade!@What a pity!
+Raus! Rein!@Get out! Get in!
+Das ist schwierig.@This is difficult.
+Das ist besser als…@This is better than…
+Ist es weit von hier?@Is it far from here?
+Ich versuche zu sagen…@I'm trying to say…
+Ich bleibe hier.@I'm staying here.
+So viel Ich weiß.@As far as I know.
+Was meinen Sie damit?@What do you mean?
+Wie fühlen Sie sich?@How do you feel?
+Ich habe Sie nicht verstanden.@I didn't understand you.
+Wir möchten ein tisch für heute bestellen.@We want to order a table for today.
+Die Rechnung, bitte.@Bill, please.
+Ich brauche einen Termin beim Arzt.@I need a doctor's appointment.
+Gleich. Sofort!@Immediately.
+Das ist sicher.@That's for sure.
+Bis bald. Viel spaß!@See you soon. Lots of fun!
+Danke, gleichfalls!@Same to you!
+Einfach oder schwierig?@Simple or difficult?
+Wirklich?@Really?
+Wichtige Ankündigung.@Important announcement.
+Besprechen und versprechen.@Discuss and promise.
+Es gefällt mir!@I like it!
+Freut mich, die Bekanntschaft zu machen.@Glad to make the acquaintance.
+Fur Sie auch.@For you also.
+Und so weiter.@And so on.
+Es hängt von…@It depends on…
+Keine Ahnung!@No idea!
+Ich kann mich nicht erinnern.@I can't remember.
+Viele Dinge.@Many things.
+Was soll ich wählen?@What should I choose?
+An welchem ​​Tag?@On what day?
+Wo kann ich es finden?@Where can I find it?
+Ist das ein Witz?@Is this a joke?
+Nicht wahr?@Isn't so?
+Wer entscheidet?@Who decides?
+Stimmt!@OK!
+Sehr erfreut Sie kennenzulernen.@Very pleased to meet you.
+Immer, manchmal, oft, niemals.@Always, sometimes, often, never.
+Was ist mit Ihnen passiert?@What happened to you?
+Zahlen bitte.@The check, please.
+Nächsten. früher.@Next, previous.
+Ich bin sicher dass…@I'm sure that…
+Ich fürchte, dass…@I'm afraid that…
+Seien Sie bitte so freundlich!@Would you be so kind!
+Wie wär's mit einem Bier?@How about a beer?
+Er hat keine Zeit.@He has no time.
+Es wird dunkel.@It's getting dark.
+Ich habe es nicht sagen können.@I couldn't say it.
+Er will nichts trinken.@He doesn't want to drink anything.
+Wissen Sie, wann sie ankommen?@Do you know when they arrive?
+Ich sollte dort bleiben.@I ought to stay there.
+Was soll das?@What's that supposed to mean?
+Er sagt, was er denkt.@He says what he means/thinks.
+Das sagt mir nichts.@That doesn't mean anything to me.
+Wo hast du ihn gesehen?@Where did you see him?
+Lassen Sie das!@Stop that! Leave that alone!
+Ich finde die Suppe gut.@I like the soup. Wir finden keinen Platz.@We can't find a seat.
+Bitte, bleiben Sie sitzen!@Please remain seated!
+Nehmen Sie Platz!@Have a seat!
+Wir haben den Tag freigenommen.@We took the day off.
+Er antwortet nicht.@He doesn't answer.
+Was bedeutet dieses Wort?
+Er sendet eine E-Mail.
+Stimmt so.@Keep the change.
+Es gibt nichts zu fragen.@There is nothing to ask.
+Gute Besserung!@Get well soon!
+Zusagen oder absagen.@Confirm or cancel.
+Könnte ich eine Zitrone im Bier gequetscht?@Could I have a lemon squeezed in the beer?
+Billig, nicht teuer.@Cheap, not expensive.
+Kann Ich eine Nachricht hinterlassen?@Can I leave a message?
+Können Sie mich unter dieser Nummer anrufen?@You can call me at this number?
+Gehen Sie weiter bis zur Ampel!@Go to the traffic light!
+Ich weiß es nicht! Ich bin hier fremd.@I dont know! I'm a stranger here.
+Nah, weit. Früh, spät. Schnell, langsam.@Near, far. Early, late. Quickly, slowly.</PRE>
+
+</BODY>
+</html>
