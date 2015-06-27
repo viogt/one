@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Rich Text Editor</title>
 <script type="text/javascript">
 
-var interval=null, divId, txt, INDX, IX, L, Dr=1;
+var interval=null, divId, txt, INDX, IX, L, Dr=1, if_auto = true;
 
 function id(x) { return document.getElementById(x); }
 function setInt() {
@@ -24,14 +26,14 @@ function GT(){ divId.innerText = txt[Rot()]; }
 
 function Rot(){
 	IX+=Dr; if(IX==L) IX=0; else if(IX<0) IX = L-1;
-	document.getElementById('crr').value = INDX[IX] + ': ' + (IX+1) + '/' + L + ' (' + Math.round((IX+1)/L*100) + '%)';
+	id('crr').innerHTML = 'Current: ' + (IX+1) + '/' + L + ' (' + Math.round((IX+1)/L*100) + '%)'; //INDX[IX]
 	return INDX[IX];
 }
 function CHNG(fl) { if(interval!=null) { clearInterval(interval); interval=null; }
 if(fl) { interval = setInterval( GT, parseInt(document.getElementById('chng').value,10) ); oneR(true); } else oneR(false); }
 
 function onCh(){
-	var c = id('ch').checked;
+	var c = if_auto = !if_auto; id('ch').value = c?'✘ Maual':'✔ Auto';
 	if(c) {
 		Dr=1; id('non-auto').style.display = 'none'; id('auto').style.display = '';
 	}
@@ -45,13 +47,13 @@ function oneR(fl) { var ms = Math.ceil(id('chng').value/1000/60 * L); id('rnd').
 
 </script>
 <STYLE type="text/css">
-INPUT[type=button] { height:50px; width:180px; background-color:lightyellow; border:1px solid lightgray; font-size:24px; border-radius:8px; }
+INPUT[type=button] { height:50px; width:180px; background-color:white; border:1px solid lightgray; font-size:24px; border-radius:8px; box-shadow: 0px 2px 12px gray; }
 #non-auto,#auto { padding: 12px; }
 </STYLE>
 </head>
-<BODY onLoad='setInt()' onUnload='CHNG(false)'>
+<BODY onLoad='setInt()' onUnload='CHNG(false)' style='height:40px;font-family:Calibri,Sans-serif'>
 
-Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
+<INPUT id='ch' type='button' onClick='onCh()' value='✔ Auto'><SPAN id='crr' style='font-size:24px;margin-left:12px;'></SPAN>
 
 <DIV id='non-auto'>
 <INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' />
