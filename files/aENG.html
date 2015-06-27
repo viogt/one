@@ -31,24 +31,38 @@ function CHNG(fl) { if(interval!=null) { clearInterval(interval); interval=null;
 if(fl) { interval = setInterval( GT, parseInt(document.getElementById('chng').value,10) ); oneR(true); } else oneR(false); }
 
 function onCh(){
-	var c = document.getElementById('ch').checked; if(c) Dr=1;
-	CHNG(c); document.getElementById('fw').disabled=c; document.getElementById('bw').disabled=c; document.getElementById('chng').disabled=!c;
+	var c = id('ch').checked;
+	if(c) {
+		Dr=1; id('non-auto').style.display = 'none'; id('auto').style.display = '';
+	}
+	else {
+		id('non-auto').style.display = ''; id('auto').style.display = 'none';
+	}
+	CHNG(c); id('fw').disabled=c; id('bw').disabled=c; id('chng').disabled=!c;
 }
 function onMv(unde){ Dr=unde; GT(); }
 function oneR(fl) { var ms = Math.ceil(id('chng').value/1000/60 * L); id('rnd').value = fl?(ms + ' min.'):'Unknown'; }
 
 </script>
+<STYLE type="text/css">
+INPUT[type=button] { height:50px; width:180px; background-color:lightyellow; border:1px solid lightgray; font-size:24px; border-radius:8px; }
+#non-auto,#auto { padding: 12px; }
+</STYLE>
 </head>
 <BODY onLoad='setInt()' onUnload='CHNG(false)'>
 
-<DIV style='height:40px;font-family:Calibri,Arial'>
-&#10004; Interval: <INPUT id='chng' type='text' style='width:50px;text-align:center;' value='3500' onchange='CHNG(true)'/> ms. |
-Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
-&#0; Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | 
-<INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' /> <INPUT id='fw' type='button' value='Forward &#9654;' onClick='onMv(1)' />
- | <INPUT id='bw' type='button' value='&#10008; Reset!' onClick='setInt()' />
+Automatic: <INPUT id='ch' type='checkbox' onClick='onCh()' /> | Current: <INPUT id='crr' type='text' style='width:160px;text-align:center;' value='' readOnly />
+
+<DIV id='non-auto'>
+<INPUT id='bw' type='button' value='&#9664; Backward' onClick='onMv(-1)' />
+<INPUT id='fw' type='button' value='Forward &#9654;' onClick='onMv(1)' />
+<INPUT id='bw' type='button' value='&#10008; Reset!' onClick='setInt()' />
+</DIV>
+<DIV id='auto'>
+&#10004; Interval: <INPUT id='chng' type='text' style='width:50px;text-align:center;' value='3500' onchange='CHNG(true)'/> ms.
  | &#9998; One round takes: <INPUT id='rnd' type='text' style='width:100px;text-align:center;' value='' readOnly />
 </DIV>
+
 <DIV id='divId' style='font:bold 64pt Calibri; background-color:yellow; padding:42px; border:1px solid black; text-align:center;'></DIV>
 
 <DIV id='shw' style='font-size:10px;'></DIV>
