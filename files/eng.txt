@@ -7,15 +7,12 @@
 	<tbody><tr><td valign="top">
 encumber, thwart, hinder,
 embarrass, obstruct,
-hamper, burden, overload, flood,
-interfere,<br>resonates with</td><td valign="top">
+hamper, burden, interfere,&nbsp;resonates with</td><td valign="top">
 mitigate, diminish,
 wane, decrease, reduce, enfeeble,
-relent, ~concede,
-assuage grief, pain, fear;
+relent, concede; assuage grief, pain, fear;
 attenuate, temper,
-fade out,
-	</td><td valign="top">
+fade out</td><td valign="top">
 stark contrast,
 sheer, pure, stiff, squarely,
 gross, severe,
@@ -24,7 +21,7 @@ sharp, fierce, keen, abrupt, steep
 	<tr><td valign="top">
 baffle, astonish, amaze,
 astound, rock, abash, surprise, daze, stunning, staggering, blazing,
-(annoy), stubborn, bugged, mesmerised, transfixed, appall</td><td valign="top">
+(annoy), stubborn, bugged, mesmerised, crippled, transfixed, appalling</td><td valign="top">
 chilly, contemptible,
 deserving scorn, repugnance,
 negligent, reckless,
@@ -36,16 +33,12 @@ endear, sympathetic,
 thrilling, enchanting, delightful, fascinating, charming,
 unattainable, appealing, promising, aftermath/outcome, inbuilt bias
 	</td></tr>
-	<tr><td valign="top">
-		Weird, bizarre, pecuniary,
+	<tr><td valign="top">weird, bizarre, pecuniary,
 		queer, odd, strange, kinky, spooky,
 		the least likely, nothing remotely like
-	</td><td valign="top">
-		Overlook, disregard, flout, pass over, disdain, snub, condone, deter from, erode,
+	</td><td valign="top">overlook, disregard, flout, pass over, disdain, snub, condone, deter from, erode,
 		neglect, dodge, ignore, skim through, cursory glance, flip through
-	</td><td valign="top">
-		On the contrary, in contrast with, conversely, dissimilarly, apart from.
-		Contrive, devious/scam, under the sway/hold, at the behest/whim of</td></tr>
+	</td><td valign="top">conversely, on the contrary, in contrast with, dissimilarly, apart from; contrive, devious/scam, under the sway/hold, at the behest/whim of (fad, quirk)</td></tr>
 	<tr><td valign="top">
 supersede, precede,
 antedate, backdate,
@@ -57,7 +50,7 @@ surpass, (trump, overtop, prevail), surmount,
 overcome, lay down, set out/forth
 	</td><td valign="top">
 despise, hatred, contempt,
-disconsider, detest, resent, retaliation, revenge</td></tr>
+disconsider, detest, resent, retaliation, revenge, deep-seated rancour, spite, resentment, malice</td></tr>
 	<tr><td valign="top">
 pop up, come up with,
 arise, appear, emerge,
@@ -86,30 +79,27 @@ underpin, endorse, impinge on, provided that
 	</td></tr>
 	<tr><td valign="top">
 chat with, mess with, hangout,
-nourish, feed, stoke, devour, embroil, entangle, intricate (intricacies), liaise, mesh-interlock</td><td valign="top">
+nourish, feed, stoke, devour, embroil, entangle, intricate (intricacies), liaise, mesh with</td><td valign="top">
 undergo, scramble through, sneak in, impute,
 vindicate imputation,
 elaborated, sophisticated, pertinent details
 	</td><td valign="top">
-		henchman, acolyte, accomplice, nominee (straw man), proxies, allies, nexus, subservient,
+		henchman, acolyte, accomplice, nominee (strawman), proxies, allies, nexus, subservient,
 		servile, cringing, proselyte, delinquent, offender,
 		orchestrated, framed-up, concerted
 	</td></tr>
-	<tr><td valign="top">
-dispel (a myth, any doubt), debunk, bust, cast doubts, falter in, have qualms about, rebut (charges), refute, reject, disprove, deflect,
+	<tr><td valign="top">dispel/debunk<span style="font-size: 14pt;">&nbsp;(myth, doubt), bust, cast doubts, falter in, rebut (charges), refute, reject, disprove, deflect,
 revoke, annul, repeal, quash, overrule, reverse,
 dissuade, repel, bounce back, resile(-ient),
 expel, evacuate, exorcise, elude,
-relinquish, concede, fall back
-	</td><td valign="top">
+relinquish, renounce, concede, fall back</span></td><td valign="top">
 thorough ~cursory, accurate, scarcely, hardly, barely;
 dispatch, dispense, apportion, divvy, divide, distribute,
-in due course, crowd/flock around, amass</td><td valign="top">
+in due course, crowd/flock around, amass;<br><br>pitfall, trap, cage</td><td valign="top">
 flee, banish, exile,
 compel to refuge,
 unpalatable truth, benchmark,
-he muddied the waters;
-	</td></tr>
+he muddied the waters;<br><br>to con, cunning/sly, vile/petty, treacherous, callous/cruel</td></tr>
 	<tr><td valign="top">
 mingle with, mix with,
 blend, mess with, melt,
@@ -122,8 +112,7 @@ harbour/host life, fence by/with
 	</td><td valign="top">
 hardwired, inherent, intrinsic, intimately,
 innermost, essential, immanent, ~extrinsic,
-reliance on, trust in.
-	</td></tr>
+reliance on, trust in</td></tr>
 	<tr><td valign="top">
 cringe, conceal, hide,
 shroud, shield, abscond, gullible,
@@ -156,13 +145,12 @@ echo, reverberate, pay attention, heed,
 	</td></tr>
 	<tr><td valign="top">
 protracted, delayed,
-retarded, overstretched;
-data drilling, dig/dug, pierce, tunnel,
+retarded, overstretched; ~long-standing; data drilling, dig/dug, pierce, tunnel,
 penetrate, permeate, bore into
 	</td><td valign="top">
 perpetrate, proponent (apologist, defender),
 prolific, prominent, notorious,
-noticeable, conspicuous, pertained to,
+noticeable, remarkable, conspicuous, pertained to,
 hold, grasp, grab, grip of power/attention
 	</td><td valign="top">
 flatter, flirt with,
@@ -170,11 +158,10 @@ sedate, appealing, herald,
 rife, pervasive, ubiquitous, widespread, endemic</td></tr>
 	<tr><td valign="top">
 perplex, to bewilder, bewilderment, nuisance,
-hassle, inconvenience, annoyance, drawback/flaw, deadlock/impasse, gridlock, downside/disadvantage,<br>setback</td><td valign="top">
+hassle, inconvenience, annoyance, drawback/flaw/shortcoming, deadlock/impasse, gridlock, downside/disadvantage,<br>setback</td><td valign="top">
 stray from, deviate, derail,
 deflect the judgment,
-dodge, steer toward,
-	</td><td valign="top">
+dodge, steer toward, budge, lure, reckon, hype</td><td valign="top">
 intertwine, interlock,
 interconnected, interdependent,
 coupled with, corroborated,
@@ -185,8 +172,7 @@ confluence, merging, embroiled, entangled
 	<tr><td valign="top">
 cheat, screw up, scam, deceive,
 delude, mislead, (out)fox,
-bluff, hoodwink, dissemble, feign, discernment, sagacity,
-	</td><td valign="top">
+bluff, hoodwink, dissemble, feign, discernment, sagacity</td><td valign="top">
 gauge, measure, appraise,
 evaluate, assess, ponder,<br>dependably rely on</td><td valign="top">
 galvanised, clustered tightly around,
@@ -194,16 +180,14 @@ drain from, detach from,
 	</td></tr>
 	<tr><td valign="top">
 ancestor, predecessor,
-forerunner, successor
-	</td><td valign="top">
+forerunner, successor, remnant;<br>abject/humble</td><td valign="top">
 prompt, urge, impel,
 compel, boost, coerce,
 impose, enforce,
 prescribe, enjoin, injunction
 	</td><td valign="top">
 dwell on, hover over, hatch, incubate,
-hook, bend rules, inflect, by no means.
-	</td></tr>
+hook, bend rules, inflect, by no means</td></tr>
 	<tr><td valign="top">
 tip, allude, hint,
 indication, clue,
@@ -221,8 +205,7 @@ harness, use, employ, crafted/designed/tailored for
 redundant, futile, extinct,
 inexorable, absolve,
 implacable, relentless,
-reluctant to, defunct
-	</td><td valign="top">
+reluctant to, defunct;<br>clear and crisp; pure and plain; clear-cut</td><td valign="top">
 fuzzy, hazy, vague, blurred, befogged,
 foggy, bogged into, mud,
 swamped, flood, overload,
@@ -246,28 +229,22 @@ prefigure, rest assured or
 with a premise, depict,
 portray
 	</td></tr>
-	<tr><td valign="top">
-hinder, hassle, impede,
-hamper this, thwart in,
-adjourn, postpone,
+	<tr><td valign="top">hassle, impede, adjourn, postpone,
 impends, fortuitous, hover,
 cherry-picking, preemptive, unimpeded</td><td valign="top">
 clash, impact,
-turmoil, quarrel,
-~smooth, ~mild, ~slick
-	</td><td valign="top">
+turmoil, fuss, quarrel, tussle, ~smooth, ~mild, ~slick;<br>volatile, mercurial, clumsy, cumbersome</td><td valign="top">
 embezzle, loot, rob, defraud, rape,
 divest, dispossess, grab, subterfuge, ruse,
 plunder, amass, cynical/loutish theft,
-pillage, spoil, lucrative business,
-steal, infringe, breach,
+pillage, spoil, lucrative business, funnell cash, steal, infringe, breach,
 transgress, disobey,
 strip, hijack, usurp, misappropriate, alienate</td></tr>
 	<tr><td valign="top">
 hasty, expeditious, in rush, rapid,
 fast, swift, unimpeded, unobstructed, hurriedly
 	</td><td valign="top">
-ascertain, ensure, assert-disprove,
+ascertain, ensure, give credence, assert-disprove,
 conceive, perceive,
 apprehend, comprehend,
 reflect, grasp
@@ -276,9 +253,7 @@ indict, charge with an
 offence, acquit, redress,
 exonerate, relief, injury,
 inflict, afflict,
-flawed, viciate,
-shortcoming, drawback,
-distortion, deficient,
+flawed, viciate, impair, distortion, deficient,
 prejudicial, pejorative
 	</td></tr>
 	<tr><td valign="top">
@@ -288,8 +263,7 @@ rude and impolite, ruthless, ~courtesy, inexorable/implacable
 	</td><td valign="top">
 ascribe, attribute,
 allege, impute, pretend, purport,
-ostensible blunder,
-reportedly, with impunity
+ostensible blunder (slip, gaffe, faulty), reportedly, with impunity
 	</td><td valign="top">
 devise, contrive, plot,
 spot, map, engineer, invent, make up, construe
@@ -297,8 +271,7 @@ spot, map, engineer, invent, make up, construe
 	<tr><td valign="top">
 Pursuant to, imply, infer, derive,
 assume, presuppose,
-entails, set forth
-	</td><td valign="top">
+entails, set forth;&nbsp;worthwhile, ~untoward, adverse, pernicious</td><td valign="top">
 chief, paramount, ~petty, pressing,
 utmost, crucial, trigger,
 determinant, decisive,
@@ -325,64 +298,42 @@ point out, stress, highlight,
 outline, emphasise,
 pinpoint, gloomy forecast,
 address, refer, raise,
-subjected to, tackle,
-unravel (untangle), targeted at
-	</td></tr>
+subjected to, tackle, sort out, unravel (untangle), targeted at, morphed into</td></tr>
 	<tr><td valign="top">
 boast, brag, mock, giggle,
 scout, bestow, endow,
 lavish, generous,
-wasteful
-	</td><td valign="top">
-As regards, as concerns,
-With regard to,
-In respect of,
-With respect to,
-In relation to, relative to,
-In connection with, irrespective of, regardless of
-	</td><td valign="top">
-Impugned matter, in question,
+wasteful;<br>deceptively simple - annoyingly difficult</td><td valign="top">as regards, as concerns, with regard to,
+In respect of, with respect to,
+In relation to, relative to, in connection with; irrespective of, regardless of
+	</td><td valign="top">impugned matter, moot, in question,
 charge imputed, confide, confess,
-testimonies
-	</td></tr>
-	<tr><td valign="top">
-Wrestle, contend,
-fight, grapple/confront, tussle, struggle,
-strive, assail
-	</td><td valign="top">
-Argument sustained, irrefutable, irrebuttable,
+testimonies;<br>lawsuits, docket</td></tr>
+	<tr><td valign="top">wrestle, contend,
+fight, confront, tussle, struggle,
+strife, assail, to grapple with, to immerse in</td><td valign="top">argument sustained, irrefutable, irrebuttable,
 untenable, feeble,
 strong, solid, compelling, judicious,
 sensible, meaningful, candid, indefensible,
 cogent &amp; conclusive evidence
-	</td><td valign="top">
-In support of, on the grounds of, accurate,
+	</td><td valign="top">in support of, on the grounds of, accurate,
 indirectly inferred from,
 supportive, probative,
 shred of evidence,
 solid, irrefutable, self-evident, indisputable
-unimpeachable, incontrovertible evidence.
-	</td></tr>
-	<tr><td valign="top">
-Crook, swindler, looter,
+unimpeachable, incontrovertible evidence; undeniable, infallible</td></tr>
+	<tr><td valign="top">crook, swindler, looter,
 villain, cheat, thief,
 racketeer, robber, rapper,
 - calumny, slur, slander,
-debouching
-	</td><td valign="top">
-Underway, in progress, ongoing,
+debouching;<br>have qualms (reservations, concerns, anxiety) about</td><td valign="top">underway, in progress, ongoing,
 abreast, aligned with, updated, in line with,
-tough/tempted to say, tightly tied/bound, worthwhile (~untoward, adverse, pernicious),
-borne in mind, decent precision, overwhelming,
+tough/tempted to say, tightly tied/bound, borne in mind, decent precision, overwhelming,
 futile, hollow pretext, pointless, narrative
-	</td><td valign="top">
-In the blink of an eye, gleam, glimpse, glance, insight, spark;
-presumably, probably, seemingly, apparently, supposedly
-	</td></tr>
-	<tr><td valign="top">
-		clear and crisp; pure and plain; clear-cut;
-		tedious, boring, tiresome;
-		silly, dump question; disgraceful;
+	</td><td valign="top">in the blink of an eye, gleam, glimpse, glance, insight, spark;
+presumably, probably, seemingly, apparently, supposedly, reputedly, allegedly, reportedly</td></tr>
+	<tr><td valign="top">tedious, boring, tiresome;
+		silly/dump question; disgraceful, infamous;
 		nasty, muddy, dirty about, freak of/funky,
 		match, fit the theory
 		certain length of time, scant, loosely known as,
@@ -391,14 +342,11 @@ presumably, probably, seemingly, apparently, supposedly
 		draft a letter, file/lodge a request, rejoinder/reply, switch emphasis,
 		preconceived statement, proved pointless/decisive, bundle the case,
 		broad and purposive interpretation/construed,
-		witty/catty/spiteful/caustic remark, defiant, deceptively simple - annoyingly difficult, tentalising, deep-seated rancour, spite, resentment, hatred, drive.com/malice
-	</td><td valign="top">
-		conspicuous(-ly), remarkable, noticeable;
-		elevate onto the forefront;
+		witty/catty/spiteful/caustic remark</td><td valign="top">elevate onto the forefront;
 		values you espouse, embrace, advocate;
 		have a nerve, be impudently/shamelessly aggressive, show effrontery;
 		voluntarily or forcibly, in despondent mood, discouraged;
-		go rogue and gets volatile, mercurial</td></tr>
+		go rogue</td></tr>
 </tbody></table>
 
 <p>
@@ -444,7 +392,7 @@ We're being judged by a new yard-stick: not just by how smart we are, or by our 
 These rules have little to do with what we were told was important in school; <i>academic abilities are largely irrelevant to</i> this standard. The new measure takes for granted having enough intellectual ability and technical know-how to do our jobs; it focuses instead on personal qualities, such as initiative and empathy, adaptability and persuasiveness.</p><p>
 This is no <i>passing fad</i>&nbsp;(<i>whim</i>, <i>quirk</i>) nor just the management nostrum of the moment. The data that argue for taking it seriously are based on studies of tens of thousands of working people, in callings of every kind. And it demonstrates which human abilities make up the greater part of the ingredients for excellence at work -- most especially for leadership.</p><p>
 If you are part of a management team, you need to consider whether your organisation <i>fosters</i> these competencies or discourages them.<br><span style="font-size: 14pt;">An emotional competence is a learned capability based on emotional intelligence that results in </span><i style="font-size: 14pt;">outstanding</i><span style="font-size: 14pt;"> performance at work.<br></span><span style="font-size: 14pt;">Competencies come in clusters. For top performance a person must master a mix of competencies, not just one or two.<br></span><span style="font-size: 14pt;">Only when they reach a critical mass from the full spectrum do they emerge as outstanding-something akin to a chemical reaction achieved the moment of catalysis.</span></p><p>
-The conclusions of a <i>landmark study</i> of top executives who <i>derailed</i>, the two most <i>common traits</i> of those who failed.<br><span style="font-size: 14pt;">The single most frequently mentioned factor: being too </span><i style="font-size: 14pt;">harshly</i><span style="font-size: 14pt;"> critical, insensitive or </span><i style="font-size: 14pt;">demanding</i><span style="font-size: 14pt;">, so that they alienated those they worked with.<br></span><span style="font-size: 14pt;">Trustworthiness: The failures typically were overly ambitious, too ready to get ahead at the expense of other people.<br></span><span style="font-size: 14pt;">Obvious: It isn't that they can't see the solution - they can't see the problem.<br></span><span style="font-size: 14pt;">Contemplation: People at this stage see that they need to improve and have begun to think about how to do so. Ambivalence is </span><i style="font-size: 14pt;">rampant</i><span style="font-size: 14pt;">: some wait for a "magic moment" of readiness. People at this stage are as likely to say they intend to take some action "next month" as they are to say they'll do it "in the next six months". It's not unusual for people "to spend" years telling them that someday they are going to change". They substitute thinking for acting.<br></span><span style="font-size: 14pt;">Preparation: Here people have begun to focus on the solution - on how to improve. They are aware of the problem, see that there are ways to solve it, and </span><i style="font-size: 14pt;">palpably</i><span style="font-size: 14pt;"> anticipate doing so. This is the time for formulating a specific, detailed plan of action.<br></span><span style="font-size: 14pt;">Action: Visible change begins. People </span><i style="font-size: 14pt;">embrace</i><span style="font-size: 14pt;"> the plan, start practicing its steps, and actually change how they act - their emotional patterns, the way they think about themselves, and all the other facets of transforming a </span><i style="font-size: 14pt;">long-standing habit</i><span style="font-size: 14pt;">.</span></p><p>
+The conclusions of a <i>landmark study</i> of top executives who <i>derailed</i>, the two most <i>common traits</i> of those who failed.<br><span style="font-size: 14pt;">The single most frequently mentioned factor: being too </span><i style="font-size: 14pt;">harshly</i><span style="font-size: 14pt;"> critical, insensitive or </span><i style="font-size: 14pt;">demanding</i><span style="font-size: 14pt;">, so that they alienated those they worked with.<br></span><span style="font-size: 14pt;">Trustworthiness: The failures typically were overly ambitious, too ready to get ahead at the expense of other people.</span></p><p><span style="font-size: 14pt;"><br></span><span style="font-size: 14pt;">Obvious: It isn't that they can't see the solution - they can't see the problem.<br><br></span><span style="font-size: 14pt;">Contemplation: People at this stage see that they need to improve and have begun to think about how to do so. Ambivalence is </span><i style="font-size: 14pt;">rampant</i><span style="font-size: 14pt;">: some wait for a "magic moment" of readiness. People at this stage are as likely to say they intend to take some action "next month" as they are to say they'll do it "in the next six months". It's not unusual for people "to spend" years telling them that someday they are going to change". They substitute thinking for acting.</span></p><p><span style="font-size: 14pt;"><br></span><span style="font-size: 14pt;">Preparation: Here people have begun to focus on the solution - on how to improve. They are aware of the problem, see that there are ways to solve it, and </span><i style="font-size: 14pt;">palpably</i><span style="font-size: 14pt;"> anticipate doing so. This is the time for formulating a specific, detailed plan of action.<br></span><span style="font-size: 14pt;">Action: Visible change begins. People </span><i style="font-size: 14pt;">embrace</i><span style="font-size: 14pt;"> the plan, start practicing its steps, and actually change how they act - their emotional patterns, the way they think about themselves, and all the other facets of transforming a </span><i style="font-size: 14pt;">long-standing habit</i><span style="font-size: 14pt;">.</span></p><p>
 <i>Feedback lies at the heart</i> of change. Knowing how we are doing <i>keeps us on track</i>. In its most basic form, feedback means that someone notices whether -- or how well -- the new competence is being used and lets us know.<br><span style="font-size: 14pt;">Emotional competence cannot be improved overnight, because the motional brain changes its habits over weeks and months, not hours and days.<br></span><span style="font-size: 14pt;"><br></span></p><p><span style="font-size: 14pt;">The children love </span><i style="font-size: 14pt;">roaming about</i><span style="font-size: 14pt;"> in the fields and woods.<br></span><span style="font-size: 14pt;">Somebody remains </span><i style="font-size: 14pt;">committed to</i><span style="font-size: 14pt;"> the principles of...</span></p>
 <hr>
 <p>
@@ -1132,7 +1080,7 @@ It is <i>seemingly</i> (appears to be) pretty much the... There is a lot of info
 	A <i>vibrant</i> city. An <i>elaborated</i> plan or blueprint (excessively ornated).<br>Melted snow, hopes. The <i>contenders</i>. <i>Impregnable</i> fortification (stronghold, strong enough to <i>withstand attack</i>).<br><i>Delinquent</i> - guilty of <i>misdeed</i> or offence - by law/commitment <i>infracted</i>.<br>Tax delinquent is tax due/outstanding.
 </p>
 <p>
-	 <i>Flamboyant</i> speech. <i>Dispel an myth</i>.<br>He has a <i>vested interest</i> (strong reason to act).<br><i>Off topics</i>, out of context, off the subject.<br>At the <i>stretch of the fantasy</i>. <i>Blind spot</i>.<br>An <i>innumerable</i> collection of <i>malcontents</i> (chronically dissatisfied) and <i>undesirables</i>.
+	 <i>Flamboyant</i> speech. <i>Dispel a myth</i>.<br>He has a <i>vested interest</i> (strong reason to act).<br><i>Off topics</i>, out of context, off the subject.<br>At the <i>stretch of the fantasy</i>. <i>Blind spot</i>.<br>An <i>innumerable</i> collection of <i>malcontents</i> (chronically dissatisfied) and <i>undesirables</i>.
 </p>
 <p>
 	<i>Slip</i> on the ice, slipping in the mud. <i>Stumble</i>&nbsp;on somebody (encounter by chance).<br>News tends to get <i>stale</i>, like a stale bread or water.<br><i>Rebut</i> (refute, disprove): claim or prove that evidence or an accusation is false: he had to <i>rebut charges of acting</i> for the convenience of his political friends.<br>The right of last <i>rebuttal</i> always belonging to the defence counsel and the person brought to trial.<br>I hastened to <i>rebut this slur</i> (calumny).
@@ -1314,7 +1262,7 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 	High-profile: <i>conspicuous</i>, attracting attention, as by being unusual or remarkable, noticeable.<br>
 	<i>Giggle</i> is laugh in a silly way.<br>
 	Put the plan in practice.<br>
-	Complaints and <i>grievances</i>.<br>
+	Complaints and <i>grievances</i>, or simply <i>plaints</i>.<br>
 	Who <i>kindled</i> that fire in us?<br>
 	Life-threatening, primordially.<br>
 	Strenuous way, requiring much effort, not least in the interest of the community.<br>

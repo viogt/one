@@ -18,7 +18,8 @@ function rSave(){
 function Save() {
 	try {
 		
-		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
+		var xmlhttp = new XMLHttpRequest();
+		//var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
 		xmlhttp.open('POST', 'eng.txt', false);
 		var msg = document.getElementById('Continut').innerHTML;
 		xmlhttp.send(msg);
@@ -28,6 +29,7 @@ function Save() {
 		b.value = xmlhttp.responseText;
 		window.setTimeout("document.getElementById('out').value='Save Content';document.getElementById('out').style.backgroundColor='';", 2000);
 		b.disabled = false;
+		isDirty = false;
 		
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
@@ -41,11 +43,19 @@ function Receive() {
 		window.scrollTo(0, document.body.scrollHeight);
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
+
+var isDirty = false;
+window.addEventListener("beforeunload", function(e) {
+    var cMes = 'Au fost modificat text!';
+    if (!isDirty) return undefined;
+    (e || window.event).returnValue = cMes; //Gecko + IE
+    return cMes; //Gecko + Webkit, Safari, Chrome etc.
+});
 </script>
 
 </head>
 <body onLoad='Receive()'>
-<DIV id='Continut' contentEditable='true'></DIV>
+<DIV id='Continut' contentEditable='true' onInput="isDirty=true;"></DIV>
 <hr>
 <INPUT id='out' class='Inp' type='button' value='Save Content' onClick='rSave()'/>
 <a href='down/eng.txt' class='Inp'>Download eng.txt</a>
