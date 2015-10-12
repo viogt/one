@@ -239,7 +239,7 @@ function downPDF() {
   msg += '"borders":{' + getVals( id('borders').value ) + '},';
   msg += '"footer":"' + id('footer').value + '",';
   msg += '"body":' + (id('backGr').checked ? ('"' + id('basicDiv').value + '"') : getPars( id('basicDiv').value)) + ',';
-  msg += '"content":' + JSON.stringify( id('basic').innerHTML.substr(0,100)) + '}';
+  msg += '"content":' + JSON.stringify( id('basic').innerHTML ) + '}';
   var bb = JSON.parse(msg);
   alert(JSON.stringify(bb));
   

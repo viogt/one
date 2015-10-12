@@ -21,11 +21,11 @@ http.createServer(function (req, res) {
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { downPDF(body, res); });
   	}
-	/* else if(req.url.substr(0,7)=='/files/') {
+	else if(req.url.substr(0,7)=='/files/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile('.' + req.url, body, res); });
-  	}*/
+  	}
 	else res.end('Error: unknown request! (' + req.url + ')');
   
 }).listen(port, ipadd);
@@ -66,19 +66,22 @@ function download( file, resp ){
 function downPDF( body, resp ){
 	
 	//var pdf = require('html-pdf');
-	resp.end(body);
-	return;
-	/*
+	//resp.end(body.substr(0,200) + body.slice(-200));
+	//return;
+	
 	var cnt = JSON.parse(body);
-	resp.writeHead(200, {'Content-disposition': 'attachment; filename='+ cnt.fileName + '.pdf'});
+	//resp.writeHead(200, {'Content-disposition': 'attachment; filename='+ cnt.fileName + '.pdf'});
 	
-	var html = '<HTML><BODY>' + cnt.content + '</BODY></HTML>';
+	resp.end(cnt.fileName + '\n' + cnt.borders + '\n' + cnt.footer + '\n' + cnt.body);
+	return;
 	
-	var opts = {};
+	/*var html = '<HTML><BODY>' + cnt.content + '</BODY></HTML>';
+	
+	/var opts = {};
 	
 	var pdf = require('html-pdf');
 	pdf.create(html, opts).toStream(function(err, stream){
 	  	stream.pipe(resp);
 	});
-	*/
+*/
 }
