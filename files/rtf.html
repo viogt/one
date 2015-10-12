@@ -181,9 +181,9 @@ function changeStyle() {
   var s = id('styles'), ln = s[s.selectedIndex].value, w = ln.split('||');
   if(isDirty) { s.options[currentIndex].value = Compose(); isNasty = true; isDirty = false; }
   currentIndex = s.selectedIndex;
-  var x = document.querySelectorAll('input[type=text]'), L = x.length;
-  var Arr = ['','','H1', 'H2', 'b', 'i', 'u', 'blockquote', 'hr', 'sup', ''];
-  for(var i=0; i<L; i++) {
+  var x = document.querySelectorAll('input[type=text]');
+  var Arr = ['','','H1', 'H2', 'b', 'i', 'u', 'blockquote', 'hr', 'sup'];
+  for(var i=0, L = Arr.length; i<L; i++) {
     x[i].value = w[i];
     if(i==1) setBasic(); //else if(i==10) changeTable();
     else if(Arr[i]!='') makeH(Arr[i],x[i].id);
@@ -228,6 +228,54 @@ function fileSave(msg) {
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 function removeContent() { id('basic').innerHTML='.'; }
+function  FrOpen(th) {
+  var f = id("FramePDF");
+  if(f.style.display != 'none') { f.style.display = 'none'; th.value = 'Download as PDF'; return; }
+  else { f.style.display = ''; th.value = 'Close PDF download'; }
+}
+
+function downPDF() {
+  var msg = '{"fileName":' + JSON.stringify( id('fileName').value ) + ',';
+  msg += '"borders":{' + getVals( id('borders').value ) + '},';
+  msg += '"footer":"' + id('footer').value + '",';
+  msg += '"body":' + (id('backGr').checked ? ('"' + id('basicDiv').value + '"') : getPars( id('basicDiv').value)) + ',';
+  msg += '"content":' + JSON.stringify( id('basic').innerHTML.substr(0,100)) + '}';
+  var bb = JSON.parse(msg);
+  alert(JSON.stringify(bb));
+  
+  toPDF( JSON.stringify(bb) ); 
+}
+
+function getPars(base) {
+  var a = [], x = base.split(';'), L = x.length;
+  for(var i=0; i<L; i++) {
+    var t = x[i].split(':');
+    if( t[0] == 'font' ) a.push('font:' + t[1]); 
+    else if( t[0] == 'font-family' ) a.push('font-family:' + t[1]); 
+  }
+  return '"' + a.join(';') + '"';
+}
+
+function getVals(a){
+  var j = [], x = a.split(','), L = x.length;
+  for(var i=0; i<L; i++) {
+    var t = x[i].split(':');
+    j.push('"' + t[0] + '":"' + t[1] + '"');
+  }
+  return j.join(',');
+}
+
+function toPDF(msg) {
+	try {
+		var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onerror = function(e) { alert("Error Status: " + e.target.status + '\n' + e.error); };
+		xmlhttp.open('POST', 'pdf', false);
+		alert('message to send: ' + msg);
+		xmlhttp.send(msg);
+		alert(xmlhttp.responseText);
+	} catch(e) { alert(e.message); return 'Error!'; }
+}
+
 </script>
 <style type="text/css">
 .intLink { cursor: pointer; border: 1px solid white; }
@@ -238,7 +286,6 @@ function removeContent() { id('basic').innerHTML='.'; }
 
 <div id="textBox" style='height:600; overflow-y:auto;width:540px;border:1px solid lightgray; padding:12px; position:absolute; top:10px; left:10px;' contenteditable="true" onkeydown="uniKeyCode(event)">
 <table id='preBasic'><TR><TD id='basic'>
-
 He has favored building a sub-$30,000 subcompact and building and selling <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">electric vehicle</b> power train components so that other automakers can produce electric vehicles at <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">affordable</b> prices without <b style="font-family: serif; border: 1px solid rgb(208, 208, 208); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; padding-left: 4px; padding-right: 4px; border-radius: 6px; font-weight: normal; background-color: white;">having</b> to develop the products in house.
 <br><br>
 <hr style="font-family: serif; border-style: dashed none none; border-top-width: 1px; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-color: rgb(153, 153, 170); border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; height: 0px;">
@@ -432,6 +479,22 @@ It is valued at US$18 billion, as of November 2013. His annual salary at Tesla i
     <DIV id='makeTb' style="width:400px;padding:4px;border:1px solid lightgray;" contentEditable="true" onFocus='memorize(this)' onBlur='changeTable();Ch();'>3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;</DIV>
   </td>
 </tr>
+<tr>
+  <td></td>
+  <td>
+    <input type="button" value="Download as PDF" onClick="FrOpen(this)">
+    <div id="FramePDF" style="display:none">
+      <table border='0' cellSpacing="4" style="border:1px solid #cccccc; background-color:#dddddd">
+        <tr><td>File name:</td><td><input id='fileName' style="width:300px" type="text" value="downloaded_PDF"></td></tr>
+        <tr><td>Borders:</td><td><input id='borders' style="width:300px" type="text" value="top:20mm,right:20mm,bottom:15mm,left:20mm,footer:5mm"></td></tr>
+        <tr><td>Bakcground:</td><td><input id='backGr' type="checkbox"></td></tr>
+        <tr><td valign="top">Footer:</td><td><textarea id='footer' rows=3 style="width:300px">Page {{page}} of {{pages}}</textarea></td></tr>
+        <tr><td></td><td><input type="button" value="Download now" onClick='downPDF()'></td></tr>
+      </table>
+    </div>
+  </td>
+</tr>
+
 </table>
 
 

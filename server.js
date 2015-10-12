@@ -16,7 +16,12 @@ http.createServer(function (req, res) {
     	else res.end('Error: unknown request!');
     	return;
   	}
-	if(req.url.substr(0,7)=='/files/') {
+	if(req.url.substr(0,11)=='/files/pdf/') {
+		body = '';
+		req.on('data', function (chunk) { body += chunk; });
+		req.on('end', function () { downPDF(body, res); });
+  	}
+	else if(req.url.substr(0,7)=='/files/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile('.' + req.url, body, res); });
@@ -56,4 +61,24 @@ function download( file, resp ){
 	resp.writeHead(200, {'Content-disposition': 'attachment; filename='+file.substr(file.lastIndexOf('/')+1)});
 	var filestream = fs.createReadStream(file);
 	filestream.pipe(resp);
+}
+
+function downPDF( body, resp ){
+	
+	//var pdf = require('html-pdf');
+	resp.end(body);
+	return;
+	/*
+	var cnt = JSON.parse(body);
+	resp.writeHead(200, {'Content-disposition': 'attachment; filename='+ cnt.fileName + '.pdf'});
+	
+	var html = '<HTML><BODY>' + cnt.content + '</BODY></HTML>';
+	
+	var opts = {};
+	
+	var pdf = require('html-pdf');
+	pdf.create(html, opts).toStream(function(err, stream){
+	  	stream.pipe(resp);
+	});
+	*/
 }
