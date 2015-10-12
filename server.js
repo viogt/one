@@ -65,7 +65,7 @@ function download( file, resp ){
 
 function downPDF( body, resp ){
 	
-	//var pdf = require('html-pdf');
+	var pdf = require('html-pdf');
 	var cnt = JSON.parse(body);
 	resp.end( cnt.fileName + '\n' + cnt.borders + '\n' + cnt.footer + '\n' + cnt.body );
 	return;
