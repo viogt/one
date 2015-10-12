@@ -21,11 +21,11 @@ http.createServer(function (req, res) {
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { downPDF(body, res); });
   	}
-	else if(req.url.substr(0,7)=='/files/') {
+	/* else if(req.url.substr(0,7)=='/files/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile('.' + req.url, body, res); });
-  	}
+  	}*/
 	else res.end('Error: unknown request! (' + req.url + ')');
   
 }).listen(port, ipadd);
