@@ -66,10 +66,11 @@ function download( file, resp ){
 function downPDF( body, resp ){
 	
 	//var pdf = require('html-pdf');
-	resp.end( body.substr(0,200) );
+	var cnt = JSON.parse(body);
+	resp.end( cnt.fileName + '\n' + cnt.borders + '\n' + cnt.footer + '\n' + cnt.body );
 	return;
 	
-	/*var cnt = JSON.parse(body);
+	/*
 	resp.writeHead(200, {'Content-disposition': 'attachment; filename='+ cnt.fileName + '.pdf'});
 	
 	//resp.end(cnt.fileName + '\n' + cnt.borders + '\n' + cnt.footer + '\n' + cnt.body);
