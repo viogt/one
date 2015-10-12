@@ -65,23 +65,22 @@ function download( file, resp ){
 
 function downPDF( body, resp ){
 	
-	//var pdf = require('html-pdf');
+	var pdf = require('html-pdf');
 	//resp.end(body.substr(0,200) + body.slice(-200));
 	//return;
 	
 	var cnt = JSON.parse(body);
-	//resp.writeHead(200, {'Content-disposition': 'attachment; filename='+ cnt.fileName + '.pdf'});
+	resp.writeHead(200, {'Content-disposition': 'attachment; filename='+ cnt.fileName + '.pdf'});
 	
-	resp.end(cnt.fileName + '\n' + cnt.borders + '\n' + cnt.footer + '\n' + cnt.body);
-	return;
+	//resp.end(cnt.fileName + '\n' + cnt.borders + '\n' + cnt.footer + '\n' + cnt.body);
+	//return;
 	
-	/*var html = '<HTML><BODY>' + cnt.content + '</BODY></HTML>';
+	var html = '<HTML><BODY>' + cnt.content + '</BODY></HTML>';
 	
-	/var opts = {};
+	var opts = {};
 	
 	var pdf = require('html-pdf');
 	pdf.create(html, opts).toStream(function(err, stream){
 	  	stream.pipe(resp);
 	});
-*/
 }
