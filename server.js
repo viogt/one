@@ -16,7 +16,7 @@ http.createServer(function (req, res) {
     	else res.end('Error: unknown request!');
     	return;
   	}
-	if(req.url.substr(0,11)=='/files/pdf/') {
+	if(req.url.substr(0,10)=='/files/pdf') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { downPDF(body, res); });
