@@ -50,6 +50,7 @@
     }
     
     function insImg( o ) { fDoc('insertHTML', '<IMG src="' + o.src + '">'); }
+    function insHR( o ) { fDoc('insertHTML', '<IMG src="' + o.src + '">'); }
     function overTable( nd ) {
 
       var s = window.getSelection();
@@ -107,7 +108,6 @@
     
     function downPDF() {
       var j = {}, fn = id('fileName').value;
-      if(fn == 'untitled') { alert('Please enter the PDF title'); return false; }
       j.fileName = fn.trim() + '.pdf'; //fn.replace(/ /g,'_') + '.pdf';
       id('Frm').action = 'pipe/' + j.fileName;
       j.borders = getVals( id('borders').value );
@@ -176,6 +176,8 @@ function handleDragOver(evt) {
     evt.dataTransfer.dropEffect = 'copy';
 }
 
+function ifCanSend(o){ id('canSend').disabled = o.value == 'untitled'?true:false; }
+
 function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
   var remTable = '<table name="remTable" cellPadding="18px" cellSpacing="0px" border="0px"><tr><td style="padding-right:0px"><font color="gray">⚑</font></td><td width="100%">...</td></tr></table>';
@@ -186,9 +188,11 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   <table cellPadding='2' cellSpacing='0' border='0' style='height:30px;font:normal 14px Helvetica,Arial; color:gray;'><tr>
   <td><input type='checkbox' onClick='layDown()' id='xPanel'>panel</td>
   <td><input type='checkbox' onClick='layDown()' id='xPics'>pics</td>
-  <td><form id='Frm' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='return downPDF()'>
-          <input id='Hdn' name='S' type="hidden" value=""><input type="submit" value="Get PDF"></form></td>
-  <td>PDF name: <input type='text' id='fileName' value='untitled' style='width:200px'></td>
+  <td><form id='Frm' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='downPDF()'>
+          <input id='Hdn' name='S' type="hidden" value="">
+          <input id='canSend' type="submit" disabled value="Get PDF">
+  </form></td>
+  <td>PDF name: <input type='text' id='fileName' value='untitled' onChange='ifCanSend(this)' style='width:200px'></td>
   <td><input type='checkbox' id='verOpt' onClick='inclFrm()'>options</td>
   <td><input type='checkbox' onClick='sampleText(this)'>sample</td>
   </tr></table>
@@ -328,6 +332,9 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   <img  class="intPics" onClick="insImg(this)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAcNJREFUeNqcUztIw1AUPWmiVkWtpbF+USlILR3aQUEERREsDkXwuwgirYPQpYOLODoqOIkgOAmCq5Ozezt08VMQLCqlILZ+SV6eeS+YmpqlXrjkJueek/N49wqUUgSDwT0AMVQXR5lMJikEAgFODoVCTdWw0+l0iYkIfr+/GA6HmwqFAgdqJEBR7UmSCKjEqD0eD1KpVMlBCEE+n4emaeiSCfY3FfR2EP7+Oxm2m1QguwyMcRjX8dPQ4NSwvU7gdVMkltlvymRWbywRdHsptmJEd1LGuAOW0XENcqthr78LiI4Z31lOjxD4+wyspx2YGS1jDlVVudLkkPW87e4SHnM3yN3fYrDvzYJNDINzGFdiKpKDQHaLlqadgxwujgegKBTziVtcng6aWHebYDrgAu+fBFPxD4vA8wvlT1HXLeoGKnEWXIDZYEVluFo9mF67gj5naGmRbXvMI9iB8QUXVme9vD45/8Lh2aetA34LlXfe3EixFKk1GxcjdeiU8afPFKjMlWgd6p2CKcCmMzbnhF3vHwegGl7fNDwVysd6yBNc3ymW4fpxIEiSxJfJ5/NVtUzZbNZYJrbOoij+a511B8lvAQYACihD78OxbE8AAAAASUVORK5CYII=">
   <br><img  class="intPics" onClick="insImg(this)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAg9JREFUeNqkUzuIE1EUvZNMfuQfMsaQEGJANs2AhYULitYRLBQ7CwsbWyU2isWCKCzYLJaC1cIWFjZpLGRBrOwGVmxSJClcTBPIP5mM5zzmLZlFKy8c3veee+959xme58n/mNFutwsYD4AdwAH2YSfnL/4rUAh4CVwE7voE35rNJud2IJJh/BUmzm4D9xG1h/FDrVZ72Ov1PpqmeZrL5T7j0mXXdXeWy+WPxWLxfbVavet0Oj9J2mq1FEHFj0y71O/37Ww2K5ZllcLh8AM4C5xkPp/vhkKhXdx5BMc9lgq4JHiB6K5PcFIoFLxyuWzEYjEBgZAAkdWcttlsEsBr7FtYPiXBW11npVK5ms/njXQ6LdVqVVKplIzHYxkMBupcZ4NyOH+CrSOD6lIMWqPR+ASCOxjFtm0pFosyHA7FcRzpdrsyGo0USDqbzehyaG4rDeGuMVVGpnO9Xlf7XHOfgA5nL4DgNwMEqO0C02QERqZx5Jr7BO6onvD7wgoQoLYhBCvqmrc1oJCsXxP59jtAgKc6Rhn3OGfN268wnU55rgXULscBETOZzK1EIvElHo9LJBI5I/D7QAmnSXy7EehxdJgkk8n37AU0klcqldTINcrxotEoL2scKOHPf47JZPJ4vV6fQu1nyCzMALpuP3WGfwW8UX9kuwRmoA3tegX7z3F+3f9sv4CvwB7uOfov/BFgACVAJq1peMDxAAAAAElFTkSuQmCC">
     <input type='checkbox' checked onClick="fDoc('insertHTML','<input type=\'checkbox\' checked>'); this.checked=true;">
+  <br><img  class="intPics" onClick="insHR(this)" width='48px' src="data:image/png;base64,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">
+  <br><img  class="intPics" onClick="insHR(this)" width='48px' src="data:image/png;base64,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">
+
 </div>
 
 <div style="display:none">
