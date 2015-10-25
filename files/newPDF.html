@@ -143,7 +143,7 @@
     
 function loadImages(fs) {
 		var fileReader = new FileReader();
-		fileReader.onload = function(e) { fDoc('insertHTML','<IMG align="left" onmouseover="this.style.cursor=\'pointer\'" ondblclick="imgEdit(this)" src="' + e.target.result + '"/>'); };
+		fileReader.onload = function(e) { fDoc('insertHTML','<IMG align="left" style="margin-right:10px" onmouseover="this.style.cursor=\'pointer\'" ondblclick="imgEdit(this)" src="' + e.target.result + '"/>'); };
 		fileReader.readAsDataURL(fs[0]);
 }
 
@@ -332,7 +332,7 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
 <div style="display:none">
   <pre id="Serif">
-  body { font: normal 12pt Times,FreeSerif,"Times New Roman"; }
+  body { font: normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; }
   h1 { color: white;background-color: #999999;border-radius:8px;padding:8px; font-size: 20pt; font-weight:normal; border:1px solid #888888; margin:0px; }
   h2 { color: black;background-color: #eeeeee; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #dddddd; margin:0px; }
   b { border: 1px solid orange; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -343,11 +343,11 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt Times,FreeSerif,"Times New Roman"; border-bottom:8px solid #cccccc; }
-  table[name=remTable] { font:normal 12pt Times,FreeSerif,"Times New Roman"; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
+  table[name=addrTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; border-bottom:8px solid #cccccc; }
+  table[name=remTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
   </pre>
   <pre id="Sans">
-  body { font: normal 10pt Helvetica,FreeSans,Arial; }
+  body { font: normal 10pt Helvetica,"DejaVu Sans",Arial; }
   h1 { color: white;background-color: #6677aa;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #6070a0; margin:0px; }
   h2 { color: #606090; background-color: #eeeeff; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddddff; margin:0px; }
   b { border: 1px solid #bbbbff; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -358,8 +358,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 10pt Helvetica,FreeSans,Arial; border-bottom:8px solid #ccccff; }
-  table[name=remTable] { font:normal 10pt Helvetica,FreeSans,Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
+  table[name=addrTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; border-bottom:8px solid #ccccff; }
+  table[name=remTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
   </pre>
   <pre id="Georgia">
   body { font: normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; }
@@ -377,7 +377,7 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   table[name=remTable] { font:normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
   </pre>
   <pre id="Verdana">
-  body { font: normal 10pt Ubuntu,FreeSans,Helvetica,Sans-serif; }
+  body { font: normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; }
   h1 { color: white;background-color: #338844;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #308040; margin:0px; }
   h2 { color: darkgreen;background-color: #eeffdd; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddeed0; margin:0px; }
   b { border: 1px solid #cceea0; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -388,11 +388,11 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   sup { color:green; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 10pt Ubuntu,FreeSans,Helvetica,Sans-serif; border-bottom:8px solid #cceea0; }
-  table[name=remTable] { font:normal 10pt Ubuntu,FreeSans,Helvetica,Sans-serif; color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
+  table[name=addrTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; border-bottom:8px solid #cceea0; }
+  table[name=remTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
   </pre>
   <pre id="Normal">
-  body { font: normal 12pt Times,FreeSerif,"Times New Roman"; }
+  body { font: normal 11pt "URW Palladio L",Times,"Times New Roman"; }
   h1 { margin:0px; }
   h2 { margin:0px; }
   blockquote { margin:0px; margin-left:40px; border-left: 1px solid gray; padding: 0px; padding-left: 14px; font-style: italic; }
@@ -400,8 +400,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
   sup { font:bold 8px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt Times,FreeSerif,"Times New Roman"; border-bottom:8px solid lightgray; }
-  table[name=remTable] { font:normal 12pt Times,FreeSerif,"Times New Roman"; background-color: lightgray; border-radius:8px; border:1px solid gray; }
+  table[name=addrTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; border-bottom:8px solid lightgray; }
+  table[name=remTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; background-color: lightgray; border-radius:8px; border:1px solid gray; }
   </pre>
 </div>
 <pre id='sampleTxt' style='display:none'>
