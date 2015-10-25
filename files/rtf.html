@@ -230,39 +230,48 @@ function fileSave(msg) {
 function removeContent() { id('basic').innerHTML='.'; }
 function  FrOpen(th) {
   var f = id("FramePDF");
-  if(f.style.display != 'none') { f.style.display = 'none'; th.value = 'Download as PDF'; return; }
-  else { f.style.display = ''; th.value = 'Close PDF download'; }
+  if(f.style.display != 'none') { f.style.display = 'none'; th.value = 'Show Options'; return; }
+  else { f.style.display = ''; th.value = 'Close Options'; }
 }
 
-function downPDF() {
-  var msg = '{"fileName":' + JSON.stringify( id('fileName').value ) + ',';
-  msg += '"borders":{' + getVals( id('borders').value ) + '},';
-  msg += '"footer":"' + id('footer').value + '",';
-  msg += '"body":' + (id('backGr').checked ? ('"' + id('basicDiv').value + '"') : getPars( id('basicDiv').value)) + ',';
-  msg += '"content":' + JSON.stringify( id('basic').innerHTML ) + '}';
-  var bb = JSON.parse(msg);
-  alert(JSON.stringify(bb));
+function downPDF( nm ) {
+  var j = {};
+  var fn = id('fileName').value;
+  var ft = id('footer').value.replace('{{title}}',fn);
   
-  toPDF( JSON.stringify(bb) ); 
+  j.fileName = fn.replace(/ /g,'_') + '.pdf';
+  id('F'+nm).action = 'pipe/' + j.fileName;
+  j.borders = getVals( id('borders').value );
+  j.footer = ft;
+  if(id('backGr').checked) {
+    j.body = getPars( id('basicDiv').value, 'bord.' );
+    j.bkgr = true;
+  }
+  else {
+    j.body = getPars( id('basicDiv').value, 'back.bord.padd.' );
+    j.bkgr = false;
+  }
+  j.content = id('basic').innerHTML;
+  id('H'+nm).value = JSON.stringify(j);
 }
 
-function getPars(base) {
+function getPars(base, exc) {
   var a = [], x = base.split(';'), L = x.length;
   for(var i=0; i<L; i++) {
-    var t = x[i].split(':');
-    if( t[0] == 'font' ) a.push('font:' + t[1]); 
-    else if( t[0] == 'font-family' ) a.push('font-family:' + t[1]); 
+    if(x[i].trim()=='') continue;
+    var t = x[i].split(':'); t[0]=t[0].trim(); t[1]=t[1].trim();
+    if( exc.indexOf(t[0].substr(0,4)+'.') < 0 ) a.push(t[0] + ':' + t[1] + ';');
   }
-  return '"' + a.join(';') + '"';
+  return a.join(';');
 }
 
 function getVals(a){
-  var j = [], x = a.split(','), L = x.length;
+  var j = {}, x = a.split(','), L = x.length;
   for(var i=0; i<L; i++) {
     var t = x[i].split(':');
-    j.push('"' + t[0] + '":"' + t[1] + '"');
+    j[t[0]] = t[1];
   }
-  return j.join(',');
+  return j;
 }
 
 function toPDF(msg) {
@@ -270,9 +279,10 @@ function toPDF(msg) {
 		var xmlhttp = new XMLHttpRequest();
     xmlhttp.onerror = function(e) { alert("Error Status: " + e.target.status + '\n' + e.error); };
 		xmlhttp.open('POST', 'pdf', false);
-		alert('message to send: ' + msg);
 		xmlhttp.send(msg);
-		alert(xmlhttp.responseText);
+
+		var r = 'down/' + xmlhttp.responseText;
+		window.location = r;
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 
@@ -482,21 +492,38 @@ It is valued at US$18 billion, as of November 2013. His annual salary at Tesla i
 <tr>
   <td></td>
   <td>
-    <input type="button" value="Download as PDF" onClick="FrOpen(this)">
+  <table>
+    <tr>
+      <td>
+        <form id='F1' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='downPDF(1)'>
+          <input id='H1' name='D' type="hidden" value="">
+          <input type="submit" value="Download PDF">
+        </form>
+      </td>
+      <td>
+        <form id='F2' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='downPDF(2)'>
+          <input id='H2' name='Q' type="hidden" value="">
+          <input type="submit" value=" Open PDF ">
+        </form>
+      </td>
+      <td>
+        <input type="button" value="Show Options" onClick="FrOpen(this)">
+      </td>
+    </tr>
+  </table>
+      
     <div id="FramePDF" style="display:none">
       <table border='0' cellSpacing="4" style="border:1px solid #cccccc; background-color:#dddddd">
-        <tr><td>File name:</td><td><input id='fileName' style="width:300px" type="text" value="downloaded_PDF"></td></tr>
+        <tr><td>File name:</td><td><input id='fileName' style="width:300px" type="text" value="PDF name here"></td></tr>
         <tr><td>Borders:</td><td><input id='borders' style="width:300px" type="text" value="top:20mm,right:20mm,bottom:15mm,left:20mm,footer:5mm"></td></tr>
         <tr><td>Bakcground:</td><td><input id='backGr' type="checkbox"></td></tr>
-        <tr><td valign="top">Footer:</td><td><textarea id='footer' rows=3 style="width:300px">Page {{page}} of {{pages}}</textarea></td></tr>
-        <tr><td></td><td><input type="button" value="Download now" onClick='downPDF()'></td></tr>
+        <tr><td valign="top">Footer:</td><td><textarea id='footer' rows=3 style="font:normal 9pt Arial;width:300px"><table style="color:gray; width:100%; font:normal 8pt Helvetica; border-top:1px solid lightgray;"><TR><td>{{title}}</td><TD align="right">Page {{page}}</span> of <span>{{pages}}</td></TR></table></textarea></td></tr>
       </table>
     </div>
   </td>
 </tr>
 
 </table>
-
 
 </body>
 </html>
