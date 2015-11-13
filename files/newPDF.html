@@ -230,6 +230,7 @@ var Mng = {
       var http = new XMLHttpRequest();
       http.open('POST', 'mng', false);
       http.send(msg);
+      alert(http.responseText);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
       return http.responseText;
     } catch(e) { alert(e.message); return 'Error!'; }
