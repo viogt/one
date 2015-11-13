@@ -26,8 +26,6 @@ http.createServer(function (req, res) {
     	return;
   	}
 
-  res.end(' >> ' + req.method + ' > ' + req.url); return;
-
   if(req.url.substr(0,12)=='/files/pipe/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
