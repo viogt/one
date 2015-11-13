@@ -230,7 +230,6 @@ var Mng = {
       var http = new XMLHttpRequest();
       http.open('POST', 'mng', false);
       http.send(msg);
-      alert(http.responseText);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
       return http.responseText;
     } catch(e) { alert(e.message); return 'Error!'; }
@@ -268,11 +267,14 @@ var Mng = {
     if(ifExists) return r!='null'?true:false;
     
     var j = JSON.parse(r);
+    try {
     id(this.xTitle).value = j.file;
     document.getElementsByTagName("style")[0].innerHTML = j.theme;
     id('basic').innerHTML = j.content;
+    alert(j.content);
     var T = id('Themes'); T.selectedIndex = T.options.length-1;
     return true;
+    } catch(e) { alert(e.message); }
   },
   
   Download: function() {
