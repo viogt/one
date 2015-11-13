@@ -228,7 +228,7 @@ var Mng = {
     try {
       var msg = JSON.stringify( jsonMsg );
       var http = new XMLHttpRequest();
-      http.open('POST', '/', false);
+      http.open('POST', 'mng', false);
       http.send(msg);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
       return http.responseText;
