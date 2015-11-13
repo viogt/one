@@ -9,10 +9,19 @@ http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
 
 > git init
 > git remote add <app> -m master ssh://5468e9e2e0b8cd1a5800000d@the-postviorel.rhcloud.com/~/git/the.git/
-> git pull -s recursive -X theirs <app> master
+> git pull -s recursive -X theirs <app> master  ---{{{ erase the project content beforehand }}}---
 > git push --set-upstream <app> master
 
 ---
+
+> pdf-postviorel:
+> git clone ssh://563dfb8f7628e165c6000026@pdf-postviorel.rhcloud.com/~/git/pdf.git/
+> cd pdf/
+
+> Mongo Root User: admin
+> Root Password: AznsELnRKrhX
+> Database Name: pdf
+> Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
 
 remote access
 

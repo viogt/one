@@ -13,6 +13,33 @@
 
     .intPics { border:1px solid white; padding-left:2px; margin-left:4px; }
     .intPics:hover { border:1px solid orange; }
+    
+  .custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid gray;
+    white-space: nowrap;
+    font: normal 12px Arial,Sans;
+    background: white;
+    color: #444;
+    border-radius: 5px;
+    padding: 8px;
+    box-shadow: 0px 2px 12px gray;
+  }
+  .custom-menu li {
+    padding: 2px;
+    cursor: pointer;
+    list-style-type: none;
+  }
+  .custom-menu li:hover {
+    color: white;
+    background-color: #555599;
+  }
+  .Fdt { font:normal 10pt Helvetica,Arial; white-space: nowrap; max-width:340px; overflow: hidden; text-overflow: ellipsis; }
+  .Fdt:hover { background-color: lightgray; cursor: pointer; }
+
   </style>
   <script type="text/javascript">
 
@@ -29,8 +56,8 @@
     
     function changeStyle( s ) {
       var nm = s.options[s.selectedIndex].value;
-      document.getElementsByTagName("style")[0].innerHTML = id(nm).innerText;
-        if(id('verOpt').checked) id('CSScurrent').value = id(nm).innerText;
+      document.getElementsByTagName("style")[0].innerHTML = id(nm).innerHTML;
+        if(id('verOpt').checked) id('CSScurrent').value = id(nm).innerHTML;
     }
     function chStyle() {
         var T = id('Themes'), c = T.options[T.selectedIndex].value;
@@ -40,7 +67,7 @@
     }
     function init() {
       var nm = id('Themes').options[0].value;
-      document.getElementsByTagName("style")[0].innerHTML = id(nm).innerText;
+      document.getElementsByTagName("style")[0].innerHTML = id(nm).innerHTML;
       inclFrm();
 
         var dropZone = id('basic');
@@ -107,8 +134,9 @@
     function sampleText( fl ) { id('basic').innerHTML = fl.checked?id('sampleTxt').innerHTML:''; }
     
     function downPDF() {
-      var j = {}, fn = id('fileName').value;
-      j.fileName = fn.trim() + '.pdf'; //fn.replace(/ /g,'_') + '.pdf';
+      var j = {}, fn = id('fileName').value.trim();
+      if(fn=='') { alert('The file name/title is empty!'); return; }
+      j.fileName += '.pdf'; //fn.replace(/ /g,'_') + '.pdf';
       id('Frm').action = 'pipe/' + j.fileName;
       j.borders = getVals( id('borders').value );
       j.footer = id('footer').value.replace('{{title}}',fn);
@@ -176,12 +204,136 @@ function handleDragOver(evt) {
     evt.dataTransfer.dropEffect = 'copy';
 }
 
-function ifCanSend(o){ id('canSend').disabled = o.value == 'untitled'?true:false; }
-
 function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
+function insQuote() {
+  var T = '<table border="0"><tr><td class="quoteFirstCell">&Prime;</td><td class="quoteSecondCell">...</td></tr></table>';
+  fDoc('insertHTML', T);
+}
+
   var remTable = '<table name="remTable" cellPadding="18px" cellSpacing="0px" border="0px"><tr><td style="padding-right:0px"><font color="gray">⚑</font></td><td width="100%">...</td></tr></table>';
-  </script>
+
+var Mng = {
+  
+  xCollection: 'files', curElem: null, cntxMenu: null, xTitle: 'fileName',
+  tblOut: 'outPutFiles', lastSaved: '',
+  contextMenu: [
+    { text: 'Open', exe: function() { Mng.getOne( Mng.curElem.innerHTML, false);} },
+    { text: 'Rename', exe: function() { Mng.Rename();} },
+    { text: 'Delete', exe: function() { Mng.Delete(); } },
+    { text: 'Download', exe: function() { Mng.Download();} },
+    { text: 'Cancel', exe: null}],
+  
+  Send: function( jsonMsg ) {
+    try {
+      var msg = JSON.stringify( jsonMsg );
+      var http = new XMLHttpRequest();
+      http.open('POST', '/', false);
+      http.send(msg);
+      if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
+      return http.responseText;
+    } catch(e) { alert(e.message); return 'Error!'; }
+  },
+  
+  buildTable: function( txt ) {
+    var x = JSON.parse(txt), L = x.length, t = '<table>';
+    for(var i=0; i<L; i++) t += '<TR><td class="Fdt" ref="'+ x[i]._id +'" oncontextmenu="Mng.rClick(event,this)" onclick="Mng.getOne(this.innerHTML,false)">'+x[i].file+'</td><td>' + this.getDF(x[i].modified) + '</td><td></TR>';
+    id(this.tblOut).innerHTML = t + '</table>';
+  },
+  
+  getDF: function(x){
+    var s = (new Date(x)).toString().split(' ');
+    return s[0] + ',&nbsp;' + s[2] + '&nbsp;' + s[1] + ',&nbsp;' + s[4];
+  },
+  
+  Rename: function() {
+    var res, fName = this.curElem.innerHTML;
+    while((res = window.prompt("Rename:", fName)) && res != fName) {
+      res = res.trim();
+      if(this.getOne(res,true)) { alert('The file:\n' + res + '\nalready exists!'); continue; }
+      this.Send( { collection: this.xCollection, id: this.curElem.getAttribute("ref"), file: res, action: 'rename' } );
+      this.listIt(); return;
+    }
+  },
+  
+  Delete: function() {
+    if(!window.confirm("Delete " + this.curElem.innerHTML + "?")) return;
+    this.Send( { collection: this.xCollection, file: this.curElem.innerHTML, action: 'remove' } );
+    this.listIt();
+  },
+  
+  getOne: function( fName, ifExists ) {
+    var r = this.Send( { collection: this.xCollection, file: fName, action: 'get one' } );
+    if(ifExists) return r!='null'?true:false;
+    
+    var j = JSON.parse(r);
+    id(this.xTitle).value = j.file;
+    document.getElementsByTagName("style")[0].innerHTML = j.theme;
+    id('basic').innerHTML = j.content;
+    var T = id('Themes'); T.selectedIndex = T.options.length-1;
+    return true;
+  },
+  
+  Download: function() {
+    this.Send( { collection: this.xCollection, file: this.curElem.innerHTML, action: 'download' } );
+  },
+  
+  listIt: function() {
+    this.buildTable( this.Send( { collection: this.xCollection, action: 'list' } ));
+  },
+  
+  Save: function() {
+    var s = id(this.xTitle).value.trim(); if(s=='') return;
+    if(s != this.lastSaved) { if(this.getOne(s,true) && !confirm('File "' + s + '" already exists.\nOverwrite?')) return; }
+    this.Send( { collection: this.xCollection, file: s, theme: document.getElementsByTagName("style")[0].innerHTML.trim(), content: id('basic').innerHTML, action: 'save' } );
+    this.listIt();
+    this.lastSaved = s;
+  },
+  
+  rClick: function( e, obj ) {
+    e.preventDefault();
+    if(this.curElem) this.curElem.style.backgroundColor = '';
+    (this.curElem = obj).style.backgroundColor = 'yellow';
+    if(this.cntxMenu == null) this.createCntx();
+    var m = this.cntxMenu.style, pos = this.getPosition(e);
+      m.top = pos.y + 'px';
+      m.left = pos.x + 'px';
+      m.display = 'block';
+        document.addEventListener('click', function(e) {
+          Mng.cntxMenu.style.display = 'none';
+          document.removeEventListener("click");
+          Mng.curElem.style.backgroundColor = ''; Mng.curElem = null;
+        });
+    return false;
+  },
+
+  getPosition: function(e) {
+    if(!e) e = window.event;
+    if(e.pageX || e.pageY) return({ x: e.pageX, y: e.pageY });
+    else if(e.clientX || e.clientY) return({ x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft, y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop });
+    return { x:0, y:0 };
+  },
+  
+  createCntx: function() {
+    var u = document.createElement('ul');
+    u.className = 'custom-menu';
+    u.id = 'mnu';
+    for (var i=0, C=this.contextMenu, L=C.length; i<L; i++) {
+      var li = document.createElement('li');
+      u.appendChild(li);
+      li.innerHTML = C[i].text;
+      li.addEventListener('click', C[i].exe);
+    }
+    document.body.appendChild(u);
+    this.cntxMenu = u;
+  },
+  
+  openFiles: function() {
+    id('openFiles').style.display = 'block';
+    this.listIt();
+  }
+}
+</script>
 </head>
 <body onLoad='init()' onResize='inclFrm()' style='margin:0px;'>
 
@@ -192,7 +344,7 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
           <input id='Hdn' name='S' type="hidden" value="">
           <input id='canSend' type="submit" disabled value="Get PDF">
   </form></td>
-  <td>PDF name: <input type='text' id='fileName' value='untitled' onChange='ifCanSend(this)' style='width:200px'></td>
+  <td>PDF name: <input type='text' id='fileName' value='' placeholder="PDF name here" style='width:200px'></td>
   <td><input type='checkbox' id='verOpt' onClick='inclFrm()'>options</td>
   <td><input type='checkbox' onClick='sampleText(this)'>sample</td>
   </tr></table>
@@ -214,8 +366,9 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
     <option value='Serif' selected>Serif Grey</option>
     <option value='Sans'>Sans-serif Blue</option>
     <option value='Georgia'>Georgia Red</option>
-    <option value='Verdana'>Verdana Green</option>
+    <option value='Verdana'>Sans-serif Green</option>
     <option value='Normal'>Normal format</option>
+    <option value='Custom'>Custom format</option>
   </select>
   <br>
 
@@ -241,7 +394,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 <br>
   <img class="intLink" title="Title" onclick="fDoc('formatblock','H1')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAIAAAAGHlpnAAAArElEQVQ4jc1UwRHEIAjcOGmAFtKCNVBCekotaSEtYAspQUrgHjrGy8w9JPfIPhhEWBhQJjPDM8wAUkqOyBjjRQHgPONQ/LIkVSUiAMGRv0FVn1IU/IGi9mJdx8L6AVQK5no+DjBXebN8e8Z916KF5tfkL0t/tW1XGZ5etAL9FLfS5qHMJZgZfS9gZiJigxCRnHPO2cze8bTeQVEn4lsZBVPZWuXbOkBEoWnuKj4GFHUndSsusgAAAABJRU5ErkJggg==" />
   <img class="intLink" title="Subtitle" onclick="fDoc('formatblock','H2')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAIAAAAGHlpnAAAAxElEQVQ4jaWU4Q2FIAyED+MCrOAKrCAzsYKs4CquYFdwBUbg/QCUICUPvBByJvRrpYDw3uObZgBENBCplHoQAK5LdcUvCznnpJQApoH8t5xzXxFB8Uf2vS9s216I44jfWj++obwBM7dI684qquLKKegVRDv/WyUi35RBxEA5LKLdl7wj6WhZEUfw+RwMr+x0Gg9Tu7XGtykZgktoRR1dIrgS/qgibWdaRERYT2UFrSeIFIDkOYQIr1a4tgOSUk63G0MA+AFys0Nkp4pFqgAAAABJRU5ErkJggg==" />
-  <img class="intLink" title="Quote" onclick="fDoc('formatblock','blockquote')" src="data:image/gif;base64,R0lGODlhFgAWAIQXAC1NqjFRjkBgmT9nqUJnsk9xrFJ7u2R9qmKBt1iGzHmOrm6Sz4OXw3Odz4Cl2ZSnw6KxyqO306K63bG70bTB0rDI3bvI4P///////////////////////////////////yH5BAEKAB8ALAAAAAAWABYAAAVP4CeOZGmeaKqubEs2CekkErvEI1zZuOgYFlakECEZFi0GgTGKEBATFmJAVXweVOoKEQgABB9IQDCmrLpjETrQQlhHjINrTq/b7/i8fp8PAQA7" />
+  <img class="intLink" title="Quote" onclick="insQuote()" src="data:image/gif;base64,R0lGODlhFgAWAIQXAC1NqjFRjkBgmT9nqUJnsk9xrFJ7u2R9qmKBt1iGzHmOrm6Sz4OXw3Odz4Cl2ZSnw6KxyqO306K63bG70bTB0rDI3bvI4P///////////////////////////////////yH5BAEKAB8ALAAAAAAWABYAAAVP4CeOZGmeaKqubEs2CekkErvEI1zZuOgYFlakECEZFi0GgTGKEBATFmJAVXweVOoKEQgABB9IQDCmrLpjETrQQlhHjINrTq/b7/i8fp8PAQA7" />
+<!--  fDoc('formatblock','blockquote') -->
 <br>
   <img class="intLink" title="Superscript" onclick="fDoc('superscript','')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAA0UlEQVQ4jbVU0RHDIAjFXhdwBVfI1rqKrsAIMAL90FKTqCmX9h0fOYR3zwfRiQjcw8NQmxI41yIlTTuDCudAi7tviwrt7yTU/NeIUQBaxKhpC8W+U/GsWphZdSEiAGzb1otlZr+v9N4PLkJERJRznqro442dnZU4hFBKOVjJzExUcgaRFgs7z1rW6sZ29j0XtxOZrla1DRFDCIh4cLfHajsH5o8w3U5VAQBnd68ptL/qH87og99PZFa9YDFs5+y0TWT9j/Sn5wLLkzOB5cn5H8ULQ2VQqpt0IqIAAAAASUVORK5CYII=" />
   <img  class='intLign' title='Insert the address block' onClick="fDoc('insertHTML',addrTable())" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAHlBMVEUAAADS1NbS0tbS09eRbd6Ze92bdui1jP/R09X///+MztujAAAABHRSTlMAvr/vL7v4HgAAADBJREFUCNdjYIAB9nIwADNmzpw5XQDGaEBihLiC1DRgk4IzUtyIV8Og0QECBnBXAACvEzEHk178CQAAAABJRU5ErkJggg==" />
@@ -352,6 +506,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
   table[name=addrTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; border-bottom:8px solid #cccccc; }
   table[name=remTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
+  .quoteFirstCell { font: normal 56pt Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
   </pre>
   <pre id="Sans">
   body { font: normal 10pt Helvetica,"DejaVu Sans",Arial; }
@@ -367,6 +523,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
   table[name=addrTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; border-bottom:8px solid #ccccff; }
   table[name=remTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
+  .quoteFirstCell { font: normal 56pt Times; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
   </pre>
   <pre id="Georgia">
   body { font: normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; }
@@ -382,6 +540,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
   table[name=addrTable] { font:normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; border-bottom:8px solid #ffbb66; }
   table[name=remTable] { font:normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
+  .quoteFirstCell { font: normal 56pt Times; color: #ffbb66; border-right: 1px solid #ffbb66; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
   </pre>
   <pre id="Verdana">
   body { font: normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; }
@@ -397,6 +557,8 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
   table[name=addrTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; border-bottom:8px solid #cceea0; }
   table[name=remTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
+  .quoteFirstCell { font: normal 56pt Times; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
   </pre>
   <pre id="Normal">
   body { font: normal 11pt "URW Palladio L",Times,"Times New Roman"; }
@@ -409,7 +571,10 @@ function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
   table[name=addrTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; border-bottom:8px solid lightgray; }
   table[name=remTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; background-color: lightgray; border-radius:8px; border:1px solid gray; }
+  .quoteFirstCell { font: normal 56pt Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
   </pre>
+  <pre id="Custom"></pre>
 </div>
 <pre id='sampleTxt' style='display:none'>
 <h1>Lorem Ipsum</h1><br>
@@ -424,4 +589,12 @@ Lorem ipsum<sup>1</sup> dolor sit amet, consectetur adipiscing elit<sup>2</sup>,
 </blockquote>
 <br><font color="red">⚑</font> Aici e textul român, până, și, ține, sfârșit - să vedem diacriticele.
 </pre>
+
+<div id='openFiles' style='background-color:white; border:1px solid gray; position:absolute; top:50px; left:100px; display:none; border-radius:5px; padding: 8px; box-shadow: 0px 2px 12px gray;'>
+  <div style='width:100%; text-align:right'><input type='button' value='X' onClick='this.parentElement.parentElement.style.display="none"'></div>
+  <div id='outPutFiles' style='width:500px; height:200px; overflow:auto; font:normal 10pt Helvetica,Arial;'>
+  </div>
+  <input type='button' value='Close' onClick='this.parentElement.style.display="none"'>
+</div>
+
 </body>
