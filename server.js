@@ -15,7 +15,7 @@ var http	= require('http'),
     	process.env.OPENSHIFT_APP_NAME;
 
 http.createServer(function (req, res) {
-
+  
 	console.log(' >> ' + req.method + ' > ' + req.url);
 
 	if(req.method == 'GET') {
@@ -26,13 +26,15 @@ http.createServer(function (req, res) {
     	return;
   	}
 
+  res.end(' >> ' + req.method + ' > ' + req.url); return;
+
   if(req.url.substr(0,12)=='/files/pipe/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { pipping(req.url.substr(12), body, res); });
   	}
 
-  else if(req.url.substr(0,11)=='/files/mng/') {
+  else if(req.url.substr(0,10)=='/files/mng') {
     body = '';
     req.on('data', function (chunk) { body += chunk; });
     req.on('end', function () {
@@ -47,7 +49,7 @@ http.createServer(function (req, res) {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile('.' + req.url, body, res); });
-  	}
+  }
 
 	else res.end('Error: unknown request! (' + req.url + ')');
   
