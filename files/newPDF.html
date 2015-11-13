@@ -342,9 +342,11 @@ var Mng = {
   <td><input type='checkbox' onClick='layDown()' id='xPics'>pics</td>
   <td><form id='Frm' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='downPDF()'>
           <input id='Hdn' name='S' type="hidden" value="">
-          <input id='canSend' type="submit" disabled value="Get PDF">
+          <input id='canSend' type="submit" value="PDF">
   </form></td>
-  <td>PDF name: <input type='text' id='fileName' value='' placeholder="PDF name here" style='width:200px'></td>
+  <td><input type='text' id='fileName' value='' placeholder="PDF name here" style='width:200px'></td>
+  <td><input type="button" value="Save" onClick="Mng.Save()"></td>
+  <td><input type="button" value="Open" onClick="Mng.openFiles()"></td>
   <td><input type='checkbox' id='verOpt' onClick='inclFrm()'>options</td>
   <td><input type='checkbox' onClick='sampleText(this)'>sample</td>
   </tr></table>
