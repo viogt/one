@@ -267,14 +267,11 @@ var Mng = {
     if(ifExists) return r!='null'?true:false;
     
     var j = JSON.parse(r);
-    try {
     id(this.xTitle).value = j.file;
     document.getElementsByTagName("style")[0].innerHTML = j.theme;
     id('basic').innerHTML = j.content;
-    alert(j.content);
     var T = id('Themes'); T.selectedIndex = T.options.length-1;
     return true;
-    } catch(e) { alert(e.message); }
   },
   
   Download: function() {
