@@ -35,12 +35,7 @@ http.createServer(function (req, res) {
   else if(req.url.substr(0,10)=='/files/mng') {
     body = '';
     req.on('data', function (chunk) { body += chunk; });
-    req.on('end', function () {
-      try {
-        var J = JSON.parse(body);
-        operate( J, res );
-      } catch(e) { shucher(res, {error: 'Bad request/json'}, null); }
-    });
+    req.on('end', function () { try { operate( JSON.parse(body), res ); } catch(e) { shucher(res, {error: 'Bad request/json'}, null); } });
   }
     
 	else if(req.url.substr(0,7)=='/files/') {

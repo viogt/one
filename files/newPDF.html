@@ -207,11 +207,44 @@ function handleDragOver(evt) {
 function markDrop(fl) { id('basic').style.backgroundColor=fl?'lightyellow':''; }
 
 function insQuote() {
-  var T = '<table border="0"><tr><td class="quoteFirstCell">&Prime;</td><td class="quoteSecondCell">...</td></tr></table>';
+  var a = window.getSelection().toString();
+  var T = '<table border="0"><tr><td class="quoteFirstCell">&Prime;</td><td class="quoteSecondCell">'+(a!=''?a:'...')+'</td></tr></table>';
   fDoc('insertHTML', T);
 }
 
-  var remTable = '<table name="remTable" cellPadding="18px" cellSpacing="0px" border="0px"><tr><td style="padding-right:0px"><font color="gray">⚑</font></td><td width="100%">...</td></tr></table>';
+function htmlPrepare() {
+  try {
+  var x = id('htmlOut'); x.innerHTML = id('basic').innerHTML;
+  var s=document.styleSheets[0], r=s.cssRules?s.cssRules:s.rules;
+  for (var i=0, L=r.length; i<L; i++) {
+    var sel = r[i].selectorText.toLowerCase();
+    if(sel == 'body') { x.style.cssText = r[i].style.cssText; continue; }
+    if(sel == '.htmlbody') { x.style.cssText += r[i].style.cssText; continue; }
+    var tg = sel.charAt(0)=='.'?x.getElementsByClassName(sel.substr(1)):x.getElementsByTagName(sel);
+    for(var y=0, Lt=tg.length; y<Lt; y++) tg[y].style.cssText = r[i].style.cssText;
+  }
+  var t = id('htmlFrame'); t.style.display = 'block';
+  t.focus(); fDoc('selectAll',''); fDoc('copy','');
+  x.innerHTML = ''; t.style.display = 'none';
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+var _release = null;
+function release(o, fl){
+  if(fl) { if(_release) return; o.style.backgroundColor = 'lightgreen'; _release = window.setTimeout(release, 400, o, false); }
+  else { o.style.backgroundColor = ''; window.clearTimeout(_release); _release = null; }
+}
+
+function upperCase(F) {
+  var a = window.getSelection().toString();
+  fDoc('insertText',F?a.toUpperCase():a.toLowerCase());
+}
+
+function remTable() {
+  var a = window.getSelection().toString();
+  a = '<table name="remTable" cellPadding="18px" cellSpacing="0px" border="0px"><tr><td style="padding-right:0px"><font color="gray">⚑</font></td><td width="100%">'+(a!=''?a:'...')+'</td></tr></table>';
+  fDoc('insertHTML',a);
+}
 
 var Mng = {
   
@@ -345,8 +378,9 @@ var Mng = {
           <input id='canSend' type="submit" value="PDF">
   </form></td>
   <td><input type='text' id='fileName' value='' placeholder="PDF name here" style='width:200px'></td>
-  <td><input type="button" value="Save" onClick="Mng.Save()"></td>
+  <td><input type="button" value="Save" onClick="Mng.Save();release(this,true);"></td>
   <td><input type="button" value="Open" onClick="Mng.openFiles()"></td>
+  <td><input type="button" value="Copy" onClick="release(this,true);htmlPrepare();"></td>
   <td><input type='checkbox' id='verOpt' onClick='inclFrm()'>options</td>
   <td><input type='checkbox' onClick='sampleText(this)'>sample</td>
   </tr></table>
@@ -397,11 +431,16 @@ var Mng = {
   <img class="intLink" title="Title" onclick="fDoc('formatblock','H1')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAIAAAAGHlpnAAAArElEQVQ4jc1UwRHEIAjcOGmAFtKCNVBCekotaSEtYAspQUrgHjrGy8w9JPfIPhhEWBhQJjPDM8wAUkqOyBjjRQHgPONQ/LIkVSUiAMGRv0FVn1IU/IGi9mJdx8L6AVQK5no+DjBXebN8e8Z916KF5tfkL0t/tW1XGZ5etAL9FLfS5qHMJZgZfS9gZiJigxCRnHPO2cze8bTeQVEn4lsZBVPZWuXbOkBEoWnuKj4GFHUndSsusgAAAABJRU5ErkJggg==" />
   <img class="intLink" title="Subtitle" onclick="fDoc('formatblock','H2')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAIAAAAGHlpnAAAAxElEQVQ4jaWU4Q2FIAyED+MCrOAKrCAzsYKs4CquYFdwBUbg/QCUICUPvBByJvRrpYDw3uObZgBENBCplHoQAK5LdcUvCznnpJQApoH8t5xzXxFB8Uf2vS9s216I44jfWj++obwBM7dI684qquLKKegVRDv/WyUi35RBxEA5LKLdl7wj6WhZEUfw+RwMr+x0Gg9Tu7XGtykZgktoRR1dIrgS/qgibWdaRERYT2UFrSeIFIDkOYQIr1a4tgOSUk63G0MA+AFys0Nkp4pFqgAAAABJRU5ErkJggg==" />
   <img class="intLink" title="Quote" onclick="insQuote()" src="data:image/gif;base64,R0lGODlhFgAWAIQXAC1NqjFRjkBgmT9nqUJnsk9xrFJ7u2R9qmKBt1iGzHmOrm6Sz4OXw3Odz4Cl2ZSnw6KxyqO306K63bG70bTB0rDI3bvI4P///////////////////////////////////yH5BAEKAB8ALAAAAAAWABYAAAVP4CeOZGmeaKqubEs2CekkErvEI1zZuOgYFlakECEZFi0GgTGKEBATFmJAVXweVOoKEQgABB9IQDCmrLpjETrQQlhHjINrTq/b7/i8fp8PAQA7" />
-<!--  fDoc('formatblock','blockquote') -->
 <br>
+
+  <img class="intLink" title="Simple quote" onclick="fDoc('formatblock','blockquote')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACq0lEQVR42p2UW0hTARzGj9vOzubLdInZgxdsYaVRFvSSWOEi0plhDykIkyIICkYW+NQFUrN8cF66SF5IECujQwpSpNMMLcsUxYWZtBYEVnZm+uAK2tf+Z+1sZ4yhDX4wft//+/YwzmGYMB8jmnR5aDSbPA286U/DgAyvo4xumNV8ct11BSa31bXdfRHrVyxYt3JGBjnK6IZuI47lLF9tS18qB7toRtRiSUTohm6pE3Ysz3XNrPtWiqivx9YEdagrG8tfqChI+nISis+F/wV1acP3BwjVuoxPpx2KD4cRyhFHJWzCFFrn+xA1E/Apcydgc02Jmd/TBm0xOY5yC2c3QWk/JCP23VEIv5fh8XhQ6+ShmApkNmFS9I/mR6CY9DnaoC3GYC/hleNGhHL5Y7tYIjLHTkHx1uf3T5+TfOl0DRRjgQ5tMfFv8qF6uVeGfjQXwq8lsSS4l6Ac2idltu8T0qD+RR6UI9lSRluM9nk22ME9Ms5O10sl3jkEVX+W6He+KpX8+MIsVH3yHm0x7NPdCGX8x3upWDZmharX560znZKvtd+TfDAM273Dpe7JhJ+43iypROx6Ugy225dNLMxIvnDwPNjHgR5BW4z6YQbvBX6OD1+QDbKd20Rv6Dkg8wb+INiudAR3aYvhOtIsXMdm+OHn+qXSgPM11O1bRF82Ui0bVN/diuCejzQLwzSl6riWVAfXuhGEsPJTKl0ZboS62ef52WeBH3KMQn3HAH9HxLtBW+LTor6dWKC5lYT45nQYHxRhU0sWuIYUcDeSQJ4wdhXBeL8YXL3XNyaDu5koZQRtyJ5njTWhTVu3ARorkQD6Hgw5ykL9vyz8G0dTE3dJez0Oa4E6Ed+JmqoYc3RlrCu6So+IeG/odlVvbU1FTLK2Sl8bdtjrKKObcN2/byUNRBCtU4gAAAAASUVORK5CYII="/>
+  <img  class="intLink" title="Upper Case" onclick="upperCase(true)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABLUlEQVQ4jd2RIUhDURiFv/9tDIyKxSGIQRCbIJpmsYnFYhIm3Fe02V0zWQwa3y0TDWoxi6hFDEYxqUUQLIqyMNyex7A7lOfKQAz+8Kdz7jnfvRf+5wj0yyGaAwl0B7JO5lMFR2afg+MAdAz6AJW6JFAvqA6aBp2Dkm7xl0H3LXQ50Cuop63mAeI4PgOGJb0DD+VGY5Bqte0pAztgal2FLWAe2AOIAJrN5lKSJEPe+xHgolAorIb2UWASCGn2BhyF0C+CXC5Xcs5tAkWgT9LVt3YDbjM/m4KKYI9RHMezZrYGVLz3U0DFzAwUAYvAOjCe2ZegkQf6Jd14768BzGwstMwAA8A22FPmmfcD3UY+iqLDNE0XnHOXZlaXVDOzWjCc/DwMwC6wAprooP3xfALX735w7ouVWAAAAABJRU5ErkJggg=="/>
+  <img  class="intLink" title="Lower Case" onclick="upperCase(false)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABbUlEQVQ4jeWRMUhbURiFv98k8gpZlA5RUSkolI5Ci4NLEZyUaiWQgvC6ZAhpAm6OgRa6SKa+PLIqLoqDdNRooSCFOrpIoYNDoatTFe49HfICyatDtw494+Gc7957Lvw/EnQE22nf0kYcx8uSPgLfK5XKjJmpD3KdlKZ63lAa4L0PgRPgURzHC4IzgQQCJoFJwV0vn+0vt1qtEUkr3vslMxsGQoPnf30DMysBP6rV6mdgByg2m80HvQ2A/f7yHwDvfWhmu2Ym59wBkAuCYK17qjKGiqBvoFPQxACg3W4/NrNnmUxmB6Ber9+Y2ZGkMIm8BpsGmwXOgc3kOV1FUfTezLbSowLOOTdVq71ZBF4C48AocAH2KgvQaDSGgA3gnaTD1C7Hnc7Tt8ACsA52CSoBq5D8QqFQWPTej+VyuQ/lcvlnPyCKov0guH0BfO2WAXgyMKJzLpTUSZcT7c3PX03k878egr6APgFz9+T+kX4DpKN9Ea1iwNwAAAAASUVORK5CYII="/>
+<br>
+
   <img class="intLink" title="Superscript" onclick="fDoc('superscript','')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAA0UlEQVQ4jbVU0RHDIAjFXhdwBVfI1rqKrsAIMAL90FKTqCmX9h0fOYR3zwfRiQjcw8NQmxI41yIlTTuDCudAi7tviwrt7yTU/NeIUQBaxKhpC8W+U/GsWphZdSEiAGzb1otlZr+v9N4PLkJERJRznqro442dnZU4hFBKOVjJzExUcgaRFgs7z1rW6sZ29j0XtxOZrla1DRFDCIh4cLfHajsH5o8w3U5VAQBnd68ptL/qH87og99PZFa9YDFs5+y0TWT9j/Sn5wLLkzOB5cn5H8ULQ2VQqpt0IqIAAAAASUVORK5CYII=" />
   <img  class='intLign' title='Insert the address block' onClick="fDoc('insertHTML',addrTable())" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAHlBMVEUAAADS1NbS0tbS09eRbd6Ze92bdui1jP/R09X///+MztujAAAABHRSTlMAvr/vL7v4HgAAADBJREFUCNdjYIAB9nIwADNmzpw5XQDGaEBihLiC1DRgk4IzUtyIV8Og0QECBnBXAACvEzEHk178CQAAAABJRU5ErkJggg==" />
-  <img class="intLink" title="Insert a remark" onclick="fDoc('insertHTML',remTable)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAJ1BMVEUAAACVlZWWlpaWlpaUlJSVlZWVlZWVlZW9tuXR0cvXx//l5ub///+R2+rZAAAAB3RSTlMAvb/t7u7vFoYw8gAAAF1JREFUCNdjYICDaeXl5aUTGBg4K1edWbWykoGBeRaQsWoyAwP7KhBYvgHIWHMGyliFzujoONPR0Y7C6DlzAsRg7gCBlg0MnBUgRuUGBoapQLsUZ4Ns3Q0EGxCOAAAhBTikWU5uZwAAAABJRU5ErkJggg==">
+  <img  class="intLink" title="Insert a remark" onclick="remTable()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADC0lEQVR42pWUWUhUcRyF70ulkopphvsytqGJqEVlhImIlTZNammbpYb5oPNgBT2YPigqGdICNbRJYA9qTmRC9pBraubSmAuaNZppjZozjoLTNqf7+99mZGAc7ML3cM//nA9muZfjzFyRFbA/WI3kGLleHlP9p94EPqMz6nAruWIrdeLYCp066J4OLtcX4VRqCmV0Rh3qWpRFlc0/DLyphXWeBquuWIY61KWNWZnkgTbZJ38akbdmeKbNEloyhdUXVVhzacqIU840aGsquzsj3pg7iajSSej1erPMLvzGjoJxWGd9ho10HA2DC0grU7F72pKDyRJks/Y78saUtukjiC4eFcbzv9DQN2fCzpwRrD03DDfpRzxq/I7oQiWUKh1cM4dBW3KQi4spGpM6pgzA/swA9uePMGFjrxp2p3phd7pvieR+eGQM4t2neaHzXiN0+Jy25CAXFyztl69L6gERkzsolBWzcDjWBUNOeKUooBjRCp9A+xN7snvhkNht0iEXt/FUJ5wk7YzYy71s0NQzA0dxqzH3Od4BxYc5dqbW/sDezG44Hm5leVDa0p5cnFtsEzYcaGSIL3QJwq5pOEfXG/Pm7hmjLDy9Hc776+EX3wzFsAbi7E7+XuiRi3ONeAkDkqx2NmzuVMElvI5lV+8PIaugB6MTC4g42wSXfS9YXtsg/CMkmW18tuTg3MNq1O5hz0HEZbSwUkvHN7jtrmGZrHyIh/91dz0zZkTLWxXrHjnfzOfP/+U1as4rpEruFfIEREJqvSBs/wrP4CqWeQZXMgwdAy1vvrJufOor/tyQV8k574ByqU/AYxBHT9ex0uu2CXj7l8OQm4M61KWNt7+QkYvz9a2wF4nKlH5+ZUhKqhW+fPUiWlu/WESj0bFuYmIt+D2hJBd7WjZ73BFv9pDhRNzTZR+95TjObza5y0AOk+d5y/obD7eL7uDkoSqcOFS5YkJFt0Fbs2+cALtruf62JfgfaGPxnRhoVZwcaFOoDrQpgmX4Dt9d0Vt7q1WJ1zbrwlLz4kI1nVHH3PYvKTpc4csgLKkAAAAASUVORK5CYII="/>
 <br>
   <img class='intLign' title='3-rows grid' onClick="createGrid()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAJFBMVEUAAADY0tLX0tL////Z0tKqqaz///+pqKuqqazY0NLp4ub///+TSU30AAAAB3RSTlMAvr/u7/7+oxe1JgAAAEZJREFUCNdjYIAB9vLQ8tLyciBj1XYQFGBgX70dBCcwsO/eDoITGDjKQaBiAkzNBMJq0jHUmE+A2BVePoGBQXMmCDjAXQEASPQ50yBJDfgAAAAASUVORK5CYII=" />
   <input id='colTable' style='width:54px;font:normal 10pt Helvetica,Arial;border:1px solid gold;' type='text' value='10%;90%'>
@@ -510,6 +549,7 @@ var Mng = {
   table[name=remTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
   .quoteFirstCell { font: normal 56pt Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
+  .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Sans">
   body { font: normal 10pt Helvetica,"DejaVu Sans",Arial; }
@@ -527,6 +567,7 @@ var Mng = {
   table[name=remTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
   .quoteFirstCell { font: normal 56pt Helvetica,"DejaVu Sans",Arial; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { font: italic 10pt Helvetica,"DejaVu Sans",Arial; padding: 8px; }
+  .htmlBody {background-color:#eeeeff;border:1px solid #ddddff;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Georgia">
   body { font: normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; }
@@ -544,6 +585,7 @@ var Mng = {
   table[name=remTable] { font:normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
   .quoteFirstCell { font: normal 56pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; color: #ffbb66; border-right: 1px solid #ffbb66; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { font: italic 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; padding: 8px; }
+  .htmlBody {background-color:#ffeebb;border:1px solid #f0e0b0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Verdana">
   body { font: normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; }
@@ -561,6 +603,7 @@ var Mng = {
   table[name=remTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
   .quoteFirstCell { font: normal 56pt "Nimbus Sans L",Helvetica,Sans-serif; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { font: italic 10pt "Nimbus Sans L",Helvetica,Sans-serif; padding: 8px; }
+  .htmlBody {background-color:#eeffdd;border:1px solid #ddeed0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Normal">
   body { font: normal 11pt "URW Palladio L",Times,"Times New Roman"; }
@@ -575,6 +618,7 @@ var Mng = {
   table[name=remTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; background-color: lightgray; border-radius:8px; border:1px solid gray; }
   .quoteFirstCell { font: normal 56pt "URW Palladio L",Times,"Times New Roman"; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { font: italic 11pt "URW Palladio L",Times,"Times New Roman"; padding: 8px; }
+  .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Custom"></pre>
 </div>
@@ -597,6 +641,10 @@ Lorem ipsum<sup>1</sup> dolor sit amet, consectetur adipiscing elit<sup>2</sup>,
   <div id='outPutFiles' style='width:500px; height:200px; overflow:auto; font:normal 10pt Helvetica,Arial;'>
   </div>
   <input type='button' value='Close' onClick='this.parentElement.style.display="none"'>
+</div>
+
+<div id='htmlFrame' contentEditable style='background-color:white; border:1px solid gray; position:absolute; top:50px; left:100px; display:none; border-radius:5px; padding: 8px; box-shadow: 0px 2px 12px gray;'>
+  <div id='htmlOut' style='width:500px; height:500px; overflow:auto;'></div><br><br>
 </div>
 
 </body>
