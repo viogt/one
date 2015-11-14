@@ -229,12 +229,6 @@ function htmlPrepare() {
   } catch(e) { alert('Error: ' + e.message); }
 }
 
-/*var _release = null;
-function release(o, fl){
-  if(fl) { if(_release) return; o.style.backgroundColor = 'lightgreen'; _release = window.setTimeout(release, 400, o, false); }
-  else { o.style.backgroundColor = ''; window.clearTimeout(_release); _release = null; }
-}*/
-
 function release(o, fl){
   var W = o.getAttribute('rel');
   if(fl) { if(W && W>=0) return; o.style.backgroundColor = 'lightgreen'; o.setAttribute('rel', window.setTimeout(release, 400, o, false)); }
@@ -306,7 +300,7 @@ var Mng = {
     if(ifExists) return r!='null'?true:false;
     
     var j = JSON.parse(r);
-    id(this.xTitle).value = j.file;
+    id(this.xTitle).value = j.file; this.lastSaved = j.file;
     document.getElementsByTagName("style")[0].innerHTML = j.theme;
     id('basic').innerHTML = j.content;
     var T = id('Themes'); T.selectedIndex = T.options.length-1;
