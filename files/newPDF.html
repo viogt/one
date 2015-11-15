@@ -132,7 +132,7 @@
     function downPDF() {
       var j = {}, fn = id('fileName').value.trim();
       if(fn=='') { alert('The file name/title is empty!'); return; }
-      j.fileName += '.pdf'; //fn.replace(/ /g,'_') + '.pdf';
+      j.fileName = fn + '.pdf'; //fn.replace(/ /g,'_') + '.pdf';
       id('Frm').action = 'pipe/' + j.fileName;
       j.borders = getVals( id('borders').value );
       j.footer = id('footer').value.replace('{{title}}',fn);

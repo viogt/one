@@ -86,7 +86,7 @@ function pipping( file, body, resp ){
   console.log('File = ' + file);
   var html, wh = body.charAt(0);
 	var cnt = JSON.parse(body.substr(2));
-  console.log( 'FileName = ' + cnt.fileName );
+  //console.log( 'FileName = ' + cnt.fileName );
   
   if(wh == 'S') html = cnt.content;
   else html = '<HTML><BODY style="'+ cnt.body +'">'+cnt.content+'</BODY></HTML>';
