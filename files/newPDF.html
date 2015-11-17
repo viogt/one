@@ -57,7 +57,7 @@
     function changeStyle( s ) {
       var nm = s.options[s.selectedIndex].value;
       document.getElementsByTagName("style")[0].innerHTML = id(nm).innerHTML;
-        if(id('verOpt').checked) id('CSScurrent').value = id(nm).innerHTML;
+      if(id('FramePDF').style.display!='none') id('CSScurrent').value = id(nm).innerHTML;
     }
     function chStyle() {
         var T = id('Themes'), c = T.options[T.selectedIndex].value;
@@ -132,7 +132,7 @@
     
     function downPDF() {
       var j = {}, fn = id('fileName').value.trim();
-      if(fn=='') { alert('The file name/title is empty!'); return; }
+      if(fn=='') { alert('The file name/title is empty!'); return false; }
       j.fileName = fn + '.pdf'; //fn.replace(/ /g,'_') + '.pdf';
       id('Frm').action = 'pipe/' + j.fileName;
       j.borders = getVals( id('borders').value );
@@ -376,11 +376,11 @@ var Mng = {
     <td><img class="intLink" title='Tools' onClick='layDown(0)' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACXklEQVR42qVW207bQBD1n/QT+AQ+oZ+QT+ETeKGltIpC4lwUyIUATZwixwhk1ASEqxYeeCogUEAgUfECb9M9G8/G61scsDSSvbtzzu6c2RkbRspjDQYLfcdZshynLd4dzcSYnBNrjHmfH4PBog9CmUyshU8mcH/H0nHLsshsNOhbpUJfy2XNMIY5rOH18M0Evru3R8WNjQhokmEtfFJJxESOweN2HLT9oyEdHXvkjk6l7btDWjPLQZKcBm7b9oee4zx1bZsK9boCMhtNCfSlZGoEGPu8bspx2OX1rfguSV9gAAuY02xBlgjmSqulAY3vH+jv1S01dy25Qx7HroOkTIB3YPiatFUqsqBB8JNff6hj2bS53aPf5xe0WpwCPv17pmPvTJEECWBKeKSwOM4yPpAR4d1/KpREPA/FwkMZZwYEYaXZSSQAFjCBbXC+h4XELuE4vkOYbsgdnmqAIE0igPH9QPxpu9+PEMAJ8Xd/ikwZehoBTlAVJ2Bd4giACWwjLv4agQ8+7wlYh7cT2AfZCVJDFEMwX4gSRH5viJTISWn68vIqCWDIJBAxoDua3OS4ixZJU1maxUer281MMOuiAQuYqoQLJg8DwQo6vn+klXxROjZ2elqI8I5LuGZGCYDh797TG0yoksq4jyYVE6Ku15tKVHyjPrW+TwwnBAF8uaJGGhD3Aqifr9VUpYShDunFbir8xDwxXlWZk9gTxGQBC8JlO2xBcli+WpM+fhUtzOpqOW6BECuNCHMsaGyjSfmb+MjCc9hwM4PG4WBB4TP33wWc0DjQocJ/Ev5Yexbwf7tyxt6DFe4RAAAAAElFTkSuQmCC"/></td>
     <td><img class="intLink" title='Images' onClick='layDown(1)' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACZUlEQVR42qVWa07bQBD2TXoEjsAReoQchSPwjz6gDcR5mdpx85BjE9luUVLzKiEgKgUhgYTE3x5hut/W49qOn6qlkZ3dmW925pudiaIUPLbnbTm+v2P7vim+/YSINbkndJS6z4nnbYcgVEmELmwqgYcnloZfbZtUXaf9Toc+ttsJwRr2oMP6sK0EPpnN6Oj4eAM0T6ALm0InYqMBhdPggn5cLmlxcV1bvi3OaOpJJ40EuOu6b6a+/9tyXTr7uaK9Q5Xet+oLbMcnMwIWMP9VC6pEnL4zGMiTQDmeAm04poHliPeEPqhqbqpg2/qiMydmVIpMKCvFHZgC+HJ5R8bElu+087QD7EfEo4RFOLv4gYpIOwgEF/78nA41Q67h25hMRRTFDoAFTGArXO9pJXzjxItzEPiX9Nv7teCnVRoBvvl+IP80cpxMpTSJ747UiIOrmztaPz7LtSxbYAJbiec/i4MsmX2fkz6eytShpFk/bss8lDrASZEipKtnjuhzv0+3vx5kqhAN0nbQ7Rc7yEvR+vGJusZQgiEVzy+v0tF+uxelqmeOoyiyU5RDsqobMse4dLwHsJHjJiKMR4FIN0jOKlMowmh1/xBVEK/Hq4plJXS54jbKVLZm8WNgWZEDnBopYSlrEazHEQALmFELF56WWEBXrFJFRfeg2df49MvkgAnb9P86GNpO8vTpWeDNAwqubmq3alSSexqQ5Xr5M0E4aKKfo+V+6vYqt2nowgbgwCibag0egSCrqWm5KcEeExpOs0aluSzq9y0TzxcRNzMufJGYUNjU/ncBIwwOTKj0P4lwzSwD/gMxhLkMNDoQ9AAAAABJRU5ErkJggg=="/></td>
 
-    <td><form id='Frm' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='downPDF()'>
+    <td><form id='Frm' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='return downPDF();'>
             <input id='Hdn' name='S' type="hidden" value="">
             <input id='canSend' type="submit" value="PDF">
     </form></td>
-    <td><input type='text' id='fileName' value='' placeholder="PDF name here" style='font:normal 11pt Helvetica,Arial; padding:2px 8px 2px 8px;width:400px; border:1px solid lightgray;border-radius:5px;'></td>
+    <td><input type='text' id='fileName' value='' placeholder="PDF name here" style='font:normal 11pt Helvetica,Arial; padding:2px 8px 2px 8px;width:400px; border:1px solid lightgray;border-radius:8px;outline:none;'></td>
 
   <td><img class="intLink" title='Save file' onClick="Mng.Save();notify(event,this,'File saved!');" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACNElEQVR42q1W207bQBD1n/QT+AQ+oZ+QT+ETeKIXEBhyaxKFuOXi2AR7VRTCTSItEi1NH0CgFhAPvBGeMt2z8ix2fIkjGulI8XrmnNmd2RkbRsbP8f0ZV4g5RwhL/hcRyDX1TtoY0/52fH82IKFckLbwyUUeRKwcPzsOlZpNWqpUaLFcjgBreAcbtodvLvKtTofWGo0YaRpgC59MEfmiwORJEVu2S72TPu0fn9L6Vps+luI7CokUIuSe571pC/Foex6Z9XpilCAfjUYK+0d9+lAsxWzgCw5wgfOlWlAlUrnSaqUeAyLXAoeniQIAOIKcWLoUOaFZ55xXANCJRwnL7czjARWRZGzWajQcPmtyBtaWytVEH3CBE9wG13tW9BuuFxOw7N3MXfD9wPlLAjdTAEQXvy81+c/BJS2YxQlBuUrEyHP+QLGxro7l6WlIK9VmrEzT8hAT6Hzt0tXNX7q6/qPhiq7ahegekb93SO/XSpl2MYHwEYXrnXF790DvVovKmQlu7x9iduHqejmisSSHyzGM7+e/5A12qLXt0NmPQaJNWEAnebxM0wTygAUiZapas3xo2fZ/EwAXOHULl0p9LKArvlbArNU5+n50wASd9LUCXxw3Gv34LPC7B9Q7/qaMp0FPdtjdvQPZTf30mSAFzLYvaHOnQ8vVT7osJwG28AE5OCZNtQKPQCQrbT5w/+eEJg6ajK+Jt5x4voi4mWHwReKEwmfqrws4YXBgQo1/SQRr1iTif8boDIKha1jlAAAAAElFTkSuQmCC"/></td>
   <td><img class="intLink" title='Open files' onClick="Mng.openFiles()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACNElEQVR42p1WbU7bQBD1TXoEjtAj9Ag5Ckfor7ZQWrkkBJfg2IRQxyG1XVpShVYQqVVVGiSCQP3gQ0X8gl8Z9rmexRsHx9tII8U7M++NZ2ZnbBg5Pz8MZ9pRNOtHkSv+R4qIs1gnbAzd32YYPkxAqJAIW/gUAk8ijh3XfJ8qtk0L1So9X1pSBGfQwYbt4VsIfKPTocVaLQN6n8AWPrkkQlFi8EkRTxP4pEhKCngQBA9aUXTpBQGZKyva4CzwBQawgHnXLegSwVx1HMXhz9kFjUajWK6vb8hymzRfqeSSACOpiStbkQsKg87WNh2d/KLfp+cSPE1ydPwzI88WVVJZeLSweJ3HeEBHQPnxcz8DPE2emGWFAFjABLbB/c7K7qe9OFLXe0vd3l4hqW/45LwRLb1alynk+4H803q7rRDsDw4p/NDTfpOGH9Bc+R8BMIFtpPPPBADfPxhqE8yXl+UbcB0mEthNXxv8+2BIT1+VM4XOpOhdd0dclG1tgvB9T6ZHTdFYkV+vNenLtx/aBKZli/TcdZIs8nibIofoIh3wv5dXSqsqbRqPZvHgeF6sdL22dvQ7u1+VywYsYMoRLpj6OMBU/J+LVmu0ZP6BkUTfVxdMMkkrtkOr6y0hfmHh6NMTNbOAeBc0RHu9WLbiiIoKwF9aluyce3eCUJow0B3bPKaTKWpO22olXoEoVh4RdFzQiYsm52viEReeLyJuZlo4HVxQ+Gh/XcAJiwMbavxLIjlzpwHfAvi4IB6HWrVAAAAAAElFTkSuQmCC"/></td>
@@ -405,9 +405,9 @@ var Mng = {
   <select id='Themes' onChange="changeStyle(this)" style="width:86px; border:1px solid gold;">
     <option value='Serif' selected>Serif Grey</option>
     <option value='Sans'>Sans-serif Blue</option>
-    <option value='Georgia'>Georgia Red</option>
-    <option value='Verdana'>Sans-serif Green</option>
-    <option value='Normal'>Normal format</option>
+    <option value='Georgia'>School Red</option>
+    <option value='Verdana'>Palladio Green</option>
+    <option value='Normal'>Normal</option>
     <option value='Custom'>Custom format</option>
   </select>
   <br>
@@ -538,7 +538,7 @@ var Mng = {
 
 <div style="display:none">
   <pre id="Serif">
-  body { font: normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; }
+  body { font: normal 12pt FreeSerif,"Times New Roman",Times; }
   h1 { color: white;background-color: #999999;border-radius:8px;padding:8px; font-size: 20pt; font-weight:normal; border:1px solid #888888; margin:0px; }
   h2 { color: black;background-color: #eeeeee; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #dddddd; margin:0px; }
   b { border: 1px solid orange; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -549,14 +549,14 @@ var Mng = {
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; border-bottom:8px solid #cccccc; }
-  table[name=remTable] { font:normal 12pt Times,"Nimbus Roman No9 L","Times New Roman"; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
-  .quoteFirstCell { font: normal 56pt Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 12pt Times; padding: 8px; }
+  table[name=addrTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; border-bottom:8px solid #cccccc; }
+  table[name=remTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
+  .quoteFirstCell { font: normal 56pt FreeSerif,"Times New Roman",Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt FreeSerif,"Times New Roman",Times; padding: 8px; }
   .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Sans">
-  body { font: normal 10pt Helvetica,"DejaVu Sans",Arial; }
+  body { font: normal 11pt FreeSans,Arial; }
   h1 { color: white;background-color: #6677aa;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #6070a0; margin:0px; }
   h2 { color: #606090; background-color: #eeeeff; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddddff; margin:0px; }
   b { border: 1px solid #bbbbff; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -567,14 +567,14 @@ var Mng = {
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; border-bottom:8px solid #ccccff; }
-  table[name=remTable] { font:normal 10pt Helvetica,"DejaVu Sans",Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
-  .quoteFirstCell { font: normal 56pt Helvetica,"DejaVu Sans",Arial; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 10pt Helvetica,"DejaVu Sans",Arial; padding: 8px; }
+  table[name=addrTable] { font:normal 11pt FreeSans,Arial; border-bottom:8px solid #ccccff; }
+  table[name=remTable] { font:normal 11pt FreeSans,Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
+  .quoteFirstCell { font: normal 56pt FreeSans,Arial; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 11pt FreeSans,Arial; padding: 8px; }
   .htmlBody {background-color:#eeeeff;border:1px solid #ddddff;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Georgia">
-  body { font: normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; }
+  body { font: normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; }
   h1 { color: white;background-color: brown;border-radius:8px;padding:8px; font-size: 20pt; font-weight:normal; border:1px solid brown; margin:0px; }
   h2 { color: brown;background-color: #ffeebb; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #f0e0b0; margin:0px; }
   b { border: 1px solid #ffbb66; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -585,14 +585,14 @@ var Mng = {
   sup { color:brown; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; border-bottom:8px solid #ffbb66; }
-  table[name=remTable] { font:normal 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
-  .quoteFirstCell { font: normal 56pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; color: #ffbb66; border-right: 1px solid #ffbb66; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 12pt "Century Schoolbook L",Times,FreeSerif,"Times New Roman"; padding: 8px; }
+  table[name=addrTable] { font:normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; border-bottom:8px solid #ffbb66; }
+  table[name=remTable] { font:normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
+  .quoteFirstCell { font: normal 56pt "Century Schoolbook L","Century Schoolbook",Georgia; color: #ffbb66; border-right: 1px solid #ffbb66; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt "Century Schoolbook L","Century Schoolbook",Georgia; padding: 8px; }
   .htmlBody {background-color:#ffeebb;border:1px solid #f0e0b0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Verdana">
-  body { font: normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; }
+  body { font: normal 11pt "URW Palladio L","Palatino Linotype",Palatino; }
   h1 { color: white;background-color: #338844;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #308040; margin:0px; }
   h2 { color: darkgreen;background-color: #eeffdd; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddeed0; margin:0px; }
   b { border: 1px solid #cceea0; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -603,14 +603,14 @@ var Mng = {
   sup { color:green; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; border-bottom:8px solid #cceea0; }
-  table[name=remTable] { font:normal 10pt "Nimbus Sans L",Helvetica,Sans-serif; color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
-  .quoteFirstCell { font: normal 56pt "Nimbus Sans L",Helvetica,Sans-serif; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 10pt "Nimbus Sans L",Helvetica,Sans-serif; padding: 8px; }
+  table[name=addrTable] { font:normal 11pt "URW Palladio L","Palatino Linotype",Palatino; border-bottom:8px solid #cceea0; }
+  table[name=remTable] { font:normal 11pt "URW Palladio L","Palatino Linotype",Palatino; color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
+  .quoteFirstCell { font: normal 56pt "URW Palladio L","Palatino Linotype",Palatino; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 11pt "URW Palladio L","Palatino Linotype",Palatino; padding: 8px; }
   .htmlBody {background-color:#eeffdd;border:1px solid #ddeed0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Normal">
-  body { font: normal 11pt "URW Palladio L",Times,"Times New Roman"; }
+  body { font: normal 12pt FreeSerif,"Times New Roman",Times; }
   h1 { margin:0px; }
   h2 { margin:0px; }
   blockquote { margin:0px; margin-left:40px; border-left: 1px solid gray; padding: 0px; padding-left: 14px; font-style: italic; }
@@ -618,10 +618,10 @@ var Mng = {
   sup { font:bold 8px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; border-bottom:8px solid lightgray; }
-  table[name=remTable] { font:normal 11pt "URW Palladio L",Times,"Times New Roman"; background-color: lightgray; border-radius:8px; border:1px solid gray; }
-  .quoteFirstCell { font: normal 56pt "URW Palladio L",Times,"Times New Roman"; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 11pt "URW Palladio L",Times,"Times New Roman"; padding: 8px; }
+  table[name=addrTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; border-bottom:8px solid lightgray; }
+  table[name=remTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; background-color: lightgray; border-radius:8px; border:1px solid gray; }
+  .quoteFirstCell { font: normal 56pt FreeSerif,"Times New Roman",Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { font: italic 12pt FreeSerif,"Times New Roman",Times; padding: 8px; }
   .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Custom"></pre>
