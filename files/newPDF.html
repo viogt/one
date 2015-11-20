@@ -80,16 +80,22 @@
     function insHR( o ) { fDoc('insertHTML', '<IMG src="' + o.src + '">'); }
     function overTable( nd ) {
 
-      var s = window.getSelection();
+      var s = window.getSelection(); if(s.toString().trim()!='') return;
       var e = s.anchorNode; while(e.nodeName != 'TR') e = e.parentElement;
       var tb = e.parentElement.parentElement, rI = e.rowIndex;
-      var res = prompt("Row #"+ rI + ": enter DEL, INS (after):... or STYLE:...", "DEL");
+      var res = prompt("Row #"+ rI + ": enter DEL, INS (after):..., NUM:(1/A/a) or STYLE:...", "DEL");
         if(res == null) return; res = res.toUpperCase();
         if(res == 'DEL') tb.deleteRow(rI);
         else if(res == 'INS AFTER') insRow(tb,e,rI+1);
         else if(res == 'INS') insRow(tb,e,rI);
+        else if(res.substr(0,4) == 'NUM:') Numerotate(tb,res);
         else if(res.substr(0,6) == 'STYLE:') tb.style.cssText = res.substr(6);
         else alert('Unknown command!');
+    }
+    
+    function Numerotate(tb,r) {
+      var x = parseInt(r.substr(4),10);
+      for(var i=0, r=tb.rows, L=r.length; i<L; i++) r[i].cells[0].innerHTML = '(' + (i+x) + ')';
     }
     
     function insRow( tbl, rw, rIx ) {
@@ -98,7 +104,7 @@
     }
 
     function addrTable() {
-      var a = '<table name="addrTable" ondblclick="overTable()" cellPadding="4" cellSpacing="0" border="0"><tr><td>To:</td><td width="100%">...</td></tr>';
+      var a = '<table name="addrTable" ondblclick="overTable(this)" cellPadding="4" cellSpacing="0" border="0"><tr><td>To:</td><td width="100%">...</td></tr>';
       a += '<tr><td>Attn:</td><td width="100%">...</td></tr>'
       a += '<tr><td>From:</td><td width="100%">...</td></tr>'
       a += '<tr><td>Date:</td><td width="100%">...</td></tr>'
@@ -107,12 +113,18 @@
     }
     
     function createGrid() {
-      var inp = id('colTable').value;
-      var cs = inp.split(';'), cL = cs.length, rs = 3, rw = '<TR>';
-      for(var i=0; i<cL; i++) rw += '<td width="'+cs[i]+'">...</td>';
-      rw += '</TR>';
-      var T = '<table ondblclick="overTable()" cellPadding="4" cellSpacing="0" border="0">';
-      for(var i=0; i<rs; i++) T += rw;
+      var cs = id('colTable').value.split(';'), cL = cs.length;
+      var Rws, isSel = false, rs = 3, a = window.getSelection().toString();
+      if(a!='') {
+        isSel = true; Rws = a.split('\n'); rs = Rws.length;
+        for(var i=rs-1; i>=0; i--) if(Rws[i].trim()=='') { Rws.splice(i,1); rs--; }
+      }
+      var T = '<table ondblclick="overTable(this)" cellPadding="4" cellSpacing="0" border="0">';
+      for(var i=0; i<rs; i++) {
+        T += '<TR>';
+        for(var y=0; y<cL; y++) T += '<td width="'+cs[y]+'">'+ (isSel && y==(cL-1)?Rws[i]:'...') +'</td>';
+        T += '</TR>';
+      }
       T += '</table>';
       fDoc('insertHTML', T);
     }
@@ -544,7 +556,6 @@ var Mng = {
   b { border: 1px solid orange; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
   i { color: blue; }
   u { border-bottom: 2px solid orange; text-decoration:none; }
-  blockquote { margin:0px; margin-left:40px; border-left: 5px solid orange; padding: 0px; padding-left: 14px; font-style: italic; }
   hr { border:none; border-top:1px dashed #999999; height:0px; }
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
@@ -562,7 +573,6 @@ var Mng = {
   b { border: 1px solid #bbbbff; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
   i { color: blue; }
   u { border-bottom: 2px solid #ccccff; text-decoration:none; }
-  blockquote { margin:0px; margin-left:40px; border-left: 5px solid #ccccff; padding: 0px; padding-left: 14px; font-style: italic; }
   hr { border:none; border-top:1px dashed #9999ff; height:0px; }
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
@@ -580,7 +590,6 @@ var Mng = {
   b { border: 1px solid #ffbb66; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
   i { color: brown; }
   u { border-bottom: 2px solid #ffbb66; text-decoration:none; }
-  blockquote { margin:0px; margin-left:40px; border-left: 5px solid #ffbb66; padding: 0px; padding-left: 14px; font-style: italic; }
   hr { border:none; border-top:1px dashed #ffbb66; height:0px; }
   sup { color:brown; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
@@ -598,7 +607,6 @@ var Mng = {
   b { border: 1px solid #cceea0; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
   i { color: green; }
   u { border-bottom: 2px solid #cceea0; text-decoration:none; }
-  blockquote { margin:0px; margin-left:40px; border-left: 5px solid #cceea0; padding: 0px; padding-left: 14px; font-style: italic; }
   hr { border:none; border-top:1px dashed #b0e090; height:0px; }
   sup { color:green; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
@@ -613,7 +621,6 @@ var Mng = {
   body { font: normal 12pt FreeSerif,"Times New Roman",Times; }
   h1 { margin:0px; }
   h2 { margin:0px; }
-  blockquote { margin:0px; margin-left:40px; border-left: 1px solid gray; padding: 0px; padding-left: 14px; font-style: italic; }
   hr { border:none; border-top:1px solid gray; height:0px; }
   sup { font:bold 8px Sans-Serif; }
   td { vertical-align: top; }
