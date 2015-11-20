@@ -142,6 +142,12 @@
     
     function sampleText() { var x = id('basic'); x.innerHTML = x.innerHTML.trim()==''?id('sampleTxt').innerHTML:''; }
     
+    var globalHTML = '<span style="padding:8px;color:white;background-color:darkgreen;border-radius:6px;border:gray;">Correct!</span>';
+    function insHTML() {
+      var res = window.prompt("Enter the HTML code:", globalHTML);
+      if(res!=null) { globalHTML=res; fDoc('insertHTML',res); }
+    }
+    
     function downPDF() {
       var j = {}, fn = id('fileName').value.trim();
       if(fn=='') { alert('The file name/title is empty!'); return false; }
@@ -227,13 +233,12 @@ function htmlPrepare() {
   var x = document.createElement('div'); x.innerHTML = id('basic').innerHTML;
   var s=document.styleSheets[0], r=s.cssRules?s.cssRules:s.rules;
   for (var i=0, L=r.length; i<L; i++) {
-    var sel = r[i].selectorText.toLowerCase();
+    var sel = r[i].selectorText; //.toLowerCase();
     if(sel == 'body') { x.style.cssText = r[i].style.cssText; continue; }
-    if(sel == '.htmlbody' && id('htmlBG').checked) { x.style.cssText += r[i].style.cssText; continue; }
-    var tg = sel.charAt(0)=='.'?x.getElementsByClassName(sel.substr(1)):x.getElementsByTagName(sel);
+    if(sel == '.htmlBody' && id('htmlBG').checked) { x.style.cssText += r[i].style.cssText; continue; }
+    var tg = x.querySelectorAll(sel);
     for(var y=0, Lt=tg.length; y<Lt; y++) tg[y].style.cssText = r[i].style.cssText;
   }
-  
   var t = document.createElement('div'); t.contentEditable = true; t.appendChild(x);
   t.innerHTML += '<br><br>'; document.body.appendChild(t); t.focus(); fDoc('selectAll',''); fDoc('copy','');
   while (t.firstChild) t.removeChild(t.firstChild); document.body.removeChild(t);
@@ -449,7 +454,7 @@ var Mng = {
   <img class="intLink" title="Quote" onclick="insQuote()" src="data:image/gif;base64,R0lGODlhFgAWAIQXAC1NqjFRjkBgmT9nqUJnsk9xrFJ7u2R9qmKBt1iGzHmOrm6Sz4OXw3Odz4Cl2ZSnw6KxyqO306K63bG70bTB0rDI3bvI4P///////////////////////////////////yH5BAEKAB8ALAAAAAAWABYAAAVP4CeOZGmeaKqubEs2CekkErvEI1zZuOgYFlakECEZFi0GgTGKEBATFmJAVXweVOoKEQgABB9IQDCmrLpjETrQQlhHjINrTq/b7/i8fp8PAQA7" />
 <br>
 
-  <img class="intLink" title="Simple quote" onclick="fDoc('formatblock','blockquote')" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACq0lEQVR42p2UW0hTARzGj9vOzubLdInZgxdsYaVRFvSSWOEi0plhDykIkyIICkYW+NQFUrN8cF66SF5IECujQwpSpNMMLcsUxYWZtBYEVnZm+uAK2tf+Z+1sZ4yhDX4wft//+/YwzmGYMB8jmnR5aDSbPA286U/DgAyvo4xumNV8ct11BSa31bXdfRHrVyxYt3JGBjnK6IZuI47lLF9tS18qB7toRtRiSUTohm6pE3Ysz3XNrPtWiqivx9YEdagrG8tfqChI+nISis+F/wV1acP3BwjVuoxPpx2KD4cRyhFHJWzCFFrn+xA1E/Apcydgc02Jmd/TBm0xOY5yC2c3QWk/JCP23VEIv5fh8XhQ6+ShmApkNmFS9I/mR6CY9DnaoC3GYC/hleNGhHL5Y7tYIjLHTkHx1uf3T5+TfOl0DRRjgQ5tMfFv8qF6uVeGfjQXwq8lsSS4l6Ac2idltu8T0qD+RR6UI9lSRluM9nk22ME9Ms5O10sl3jkEVX+W6He+KpX8+MIsVH3yHm0x7NPdCGX8x3upWDZmharX560znZKvtd+TfDAM273Dpe7JhJ+43iypROx6Ugy225dNLMxIvnDwPNjHgR5BW4z6YQbvBX6OD1+QDbKd20Rv6Dkg8wb+INiudAR3aYvhOtIsXMdm+OHn+qXSgPM11O1bRF82Ui0bVN/diuCejzQLwzSl6riWVAfXuhGEsPJTKl0ZboS62ef52WeBH3KMQn3HAH9HxLtBW+LTor6dWKC5lYT45nQYHxRhU0sWuIYUcDeSQJ4wdhXBeL8YXL3XNyaDu5koZQRtyJ5njTWhTVu3ARorkQD6Hgw5ykL9vyz8G0dTE3dJez0Oa4E6Ed+JmqoYc3RlrCu6So+IeG/odlVvbU1FTLK2Sl8bdtjrKKObcN2/byUNRBCtU4gAAAAASUVORK5CYII="/>
+  <img class="intLink" title="Insert HTML code" onclick="insHTML()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACq0lEQVR42p2UW0hTARzGj9vOzubLdInZgxdsYaVRFvSSWOEi0plhDykIkyIICkYW+NQFUrN8cF66SF5IECujQwpSpNMMLcsUxYWZtBYEVnZm+uAK2tf+Z+1sZ4yhDX4wft//+/YwzmGYMB8jmnR5aDSbPA286U/DgAyvo4xumNV8ct11BSa31bXdfRHrVyxYt3JGBjnK6IZuI47lLF9tS18qB7toRtRiSUTohm6pE3Ysz3XNrPtWiqivx9YEdagrG8tfqChI+nISis+F/wV1acP3BwjVuoxPpx2KD4cRyhFHJWzCFFrn+xA1E/Apcydgc02Jmd/TBm0xOY5yC2c3QWk/JCP23VEIv5fh8XhQ6+ShmApkNmFS9I/mR6CY9DnaoC3GYC/hleNGhHL5Y7tYIjLHTkHx1uf3T5+TfOl0DRRjgQ5tMfFv8qF6uVeGfjQXwq8lsSS4l6Ac2idltu8T0qD+RR6UI9lSRluM9nk22ME9Ms5O10sl3jkEVX+W6He+KpX8+MIsVH3yHm0x7NPdCGX8x3upWDZmharX560znZKvtd+TfDAM273Dpe7JhJ+43iypROx6Ugy225dNLMxIvnDwPNjHgR5BW4z6YQbvBX6OD1+QDbKd20Rv6Dkg8wb+INiudAR3aYvhOtIsXMdm+OHn+qXSgPM11O1bRF82Ui0bVN/diuCejzQLwzSl6riWVAfXuhGEsPJTKl0ZboS62ef52WeBH3KMQn3HAH9HxLtBW+LTor6dWKC5lYT45nQYHxRhU0sWuIYUcDeSQJ4wdhXBeL8YXL3XNyaDu5koZQRtyJ5njTWhTVu3ARorkQD6Hgw5ykL9vyz8G0dTE3dJez0Oa4E6Ed+JmqoYc3RlrCu6So+IeG/odlVvbU1FTLK2Sl8bdtjrKKObcN2/byUNRBCtU4gAAAAASUVORK5CYII="/>
   <img  class="intLink" title="Upper Case" onclick="upperCase(true)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABLUlEQVQ4jd2RIUhDURiFv/9tDIyKxSGIQRCbIJpmsYnFYhIm3Fe02V0zWQwa3y0TDWoxi6hFDEYxqUUQLIqyMNyex7A7lOfKQAz+8Kdz7jnfvRf+5wj0yyGaAwl0B7JO5lMFR2afg+MAdAz6AJW6JFAvqA6aBp2Dkm7xl0H3LXQ50Cuop63mAeI4PgOGJb0DD+VGY5Bqte0pAztgal2FLWAe2AOIAJrN5lKSJEPe+xHgolAorIb2UWASCGn2BhyF0C+CXC5Xcs5tAkWgT9LVt3YDbjM/m4KKYI9RHMezZrYGVLz3U0DFzAwUAYvAOjCe2ZegkQf6Jd14768BzGwstMwAA8A22FPmmfcD3UY+iqLDNE0XnHOXZlaXVDOzWjCc/DwMwC6wAprooP3xfALX735w7ouVWAAAAABJRU5ErkJggg=="/>
   <img  class="intLink" title="Lower Case" onclick="upperCase(false)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABbUlEQVQ4jeWRMUhbURiFv98k8gpZlA5RUSkolI5Ci4NLEZyUaiWQgvC6ZAhpAm6OgRa6SKa+PLIqLoqDdNRooSCFOrpIoYNDoatTFe49HfICyatDtw494+Gc7957Lvw/EnQE22nf0kYcx8uSPgLfK5XKjJmpD3KdlKZ63lAa4L0PgRPgURzHC4IzgQQCJoFJwV0vn+0vt1qtEUkr3vslMxsGQoPnf30DMysBP6rV6mdgByg2m80HvQ2A/f7yHwDvfWhmu2Ym59wBkAuCYK17qjKGiqBvoFPQxACg3W4/NrNnmUxmB6Ber9+Y2ZGkMIm8BpsGmwXOgc3kOV1FUfTezLbSowLOOTdVq71ZBF4C48AocAH2KgvQaDSGgA3gnaTD1C7Hnc7Tt8ACsA52CSoBq5D8QqFQWPTej+VyuQ/lcvlnPyCKov0guH0BfO2WAXgyMKJzLpTUSZcT7c3PX03k878egr6APgFz9+T+kX4DpKN9Ea1iwNwAAAAASUVORK5CYII="/>
 <br>
@@ -550,7 +555,7 @@ var Mng = {
 
 <div style="display:none">
   <pre id="Serif">
-  body { font: normal 12pt FreeSerif,"Times New Roman",Times; }
+  body,td { font: normal 12pt FreeSerif,"Times New Roman",Times; }
   h1 { color: white;background-color: #999999;border-radius:8px;padding:8px; font-size: 20pt; font-weight:normal; border:1px solid #888888; margin:0px; }
   h2 { color: black;background-color: #eeeeee; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #dddddd; margin:0px; }
   b { border: 1px solid orange; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -560,14 +565,14 @@ var Mng = {
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; border-bottom:8px solid #cccccc; }
-  table[name=remTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
-  .quoteFirstCell { font: normal 56pt FreeSerif,"Times New Roman",Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 12pt FreeSerif,"Times New Roman",Times; padding: 8px; }
-  .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
+  table[name=addrTable] { border-bottom:8px solid #cccccc; }
+  table[name=remTable] { background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
+  .quoteFirstCell { font-size: 56pt; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { padding: 8px; font-style:italic; }
+  .htmlBody {background-color:#e6e6e6;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Sans">
-  body { font: normal 11pt FreeSans,Arial; }
+  body,td { font: normal 11pt FreeSans,Arial; }
   h1 { color: white;background-color: #6677aa;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #6070a0; margin:0px; }
   h2 { color: #606090; background-color: #eeeeff; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddddff; margin:0px; }
   b { border: 1px solid #bbbbff; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -577,14 +582,14 @@ var Mng = {
   sup { color:blue; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 11pt FreeSans,Arial; border-bottom:8px solid #ccccff; }
-  table[name=remTable] { font:normal 11pt FreeSans,Arial; background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
-  .quoteFirstCell { font: normal 56pt FreeSans,Arial; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 11pt FreeSans,Arial; padding: 8px; }
-  .htmlBody {background-color:#eeeeff;border:1px solid #ddddff;border-radius:8px;padding:12px;}
+  table[name=addrTable] { border-bottom:8px solid #ccccff; }
+  table[name=remTable] { background-color: #eeeeff; color:#606090; border-radius:8px; border:1px solid #ddddff; }
+  .quoteFirstCell { font-size: 56pt; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { padding: 8px; font-style:italic; }
+  .htmlBody { background-color:#e6e6ff;border:1px solid #ddddff;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Georgia">
-  body { font: normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; }
+  body,td { font: normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; }
   h1 { color: white;background-color: brown;border-radius:8px;padding:8px; font-size: 20pt; font-weight:normal; border:1px solid brown; margin:0px; }
   h2 { color: brown;background-color: #ffeebb; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #f0e0b0; margin:0px; }
   b { border: 1px solid #ffbb66; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
@@ -594,14 +599,14 @@ var Mng = {
   sup { color:brown; font:bold 10px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; border-bottom:8px solid #ffbb66; }
-  table[name=remTable] { font:normal 12pt "Century Schoolbook L","Century Schoolbook",Georgia; color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
-  .quoteFirstCell { font: normal 56pt "Century Schoolbook L","Century Schoolbook",Georgia; color: #ffbb66; border-right: 1px solid #ffbb66; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 12pt "Century Schoolbook L","Century Schoolbook",Georgia; padding: 8px; }
-  .htmlBody {background-color:#ffeebb;border:1px solid #f0e0b0;border-radius:8px;padding:12px;}
+  table[name=addrTable] { border-bottom:8px solid #ffbb66; }
+  table[name=remTable] { color:brown; background-color: #ffeebb; border-radius:8px; border:1px solid #f0e0b0; }
+  .quoteFirstCell { font-size: 56pt; color: #ffbb66; border-right: 1px solid #ffbb66; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { padding: 8px; font-style:italic; }
+  .htmlBody { background-color:#feedba;border:1px solid #f0e0b0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Verdana">
-  body { font: normal 11pt Utopia,"URW Palladio L","Palatino Linotype",Palatino; }
+  body,td { font: normal 11pt Utopia,"URW Palladio L","Palatino Linotype",Palatino; }
   td { font: normal 11pt Utopia,"URW Palladio L","Palatino Linotype",Palatino; vertical-align: top; }
   h1 { color: white;background-color: #338844;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #308040; margin:0px; }
   h2 { color: darkgreen;background-color: #eeffdd; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddeed0; margin:0px; }
@@ -615,23 +620,21 @@ var Mng = {
   table[name=remTable] { color: darkgreen; background-color: #eeffdd; border-radius:8px; border:1px solid #ddeed0; }
   .quoteFirstCell { font-size: 56pt; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { padding: 8px; font-style:italic; }
-  .XquoteFirstCell { font: normal 56pt "URW Palladio L","Palatino Linotype",Palatino; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .XquoteSecondCell { font: italic 11pt "URW Palladio L","Palatino Linotype",Palatino; padding: 8px; }
-  .htmlBody {background-color:#eeffdd;border:1px solid #ddeed0;border-radius:8px;padding:12px;}
+  .htmlBody { background-color:#edfedc;border:1px solid #ddeed0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Normal">
-  body { font: normal 12pt FreeSerif,"Times New Roman",Times; }
+  body,td { font: normal 12pt FreeSerif,"Times New Roman",Times; }
   h1 { margin:0px; }
   h2 { margin:0px; }
   hr { border:none; border-top:1px solid gray; height:0px; }
   sup { font:bold 8px Sans-Serif; }
   td { vertical-align: top; }
 
-  table[name=addrTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; border-bottom:8px solid lightgray; }
-  table[name=remTable] { font:normal 12pt FreeSerif,"Times New Roman",Times; background-color: lightgray; border-radius:8px; border:1px solid gray; }
-  .quoteFirstCell { font: normal 56pt FreeSerif,"Times New Roman",Times; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
-  .quoteSecondCell { font: italic 12pt FreeSerif,"Times New Roman",Times; padding: 8px; }
-  .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
+  table[name=addrTable] { border-bottom:8px solid lightgray; }
+  table[name=remTable] { background-color: lightgray; border-radius:8px; border:1px solid gray; }
+  .quoteFirstCell { font-size: 56pt; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { padding: 8px; font-style:italic; }
+  .htmlBody { background-color:#e6e6e6;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Custom"></pre>
 </div>
