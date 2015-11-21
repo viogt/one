@@ -410,8 +410,7 @@ var Mng = {
 <div id='FramePDF' style='display:none; position:absolute; top:30px; left: 10px; height:200px;width:580px; border:1px solid gray; padding:24px; overflow-x: hidden; overflow-y: scroll; background-color:lightgray;'>
     <table border='0' cellSpacing="4" cellSpacing='0' style="font:normal 12px Helvetica,Arial;color:gray;">
         <tr><td>PDF Borders:</td><td><input id='borders' type="text" style='width:460px' value="top:20mm,right:20mm,bottom:15mm,left:20mm,footer:5mm"></td></tr>
-        <tr><td>PDF Footer:</td><td><textarea id='footer' rows=3 style='width:460px'><table style="color:gray; width:100%; font:normal 8pt Helvetica; border-top:1px solid lightgray;"><TR><td>{{title}}</td><TD align="right">Page {{page}}</span> of <span>{{pages}}</td></TR></table></textarea></td></tr>
-        <tr><td>CSS style:</td><td><textarea id='CSScurrent' onChange='chStyle()' rows=8 style='width:460px'><table style="color:gray; width:100%; font:normal 8pt Helvetica; border-top:1px solid lightgray;"><TR><td>{{title}}</td><TD align="right">Page {{page}}</span> of <span>{{pages}}</td></TR></table></textarea></td></tr>
+        <tr><td>PDF Footer:</td><td><textarea id='footer' rows=4 style='width:460px'><table style="width:100%; border-top:1px solid lightgray;"><TR><td style="font:normal 8pt Helvetica;color:gray">{{title}}</td><TD align="right" style="font:normal 8pt Helvetica;color:gray">Page {{page}}</span> of <span>{{pages}}</td></TR></table></textarea></td></tr><tr><td>CSS style:</td><td><textarea id='CSScurrent' onChange='chStyle()' rows=8 style='width:460px'><table style="color:gray; width:100%; font:normal 8pt Helvetica; border-top:1px solid lightgray;"><TR><td>{{title}}</td><TD align="right">Page {{page}} of {{pages}}</td></TR></table></textarea></td></tr>
         <tr><td>HTML:</td><td><input id="htmlBG" type="checkbox" checked> use HTML background</td></tr>
     </table>
 </div>
