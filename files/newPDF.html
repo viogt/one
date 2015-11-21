@@ -83,19 +83,19 @@
       var s = window.getSelection(); if(s.toString().trim()!='') return;
       var e = s.anchorNode; while(e.nodeName != 'TR') e = e.parentElement;
       var tb = e.parentElement.parentElement, rI = e.rowIndex;
-      var res = prompt("Row #"+ rI + ": enter DEL, INS (after):..., NUM:(1/A/a) or STYLE:...", "DEL");
-        if(res == null) return; res = res.toUpperCase();
+      var res, R = prompt("Row #"+ rI + ": enter DEL, INS (after), NUM:(1/A/a) or STYLE:...", "DEL");
+        if(R == null) return; res = R.toUpperCase();
         if(res == 'DEL') tb.deleteRow(rI);
         else if(res == 'INS AFTER') insRow(tb,e,rI+1);
         else if(res == 'INS') insRow(tb,e,rI);
-        else if(res.substr(0,4) == 'NUM:') Numerotate(tb,res);
+        else if(res.substr(0,4) == 'NUM:') Numerotate(tb,R);
         else if(res.substr(0,6) == 'STYLE:') tb.style.cssText = res.substr(6);
         else alert('Unknown command!');
     }
     
     function Numerotate(tb,r) {
-      var x = parseInt(r.substr(4),10);
-      for(var i=0, r=tb.rows, L=r.length; i<L; i++) r[i].cells[0].innerHTML = '(' + (i+x) + ')';
+      var x = r.substr(4).trim(), f = isNaN(x), v = f?x.charCodeAt(0):parseInt(x,10);
+      for(var i=0, r=tb.rows, L=r.length; i<L; i++) r[i].cells[0].innerHTML = '(' + (f?String.fromCharCode(i+v):(i+v)) + ')';
     }
     
     function insRow( tbl, rw, rIx ) {
@@ -424,6 +424,7 @@ var Mng = {
     <option value='Sans'>Sans-serif Blue</option>
     <option value='Georgia'>School Red</option>
     <option value='Verdana'>Palladio Green</option>
+    <option value='Utopia'>Utopia Blue</option>
     <option value='Normal'>Normal</option>
     <option value='Custom'>Custom format</option>
   </select>
@@ -486,13 +487,13 @@ var Mng = {
   <INPUT class='intSign' type='button' value='④' onClick="fDoc('insertText','④')"/>
   <INPUT class='intSign' type='button' value='⑤' onClick="fDoc('insertText','⑤')"/>
 <br>
-  <INPUT class='intSign' type='button' value='Ⓐ' onClick="fDoc('insertText','Ⓐ')"/>
-  <INPUT class='intSign' type='button' value='Ⓑ' onClick="fDoc('insertText','Ⓑ')"/>
-  <INPUT class='intSign' type='button' value='Ⓒ' onClick="fDoc('insertText','Ⓒ')"/>
+  <INPUT class='intSign' type='button' value='⑥' onClick="fDoc('insertText','⑥')"/>
+  <INPUT class='intSign' type='button' value='⑦' onClick="fDoc('insertText','⑦')"/>
+  <INPUT class='intSign' type='button' value='⑧' onClick="fDoc('insertText','⑧')"/>
 <br>
-  <INPUT class='intSign' type='button' value='Ⓓ' onClick="fDoc('insertText','Ⓓ')"/>
+  <INPUT class='intSign' type='button' value='⑨' onClick="fDoc('insertText','⑨')"/>
+  <INPUT class='intSign' type='button' value='⑩' onClick="fDoc('insertText','⑩')"/>
   <INPUT class='intSign' type='button' value='⚠' onClick="fDoc('insertText','⚠')"/>
-  <INPUT class='intSign' type='button' value='☢' onClick="fDoc('insertText','☢')"/>
 <br>
   <INPUT class='intSign' type='button' value='➊' onClick="fDoc('insertText','➊')"/>
   <INPUT class='intSign' type='button' value='➋' onClick="fDoc('insertText','➋')"/>
@@ -569,7 +570,7 @@ var Mng = {
   table[name=remTable] { background-color: #eeeeee; border-radius:8px; border:1px solid #dddddd; }
   .quoteFirstCell { font-size: 56pt; color: lightgray; border-right: 1px solid lightgray; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { padding: 8px; font-style:italic; }
-  .htmlBody {background-color:#e6e6e6;border:1px solid #dddddd;border-radius:8px;padding:12px;}
+  .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Sans">
   body,td { font: normal 11pt FreeSans,Arial; }
@@ -606,7 +607,7 @@ var Mng = {
   .htmlBody { background-color:#feedba;border:1px solid #f0e0b0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Verdana">
-  body,td { font: normal 11pt Utopia,"URW Palladio L","Palatino Linotype",Palatino; }
+  body,td { font: normal 11pt "URW Palladio L","Palatino Linotype",Palatino; }
   td { font: normal 11pt Utopia,"URW Palladio L","Palatino Linotype",Palatino; vertical-align: top; }
   h1 { color: white;background-color: #338844;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #308040; margin:0px; }
   h2 { color: darkgreen;background-color: #eeffdd; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #ddeed0; margin:0px; }
@@ -621,6 +622,23 @@ var Mng = {
   .quoteFirstCell { font-size: 56pt; color: #cceea0; border-right: 1px solid #cceea0; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
   .quoteSecondCell { padding: 8px; font-style:italic; }
   .htmlBody { background-color:#edfedc;border:1px solid #ddeed0;border-radius:8px;padding:12px;}
+  </pre>
+  <pre id="Utopia">
+  body,td { font: normal 11pt Utopia,"Times New Roman",Times; }
+  h1 { color: white;background-color: #6677aa;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #6070a0; margin:0px; }
+  h2 { color: #203060; background-color: #e0e0f0; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #d0d0f0; margin:0px; }
+  b { border: 1px solid #b0b0f0; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
+  i { color: #203090; }
+  u { border-bottom: 2px solid #c0c0f0; text-decoration:none; }
+  hr { border:none; border-top:1px dashed #9090f0; height:0px; }
+  sup { color:blue; font:bold 10px Sans-Serif; }
+  td { vertical-align: top; }
+
+  table[name=addrTable] { border-bottom:8px solid #c0c0f0; }
+  table[name=remTable] { background-color: #e0e0f0; color:#203060; border-radius:8px; border:1px solid #ddddff; }
+  .quoteFirstCell { font-size: 56pt; color: #ccccff; border-right: 1px solid #ccccff; padding: 8px; padding-top:0px; text-align: right; width: 70px; }
+  .quoteSecondCell { padding: 8px; font-style:italic; }
+  .htmlBody { background-color:#eeeef0;border:1px solid #d0d0f0;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Normal">
   body,td { font: normal 12pt FreeSerif,"Times New Roman",Times; }
