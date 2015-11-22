@@ -169,7 +169,7 @@ function operate( js, resp ) {
 		        return;
             case 'coll exists':
                     db.collection(js.collection, {strict:true}, function(err, collection) {
-                    resp.end(err?'0':'1');
+                    resp.end((err?'>0':'>1') + '\n' + (typeof collection));
 		        });
 		        return;
 		    default: shucher(resp, {error: 'Unknown command'}, db);
