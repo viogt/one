@@ -392,7 +392,10 @@ function changePsw() {
   else x1.display = x2.display = 'none';
 }
 
-function enterUsr(o) { var x = id('passUsr').style; x.display = x.display=='none'?'':'none'; if(x.display != 'none') id('oUsr').focus(); }
+function enterUsr(o) { var x = id('passUsr').style;
+  if(x.display=='none') { x.display = ''; id('oPsw').value = ''; id('oUsr').value=''; id('oUsr').focus(); }
+  else x.display != 'none';
+}
 function submitUsr() {
   var j = {};
   if(id('newPsw1').style.display != 'none') {

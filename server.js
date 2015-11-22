@@ -124,7 +124,12 @@ function operate( js, resp ) {
     resp.writeHead(200, {'Content-Type': 'text/plain' });
     Mng.MongoClient.connect(MngIp, function(err, db) {
         if(err) return shucher(resp, err, null);
-        var cll = db.collection( js.collection );
+        var cll; //= db.collection( js.collection );
+        
+        db.collection(js.collection, {strict:true}, function(err, collection) {
+                    if(err) return shucher(resp, err, db); db.close();
+                    cll = collection;
+        });
 
         switch( js.action ) {
             case 'get one':
