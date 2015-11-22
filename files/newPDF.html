@@ -392,7 +392,7 @@ function changePsw() {
   else x1.display = x2.display = 'none';
 }
 
-function enterUsr(o, e) { var x = id('passUsr').style; x.display = x.display=='none'?'':'none'; }
+function enterUsr(o) { var x = id('passUsr').style; x.display = x.display=='none'?'':'none'; if(x.display != 'none') id('oUsr').focus(); }
 function submitUsr() {
   var j = {};
   if(id('newPsw1').style.display != 'none') {
