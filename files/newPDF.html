@@ -405,8 +405,9 @@ function submitUsr() {
   j.userName = u; j.password = v;
   id('passUsr').style.display = 'none';
   
-    j.action = 'col exists';
+    j.action = 'get one';
     j.collection = u;
+    j.file = 'viorel';
     alert( JSON.stringify(j) );
     Mng.Send(j);
   return true;

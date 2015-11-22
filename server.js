@@ -124,25 +124,13 @@ function operate( js, resp ) {
     resp.writeHead(200, {'Content-Type': 'text/plain' });
     Mng.MongoClient.connect(MngIp, function(err, db) {
         if(err) return shucher(resp, err, null);
-        
-        try {
-            
-        db.listCollections({name: js.collection }).next(function(err, collinfo) {
-        if (collinfo) resp.end('Collection ' + js.collection + 'exists!');
-        else resp.end('Collection ' + js.collection + 'does not exist!');
-        return;
-        }); return;
-            
         var cll = db.collection( js.collection );
-        resp.end( '0 ::' + JSON.stringify(db.collectionNames()) );
-        //resp.end('0 :' + cll.exists()); return;
-        } catch(e) { resp.end('0 :' + e.message); return; }
-        
+
         switch( js.action ) {
             case 'get one':
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db); db.close();
-                    resp.end(JSON.stringify(obj));
+                    resp.end('0 ::' + js.collection + '\n' + JSON.stringify(obj));
 		        });
 		        return;
 		    case 'list':
