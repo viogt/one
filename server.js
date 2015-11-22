@@ -130,7 +130,7 @@ function operate( js, resp ) {
             case 'get one':
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db); db.close();
-                    resp.end('0 ::' + js.collection + '\n' + JSON.stringify(obj));
+                    resp.end('0 >' + js.collection + '\n>' + obj + '\n>' + JSON.stringify(obj));
 		        });
 		        return;
 		    case 'list':
