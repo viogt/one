@@ -155,7 +155,7 @@ function operate( js, resp ) {
 		        });
 		        return;
             case 'coll exists':
-                resp.end(collExists); return;
+                resp.end(collExists?'+':'-'); return;
 		    default: resp.end('0 Unknown command'); db.close();
         }
         });
