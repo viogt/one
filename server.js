@@ -127,7 +127,7 @@ function operate( js, resp ) {
         var cll; //= db.collection( js.collection );
         
         db.collection(js.collection, {strict:true}, function(err, collection) {
-                    if(err) resp.end( JSON.stringify(err) ); 
+                    if(err) resp.end( "Does not exist! " + JSON.stringify(err) + '\n' + err.err); 
                     //shucher(resp, err, db);
                     //cll = collection;
                     else resp.end('EXISTS!');
