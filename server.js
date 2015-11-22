@@ -127,7 +127,7 @@ function operate( js, resp ) {
         
         try {
         var cll = db.collection( js.collection );
-        resp.end( JSON.stringify( cll.stats() ) );
+        resp.end( JSON.stringify( cll.dataSize() ) );
         //resp.end('0 :' + cll.exists()); return;
         } catch(e) { resp.end('0 :' + e.message); return; }
         
