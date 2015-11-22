@@ -127,9 +127,10 @@ function operate( js, resp ) {
         var cll; //= db.collection( js.collection );
         
         db.collection(js.collection, {strict:true}, function(err, collection) {
-                    if(err) return shucher(resp, err, db); db.close();
+                    if(err) shucher(resp, err, db);
                     cll = collection;
-        });
+                    resp.end('EXISTS!');
+        }); return;
 
         switch( js.action ) {
             case 'get one':
