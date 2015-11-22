@@ -403,13 +403,12 @@ function submitUsr() {
   var u = id('oUsr').value.trim().toLowerCase(), v = id('oPsw').value;
   if(u=='' || v=='') { alert('You have not provided either the User name\nor the Password.'); return false; }
   j.userName = u; j.password = v;
-  alert( JSON.stringify(j) );
   id('passUsr').style.display = 'none';
   
     j.action = 'col exists';
     j.collection = u;
-    Mng.Send(j);
     alert( JSON.stringify(j) );
+    alert( Mng.Send(j) );
   return true;
 }
 </script>
