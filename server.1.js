@@ -123,28 +123,42 @@ function pipping( file, body, resp ){
 function operate( js, resp ) {
     resp.writeHead(200, {'Content-Type': 'text/plain' });
     Mng.MongoClient.connect(MngIp, function(err, db) {
-        if(err) { resp.end('0 Database cannot be opened!'); return; }
+        if(err) return shucher(resp, err, null);
+        var cll= db.collection( js.collection );
         
-        db.collection(js.collection, {strict:true}, function(err, collection) {
-        var cll = collection, collExists = err?false:true;
         switch( js.action ) {
             case 'get one':
-                if(!collExists) { resp.end('null'); return; }
-                cll.findOne({file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
+                cll.findOne({file: js.file}, function(err, obj) {
+                    if(err) return shucher(resp, err, db); db.close();
+                    resp.end(JSON.stringify(obj));
+		        });
 		        return;
 		    case 'list':
-                cll.find({}, { file:1, modified:1 }).sort({modified:-1}).toArray(function(err, recs) { sc(recs, err, resp, db); });
+                cll.find({}, { file:1, modified:1 }).sort({modified:-1}).toArray(function(err, recs) {
+                    if(err) return shucher(resp, err, db); db.close();
+			        resp.end(JSON.stringify(recs));
+		        });
 		        return;
             case 'save':
                 js.modified = new Date();
-                cll.update({file: js.file}, js, {upsert: true}, function(err, obj) { sc(obj, err, resp, db); });
+                cll.update({file: js.file}, js, {upsert: true}, function(err, obj) {
+                    if(err) return shucher(resp, err, db); db.close();
+			        resp.end(JSON.stringify(obj));
+		        });
 		        return;
             case 'remove':
-                cll.remove( {file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
+                cll.remove( {file: js.file}, function(err, obj) {
+                    if(err) return shucher(resp, err, db); db.close();
+                    resp.end(JSON.stringify(obj));
+                });
 		        return;
             case 'rename':
-                cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
+                cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) {
+                    if(err) return shucher(resp, err, db); db.close();
+			        resp.end(JSON.stringify(obj));
+		        });
 		        return;
+            /*
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db); db.close();
@@ -154,17 +168,15 @@ function operate( js, resp ) {
                     resp.end(html);
 		        });
 		        return;
+            */
             case 'coll exists':
-                resp.end(collExists); return;
-		    default: resp.end('0 Unknown command'); db.close();
+                    db.collection(js.collection, {strict:true}, function(err, collection) {
+                    resp.end(err?'-':'+');
+		        });
+		        return;
+		    default: shucher(resp, {error: 'Unknown command'}, db);
         }
-        });
     });
-}
-
-function sc(obj, err, res, DB) {
-    res.end(err?('0' + JSON.stringify(err)):JSON.stringify(obj));
-    DB.close();
 }
 
 function returnFile(fl, resp){
