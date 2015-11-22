@@ -124,9 +124,11 @@ function operate( js, resp ) {
     resp.writeHead(200, {'Content-Type': 'text/plain' });
     Mng.MongoClient.connect(MngIp, function(err, db) {
         if(err) return shucher(resp, err, null);
-        var cll = db.collection( js.collection );
         
-                                                                resp.end('0 ' + JSON.stringify(cll) + ' Count=' + cll.count()); return;
+        try {
+        var cll = db.collection( js.collection );
+        resp.end('0 ' + JSON.stringify(cll) + ' Count=' + cll.count()); return;
+        } catch(e) { resp.end('0 ' + e.message); return; }
         
         switch( js.action ) {
             case 'get one':
