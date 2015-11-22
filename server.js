@@ -127,8 +127,9 @@ function operate( js, resp ) {
         
         try {
         var cll = db.collection( js.collection );
-        resp.end('0 ' + JSON.stringify(cll) + ' Count=' + cll.count()); return;
-        } catch(e) { resp.end('0 ' + e.message); return; }
+        //resp.end('0 ' + JSON.stringify(cll) + ' Count=' + cll.count()); return;
+        resp.end('0 Count=' + cll.count()); return;
+        } catch(e) { resp.end('0 :' + e.message); return; }
         
         switch( js.action ) {
             case 'get one':
