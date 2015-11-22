@@ -129,7 +129,7 @@ function operate( js, resp ) {
         var cll = collection, collExists = err?false:true;
         switch( js.action ) {
             case 'get one':
-                if(!collExists) { resp.end('null'); return; }
+                if(!collExists) { resp.end('null'); db.close(); return; }
                 cll.findOne({file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
 		    case 'list':
