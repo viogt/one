@@ -126,6 +126,13 @@ function operate( js, resp ) {
         if(err) return shucher(resp, err, null);
         
         try {
+            
+        db.listCollections({name: js.collection }).next(function(err, collinfo) {
+        if (collinfo) resp.end('Collection ' + js.collection + 'exists!');
+        else resp.end('Collection ' + js.collection + 'does not exist!');
+        return;
+        }); return;
+            
         var cll = db.collection( js.collection );
         resp.end( '0 ::' + JSON.stringify(db.collectionNames()) );
         //resp.end('0 :' + cll.exists()); return;
