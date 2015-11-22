@@ -316,9 +316,6 @@ var Mng = {
   
   getOne: function( fName, ifExists ) {
     var r = this.Send( { collection: this.xCollection, file: fName, action: 'get one' } );
-
-alert(r + '\n' + (typeof r));
-
     if(ifExists) return r!='null'?true:false;
     
     var j = JSON.parse(r);
@@ -415,7 +412,8 @@ function submitUsr() {
     j.collection = u;
     j.file = 'viorel';
     alert( JSON.stringify(j) );
-    alert( Mng.Send(j) );
+    var r = Mng.Send(j); 
+alert(r + '\n' + (typeof r));
   return true;
 }
 </script>
