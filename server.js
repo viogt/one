@@ -127,7 +127,8 @@ function operate( js, resp ) {
         
         try {
         var cll = db.collection( js.collection );
-        resp.end('0 :' + cll.exists()); return;
+        resp.end( JSON.stringify( db.system.namespaces.find( { name: 'test.' + js.collection } )));
+        //resp.end('0 :' + cll.exists()); return;
         } catch(e) { resp.end('0 :' + e.message); return; }
         
         switch( js.action ) {
