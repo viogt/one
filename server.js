@@ -125,6 +125,9 @@ function operate( js, resp ) {
     Mng.MongoClient.connect(MngIp, function(err, db) {
         if(err) return shucher(resp, err, null);
         var cll = db.collection( js.collection );
+        
+                                                                resp.end('0 ' + JSON.stringify(cll) + ' Count=' + cll.count()); return;
+        
         switch( js.action ) {
             case 'get one':
                 cll.findOne({file: js.file}, function(err, obj) {
