@@ -126,12 +126,6 @@ function operate( js, resp ) {
         if(err) return shucher(resp, err, null);
         var cll= db.collection( js.collection );
         
-        
-        db.collections(function(err, collections) {
-                resp.end( '0>' + JSON.stringify( collections ));
-                db.close();
-        }); return;
-        
         /*db.collection(js.collection, {strict:true}, function(err, collection) {
                     if(err) resp.end( "Does not exist! " + JSON.stringify(err) + '\n' + err.err); 
                     //shucher(resp, err, db);

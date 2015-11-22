@@ -316,6 +316,9 @@ var Mng = {
   
   getOne: function( fName, ifExists ) {
     var r = this.Send( { collection: this.xCollection, file: fName, action: 'get one' } );
+
+alert(r + '\n' + (typeof r));
+
     if(ifExists) return r!='null'?true:false;
     
     var j = JSON.parse(r);
