@@ -126,13 +126,6 @@ function operate( js, resp ) {
         if(err) return shucher(resp, err, null);
         var cll= db.collection( js.collection );
         
-        /*db.collection(js.collection, {strict:true}, function(err, collection) {
-                    if(err) resp.end( "Does not exist! " + JSON.stringify(err) + '\n' + err.err); 
-                    //shucher(resp, err, db);
-                    //cll = collection;
-                    else resp.end('EXISTS!');
-        }); return;*/
-
         switch( js.action ) {
             case 'get one':
                 cll.findOne({file: js.file}, function(err, obj) {
@@ -172,6 +165,11 @@ function operate( js, resp ) {
                     var html = '<HTML><HEAD><TITLE>' + obj.file + '</TITLE><STYLE>' + obj.theme + '</STYLE></HEAD>';
 	                html += '<BODY>' + obj.content + '</BODY></HTML>';
                     resp.end(html);
+		        });
+		        return;
+            case 'coll exists':
+                    db.collection(js.collection, {strict:true}, function(err, collection) {
+                    resp.end(err?'0':'1');
 		        });
 		        return;
 		    default: shucher(resp, {error: 'Unknown command'}, db);

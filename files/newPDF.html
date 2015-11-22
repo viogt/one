@@ -408,12 +408,11 @@ function submitUsr() {
   j.userName = u; j.password = v;
   id('passUsr').style.display = 'none';
   
-    j.action = 'get one';
+    j.action = 'coll exists';
     j.collection = u;
-    j.file = 'viorel';
     alert( JSON.stringify(j) );
     var r = Mng.Send(j); 
-alert(r + '\n' + (typeof r));
+    alert(r + '\n' + (typeof r));
   return true;
 }
 </script>
