@@ -408,7 +408,7 @@ function submitUsr() {
     j.action = 'col exists';
     j.collection = u;
     alert( JSON.stringify(j) );
-    alert( Mng.Send(j) );
+    Mng.Send(j);
   return true;
 }
 </script>
