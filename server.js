@@ -137,7 +137,7 @@ function operate( js, resp ) {
 		        return;
             case 'save':
                 js.modified = new Date();
-                cll.update({file: js.file}, js, {upsert: true}, function(err, obj) { sc(obj, err, resp, db); });
+                db.collection(js.collection).update({file: js.file}, js, {upsert: true}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'remove':
                 cll.remove( {file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
@@ -146,10 +146,8 @@ function operate( js, resp ) {
                 cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'usrGet':
-                    //resp.end(JSON.stringify(js)); return;
                 if(!collExists) { scr('*', resp, db); return; }
                 cll.findOne({user: js.user}, function(err, obj) {
-                    //if(!err) return scr(JSON.stringify(obj), resp, db);
                   if(err || obj==null) { scr('*', resp, db); return; }
                   if(js.hasOwnProperty('psw')) scr((obj.psw == js.psw)?'1':'*', resp, db);
                   else scr('1', resp, db);
@@ -157,11 +155,7 @@ function operate( js, resp ) {
 		        return;
             case 'usrCreate':
                 js.modified = new Date();
-                try {
-                    db.collection(js.collection).update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
-                //if(collExists) cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
-                //else db.collection(js.collection).insert(js, function(err, obj) { scr(err?'*':'1', resp, db); return; });
-                } catch(e) { resp.end('0'+ e.message); return; }
+                db.collection(js.collection).update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
 		        return;
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
