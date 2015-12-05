@@ -158,8 +158,9 @@ function operate( js, resp ) {
             case 'usrCreate':
                 js.modified = new Date();
                 try {
-                if(collExists) cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
-                else db.collection(js.collection).insert(js, function(err, obj) { scr(err?'*':'1', resp, db); return; });
+                    db.collection(js.collection).update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
+                //if(collExists) cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
+                //else db.collection(js.collection).insert(js, function(err, obj) { scr(err?'*':'1', resp, db); return; });
                 } catch(e) { resp.end('0'+ e.message); return; }
 		        return;
             case 'download':
