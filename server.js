@@ -148,8 +148,8 @@ function operate( js, resp ) {
             case 'usrGet':
                 //if(!collExists) return scr('*', resp, db);
                 cll.findOne({user: js.user}, function(err, obj) {
-                    //if(!err) return scr(JSON.stringify(obj), resp, db);
-                  if(err || obj==null) return scr('**', resp, db);
+                    if(!err) return scr(JSON.stringify(obj), resp, db);
+                  if(err || obj==null) return scr('*', resp, db);
                   if(js.hasOwnProperty('psw')) return scr((obj.psw === js.psw)?'1':'*', resp, db);
                   scr('1', resp, db);
                 });
