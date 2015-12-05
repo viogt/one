@@ -412,8 +412,8 @@ var Usr = {
         j.psw = id('oPsw').value;
         j.action = 'usrGet';
         see(j);
-        if( Mng.Send(j)=='*' ) { id('usrNotify').innerHTML = "<font color='red'>No user or wrong password.</font>"; return; }
-        else alert('OK');
+        if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>No user or wrong password.</font>";
+        else id('usrNotify').innerHTML = "<font color='green'>DONE!</font>";
         return;
       case 2:
         if( !this.verif(['oUsr','oPsw'],['oPsw','nPsw2']) )
@@ -424,14 +424,21 @@ var Usr = {
         j.psw = id('oPsw').value;
         j.action = 'usrCreate';
         see(j);
-        alert( Mng.Send(j)!='*'?'Created OK':'Error' );
+        if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error creating a new user.</font>";
+        else id('usrNotify').innerHTML = "<font color='green'>New User Created!</font>";
         return;
       case 3:
         if( !this.verif(['oUsr','oPsw','nPsw1','nPsw2'],['nPsw1','nPsw2']) )
         { id('usrNotify').innerHTML = "<font color='red'>User or (new) password is void or doesn't match the re-entered.</font>"; return; }
-        j.action = 'changePsw';
-        j.newPsw = id('nPsw1').value;
+        j.action = 'usrGet';
+        j.psw = id('oPsw').value;
+        var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)=='*')
+        { id('usrNotify').innerHTML = "<font color='red'>User not found or the old password is wrong.</font>"; return; }
+        j.psw = id('nPsw1').value;
+        j.action = 'usrCreate';
         see(j);
+        if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error changing the password.</font>";
+        else id('usrNotify').innerHTML = "<font color='green'>Password changed!</font>";
         return;
       case 4:
         if( !this.verif(['oUsr','oPsw'],[]) )
