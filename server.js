@@ -151,15 +151,13 @@ function operate( js, resp ) {
                 cll.findOne({user: js.user}, function(err, obj) {
                     //if(!err) return scr(JSON.stringify(obj), resp, db);
                   if(err || obj==null) { scr('*', resp, db); return; }
-                  if(js.hasOwnProperty('psw')) scr((obj.psw === js.psw)?'1':'*', resp, db);
+                  if(js.hasOwnProperty('psw')) scr((obj.psw == js.psw)?'1':'*', resp, db);
                   else scr('1', resp, db);
                 });
 		        return;
             case 'usrCreate':
                 js.modified = new Date();
-                    resp.end(JSON.stringify(js)); return;
-                //cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { return scr(err?'*':'1', resp, db); });
-                cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { return scr(err?JSON.stringify(err):JSON.stringify(obj), resp, db); });
+                cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { return scr(err?'*':'1', resp, db); });
 		        return;
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
