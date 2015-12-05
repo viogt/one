@@ -133,7 +133,7 @@ function operate( js, resp ) {
                 cll.findOne({file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
 		    case 'list':
-                cll.find({}, { file:1, modified:1 }).sort({modified:-1}).toArray(function(err, recs) { sc(recs, err, resp, db); });
+                db.collection(js.collection).find({}, { file:1, modified:1 }).sort({modified:-1}).toArray(function(err, recs) { sc(recs, err, resp, db); });
 		        return;
             case 'save':
                 js.modified = new Date();
@@ -157,7 +157,7 @@ function operate( js, resp ) {
                 js.modified = new Date();
                 db.collection(js.collection).update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
 		        return;
-            case 'remove':
+            case 'usrDelete':
                 db.collection(js.collection).remove( {user: js.user}, function(err, obj) {
                     if(!err) db.collection(js.collection).drop( function(err, res) { scr(err?'*':'1', resp, db); return; });
                     scr('*', resp, db);

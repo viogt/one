@@ -396,10 +396,11 @@ var Usr = {
     if(shw==0) { var x = id('passUsr').style; if(x.display != 'none') { x.display = 'none'; return; } else x.display = ''; this.showStatus();  }
     switch( this.currentAct = shw ) {
       case 0: this.currentAct = 1;
-      case 1: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*After login, only you can see your documents.'); return;
-      case 2: this.makeOrder(['newPsw2'],['newPsw1'],['oUsr','oPsw','nPsw1'],'*Create a new domain for your private documents.'); return;
-      case 3: this.makeOrder(['newPsw1','newPsw2'],[],['oUsr','oPsw','nPsw1','nPsw2'],'*Change password to your private documents.'); return;
-      case 4: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*When you delete user, all documents will be deleted as well.'); return;
+      case 1: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*After login, only you can see your documents.'); id('usrSubmit').value = 'Login'; return;
+      case 2: this.makeOrder(['newPsw2'],['newPsw1'],['oUsr','oPsw','nPsw1'],'*Create a new domain for your private documents.'); id('usrSubmit').value = 'Create'; return;
+      case 3: this.makeOrder(['newPsw1','newPsw2'],[],['oUsr','oPsw','nPsw1','nPsw2'],'*Change password to your private documents.'); id('usrSubmit').value = 'Change'; return;
+      case 4: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*When you delete user, all documents will be deleted as well.'); id('usrSubmit').value = 'Delete'; return;
+      case 5: Mng.xCollection = 'files'; this.showStatus(); return;
     }
   },
   
@@ -771,9 +772,9 @@ Lorem ipsum<sup>1</sup> dolor sit amet, consectetur adipiscing elit<sup>2</sup>,
   </table>
   <div id='usrNotify' style='font:italic 12px Arial;color:blue;'></div>
   <br>
-  <input type='button' value='Sumbit' onClick='Usr.submitUsr()'>
+  <input type='button' id='usrSubmit' value='Sumbit' onClick='Usr.submitUsr()'>
   <input type='button' value='Close' onClick='this.parentElement.style.display="none"'>
-  <input type='button' value='Logout' onClick='this.parentElement.style.display="none"'>
+  <input type='button' value='Logout' onClick="Usr.enterUsr(5)">
 </div>
 
 </body>
