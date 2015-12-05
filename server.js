@@ -157,7 +157,9 @@ function operate( js, resp ) {
 		        return;
             case 'usrCreate':
                 js.modified = new Date();
+                try {
                 cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { return scr(err?'*':'1', resp, db); });
+                } catch(e) { resp.end('0'+ e.message); return; }
 		        return;
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
