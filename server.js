@@ -146,9 +146,9 @@ function operate( js, resp ) {
                 cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'usrGet':
-                if(!collExists) return scr('0', resp, db);
+                if(!collExists) return scr('2', resp, db);
                 cll.findOne({user: js.user}, function(err, obj) {
-                  if(err || obj==null) return scr('0', resp, db);
+                  if(err || obj==null) return scr('3', resp, db);
                   if(js.hasOwnProperty('psw')) return scr((obj.psw === js.psw)?'1':'0', resp, db);
                   scr('1', resp, db);
                 });
