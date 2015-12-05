@@ -159,8 +159,8 @@ function operate( js, resp ) {
 		        return;
             case 'usrDelete':
                 db.collection(js.collection).remove( {user: js.user}, function(err, obj) {
-                    if(!err) db.collection(js.collection).drop( function(err, res) { scr(err?'*':'1', resp, db); return; });
-                    scr('*', resp, db);
+                    if(!err) db.collection(js.delCollection).drop( function(err, res) { scr(err?'*':'1', resp, db); return; });
+                    else scr('*', resp, db);
                 });
 		        return;
             case 'download':
