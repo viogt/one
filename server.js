@@ -146,7 +146,7 @@ function operate( js, resp ) {
                 cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'usrGet':
-                    resp.end(JSON.stringify(j)); return;
+                    resp.end(JSON.stringify(js)); return;
                 //if(!collExists) return scr('*', resp, db);
                 cll.findOne({user: js.user}, function(err, obj) {
                     if(!err) return scr(JSON.stringify(obj), resp, db);
@@ -157,7 +157,7 @@ function operate( js, resp ) {
 		        return;
             case 'usrCreate':
                 js.modified = new Date();
-                    resp.end(JSON.stringify(j)); return;
+                    resp.end(JSON.stringify(js)); return;
                 //cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { return scr(err?'*':'1', resp, db); });
                 cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { return scr(err?JSON.stringify(err):JSON.stringify(obj), resp, db); });
 		        return;
