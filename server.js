@@ -145,6 +145,18 @@ function operate( js, resp ) {
             case 'rename':
                 cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
+            case 'usrGet':
+                if(!collExists) { sc(null, err, resp, db); return; }
+                cll.findOne({user: js.user}, function(err, obj) {
+                  if(err || obj==null) { sc(null, err, resp, db); return; }
+                  if(js.hasOwnProperty('psw')) { sc((obj.psw === js.psw)?true:null, err, resp, db); return; }
+                  else sc(true, err, resp, db);
+                });
+		        return;
+            case 'usrCreate':
+                js.modified = new Date();
+                cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { sc(obj, err, resp, db); });
+		        return;
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db); db.close();
