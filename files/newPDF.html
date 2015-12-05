@@ -283,9 +283,6 @@ var Mng = {
       http.open('POST', 'mng', false);
       http.send(msg);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
-      
-          if(jsonMsg.collection == 'users') alert('>' + http.responseText + '<');
-      
       return http.responseText;
     } catch(e) { alert(e.message); return 'Error!'; }
   },
@@ -397,7 +394,7 @@ var Usr = {
     switch( this.currentAct = shw ) {
       case 0: this.currentAct = 1;
       case 1: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*After login, only you can see your documents.'); id('usrSubmit').value = 'Login'; return;
-      case 2: this.makeOrder(['newPsw2'],['newPsw1'],['oUsr','oPsw','nPsw1'],'*Create a new domain for your private documents.'); id('usrSubmit').value = 'Create'; return;
+      case 2: this.makeOrder(['newPsw2'],['newPsw1'],['oUsr','oPsw','nPsw2'],'*Create a new domain for your private documents.'); id('usrSubmit').value = 'Create'; return;
       case 3: this.makeOrder(['newPsw1','newPsw2'],[],['oUsr','oPsw','nPsw1','nPsw2'],'*Change password to your private documents.'); id('usrSubmit').value = 'Change'; return;
       case 4: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*When you delete user, all documents will be deleted as well.'); id('usrSubmit').value = 'Delete'; return;
       case 5: Mng.xCollection = 'files'; this.showStatus(); return;
@@ -417,7 +414,7 @@ var Usr = {
           j.psw = id('oPsw').value;
           j.action = 'usrGet';
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>No user or wrong password.</font>";
-        else { id('usrNotify').innerHTML = "<font color='green'>DONE!</font>"; Mng.xCollection = j.user; this.showStatus(); }
+        else { id('usrNotify').innerHTML = "<font color='green'>DONE!</font>"; Mng.xCollection = j.user; this.showStatus(); this.shut(); }
         return;
       case 2:
         if( !this.verif(['oUsr','oPsw'],['oPsw','nPsw2']) )
@@ -428,7 +425,7 @@ var Usr = {
           j.psw = id('oPsw').value;
           j.action = 'usrCreate';
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error creating a new user.</font>";
-        else { id('usrNotify').innerHTML = "<font color='green'>New User Created!</font>"; Mng.xCollection = j.user; this.showStatus(); }
+        else { id('usrNotify').innerHTML = "<font color='green'>New User Created!</font>"; Mng.xCollection = j.user; this.showStatus(); this.shut(); }
         return;
       case 3:
         if( !this.verif(['oUsr','oPsw','nPsw1','nPsw2'],['nPsw1','nPsw2']) )
@@ -440,7 +437,7 @@ var Usr = {
           j.psw = id('nPsw1').value;
           j.action = 'usrCreate';
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error changing the password.</font>";
-        else id('usrNotify').innerHTML = "<font color='green'>Password changed!</font>";
+        else { id('usrNotify').innerHTML = "<font color='green'>Password changed!</font>"; this.shut(); }
         return;
       case 4:
         if( !this.verif(['oUsr','oPsw'],[]) )
@@ -453,7 +450,7 @@ var Usr = {
           j.action = 'usrDelete';
           j.delCollection = j.user;
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error deleting the User.</font>";
-        else { id('usrNotify').innerHTML = "<font color='green'>User removed!</font>"; Mng.xCollection = 'files'; this.showStatus(); }
+        else { id('usrNotify').innerHTML = "<font color='green'>User removed!</font>"; Mng.xCollection = 'files'; this.showStatus(); this.shut(); }
         return;
     }
   },
@@ -469,7 +466,9 @@ var Usr = {
     for(var i in hide) id(hide[i]).style.display = 'none';
     for(var i in cln)  id(cln[i]).value = '';
     id('usrNotify').innerHTML = info;
-  }
+  },
+  
+  shut: function() { window.setTimeout( function() { id('passUsr').style.display = 'none'; }, 400); }
 }
 </script>
 </head>
