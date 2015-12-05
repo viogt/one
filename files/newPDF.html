@@ -284,7 +284,7 @@ var Mng = {
       http.send(msg);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
       
-          if(jsonMsg.collection == 'users') alert(http.responseText);
+          if(jsonMsg.collection == 'users') alert('>' + http.responseText + '<');
       
       return http.responseText;
     } catch(e) { alert(e.message); return 'Error!'; }
@@ -417,10 +417,10 @@ var Usr = {
       case 2:
         if( !this.verif(['oUsr','oPsw'],['oPsw','nPsw2']) )
         { id('usrNotify').innerHTML = "<font color='red'>User or password is void or doesn't match the re-entered.</font>"; return; }
+        j.action = 'usrCreate';
         var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)!='0')
         { id('usrNotify').innerHTML = "<font color='red'>User already exists.</font>"; return; }
         j.psw = id('oPsw').value;
-        j.action = 'usrCreate';
         see(j);
         alert( Mng.Send(j)!='0'?'OK':'Error' );
         return;
