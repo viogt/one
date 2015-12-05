@@ -412,18 +412,18 @@ var Usr = {
         j.psw = id('oPsw').value;
         j.action = 'usrGet';
         see(j);
-        alert( Mng.Send(j)!='0'?'OK':'No user or wrong password' );
+        alert( Mng.Send(j)!='*'?'OK':'No user or wrong password' );
         return;
       case 2:
         if( !this.verif(['oUsr','oPsw'],['oPsw','nPsw2']) )
         { id('usrNotify').innerHTML = "<font color='red'>User or password is void or doesn't match the re-entered.</font>"; return; }
         j.action = 'usrGet';
-        var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)!='0')
+        var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)!='*')
         { id('usrNotify').innerHTML = "<font color='red'>User already exists.</font>"; return; }
         j.psw = id('oPsw').value;
         j.action = 'usrCreate';
         see(j);
-        alert( Mng.Send(j)!='0'?'OK':'Error' );
+        alert( Mng.Send(j)!='*'?'Created OK':'Error' );
         return;
       case 3:
         if( !this.verif(['oUsr','oPsw','nPsw1','nPsw2'],['nPsw1','nPsw2']) )
