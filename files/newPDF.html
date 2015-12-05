@@ -393,7 +393,7 @@ var Usr = {
   currentAct: 0,
 
   enterUsr: function(shw) {
-    if(shw==0) { var x = id('passUsr').style; if(x.display != 'none') { x.display = 'none'; return; } else x.display = ''; }
+    if(shw==0) { var x = id('passUsr').style; if(x.display != 'none') { x.display = 'none'; return; } else x.display = ''; this.showStatus();  }
     switch( this.currentAct = shw ) {
       case 0: this.currentAct = 1;
       case 1: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*After login, only you can see your documents.'); return;
@@ -403,50 +403,55 @@ var Usr = {
     }
   },
   
+  showStatus: function() {
+    id('currentUsr').innerHTML = 'Current user: ' + (Mng.xCollection == 'files'?'Public':Mng.xCollection);
+  },
+  
   submitUsr: function() {
     var j = { user: id('oUsr').value, collection: 'users' };
     switch( this.currentAct ) {
       case 1:
         if( !this.verif(['oUsr','oPsw'],[]) )
         { id('usrNotify').innerHTML = "<font color='red'>Use name or password is void.</font>"; return; }
-        j.psw = id('oPsw').value;
-        j.action = 'usrGet';
-        see(j);
+          j.psw = id('oPsw').value;
+          j.action = 'usrGet';
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>No user or wrong password.</font>";
-        else id('usrNotify').innerHTML = "<font color='green'>DONE!</font>";
+        else { id('usrNotify').innerHTML = "<font color='green'>DONE!</font>"; Mng.xCollection = j.user; this.showStatus(); }
         return;
       case 2:
         if( !this.verif(['oUsr','oPsw'],['oPsw','nPsw2']) )
         { id('usrNotify').innerHTML = "<font color='red'>User or password is void or doesn't match the re-entered.</font>"; return; }
-        j.action = 'usrGet';
+          j.action = 'usrGet';
         var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)!='*')
         { id('usrNotify').innerHTML = "<font color='red'>User already exists.</font>"; return; }
-        j.psw = id('oPsw').value;
-        j.action = 'usrCreate';
-        see(j);
+          j.psw = id('oPsw').value;
+          j.action = 'usrCreate';
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error creating a new user.</font>";
-        else id('usrNotify').innerHTML = "<font color='green'>New User Created!</font>";
+        else { id('usrNotify').innerHTML = "<font color='green'>New User Created!</font>"; Mng.xCollection = j.user; this.showStatus(); }
         return;
       case 3:
         if( !this.verif(['oUsr','oPsw','nPsw1','nPsw2'],['nPsw1','nPsw2']) )
         { id('usrNotify').innerHTML = "<font color='red'>User or (new) password is void or doesn't match the re-entered.</font>"; return; }
-        j.action = 'usrGet';
-        j.psw = id('oPsw').value;
+          j.action = 'usrGet';
+          j.psw = id('oPsw').value;
         var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)=='*')
         { id('usrNotify').innerHTML = "<font color='red'>User not found or the old password is wrong.</font>"; return; }
-        j.psw = id('nPsw1').value;
-        j.action = 'usrCreate';
-        see(j);
+          j.psw = id('nPsw1').value;
+          j.action = 'usrCreate';
         if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error changing the password.</font>";
         else id('usrNotify').innerHTML = "<font color='green'>Password changed!</font>";
         return;
       case 4:
         if( !this.verif(['oUsr','oPsw'],[]) )
         { id('usrNotify').innerHTML = "<font color='red'>Use name or password is void.</font>"; return; }
-        if(confirm('All documents, saved by this user\nWILL BE ERASED. Do you confirm?')) {
-          j.action = 'deleteUsr';
-          see(j);
-        }
+        if(!confirm('All documents, saved by this user\nWILL BE ERASED. Do you confirm?')) return;
+          j.action = 'usrGet';
+          j.psw = id('oPsw').value;
+          var u = id('oUsr').value; if(u=='files' || u=='users' || Mng.Send(j)=='*')
+          { id('usrNotify').innerHTML = "<font color='red'>User not found or the old password is wrong.</font>"; return; }
+          j.action = 'usrDelete';
+        if( Mng.Send(j)=='*' ) id('usrNotify').innerHTML = "<font color='red'>Error deleting the User.</font>";
+        else { id('usrNotify').innerHTML = "<font color='green'>User removed!</font>"; Mng.xCollection = 'files'; this.showStatus(); }
         return;
     }
   },
@@ -462,26 +467,8 @@ var Usr = {
     for(var i in hide) id(hide[i]).style.display = 'none';
     for(var i in cln)  id(cln[i]).value = '';
     id('usrNotify').innerHTML = info;
-  },
-  
-  s_ubmitUsr: function() {
-    var j = {};
-    if(id('newPsw1').style.display != 'none') {
-      var v1 = id('nPsw1').value, v2 = id('nPsw2').value;
-      if(v1=='' || v2=='' || v1!=v2) { alert('The new password is either void\nor does not match the re-entered one.'); return false; }
-      j.newPassword = v1;
-    }
-    var u = id('oUsr').value.trim().toLowerCase(), v = id('oPsw').value;
-    if(u=='' || v=='') { alert('You have not provided either the User name\nor the Password.'); return false; }
-    j.userName = u; j.password = v;
-    id('passUsr').style.display = 'none';
-    
-      var r = Mng.Send( { collection: u, action: 'coll exists' } );
-      alert('Exists = ' + r);
-    return true;
   }
 }
-  function see(js) { alert('ACTION = ' + Usr.currentAct + '\n' + JSON.stringify(js) ); }
 </script>
 </head>
 <body onLoad='init()' onResize='inclFrm(false)' style='margin:0px;'>
@@ -770,6 +757,7 @@ Lorem ipsum<sup>1</sup> dolor sit amet, consectetur adipiscing elit<sup>2</sup>,
 </div>
 
 <div id='passUsr' style='background-color:white; border:1px solid gray; position:absolute; top:100px; left:160px; display:none; border-radius:5px; padding: 24px; box-shadow: 0px 2px 12px gray;'>
+  <div id='currentUsr' style='text-align:center'>...</div>
   <input type="radio" onClick="Usr.enterUsr(1)" name="acts" checked>Login
   <input type="radio" onClick="Usr.enterUsr(2)" name="acts">Create user
   <input type="radio" onClick="Usr.enterUsr(3)" name="acts">Change password

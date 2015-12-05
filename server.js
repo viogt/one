@@ -157,6 +157,12 @@ function operate( js, resp ) {
                 js.modified = new Date();
                 db.collection(js.collection).update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
 		        return;
+            case 'remove':
+                db.collection(js.collection).remove( {user: js.user}, function(err, obj) {
+                    if(!err) db.collection(js.collection).drop( function(err, res) { scr(err?'*':'1', resp, db); return; });
+                    scr('*', resp, db);
+                });
+		        return;
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db); db.close();
