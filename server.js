@@ -159,7 +159,7 @@ function operate( js, resp ) {
                 js.modified = new Date();
                 try {
                 if(collExists) cll.update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
-                else db.users.insert(js, function(err, obj) { scr(err?'*':'1', resp, db); return; });
+                else db.collection(js.collection).insert(js, function(err, obj) { scr(err?'*':'1', resp, db); return; });
                 } catch(e) { resp.end('0'+ e.message); return; }
 		        return;
             case 'download':
