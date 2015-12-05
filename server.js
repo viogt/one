@@ -146,13 +146,13 @@ function operate( js, resp ) {
                 cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'usrGet':
-                    resp.end(JSON.stringify(js)); return;
-                //if(!collExists) return scr('*', resp, db);
+                    //resp.end(JSON.stringify(js)); return;
+                if(!collExists) { scr('*', resp, db); return; }
                 cll.findOne({user: js.user}, function(err, obj) {
-                    if(!err) return scr(JSON.stringify(obj), resp, db);
-                  if(err || obj==null) return scr('*', resp, db);
-                  if(js.hasOwnProperty('psw')) return scr((obj.psw === js.psw)?'1':'*', resp, db);
-                  scr('1', resp, db);
+                    //if(!err) return scr(JSON.stringify(obj), resp, db);
+                  if(err || obj==null) { scr('*', resp, db); return; }
+                  if(js.hasOwnProperty('psw')) scr((obj.psw === js.psw)?'1':'*', resp, db);
+                  else scr('1', resp, db);
                 });
 		        return;
             case 'usrCreate':
@@ -178,7 +178,7 @@ function operate( js, resp ) {
     });
 }
 
-function scr(what, res, DB) { res.end(what); DB.close(); return true; }
+function scr(what, res, DB) { res.end(what); DB.close(); }
 function sc(obj, err, res, DB) {
     res.end(err?('0' + JSON.stringify(err)):JSON.stringify(obj));
     DB.close();
