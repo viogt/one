@@ -142,8 +142,13 @@
     
     function sampleText() { var x = id('basic'); x.innerHTML = x.innerHTML.trim()==''?id('sampleTxt').innerHTML:''; }
     
-    var globalHTML = '<span style="padding:8px;color:white;background-color:darkgreen;border-radius:6px;border:gray;">Correct!</span>';
+    var globalHTML = '<span style="padding:2px 6px 2px 6px;margin:0px 6px 0px 6px;color:white;font:bold 10pt Helvetica;background-color:darkgreen;border-radius:4px;">OK</span>';
     function insHTML() {
+      if(id('chCounter').checked) {
+        fDoc('insertHTML',id('txtCounter').value);
+        for(var i=0, x = document.getElementsByName('counter'), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
+        return;
+      }
       var res = window.prompt("Enter the HTML code:", globalHTML);
       if(res!=null) { globalHTML=res; fDoc('insertHTML',res); }
     }
@@ -397,7 +402,7 @@ var Usr = {
       case 2: this.makeOrder(['newPsw2'],['newPsw1'],['oUsr','oPsw','nPsw2'],'*Create a new domain for your private documents.'); id('usrSubmit').value = 'Create'; return;
       case 3: this.makeOrder(['newPsw1','newPsw2'],[],['oUsr','oPsw','nPsw1','nPsw2'],'*Change password to your private documents.'); id('usrSubmit').value = 'Change'; return;
       case 4: this.makeOrder([],['newPsw1','newPsw2'],['oUsr','oPsw'],'*When you delete user, all documents will be deleted as well.'); id('usrSubmit').value = 'Delete'; return;
-      case 5: Mng.xCollection = 'files'; this.showStatus(); return;
+      case 5: id('usrNotify').innerHTML = "<font color='green'>Logout done!</font>"; Mng.xCollection = 'files'; this.showStatus(); this.shut(); return;
     }
   },
   
@@ -497,6 +502,8 @@ var Usr = {
         <tr><td>PDF Borders:</td><td><input id='borders' type="text" style='width:460px' value="top:20mm,right:20mm,bottom:15mm,left:20mm,footer:5mm"></td></tr>
         <tr><td>PDF Footer:</td><td><textarea id='footer' rows=4 style='width:460px'><table style="width:100%; border-top:1px solid lightgray;"><TR><td style="font:normal 8pt Helvetica;color:gray">{{title}}</td><TD align="right" style="font:normal 8pt Helvetica;color:gray">Page {{page}}</span> of <span>{{pages}}</td></TR></table></textarea></td></tr><tr><td>CSS style:</td><td><textarea id='CSScurrent' onChange='chStyle()' rows=8 style='width:460px'><table style="color:gray; width:100%; font:normal 8pt Helvetica; border-top:1px solid lightgray;"><TR><td>{{title}}</td><TD align="right">Page {{page}} of {{pages}}</td></TR></table></textarea></td></tr>
         <tr><td>HTML:</td><td><input id="htmlBG" type="checkbox" checked> use HTML background</td></tr>
+        <tr><td>HTML counter:</td><td><textarea id='txtCounter' rows=3 style='width:460px'><span name="counter" style="padding:2px 6px 2px 6px;margin-right:6px;color:white;font:bold 10pt Helvetica;background-color:grey;border-radius:4px;">1</span></textarea></td></tr>
+        <tr><td>Use counter:</td><td><input id="chCounter" type="checkbox" checked></td></tr>
     </table>
 </div>
 <div id='basic' contentEditable=true style='position:absolute; top:30px; left: 10px; width:580px; border:1px solid gold; padding:24px;overflow-x: hidden;overflow-y: scroll;outline:none;'></div>
@@ -704,7 +711,7 @@ var Usr = {
   .htmlBody { background-color:#f2ffcc;border:1px solid #e4ff99;border-radius:8px;padding:12px;}
   </pre>
   <pre id="Utopia">
-  body,td { font: normal 11pt Utopia,"Times New Roman",Times; }
+  body,td { font: normal 10pt Utopia,"Times New Roman",Times; }
   h1 { color: white;background-color: #6677aa;border-radius:8px;padding:8px; font-size: 20pt; font-weight:bold; border:1px solid #6070a0; margin:0px; }
   h2 { color: #203060; background-color: #e0e0f0; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #d0d0f0; margin:0px; }
   b { border: 1px solid #b0b0f0; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
