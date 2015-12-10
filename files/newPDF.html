@@ -142,7 +142,7 @@
     
     function sampleText() { var x = id('basic'); x.innerHTML = x.innerHTML.trim()==''?id('sampleTxt').innerHTML:''; }
     
-    var globalHTML = '<span style="padding:2px 6px 2px 6px;margin:0px 6px 0px 6px;color:white;font:bold 10pt Helvetica;background-color:darkgreen;border-radius:4px;">OK</span>';
+    var globalHTML = '<span style="padding:2px 6px 2px 6px;margin:0px 6px 0px 6px;color:white;font:bold 10pt Helvetica;background-color:green;border-radius:4px;">OK</span>';
     function insHTML() {
       if(id('chCounter').checked) {
         fDoc('insertHTML',id('txtCounter').value);
@@ -644,8 +644,8 @@ var Usr = {
 <div style="display:none">
   <pre id="Serif">
   body,td { font: normal 12pt FreeSerif,"Times New Roman",Times; }
-  h1 { color: white;background-color: #999999;border-radius:8px;padding:8px; font-size: 20pt; font-weight:normal; border:1px solid #888888; margin:0px; }
-  h2 { color: black;background-color: #eeeeee; border-radius:8px;padding:8px; font-size: 16pt; font-weight:normal; border:1px solid #dddddd; margin:0px; }
+  h1 { color: white;background-color: #999999;border-radius:8px;padding:8px; font:bold 16pt Helvetica; margin:0px; }
+  h2 { color: #666666;background-color: #e0e0e0; border-radius:8px;padding:8px; font:bold 12pt Helvetica; border:1px solid #d0d0d0; margin:0px; }
   b { border: 1px solid orange; background-color: white;padding-left:4px;padding-right:4px; border-radius:6px; font-weight:normal; }
   i { color: #004d66; }
   u { border-bottom: 2px solid orange; text-decoration:none; }
