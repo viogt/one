@@ -162,8 +162,7 @@
       j.footer = id('footer').value.replace('{{title}}',fn);
       j.bkgr = false;
       j.body = '1';
-        var ln = '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">';
-      j.content = '<HTML><HEAD>'+ ln +'<STYLE>'+ document.getElementsByTagName("style")[0].innerHTML +'</STYLE></HEAD><BODY>' + id('basic').innerHTML + '</BODY></HTML>';
+      j.content = '<HTML><HEAD><STYLE>'+ document.getElementsByTagName("style")[0].innerHTML +'</STYLE></HEAD><BODY>' + id('basic').innerHTML + '</BODY></HTML>';
       alert(j.content);
       id('Hdn').value = JSON.stringify(j);
       return true;
