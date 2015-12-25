@@ -145,12 +145,8 @@
     var globalHTML = '<span style="padding:2px 6px 2px 6px;margin:0px 6px 0px 6px;color:white;font:bold 10pt Helvetica;background-color:green;border-radius:4px;">OK</span>';
     function insHTML() {
       if(id('chCounter').checked) {
-        
-        //fDoc('insertHTML',id('txtCounter').value);
-        fDoc('insertHTML','<span cnt class="counter">X</span>');
-        
-        //for(var i=0, x = document.getElementsByName('counter'), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
-        for(var i=0, x = document.querySelectorAll("span[cnt]"), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
+        fDoc('insertHTML',id('txtCounter').value);
+        for(var i=0, x = document.getElementsByName('counter'), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
         return;
       }
       var res = window.prompt("Enter the HTML code:", globalHTML);
@@ -274,7 +270,7 @@ function notify(e, o, msg) {
   o.setAttribute('rel', window.setTimeout(notify, 600, d, o, null));
 }
 
-function noDiv(e) { if(e.keyCode === 13) { fDoc('insertHTML','<br><br>'); return false; } return true; }
+function noDiv(e) { if(e.keyCode === 13) { fDoc('insertHTML','<br>'); return false; } return true; }
 
 var Mng = {
   
@@ -665,7 +661,6 @@ var Usr = {
   .quoteFirstCell { font-size: 56pt; color: lightgray; border-right: 1px solid lightgray; padding-right:8px; text-align: right; width: 70px; }
   .quoteSecondCell { padding-left:8px; font-style:italic; }
   .htmlBody {background-color:#eeeeee;border:1px solid #dddddd;border-radius:8px;padding:12px;}
-  .counter { padding:2px 6px 2px 6px;margin-right:6px;color:white;font:bold 10pt Helvetica;background-color:grey;border-radius:4px; }
   </pre>
   <pre id="Sans">
   body,td { font: normal 11pt FreeSans,Arial; }
