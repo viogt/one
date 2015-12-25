@@ -147,10 +147,10 @@
       if(id('chCounter').checked) {
         
         //fDoc('insertHTML',id('txtCounter').value);
-        fDoc('insertHTML','<span class="counter">X</span>');
+        fDoc('insertHTML','<span cnt class="counter">X</span>');
         
         //for(var i=0, x = document.getElementsByName('counter'), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
-        for(var i=0, x = document.querySelectorAll(".counter"), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
+        for(var i=0, x = document.querySelectorAll("span[cnt]"), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
         return;
       }
       var res = window.prompt("Enter the HTML code:", globalHTML);
