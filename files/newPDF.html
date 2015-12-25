@@ -145,6 +145,7 @@
     var globalHTML = '<span style="padding:2px 6px 2px 6px;margin:0px 6px 0px 6px;color:white;font:bold 10pt Helvetica;background-color:green;border-radius:4px;">OK</span>';
     function insHTML() {
       if(id('chCounter').checked) {
+        alert(id('txtCounter').value);
         fDoc('insertHTML',id('txtCounter').value);
         for(var i=0, x = document.getElementsByName('counter'), L = x.length; i<L; i++) x[i].innerHTML = (i+1);
         return;
