@@ -3,7 +3,8 @@ The OpenShift `nodejs` cartridge documentation can be found at:
 http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
 > git add .
 > git commit -m 'Primul succes!'
-> git push --set-upstream openshift master (-f to force)
+> git push --set-upstream one master (-f to force)
+> git remote add one -m master ssh://567d59697628e13771000237@one-postviorel.rhcloud.com/~/git/one.git/
 
 ---
 
