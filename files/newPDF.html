@@ -497,7 +497,7 @@ var Usr = {
   <td><img class="intLink" title='User/custom/login' onClick='Usr.enterUsr(0)' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACS0lEQVR42p1WXW7TQBD2TTgCR+AIHCFH4Qh94l+RmziJkzS1m6QkDpFjUClQHhIJJKSiSg2tihBCDfDQ8JRhv5XHtde7rkukUeydme/bnZmdsWUV/ILZ7O4kih4EUeSL5ygjYk3qhI1129/L2exeDEKlRNjCpxR4vGPpuBcE5PR69LzZpGeNRkawBh1s2B6+pcD3p1Oqdbs5UJPAFj6FJEJRYXDdjiH+aELeC3GqnV166ji5E6VIKhnwMAzvjKNoNQpDsjudHLDdbtPy/BttNptEesNAkCh2whcYwALmdbWgSgRz0/O0O//+42cGHHK5+k2Ptus5W2DEOfGTUuSEmmKsgrM8tOta+yTxKGFxnC28oCJMBNitCn51tTYSAAuYwLa43ouqxPWHtF7/zRCMp6/pSd0x+vD9QPxpMJkUEqBiWt6ADo8WdPh+To1enx7XnEIfYALbKop/pz+k45NTWv36o03y8clSnk4t2XQejAQoTVNyVdnu5O9FhkAXoldvj0oTfJh/yuXjOkSGJH/8/KU0wenXi9ydSJJsKtPl2YV0Png3NwKzTiXIlKlszeLFG420BN3+2EjAOpUAWMBMWrhgWmAh3UGZYGcQGAlYlyYARrz7RXbAKJ30fwjSHTU3gHgWIPtV1xUt9428VLXurrhgc/msCuvG4YEAbyWVY5wJQmnDAC236rZl6aEl418nrKu2XOkTd1H7pqlW4RGIZOnmQ7r/c0K1g6bga+I+J57DhpuZFg4HJxQ+t/66gBMGByaU+iURr/k3Af8DPYAAWxEw8BQAAAAASUVORK5CYII="/></td>
 </tr></table>
 
-<input type='button' value='CHECK!' onclick='alert( id("basic").innerHTML.substr(0,400) )'>
+<input type='button' value='CHECK!' onclick='alert( document.getElementById("basic").innerHTML.substr(0,400) )'>
 
 <div id='FramePDF' style='display:none; position:absolute; top:30px; left: 10px; height:200px;width:580px; border:1px solid gray; padding:24px; overflow-x: hidden; overflow-y: scroll; background-color:lightgray;'>
     <table border='0' cellSpacing="4" cellSpacing='0' style="font:normal 12px Helvetica,Arial;color:gray;">
