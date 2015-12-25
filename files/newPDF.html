@@ -147,7 +147,7 @@
       if(id('chCounter').checked) {
         var f = id('tipCounter').value=='1'?true:false;
         fDoc('insertHTML','<span class="counter">X</span>');
-        for(var i=0, x = document.getElementsByClassName('counter'), L = x.length; i<L; i++) x[i].innerHTML = f?(i+1):String.fromCharCode(i+64);
+        for(var i=0, x = document.getElementsByClassName('counter'), L = x.length; i<L; i++) x[i].innerHTML = f?(i+1):String.fromCharCode(i+65);
         return;
       }
       var res = window.prompt("Enter the HTML code:", globalHTML);
@@ -505,8 +505,7 @@ var Usr = {
         <tr><td>PDF Borders:</td><td><input id='borders' type="text" style='width:460px' value="top:20mm,right:20mm,bottom:15mm,left:20mm,footer:5mm"></td></tr>
         <tr><td>PDF Footer:</td><td><textarea id='footer' rows=4 style='width:460px'><table style="width:100%; border-top:1px solid lightgray;"><TR><td style="font:normal 8pt Helvetica;color:gray">{{title}}</td><TD align="right" style="font:normal 8pt Helvetica;color:gray">Page {{page}}</span> of <span>{{pages}}</td></TR></table></textarea></td></tr><tr><td>CSS style:</td><td><textarea id='CSScurrent' onChange='chStyle()' rows=8 style='width:460px'><table style="color:gray; width:100%; font:normal 8pt Helvetica; border-top:1px solid lightgray;"><TR><td>{{title}}</td><TD align="right">Page {{page}} of {{pages}}</td></TR></table></textarea></td></tr>
         <tr><td>HTML:</td><td><input id="htmlBG" type="checkbox" checked> use HTML background</td></tr>
-        <tr><td>HTML counter:</td><td><textarea id='txtCounter' rows=3 style='width:460px'><span name="counter" style="padding:2px 6px 2px 6px;margin-right:6px;color:white;font:bold 10pt Helvetica;background-color:grey;border-radius:4px;">1</span></textarea></td></tr>
-        <tr><td>Use counter:</td><td><input id="chCounter" type="checkbox" checked> Type:<input type='text' id='tipCounter' value='1' style='width:40px'></td></tr>
+        <tr><td>Use counter:</td><td><input id="chCounter" type="checkbox" checked> Type:<input type='text' id='tipCounter' value='1' style='width:20px'></td></tr>
     </table>
 </div>
 <div id='basic' contentEditable=true onKeyDown='return noDiv(event);' style='position:absolute; top:30px; left: 10px; width:580px; border:1px solid gold; padding:24px;overflow-x: hidden;overflow-y: scroll;outline:none;'></div>
@@ -748,7 +747,7 @@ var Usr = {
   .quoteFirstCell { font-size: 56pt; color: lightgray; border-right: 1px solid lightgray; padding-right: 8px; text-align: right; width: 70px; }
   .quoteSecondCell { padding-left: 8px; font-style:italic; }
   .htmlBody { background-color:#e6e6e6;border:1px solid #dddddd;border-radius:8px;padding:12px;}
-  .counter { padding:2px 6px 2px 6px;margin-right:6px;color:white;font:bold 10pt Helvetica;background-color:grey;border-radius:4px; }
+  .counter { padding:2px 6px 2px 6px;margin-right:6px;color:white;font:bold 10pt Helvetica;background-color: grey;border-radius:4px; }
   </pre>
   <pre id="Custom"></pre>
 </div>
