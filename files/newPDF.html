@@ -131,13 +131,16 @@
     
     function tblContents() {
       var t = "<table cellSpacing='0px' cellPadding='2px' ondblclick='overTable(this)'>";
-      var pars = id('tblCnt').value.split(';');
+      var pars = id('tblCnt').value.split(';'), p = pars[0].toLowerCase();
       var chS = '', ch = pars[2], w = pars[1];
       var stl = "max-width: " + w + "px;overflow-x: hidden;text-overflow: hidden;white-space: nowrap;";
       for(var i=0; i<w; i++) chS += ch;
-      for(var i=0; i<3; i++) t += "<tr><td align='left' style='" + stl + "'>Item " + (i+1) + chS + "</td><td align='right'>" + (i+1) + "</td></tr>";
+      if(p=='h1' || p=='h2') {
+        var x = id('basic').getElementsByTagName(p), L = x.length;
+        for(var i=0; i<L; i++) t += "<tr><td align='left' style='" + stl + "'>" + x[i].innerHTML + chS + "</td><td align='right'>" + (i+1) + "</td></tr>";
+      }
+      else for(var i=0, L=parseInt(p); i<L; i++) t += "<tr><td align='left' style='" + stl + "'>Item " + (i+1) + chS + "</td><td align='right'>" + (i+1) + "</td></tr>";
       t += "</table>";
-      alert(t);
       fDoc('insertHTML', t);
     }
     
@@ -572,7 +575,7 @@ var Usr = {
   <img class='intLign' title='3-rows grid' onClick="createGrid()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAJFBMVEUAAADY0tLX0tL////Z0tKqqaz///+pqKuqqazY0NLp4ub///+TSU30AAAAB3RSTlMAvr/u7/7+oxe1JgAAAEZJREFUCNdjYIAB9vLQ8tLyciBj1XYQFGBgX70dBCcwsO/eDoITGDjKQaBiAkzNBMJq0jHUmE+A2BVePoGBQXMmCDjAXQEASPQ50yBJDfgAAAAASUVORK5CYII=" />
   <input id='colTable' style='width:54px;font:normal 10pt Helvetica,Arial;border:1px solid gold;' type='text' value='10%;90%'>
 <br>
-  <img class='intLign' title='Table of Contents' onClick="tblContents()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAJFBMVEUAAADY0tLX0tL////Z0tKqqaz///+pqKuqqazY0NLp4ub///+TSU30AAAAB3RSTlMAvr/u7/7+oxe1JgAAAEZJREFUCNdjYIAB9vLQ8tLyciBj1XYQFGBgX70dBCcwsO/eDoITGDjKQaBiAkzNBMJq0jHUmE+A2BVePoGBQXMmCDjAXQEASPQ50yBJDfgAAAAASUVORK5CYII=" />
+  <img class='intLign' title='Table of Contents' onClick="tblContents()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABoklEQVQ4ja2Rv2tTURTHP+f25Ukt6ijoLlgVBR38kUDEiuTd5IpDXfwD/BcEobi2OgiKmQou4tKpLy8lKBh8t9Wh+GNwEQcnF6EBkSYY8o5DDKjkpRb8LofL937OOV8O/A9Z++qoc34fwGXnD1WrG4d3YqJo/RSoMQA6NZgZoIugpqA86vfp5oFXav5Y5PwSga6Uy+3QADRXi5uofLXOP1HV5Vbr/FZegyDTL9vf+gso7wDMyBA1iSplo/hJqydJqdNuX+yN3gZgfv5DqCa7PSCwamRpp/y/ywB8720tIPqgFZ97I+inajW9NrRV/66Vmj8bufX7Ipyc2V+4u5thYyUA1qank6T4FiSbm9s8EIbdg81m6WMeFEXpEQnk+A94PTyjMSes27gJEE73Fo1hOg+uXH05y5Tcy5RuAZ4OzxhfeKyql35l7zQapfd5DYJs7+dAuLEWF9dQOsHIGIi5hWTPOnvM7KTMcXxmGyBy6R2Uxh+mraXPJ8EjRc4/rNR8BSAY/0UVRMZV6/x1lCICkfP2XwZOlADU6/UXqlreNSzS/gkJb6DOm0TF1gAAAABJRU5ErkJggg==" />
   <input id='tblCnt' style='width:54px;font:normal 10pt Helvetica,Arial;border:1px solid gold;' type='text' value='H1;140;.'>
 <br>
   <INPUT class='intSign' type='button' value='✔' onClick="fDoc('insertText','✔')"/>
