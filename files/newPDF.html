@@ -129,6 +129,18 @@
       fDoc('insertHTML', T);
     }
     
+    function tblContents() {
+      var t = "<table cellSpacing='0px' cellPadding='2px' ondblclick='overTable(this)'>";
+      var pars = id('tblCnt').value.split(';');
+      var chS = '', ch = pars[2], w = pars[1];
+      var stl = "max-width: " + w + "px;overflow-x: hidden;text-overflow: hidden;white-space: nowrap;";
+      for(var i=0; i<w; i++) chS += ch;
+      for(var i=0; i<3; i++) t += "<tr><td align='left' style='" + stl + "'>Item " + (i+1) + chS + "</td><td align='right'>" + (i+1) + "</td></tr>";
+      t += "</table>";
+      alert(t);
+      fDoc('insertHTML', t);
+    }
+    
     var opts = [false,false];
     function layDown(w) {
       opts[w] = !opts[w];
@@ -559,6 +571,9 @@ var Usr = {
 <br>
   <img class='intLign' title='3-rows grid' onClick="createGrid()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAJFBMVEUAAADY0tLX0tL////Z0tKqqaz///+pqKuqqazY0NLp4ub///+TSU30AAAAB3RSTlMAvr/u7/7+oxe1JgAAAEZJREFUCNdjYIAB9vLQ8tLyciBj1XYQFGBgX70dBCcwsO/eDoITGDjKQaBiAkzNBMJq0jHUmE+A2BVePoGBQXMmCDjAXQEASPQ50yBJDfgAAAAASUVORK5CYII=" />
   <input id='colTable' style='width:54px;font:normal 10pt Helvetica,Arial;border:1px solid gold;' type='text' value='10%;90%'>
+<br>
+  <img class='intLign' title='Table of Contents' onClick="tblContents()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAJFBMVEUAAADY0tLX0tL////Z0tKqqaz///+pqKuqqazY0NLp4ub///+TSU30AAAAB3RSTlMAvr/u7/7+oxe1JgAAAEZJREFUCNdjYIAB9vLQ8tLyciBj1XYQFGBgX70dBCcwsO/eDoITGDjKQaBiAkzNBMJq0jHUmE+A2BVePoGBQXMmCDjAXQEASPQ50yBJDfgAAAAASUVORK5CYII=" />
+  <input id='tblCnt' style='width:54px;font:normal 10pt Helvetica,Arial;border:1px solid gold;' type='text' value='H1;140;.'>
 <br>
   <INPUT class='intSign' type='button' value='✔' onClick="fDoc('insertText','✔')"/>
   <INPUT class='intSign' type='button' value='✘' onClick="fDoc('insertText','✘')"/>
