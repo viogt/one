@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<script>
+function id(x) { return document.getElementById(x); }
+function draw() {
+  var pars, pTA = id('params');
+  try {
+    pars = JSON.parse('{' + pTA.value + '}');
+    pTA.style.backgroundColor = 'white';
+  } catch(e) {
+    pTA.style.backgroundColor = 'yellow';
+    return;
+  }
+  var canvas = id("myCanvas");
+  canvas.width = pars.width; canvas.height = pars.height;
+  
+  var ctx=canvas.getContext("2d");
+  var txt = id('textul').value.split('\n');
+  var w = pars.width, h = pars.height;
+
+
+  ctx.fillStyle = pars.bgColor;
+  ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle=pars.border;
+  ctx.strokeRect(0,0,w,h);
+  
+  ctx.font= pars.font;
+  ctx.fillStyle = pars.fgColor;
+  ctx.textAlign = pars.fontAlign;
+  
+  ctx.shadowColor = pars.shColor;
+  ctx.shadowOffsetX = pars.shX;
+  ctx.shadowOffsetY = pars.shY;
+  ctx.shadowBlur = pars.shBlur;
+  
+  w = (pars.fontAlign == 'center')?(w/2):pars.textX;
+  
+  for(var i=0, sx=pars.textY; i<txt.length; i++,sx+=pars.lineH) {
+    ctx.fillText(txt[i], w, sx);
+  }
+}
+
+function makeJPG() {
+  id('out').innerHTML = '<IMG src="' + document.getElementById("myCanvas").toDataURL("image/jpeg") + '">';
+}
+</script>
+<body>
+<TABLE>
+  <tr>
+    <td>
+      Text:<br>
+<textarea id="textul" cols="40" rows="7" onKeyUp="draw()">
+The best I can think of
+is the right tonality
+when everything else
+is already obliterated!
+</textarea>
+    </td>
+    <td>
+      Parameters:<br>
+<textarea id="params" cols="50" rows="7" onKeyUp="draw()">
+"width":460, "height":460, "border": "#aa0000",
+"font":"bold 26px Arial", "fontAlign":"center",
+"fgColor":"white", "bgColor": "red",
+"textX":0, "textY":60, "lineH": 30,
+"shColor":"black", "shX":0, "shY":2, "shBlur":3
+</textarea>
+    </td>
+  </tr>
+</TABLE>
+
+<input type="button" value="Make JPG" onClick="makeJPG()"/><br>
+
+<canvas id="myCanvas" width="300" height="200"
+style="border:1px solid #aa0000;">
+Your browser does not support the canvas element.
+</canvas>
+
+<div id='out'></div>
+
+</body>
+</html>
