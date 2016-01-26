@@ -6,7 +6,8 @@
   <style></style>
   <style>
     .iS { cursor:pointer; margin:1px; padding:2px; border:none; font-size:18px; color: grey; background-color: #111111;}
-    .brd { border:1px solid #222222; }
+    .bT { width: 60px; cursor:pointer; margin:2px; border:1px solid #222;padding:6px; border-radius:6px; font-size:14px; color: grey; background-color: #111111; outline:none;}
+    .bT:hover { border:1px solid blue; }
   </style>
   <script type="text/javascript">
 
@@ -20,16 +21,19 @@
       var a = window.getSelection().toString();
       document.execCommand('insertText', false, F?a.toUpperCase():a.toLowerCase());
     }
-
+    function save() { localStorage.setItem("facebook_edit", id('basic').innerText); }
+    function retrieve() { id('basic').innerText = localStorage.getItem("facebook_edit"); }
 </script>
 </head>
 <body bgColor='#111111'>
   
   <div style='position:fixed; top:30px; left: 10px; width:240px;'>
     
-      <INPUT class='iS' style='border:1px solid #222;padding:6px' type='button' onClick='toClipboard()' value='Copy to clipboard'/><br>
-      <INPUT class='iS' style='border:1px solid #222;padding:6px' type='button' onClick='upperCase(true)' value='Upper'/>&nbsp;&nbsp;
-      <INPUT class='iS' style='border:1px solid #222;padding:6px' type='button' onClick='upperCase(false)' value='Lower'/>
+      <INPUT class='bT' style='width:128px' type='button' onClick='toClipboard()' value='Copy to clipboard'/><br>
+      <INPUT class='bT' type='button' onClick='upperCase(true)' value='Upper'/>
+      <INPUT class='bT' type='button' onClick='upperCase(false)' value='Lower'/><br>
+      <INPUT class='bT' type='button' onClick='save()' value='Save'/>
+      <INPUT class='bT' type='button' onClick='retrieve()' value='Get'/>
     <br>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='✔'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⚑'/>
