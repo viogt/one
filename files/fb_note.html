@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link id='gFont' rel="stylesheet" type="text/css" href='#'>
+
 <script>
 function id(x) { return document.getElementById(x); }
+function changeFont(fn) {
+  id('gFont').href = "http://fonts.googleapis.com/css?family=" + fn.replace(/ /g,'+');
+  v = id('params'); v.value = v.value.replace(/"font":\s*".*?"/,'"font":"normal 24pt '+fn+'"');
+  setTimeout(draw, 600);
+}
 function draw() {
   var pars, pTA = id('params');
   try {
@@ -44,17 +52,18 @@ function makeJPG() {
   id('out').innerHTML = '<IMG src="' + document.getElementById("myCanvas").toDataURL("image/jpeg") + '">';
 }
 </script>
+</head>
 <body>
 <TABLE>
   <tr>
     <td>
       Text:<br>
 <textarea id="textul" cols="40" rows="7" onKeyUp="draw()">
-The best I can think of
-is the right tonality
-when everything else
-is already obliterated!
-</textarea>
+Grumpy wizards make toxic
+brew for the evil Queen
+and Jack. One morning,
+when Gregor Samsa woke
+from troubled dreams.</textarea>
     </td>
     <td>
       Parameters:<br>
@@ -62,14 +71,29 @@ is already obliterated!
 "width":460, "height":460, "border": "#aa0000",
 "font":"bold 26px Arial", "fontAlign":"center",
 "fgColor":"white", "bgColor": "red",
-"textX":0, "textY":60, "lineH": 30,
+"textX":0, "textY":60, "lineH": 36,
 "shColor":"black", "shX":0, "shY":2, "shBlur":3
 </textarea>
     </td>
   </tr>
 </TABLE>
 
-<input type="button" value="Make JPG" onClick="makeJPG()"/><br>
+<input type="button" value="Make JPG" onClick="makeJPG()"/>
+&nbsp;Google fonts: <select onChange='changeFont(this.options[this.selectedIndex].value)'>
+  <option value='Oswald'>Oswald</option>
+  <option value='Tangerine'>Tangerine</option>
+  <option value='Abel'>Abel</option>
+  <option value='Josefin Slab'>Josefin Slab</option>
+  <option value='EB Garamond'>EB Garamont</option>
+  <option value='Marcellus'>Marcellus</option>
+  <option value='Open Sans Condensed'>Open Sans Condensed</option>
+  <option value='Ubuntu'>Ubuntu</option>
+  <option value='Dosis'>Dosis</option>
+  <option value='Nosifer'>Nosifer</option>
+  <option value='Indie Flower'>Indie Flower</option>
+  
+</select>
+<br>
 
 <canvas id="myCanvas" width="300" height="200"
 style="border:1px solid #aa0000;">

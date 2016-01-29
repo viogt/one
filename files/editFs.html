@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript">
+
+    function id(x) { return document.getElementById(x); }
+
+    function send( jsonMsg ) {
+        try {
+          var msg = JSON.stringify( jsonMsg );
+          var http = new XMLHttpRequest();
+          http.open('POST', 'mng', false);
+          http.send(msg);
+          if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
+          alert(http.responseText);
+          return http.responseText;
+        } catch(e) { alert(e.message); return 'Error!'; }
+    }
+    
+    function getList() {
+        var arr = JSON.parse( send({ action: 'readDir' }) ), L = arr.length, bd = '';
+        for(var i=0; i<L; i++) bd += "<input type='button' value='" + arr[i] + "' onClick='getFile(this.value)'><br>";
+        id('fList').innerHTML = bd;
+    }
+    
+    var curFileName;
+    function getFile( fn ){
+        alert(fn);
+        id('fBody').value = send( { action: 'getFile', file: fn } );
+    }
+    
+    function saveFile(){
+        alert( send( { action: 'putFile', file: curFileName, fileBody: id('fBody').value } ));
+    }
+
+</script>
+</head>
+<body onLoad='getList()'>
+    <table>
+        <tr>
+            <td><input type='button' value='Get List' onClick='getList()'></td>
+            <td><input type='button' value='Save File' onClick='saveFile()'></td>
+        </tr>
+        <tr>
+            <td><div id='fList'></div></td>
+            <td><textarea id="fBody" cols="80" rows="40"></textarea></td>
+        </tr>
+    </table>
+</body>
+</html>

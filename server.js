@@ -174,6 +174,20 @@ function operate( js, resp ) {
 		        return;
             case 'coll exists':
                 resp.end(collExists?'+':'-'); return;
+            case 'readDir':
+                var p = './files';
+                fs.readdir(p, function (err, files){
+                    if(err) return shucher(resp, err, db); db.close();
+                    resp.end( JSON.stringify(files) );
+                }); 
+                return;
+            case 'getFile':
+                var file = fs.createReadStream('./files/'+js.file); file.pipe(resp);
+                return;
+            case 'putFile':
+                //var writeStream = fs.createWriteStream('./output'); req.pipe(writeStream);
+                saveFile( './files/'+js.file, js.fileBody, resp );
+                return;
 		    default: resp.end('0 Unknown command'); db.close();
         }
         });
