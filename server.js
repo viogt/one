@@ -186,7 +186,10 @@ function operate( js, resp ) {
                 return;
             case 'putFile':
                 //var writeStream = fs.createWriteStream('./output'); req.pipe(writeStream);
-                saveFile( './files/'+js.file, js.fileBody, resp );
+            	fs.writeFile('./files/'+js.file, js.fileBody, function(err) {
+            	  if (err) return shucher(resp, err, db); db.close();
+            	  resp.end('File saved!');
+                });
                 return;
 		    default: resp.end('0 Unknown command'); db.close();
         }

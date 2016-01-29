@@ -12,7 +12,6 @@
           http.open('POST', 'mng', false);
           http.send(msg);
           if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
-          alert(http.responseText);
           return http.responseText;
         } catch(e) { alert(e.message); return 'Error!'; }
     }
@@ -25,8 +24,8 @@
     
     var curFileName;
     function getFile( fn ){
-        alert(fn);
         id('fBody').value = send( { action: 'getFile', file: fn } );
+        id('curF').innerHTML = curFileName = fn;
     }
     
     function saveFile(){
@@ -38,12 +37,12 @@
 <body onLoad='getList()'>
     <table>
         <tr>
-            <td><input type='button' value='Get List' onClick='getList()'></td>
-            <td><input type='button' value='Save File' onClick='saveFile()'></td>
+            <td>Files:</td>
+            <td><input type='button' value='Get List' onClick='getList()'> | <input type='button' value='Save File' onClick='saveFile()'> | <span id='curF'>None</span></td>
         </tr>
         <tr>
-            <td><div id='fList'></div></td>
-            <td><textarea id="fBody" cols="80" rows="40"></textarea></td>
+            <td valign='top'><div id='fList'></div></td>
+            <td valign='top'><textarea id="fBody" cols="80" rows="40"></textarea></td>
         </tr>
     </table>
 </body>
