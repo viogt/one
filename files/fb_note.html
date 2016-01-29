@@ -7,7 +7,7 @@
 function id(x) { return document.getElementById(x); }
 function changeFont(fn) {
   id('gFont').href = "http://fonts.googleapis.com/css?family=" + fn.replace(/ /g,'+');
-  v = id('params'); v.value = v.value.replace(/"font":\s*".*?"/,'"font":"normal 24pt '+fn+'"');
+  var v = id('params'); v.value = v.value.replace(/"font":\s*".*?"/,'"font":"normal 24pt '+fn+'"');
   setTimeout(draw, 600);
 }
 function draw() {

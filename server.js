@@ -1,6 +1,5 @@
 var http	= require('http'),
     fs		= require('fs'),
-    path = require('path'),
     pdf = require('html-pdf'),
     Mng   = require('mongodb'),
     MngIp = 'mongodb://127.0.0.1:27017/test',
