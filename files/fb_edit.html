@@ -12,28 +12,32 @@
   <script type="text/javascript">
 
     function id(x) { return document.getElementById(x); }
-    function fDoc(cmd, el) { document.execCommand(cmd, false, el.value); }
-    function toClipboard() {
+    function fDoc(cmd, el) { Foc(); document.execCommand(cmd, false, el.value); }
+    function toClipboard(ob) {
+      setT(ob); Foc();
       document.execCommand('selectAll', false, '');
       document.execCommand('copy', false, '');
     }
     function upperCase(F) {
+      Foc();
       var a = window.getSelection().toString();
       document.execCommand('insertText', false, F?a.toUpperCase():a.toLowerCase());
     }
-    function save() { localStorage.setItem("facebook_edit", id('basic').innerText); }
-    function retrieve() { id('basic').innerText = localStorage.getItem("facebook_edit"); }
+    function save(ob) { setT(ob); localStorage.setItem("facebook_edit", id('basic').innerText); Foc(); }
+    function retrieve(ob) { setT(ob); id('basic').innerText = localStorage.getItem("facebook_edit"); Foc(); }
+    function setT(ob) { ob.style.backgroundColor = 'blue'; setTimeout(function(){ ob.style.backgroundColor = ''; }, 600); }
+    function Foc() { id('basic').focus(); }
 </script>
 </head>
-<body bgColor='#111111'>
+<body bgColor='#111111' onload='Foc()'>
   
   <div style='position:fixed; top:30px; left: 10px; width:240px;'>
     
-      <INPUT class='bT' style='width:128px' type='button' onClick='toClipboard()' value='Copy to clipboard'/><br>
+      <INPUT class='bT' style='width:128px' type='button' onClick='toClipboard(this)' value='Copy to clipboard'/><br>
       <INPUT class='bT' type='button' onClick='upperCase(true)' value='Upper'/>
       <INPUT class='bT' type='button' onClick='upperCase(false)' value='Lower'/><br>
-      <INPUT class='bT' type='button' onClick='save()' value='Save'/>
-      <INPUT class='bT' type='button' onClick='retrieve()' value='Get'/>
+      <INPUT class='bT' type='button' onClick='save(this)' value='Save'/>
+      <INPUT class='bT' type='button' onClick='retrieve(this)' value='Get'/>
     <br>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='✔'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⚑'/>
