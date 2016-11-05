@@ -6,7 +6,7 @@
   <style></style>
   <style>
     .iS { cursor:pointer; margin:1px; padding:2px; border:none; font-size:18px; color: grey; background-color: #111111;}
-    .bT { width: 60px; cursor:pointer; margin:2px; border:1px solid #222;padding:6px; border-radius:6px; font-size:14px; color: grey; background-color: #111111; outline:none;}
+    .bT { cursor:pointer; margin:2px; border:1px solid #222;padding:6px; border-radius:6px; font-size:14px; color: grey; background-color: #111111; outline:none;}
     .bT:hover { border:1px solid blue; }
   </style>
   <script type="text/javascript">
@@ -23,6 +23,9 @@
       var a = window.getSelection().toString();
       document.execCommand('insertText', false, F?a.toUpperCase():a.toLowerCase());
     }
+    function removeDiacrit() { var d = id('basic');
+      d.innerText = d.innerText.replace(/Ă|ă|Î|î|Ș|ș|Ț|ț|Â|â/g, function(x){ return "AaIiSsTtAa".charAt("ĂăÎîȘșȚțÂâ".indexOf(x)); });
+    }
     function save(ob) { setT(ob); localStorage.setItem("facebook_edit", id('basic').innerText); Foc(); }
     function retrieve(ob) { setT(ob); id('basic').innerText = localStorage.getItem("facebook_edit"); Foc(); }
     function setT(ob) { ob.style.backgroundColor = 'blue'; setTimeout(function(){ ob.style.backgroundColor = ''; }, 600); }
@@ -34,10 +37,12 @@
   <div style='position:fixed; top:30px; left: 10px; width:240px;'>
     
       <INPUT class='bT' style='width:128px' type='button' onClick='toClipboard(this)' value='Copy to clipboard'/><br>
-      <INPUT class='bT' type='button' onClick='upperCase(true)' value='Upper'/>
-      <INPUT class='bT' type='button' onClick='upperCase(false)' value='Lower'/><br>
-      <INPUT class='bT' type='button' onClick='save(this)' value='Save'/>
-      <INPUT class='bT' type='button' onClick='retrieve(this)' value='Get'/>
+      <INPUT class='bT' style='width:38px' type='button' onClick='upperCase(true)' value='Upr'/>
+      <INPUT class='bT' style='width:38px' type='button' onClick='upperCase(false)' value='Low'/>
+      <INPUT class='bT' style='width:38px' type='button' onClick='removeDiacrit()' value='Dia'/><br>
+      <INPUT class='bT' style='width:60px' type='button' onClick='save(this)' value='Save'/>
+      <INPUT class='bT' style='width:60px' type='button' onClick='retrieve(this)' value='Get'/>
+
     <br>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='✔'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⚑'/>
@@ -60,14 +65,14 @@
     <br>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='€'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='★'/>
-      <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='∎'/>
+      <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='§'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='▲'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='▼'/>
     <br>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='●'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='➜'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='➤'/>
-      <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='➡'/>
+      <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='▬'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='✅'/>
     <br>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='✍'/>
