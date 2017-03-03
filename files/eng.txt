@@ -6,9 +6,9 @@
 </colgroup>
 	<tbody><tr><td valign="top">
 encumber, thwart, hinder, foil, embarrass, obstruct,
-hamper, burden, interfere,&nbsp;resonates with</td><td valign="top">
-mitigate, diminish-downplay, commute, wane, dwindle, shrink, abate, exacerbate-worsen, decrease, reduce, discount, enfeeble,
-relent, concede, undercut; assuage grief, pain, fear, anguish;
+hamper, burden, interfere, resonates with</td><td valign="top">
+mitigate, diminish-downplay, disparage-discredit, commute, wane, dwindle, shrink, abate, exacerbate-worsen, decrease, reduce, discount, enfeeble,
+relent, concede, succumb, undercut; assuage grief, pain, fear, anguish;
 attenuate, temper,
 fade out</td><td valign="top">
 stark contrast,
@@ -17,7 +17,7 @@ gross, severe,
 sharp, fierce, keen, abrupt, steep
 	</td></tr>
 	<tr><td valign="top">
-baffle, astonish, amaze,
+baffle, muddle-confuse, mixed up, astonish, amaze,
 astound, rock, abash, surprise, daze, stunning, staggering, blazing,
 (annoy, exasperate), stubborn, bugged, mesmerised, crippled, transfixed, appalling, dire, mind-boggling, gruesome, heinous, horrendous</td><td valign="top">
 chilly/frosty, contemptible, despicable, deserving scorn, repugnance,
@@ -26,14 +26,14 @@ oblivious, not diligent,
 inadvertent, by accident, fortuitous</td><td valign="top">
 enthralling, captivating,
 endear, sympathetic,
-thrilling, enchanting, delightful, fascinating, charming, groovy, exciting, unattainable, appealing, promising, in the wake of, aftermath/outcome, repercussion, inbuilt bias
+thrilling, enchanting, delightful, fascinating, charming, groovy, exciting, unattainable, appealing, promising, in the wake of, aftermath/outcome, repercussion/corollary, inbuilt bias
 	</td></tr>
 	<tr><td valign="top">weird, bizarre, peculiar,
 		queer, odd, strange, uncanny, kinky, spooky,
 		the least likely, nothing remotely like
 	</td><td valign="top">overlook, disregard, flout, pass over, disdain, pay no attention, snub, condone, deter from, erode,
 		neglect, dodge, ignore, shun, skim through, cursory glance, flip through
-	</td><td valign="top">conversely, on the contrary, in contrast with, dissimilarly, apart from; contrive, devise, ingeneer, devious/scam, under the sway/hold, at the behest/whim of (fad, quirk)</td></tr>
+	</td><td valign="top">conversely, on the contrary, in contrast with, dissimilarly, apart from; contrive, devise, ingeneer, devious/scam, shenanigan, swindle, fiddle, under the sway/hold, at the behest/whim of (fad, quirk)</td></tr>
 	<tr><td valign="top">
 supersede, precede,
 antedate, backdate,
@@ -52,7 +52,7 @@ bump into-stumble on smbd,
 come across,<br>proliferate, mashroom, boom.</td><td valign="top">
 alienate, maroon, forsake,
 forgo-refrain from, desist from, divert, forestall that by doing this, preclude from,
-gather/coalesce, assent/dissent from the view, bestow/confer, trespass on/cut into
+gather/coalesce, marshal/rally, assent/dissent from the view, bestow/confer, trespass on/cut into
 	</td><td valign="top">
 embodies, embed, enclose,
 encompass, incorporate,
@@ -61,9 +61,8 @@ of betterment,
 embellishment, blandishment - flattery, coax, inducement, adulation</td></tr>
 	<tr><td valign="top">
 lofty, sublime, heightening, flamboyant, embellish,
-vivid, vibrant, ludicrous, ridicule, hilirious, amusing, deride, grotesque, dizzying</td><td valign="top">
-tap into, enter, gear up for,
-bump into, pop into view, hop to,
+vivid, vibrant, ludicrous, ridicule, hilarious, amusing, groovy, deride, grotesque, dizzying</td><td valign="top">
+tap into, enter, gear up for, be poised to do, bump into, pop into view, hop to,
 what has befallen him, what we underwent
 	</td><td valign="top">
 hinge on, contingent on,
@@ -78,18 +77,18 @@ elaborated, sophisticated, pertinent details, pertaining to</td><td valign="top"
 		henchman, acolyte, accomplice, nominee (strawman, stooge, marionette), proxies, allies, nexus, subservient,
 		servile, cringing, proselyte, delinquent, offender, villain, culprit, orchestrated, framed-up, concerted
 	</td></tr>
-	<tr><td valign="top">dispel/debunk<span style="font-size: 14pt;">&nbsp;(myth, doubt), bust, cast doubts, falter in (wobble), rebut (charges), refute, reject, disprove, repudiate, disavow, decline, deflect,
+	<tr><td valign="top">dispel/debunk<span style="font-size: 14pt;"> (myth, doubt), bust, cast doubts, falter in (wobble), rebut (charges), refute, reject, disprove, repudiate, disavow, decline, deflect,
 revoke, annul, rescind, repeal, quash, overrule, set aside, reverse,
 dissuade, repel, bounce back, resile(-ient),
 expel, evacuate, exorcise, elude,
 relinquish, renounce, concede, fall back</span></td><td valign="top">
-thorough ~cursory, accurate, astute, perspicacious, scarcely, hardly, barely;
+thorough ~cursory, accurate, astute, perspicacious, shrewd, scarcely, hardly, barely;
 dispatch, dispense, apportion, divvy, divide, distribute,
 in due course, crowd/flock around, amass;<br><br>pitfall, trap, cage;<br>moron, foe</td><td valign="top">
 flee, banish, exile,
 compel to refuge,
 unpalatable truth, benchmark,
-he muddied the waters;<br><br>to con into, cunning/sly, vile/petty, despicable, contemptible, treacherous, callous/cruel</td></tr>
+he muddied the waters;<br><br>to con into, cunning/sly, mischievous/mean, vile/petty, despicable, contemptible, treacherous, callous/cruel</td></tr>
 	<tr><td valign="top">
 mingle with, mix with,
 blend, mess with, melt,
@@ -125,7 +124,7 @@ pour, discern, susceptible to,
 prone to
 	</td><td valign="top">
 gratifying, indulge, healing,
-echo, reverberate, echo effect, pay attention, heed, it pales in comparison with, it lies in, it falls into</td></tr>
+echo, reverberate, echo effect, cascading, pay attention, heed, it pales in comparison with, it lies in, it falls into</td></tr>
 	<tr><td valign="top">
 protracted, overdue, delayed,
 retarded, shelving, overstretched; temporised, ~long-standing; data drilling, dig/dug, pierce, tunnel,
@@ -139,7 +138,7 @@ flatter, flirt with,
 sedate, appealing,
 rife, pervasive, ubiquitous, widespread, endemic;<br><br>bold, courageous, doughty, brave, fortitude, audacity</td></tr>
 	<tr><td valign="top">
-perplex, to bewilder, bewilderment, nuisance, dismay, hassle, inconvenience, annoyance, bummer, drawback-flaw-shortcoming, deadlock-impasse, gridlock, downside-disadvantage,<br>setback</td><td valign="top">
+perplex, to bewilder, bewilderment, nuisance, dismay, consternation, hassle, in a pickle, inconvenience, annoyance, bummer, drawback-flaw-shortcoming, deadlock-impasse, gridlock, downside-disadvantage,<br>setback</td><td valign="top">
 stray from, divert, deviate, derail,
 deflect the judgment,
 dodge, steer toward, head to, set off to, budge, lure, reckon, hype;<br><br>soaring achievement, tantalising accomplishment, torment</td><td valign="top">
@@ -165,7 +164,7 @@ compel, boost, coerce,
 impose, enforce,
 prescribe, enjoin, injunction
 	</td><td valign="top">
-dwell on, hover over, hatch, incubate,
+dwell on, hover over, linger, hatch, incubate,
 hook, bend rules, inflect, by no means</td></tr>
 	<tr><td valign="top">
 tip, allude, hint,
@@ -180,17 +179,16 @@ master technique, yield,
 harness, use, employ, crafted-designed-tailored for
 	</td></tr>
 	<tr><td valign="top">
-redundant, futile, extinct,
+redundant, futile, no go, extinct,
 inexorable, absolve, exonerate, implacable, relentless,
 reluctant to, defunct;<br><br>clear and crisp; pure and plain; clear-cut, uncluttered, unobtrusive, unimpeded, unobstructed</td><td valign="top">
-fuzzy, hazy, vague, blurred, befogged,
+fuzzy, hazy, murky, vague, blurred, befogged,
 foggy, bogged down, mired into, sunk, mud,
 swamped, flood, overload,
 inaccurate, dissolute</td><td valign="top">
 		central, core, key,
-		essential, pivotal, kernel, chief, primary, root, crucial,
-		critical, vital, prime purpose, last but not least, doom, gloomy view, dim,
-inbuilt bias, grim statistics,
+		essential, pivotal, gist, kernel, chief, primary, root, crucial,
+		critical, vital, prime purpose, last but not least, doom, gloomy view, dim, bleak, inbuilt bias, grim statistics,
 ill-founded, perverse, distorted
 	</td></tr>
 	<tr><td valign="top">
@@ -206,10 +204,10 @@ with a premise, depict,
 portray
 	</td></tr>
 	<tr><td valign="top">hassle, impede, adjourn, postpone,
-impends, slated for, fortuitous, hover,
+impends, scheduled, slated for, due to be, fortuitous, hover,
 cherry-picking, preemptive, laggy, sluggish</td><td valign="top">
 clash, impact,
-turmoil, upheaval, fuss, quarrel, tussle, grapple, ~smooth, ~mild, ~slick;<br>volatile, mercurial, clumsy-dexter, cumbersome,&nbsp;eavesdrop, wiretap,&nbsp;subterfuge, ruse.</td><td valign="top">
+turmoil, upheaval, fuss, quarrel, tussle, grapple, ~smooth, ~mild, ~slick;<br>volatile, mercurial, clumsy-dexter, cumbersome, eavesdrop, wiretap, subterfuge, ruse, ploy, stratagem.</td><td valign="top">
 embezzle, loot, rob, heist, defraud, rape,
 divest, dispossess, grab, plunder, amass, cynical/loutish theft,
 pillage, spoil, booty, lucrative business, funnel cash, siphon, steal, infringe, breach,
@@ -227,11 +225,10 @@ indict, charge with an
 offence, acquit, redress,
 exonerate, relief, injury,
 inflict, afflict,
-flawed, viciate, impair, distortion, deficient, vicious, prejudicial, pejorative
-	</td></tr>
+flawed, viciate, impair, distortion, deficient, vicious, prejudicial, pejorative, invective, derogatory, disparaging, downplay</td></tr>
 	<tr><td valign="top">
 praise, laudatory,
-spawn rumours, hearsay, purposive interpretation,
+spawn rumours, give rise to, beget, arouse, hearsay, purposive interpretation,
 rude and impolite, ruthless, ~courtesy, inexorable/implacable
 	</td><td valign="top">
 ascribe, attribute,
@@ -242,8 +239,8 @@ devise, contrive, plot,
 spot, map, engineer, invent, a figment of, make up, construe
 	</td></tr>
 	<tr><td valign="top">
-Pursuant to, imply, infer, derive, ensue from, assume, presuppose,
-entail, set forth;&nbsp;worthwhile to take, benign, ~untoward, adverse, pernicious, hazardous, precarious, malign</td><td valign="top">
+Pursuant to, imply, infer, derive, ensue from, flow out of, assume, presuppose,
+entail, set forth; worthwhile to take, benign, ~untoward, adverse, pernicious, hazardous, precarious, malign</td><td valign="top">
 chief, paramount, ~petty, pressing,
 utmost, crucial, trigger,
 determinant, decisive,
@@ -257,8 +254,7 @@ it stinks
 	<tr><td valign="top">
 cogent, evident,
 obvious, manifest, patently,
-blatant, genuinely,
-wanton, outrageous, unrestrained.</td><td valign="top">
+blatant, genuinely, brute fact, wanton, outrageous, unrestrained.</td><td valign="top">
 striking, gross,
 severe, rampant,
 flagrant, egregious, flamboyant, colourful,
@@ -270,10 +266,10 @@ pinpoint, gloomy forecast,
 address, refer, raise,
 subjected to, tackle, tinker with, sort out, unravel (untangle), targeted at, morphed into, tweak</td></tr>
 	<tr><td valign="top">
-boast, brag, mock, critisise-revile, giggle,
+boast, brag, mock, critisise-revile, slam, rebuke, giggle,
 scout, bestow, endow,
 lavish, generous,
-wasteful;<br>deceptively simple - annoyingly difficult, damn freaking simple.</td><td valign="top">as regards, as concerns, with regard to, in respect of, with respect to, in relation to, relative to, in connection with; in view of this, from my perspective, irrespective of, regardless of.</td><td valign="top">impugned matter, moot, in question, in dispute, contentious, charge imputed, confide, confess,
+wasteful;<br>deceptively simple - annoyingly difficult, damn freaking simple.</td><td valign="top">as regards, as (far as it) concerns, with regard to, in respect of, with respect to, in relation to, relative to, in connection with; in view of this, from my perspective, irrespective of, regardless of.</td><td valign="top">impugned matter, moot, in question, in dispute, contentious, charge imputed, confide, confess,
 testimonies, perjury (bearing false witness); lawsuits, docket.</td></tr>
 	<tr><td valign="top">wrestle, contend,
 fight, confront, tussle, struggle,
@@ -296,7 +292,7 @@ presumably, probably, seemingly, apparently, supposedly, reputedly, allegedly, r
 	<tr><td valign="top">tedious, boring, tiresome, exhausting, fatiguing, wearisome;
 		silly/dump question; disgraceful, infamous;
 		nasty, muddy, dirty about, filthy, obscene, freak of/funky,
-		match, fit the theory, &nbsp; certain length of time, scant, loosely known as,
+		match, fit the theory,   certain length of time, scant, loosely known as,
 		to culminate with/top it all, climax, kindle the spark.</td><td valign="top">
 		draft a letter, file/lodge a request, rejoinder/reply, switch emphasis,
 		preconceived statement, proved pointless/decisive, bundle the case, court bundle, broad and purposive interpretation-construed, witty-catty-spiteful-caustic remark.</td><td valign="top">elevate onto the forefront;
@@ -329,13 +325,13 @@ How to disagree without being <i>rude</i> and impolite?<br><i>Riddled with</i> s
 Aware of their implausibility.<br><i>Cope with</i> such mentality and mindset.<br>He <i>make an idiot/fool of</i> himself.</p><p>
 Treat <i>with contempt</i>.<br><i>Disqualifying statement</i>.<br><i>Congruent opinions</i>.</p><p>
 Recipe, cookie. Obligatory. If it were true...<br><i>Proudly and defiantly</i>...<br>It has <i>enough of</i> the facts.<br>Remote chance...<br><i>Inherent</i> conflict (intrinsic, immanent, innate).<br><i>Talk in riddles</i>. Lead to outcomes.</p><p>
-Subject to thorough <i>public scrutiny</i>.<br>Censorship. Regard with <i>discreet scrutiny</i>&nbsp;(examine, parse).<br>Someone <i>shady</i> involved.</p><p>
+Subject to thorough <i>public scrutiny</i>.<br>Censorship. Regard with <i>discreet scrutiny</i> (examine, parse).<br>Someone <i>shady</i> involved.</p><p>
 It's <i>gratifying</i>... it's offering satisfaction.<br>I <i>feel valued</i>. Let me <i>make my point</i>.</p><p>
 <i>How come</i>...<br><i>When it comes to</i>... <i>mise en scene</i>.<br>I <i>indulge</i> myself in... to indulge a child.<br><i>Hocus-pocus</i>. A <i>word hijacked for its own use</i> and its own <i>healing effect</i>.</p><p>
 Struggle with instincts.<br>It <i>purports</i> to be...<br>They <i>purport to act</i> in legitimate exercise of their offices.<br>She's not a person she purports to be.</p><p>
 To <i>tackle</i> a difficult problem, <i>abruptly</i> risen.<br>To <i>impinge significantly upon</i> the right of freedom of expression.<br>This <i>impinges on</i> overall performance.<br>Rather than <i>encroach on</i> (intrude on) his privacy.<br>To <i>impart</i> secret, impart knowledge/wisdom with us.</p><p>
 Who actually <i>perpetrates the crime</i> and transgression.<br><i>Severe injustice perpetrated by corrupt judges</i>.<br>This is what I <i>pledge</i> to you. We ask no pledge (promise) from you.<br>I swear and <i>solemnly pledge</i> myself.</p><p>
-Arrange a <i>bailout</i> package, a rescue plan, blueprint.<br>For a miracle to come, <i>for a project to get</i> implemented.<br><i>Flowed immunity system</i>, susceptible to influence.<br>Beyond the human grasp, <i>grasp</i> the meaning of the words, beyond my imagination.</p><p>
+Arrange a <i>bailout</i> package, a rescue plan, <i>safeguard</i>, blueprint.<br>For a miracle to come, <i>for a project to get</i> implemented.<br><i>Flowed immunity system</i>, susceptible to influence.<br>Beyond the human grasp, <i>grasp</i> the meaning of the words, beyond my imagination.</p><p>
 <i>Susceptible to material incentives</i>.<br>This is said to <i>flatter</i> me. Don't flatter yourself.<br>To <i>flirt with</i>... to coquet with...<br>His attack seemed to <i>run out of steam</i>.<br><i>Detached from reality</i>.</p><p>
 <i>Drain</i> money from... funnel, siphon.<br>This is <i>way more</i> fun than... to <i>intertwine</i> with... become intertwined with other illicit forms, <i>regardless of</i> how big is...</p>
 <p>
@@ -347,9 +343,9 @@ Arrange a <i>bailout</i> package, a rescue plan, blueprint.<br>For a miracle to 
 Influence: <i>Wielding</i> effective tactics for persuasion.<br><span style="font-size: 14pt;">The only objection might have been easily removed, by barely </span><i style="font-size: 14pt;">prescribing</i><span style="font-size: 14pt;"> what sort of evidence they ought to receive.<br></span><span style="font-size: 14pt;">Pursue information to reduce uncertainty and find ways to do better.<br></span><span style="font-size: 14pt;">We're ready to </span><i style="font-size: 14pt;">seize</i><span style="font-size: 14pt;"> opportunities.<br></span><i style="font-size: 14pt;">Pursue goals</i><span style="font-size: 14pt;"> beyond what's required or expected of them.<br></span><span style="font-size: 14pt;">Cut through red tape and </span><i style="font-size: 14pt;">bend the rules</i><span style="font-size: 14pt;"> when necessary to get the job done.<br></span><i style="font-size: 14pt;">Persist in seeking goals despite</i><span style="font-size: 14pt;"> obstacles and setbacks.<br></span><span style="font-size: 14pt;">Operate from hope of success rather than fear of failure.</span></p><p>
 We're being judged by a new yard-stick: not just by how smart we are, or by our training and expertise, but also by how well we handle ourselves and each other. This yard-stick is increasingly applied in choosing who will be hired and who will not, who will be let go and who retained, who passed over and who promoted.</p><p>
 These rules have little to do with what we were told was important in school; <i>academic abilities are largely irrelevant to</i> this standard. The new measure takes for granted having enough intellectual ability and technical know-how to do our jobs; it focuses instead on personal qualities, such as initiative and empathy, adaptability and persuasiveness.</p><p>
-This is no <i>passing fad</i>&nbsp;(<i>whim</i>, <i>quirk</i>) nor just the management nostrum of the moment. The data that argue for taking it seriously are based on studies of tens of thousands of working people, in callings of every kind. And it demonstrates which human abilities make up the greater part of the ingredients for excellence at work -- most especially for leadership.</p><p>
+This is no <i>passing fad</i> (<i>whim</i>, <i>quirk</i>) nor just the management nostrum of the moment. The data that argue for taking it seriously are based on studies of tens of thousands of working people, in callings of every kind. And it demonstrates which human abilities make up the greater part of the ingredients for excellence at work -- most especially for leadership.</p><p>
 If you are part of a management team, you need to consider whether your organisation <i>fosters</i> these competencies or discourages them.<br><span style="font-size: 14pt;">An emotional competence is a learned capability based on emotional intelligence that results in </span><i style="font-size: 14pt;">outstanding</i><span style="font-size: 14pt;"> performance at work (extraordinary, <i>nontrivial</i>).<br></span><span style="font-size: 14pt;">Competencies come in clusters. For top performance a person must master a mix of competencies, not just one or two.<br></span><span style="font-size: 14pt;">Only when they reach a critical mass from the full spectrum do they emerge as outstanding-something akin to a chemical reaction achieved the moment of catalysis.</span></p><p>
-The conclusions of a <i>landmark study</i> of top executives who <i>derailed</i>, the two most <i>common traits</i> of those who failed.<br><span style="font-size: 14pt;">The single most frequently mentioned factor: being too </span><i style="font-size: 14pt;">harshly</i><span style="font-size: 14pt;"> critical, insensitive or </span><i style="font-size: 14pt;">demanding</i><span style="font-size: 14pt;">, so that they alienated those they worked with.<br></span><span style="font-size: 14pt;">Trustworthiness: The failures typically were overly ambitious, too ready to get ahead at the expense of other people.</span></p><p><span style="font-size: 14pt;">Obvious: It isn't that they can't see the solution - they can't see the problem.<br><br></span><span style="font-size: 14pt;">Contemplation: People at this stage see that they need to improve and have begun to think about how to do so. Ambivalence is </span><i style="font-size: 14pt;">rampant</i><span style="font-size: 14pt;">: some wait for a "magic moment" of readiness. People at this stage are as likely to say they intend to take some action "next month" as they are to say they'll do it "in the next six months". It's not unusual for people "to spend" years telling them that someday they are going to change". They substitute thinking for acting.</span></p><p><span style="font-size: 14pt;"><br></span><span style="font-size: 14pt;">Preparation: Here people have begun to focus on the solution - on how to improve. They are aware of the problem, see that there are ways to solve it, and </span><i style="font-size: 14pt;">palpably</i><span style="font-size: 14pt;"> anticipate doing so. This is the time for formulating a specific, detailed plan of action.<br></span><span style="font-size: 14pt;">Action: Visible change begins. People </span><i style="font-size: 14pt;">embrace</i><span style="font-size: 14pt;"> the plan, start </span>practising<span style="font-size: 14pt;">&nbsp;its steps, and actually change how they act - their emotional patterns, the way they think about themselves, and all the other facets of transforming a </span><i style="font-size: 14pt;">long-standing habit</i><span style="font-size: 14pt;">.</span></p><p>
+The conclusions of a <i>landmark study</i> of top executives who <i>derailed</i>, the two most <i>common traits</i> of those who failed.<br><span style="font-size: 14pt;">The single most frequently mentioned factor: being too </span><i style="font-size: 14pt;">harshly</i><span style="font-size: 14pt;"> critical, insensitive or </span><i style="font-size: 14pt;">demanding</i><span style="font-size: 14pt;">, so that they alienated those they worked with.<br></span><span style="font-size: 14pt;">Trustworthiness: The failures typically were overly ambitious, too ready to get ahead at the expense of other people.</span></p><p><span style="font-size: 14pt;">Obvious: It isn't that they can't see the solution - they can't see the problem.<br><br></span><span style="font-size: 14pt;">Contemplation: People at this stage see that they need to improve and have begun to think about how to do so. Ambivalence is </span><i style="font-size: 14pt;">rampant</i><span style="font-size: 14pt;">: some wait for a "magic moment" of readiness. People at this stage are as likely to say they intend to take some action "next month" as they are to say they'll do it "in the next six months". It's not unusual for people "to spend" years telling them that someday they are going to change". They substitute thinking for acting.</span></p><p><span style="font-size: 14pt;"><br></span><span style="font-size: 14pt;">Preparation: Here people have begun to focus on the solution - on how to improve. They are aware of the problem, see that there are ways to solve it, and </span><i style="font-size: 14pt;">palpably</i><span style="font-size: 14pt;"> anticipate doing so. This is the time for formulating a specific, detailed plan of action.<br></span><span style="font-size: 14pt;">Action: Visible change begins. People </span><i style="font-size: 14pt;">embrace</i><span style="font-size: 14pt;"> the plan, start </span>practising<span style="font-size: 14pt;"> its steps, and actually change how they act - their emotional patterns, the way they think about themselves, and all the other facets of transforming a </span><i style="font-size: 14pt;">long-standing habit</i><span style="font-size: 14pt;">.</span></p><p>
 <i>Feedback lies at the heart</i> of change. Knowing how we are doing <i>keeps us on track</i>. In its most basic form, feedback means that someone notices whether -- or how well -- the new competence is being used and lets us know.<br><span style="font-size: 14pt;">Emotional competence cannot be improved overnight, because the motional brain changes its habits over weeks and months, not hours and days.</span><span style="font-size: 14pt;"><br></span></p><p><span style="font-size: 14pt;">The children love </span><i style="font-size: 14pt;">roaming about</i><span style="font-size: 14pt;"> in the fields and woods.<br></span><span style="font-size: 14pt;">Somebody remains </span><i style="font-size: 14pt;">committed to</i><span style="font-size: 14pt;"> the principles of...</span></p>
 <hr>
 <p>
@@ -372,7 +368,7 @@ She, <i>on the contrary</i>, was never able to <i>gauge</i> him.<br>
 A <i>keen awareness of</i> the problem.<br>He was keen to begin. Anew.<br>She's keen in music.</p><p>
 Do you want to squeeze an orange?<br>Your father has already paid so much, I doubt if you can <i>squeeze any more money out</i> (of him).</p><p>
 For over 100 years, men have been <i>questing for</i> gold in the hills.<br>The quest of oil...<br>Know how to put a query to somebody and to know how to <i>respond to a query</i>.</p><p>
-Trying to <i>gain more political leverage</i>...<br><span style="font-size: 14pt;">Why don't you </span><i style="font-size: 14pt;">reveal</i><span style="font-size: 14pt;">&nbsp;(<i>open up about</i>, unveil, unfold) your thoughts to me?<br></span><span style="font-size: 14pt;">Some people still do not believe that man </span><i style="font-size: 14pt;">evolved from</i><span style="font-size: 14pt;"> monkeys.</span></p><p>
+Trying to <i>gain more political leverage</i>...<br><span style="font-size: 14pt;">Why don't you </span><i style="font-size: 14pt;">reveal</i><span style="font-size: 14pt;"> (<i>open up about</i>, unveil, unfold) your thoughts to me?<br></span><span style="font-size: 14pt;">Some people still do not believe that man </span><i style="font-size: 14pt;">evolved from</i><span style="font-size: 14pt;"> monkeys.</span></p><p>
 There is something <i>amiss with</i> our project.<br>He gets his money's <i>worth</i>.<br>We are <i>puzzled</i> how to act.<br>There is no clear solution to this <i>riddle or turmoil</i>.</p><p>
 He managed to <i>smooth the quarrel</i>.<br>I do not <i>quarrel with the facts</i>, only with the meaning that you give them.</p><p>
 The success of our public request for money <i>impels</i> us to even greater struggle to save the hospital.</p><p>
@@ -414,14 +410,14 @@ Looking at this with an <i>unaided eye</i>, naked eye, <i>bare</i> eye...<br><sp
 <hr>
 <p>
 
-With the <i>advent</i> of an asymptotic (asymptomatic) behavior...<br><span style="font-size: 14pt;">This exercises a </span><i style="font-size: 14pt;">disproportionate effect</i><span style="font-size: 14pt;"> on the </span><i style="font-size: 14pt;">environment</i><span style="font-size: 14pt;">.</span></p><p>
+With the <i>advent</i> of an asymptotic (asymptomatic) behaviour...<br><span style="font-size: 14pt;">This exercises a </span><i style="font-size: 14pt;">disproportionate effect</i><span style="font-size: 14pt;"> on the </span><i style="font-size: 14pt;">environment</i><span style="font-size: 14pt;">.</span></p><p>
 He would compensate it but he is <i>handicapped</i> by being <i>clueless about</i> the value.<br><span style="font-size: 14pt;">It won't be easy to </span><i style="font-size: 14pt;">do it straight</i><span style="font-size: 14pt;">, but I'll get used to.<br></span><span style="font-size: 14pt;">This </span><i style="font-size: 14pt;">cornerstone</i><span style="font-size: 14pt;"> left a large amount of confusion among the physicists.</span></p><p>
 He regarded this in order to <i>obey the principles</i> of the whole construction.<br><i style="font-size: 14pt;">One supposes that</i><span style="font-size: 14pt;"> one influence what one particle </span><i style="font-size: 14pt;">exerts to</i><span style="font-size: 14pt;"> another cannot be transmitted instantaneously.<br></span><span style="font-size: 14pt;">For the </span><i style="font-size: 14pt;">fear of being branded as</i><span style="font-size: 14pt;"> heretic, he </span><i style="font-size: 14pt;">circulated</i><span style="font-size: 14pt;"> it anonymously.</span></p><p>
 To take a <i>simpleminded</i> view on it... A narrow-minded person.<br><span style="font-size: 14pt;">We are rational beings free to observe and draw logical deductions out of what we see.<br></span><span style="font-size: 14pt;">A common unified solution seems difficult to justify </span><i style="font-size: 14pt;">in practical ground</i><span style="font-size: 14pt;">.</span></p><p>
 Most people would <i>take this as a commonsense view</i>.<br><span style="font-size: 14pt;">We are </span><i style="font-size: 14pt;">fairly confident of</i><span style="font-size: 14pt;"> our </span><i style="font-size: 14pt;">estimations</i><span style="font-size: 14pt;">.<br></span><span style="font-size: 14pt;">We believe it is only </span><i style="font-size: 14pt;">on grounds of modesty</i><span style="font-size: 14pt;">, without </span><i style="font-size: 14pt;">much practical significance</i><span style="font-size: 14pt;">.<br></span><span style="font-size: 14pt;">Under a less </span><i style="font-size: 14pt;">invasive observation</i><span style="font-size: 14pt;">, the act of measurement introduces an </span><i style="font-size: 14pt;">irreducible</i><span style="font-size: 14pt;"> uncertainty.</span></p><p>
-The comprehensibility of its nature is not <i>mere metaphor</i>, which opens a full <i>realm of</i> possibility, but which also can open or refute this <i>elegant paradigm</i>.<br><span style="font-size: 14pt;">A </span><i style="font-size: 14pt;">clue</i><span style="font-size: 14pt;"> to resolving this </span><i style="font-size: 14pt;">puzzle</i><span style="font-size: 14pt;"> came </span><i style="font-size: 14pt;">without excessively hypothesizing</i><span style="font-size: 14pt;">, </span><i style="font-size: 14pt;">riddled</i><span style="font-size: 14pt;"> (abundant in) with </span><i style="font-size: 14pt;">violent and dramatic</i><span style="font-size: 14pt;"> events.<br></span><span style="font-size: 14pt;">Informational </span><i style="font-size: 14pt;">enrichment</i><span style="font-size: 14pt;"> might be </span><i style="font-size: 14pt;">perceived</i><span style="font-size: 14pt;"> as </span><i style="font-size: 14pt;">tempting</i><span style="font-size: 14pt;"> as violating </span><i style="font-size: 14pt;">pivotal</i><span style="font-size: 14pt;"> moments.</span></p><p>
-When <i>misguided</i>, you anyway have to <i>surpass the obstacle, barriers</i> and jump over&nbsp;<i>hurdles</i>.<br><span style="font-size: 14pt;">As </span><i style="font-size: 14pt;">yet undetected</i><span style="font-size: 14pt;">, or else the explanations are not yet plausible.</span></p><p>
-<i>Dressed in that much complexity to get unobvious</i>, this <i>encountered</i> a certain amount of intimidation.<br><span style="font-size: 14pt;">It </span><i style="font-size: 14pt;">confounds</i><span style="font-size: 14pt;"> intuition: although </span><i style="font-size: 14pt;">fluctuating randomly</i><span style="font-size: 14pt;">, in wavy lines, it appears to </span><i style="font-size: 14pt;">place strong restrictions</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Tough to say</i><span style="font-size: 14pt;">, but </span><i style="font-size: 14pt;">cyclically satirized</i><span style="font-size: 14pt;">, it </span><i style="font-size: 14pt;">bears some resemblance</i><span style="font-size: 14pt;">.</span></p><p>
+The comprehensibility of its nature is not <i>mere metaphor</i>, which opens a full <i>realm of</i> possibility, but which also can open or refute this <i>elegant paradigm</i>.<br><span style="font-size: 14pt;">A </span><i style="font-size: 14pt;">clue</i><span style="font-size: 14pt;"> to resolving this </span><i style="font-size: 14pt;">puzzle</i><span style="font-size: 14pt;"> came </span><i style="font-size: 14pt;">without excessively hypothesising</i><span style="font-size: 14pt;">, </span><i style="font-size: 14pt;">riddled</i><span style="font-size: 14pt;"> (abundant in) with </span><i style="font-size: 14pt;">violent and dramatic</i><span style="font-size: 14pt;"> events.<br></span><span style="font-size: 14pt;">Informational </span><i style="font-size: 14pt;">enrichment</i><span style="font-size: 14pt;"> might be </span><i style="font-size: 14pt;">perceived</i><span style="font-size: 14pt;"> as </span><i style="font-size: 14pt;">tempting</i><span style="font-size: 14pt;"> as violating </span><i style="font-size: 14pt;">pivotal</i><span style="font-size: 14pt;"> moments.</span></p><p>
+When <i>misguided</i>, you anyway have to <i>surpass the obstacle, barriers</i> and jump over <i>hurdles</i>.<br><span style="font-size: 14pt;">As </span><i style="font-size: 14pt;">yet undetected</i><span style="font-size: 14pt;">, or else the explanations are not yet plausible.</span></p><p>
+<i>Dressed in that much complexity to get unobvious</i>, this <i>encountered</i> a certain amount of intimidation.<br><span style="font-size: 14pt;">It </span><i style="font-size: 14pt;">confounds</i><span style="font-size: 14pt;"> intuition: although </span><i style="font-size: 14pt;">fluctuating randomly</i><span style="font-size: 14pt;">, in wavy lines, it appears to </span><i style="font-size: 14pt;">place strong restrictions</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Tough to say</i><span style="font-size: 14pt;">, but </span><i style="font-size: 14pt;">cyclically satirised</i><span style="font-size: 14pt;">, it </span><i style="font-size: 14pt;">bears some resemblance</i><span style="font-size: 14pt;">.</span></p><p>
 The degrees of freedom are <i>tightly tied with</i> each other.<br><span style="font-size: 14pt;">Some </span><i style="font-size: 14pt;">random thoughts about</i><span style="font-size: 14pt;">...<br></span><span style="font-size: 14pt;">Don't </span><i style="font-size: 14pt;">concern yourself with</i><span style="font-size: 14pt;"> the details.<br></span><i style="font-size: 14pt;">It hurts me to say</i><span style="font-size: 14pt;">, but we are limited by what we </span><i style="font-size: 14pt;">can handle</i><span style="font-size: 14pt;">.</span></p><p>
 <i>In a funky manner</i>, the <i>goal remains elusive</i>.<br>It might <i>yield a further</i> reduction.<br>The rest presumably <i>awaits discovery</i>.</p><p>
 This could be <i>inaccurate</i> or <i>unbalanced</i> in certain <i>viewpoints</i>.<br><i style="font-size: 14pt;">Heuristic</i><span style="font-size: 14pt;"> is a commonsense method of solving problems as "</span><i style="font-size: 14pt;">paved by good intentions</i><span style="font-size: 14pt;">", under the </span><i style="font-size: 14pt;">then-current</i><span style="font-size: 14pt;"> model which </span><i style="font-size: 14pt;">confines us in</i><span style="font-size: 14pt;"> empirical treatment.<br></span><span style="font-size: 14pt;">It </span><i style="font-size: 14pt;">expels any doubt from</i><span style="font-size: 14pt;"> our interior.</span></p>
@@ -429,12 +425,12 @@ This could be <i>inaccurate</i> or <i>unbalanced</i> in certain <i>viewpoints</i
 <p>
 
 <i>Rather complex</i>, it lacks only rationalities.<br>It <i>suffices</i> to mention.</p><p>
-This is&nbsp;<i>indisputable</i>, while other affirmations are <i>to some extend debatable</i> and in constant danger of being <i>overthrown by newly added facts</i>.<br><span style="font-size: 14pt;">A </span><i style="font-size: 14pt;">concise</i><span style="font-size: 14pt;"> but comprehensive </span><i style="font-size: 14pt;">account</i><span style="font-size: 14pt;"> of infectious enthusiasm is conveying the substance... in our </span><i style="font-size: 14pt;">inner</i><span style="font-size: 14pt;"> and outer life or circle.</span></p>
+This is <i>indisputable</i>, while other affirmations are <i>to some extend debatable</i> and in constant danger of being <i>overthrown by newly added facts</i>.<br><span style="font-size: 14pt;">A </span><i style="font-size: 14pt;">concise</i><span style="font-size: 14pt;"> but comprehensive </span><i style="font-size: 14pt;">account</i><span style="font-size: 14pt;"> of infectious enthusiasm is conveying the substance... in our </span><i style="font-size: 14pt;">inner</i><span style="font-size: 14pt;"> and outer life or circle.</span></p>
 <p>
 I would <i>forestall</i> it <i>utterly</i> - can't be translated into a common tongue.<br><span style="font-size: 14pt;">It is </span><i style="font-size: 14pt;">unceasingly and genuinely</i><span style="font-size: 14pt;"> indifferent to fame and wealth due to a mathematical </span><i style="font-size: 14pt;">introspection</i><span style="font-size: 14pt;"> (insight).<br></span><span style="font-size: 14pt;">The ordinary objects of human </span><i style="font-size: 14pt;">endeavour</i><span style="font-size: 14pt;"> - property, </span><i style="font-size: 14pt;">outward</i><span style="font-size: 14pt;"> success, luxury - always seemed to me </span><i style="font-size: 14pt;">contemptible</i><span style="font-size: 14pt;"> and </span><i style="font-size: 14pt;">oddly contrasted</i><span style="font-size: 14pt;">.</span></p><p>
 <i>Unattainable</i> for many and by the <i>irony of fate</i>... <i>ceaseless</i> struggle, even if <i>mixed with</i> fear.<br><span style="font-size: 14pt;">Only in two weeks this sheep-like mass can be made excited by the newspapers.<br></span><span style="font-size: 14pt;">Money only </span><i style="font-size: 14pt;">appeals to</i><span style="font-size: 14pt;"> selfishness and to one </span><i style="font-size: 14pt;">irresistibly abusing of</i><span style="font-size: 14pt;"> it. This can soon lose its </span><i style="font-size: 14pt;">zeal</i><span style="font-size: 14pt;">.</span></p><p>
 I have a <i>warm admiration</i> for the achievements with an <i>everlasting credit to</i> him.<br>A <i>befogged speculation</i> producing universal doubt and fallacy as an immutable idea of an immutable universe.</p><p>
-A <i>weird</i> (unearthly, unnatural) adventures ...<br><span style="font-size: 14pt;">It's time to </span><i style="font-size: 14pt;">get rid of</i><span style="font-size: 14pt;">&nbsp;(to <i>dispose of, ditch</i>, scrap, discard, throw away) this </span><i style="font-size: 14pt;">trash</i><span style="font-size: 14pt;"> and to </span><i style="font-size: 14pt;">abolish</i><span style="font-size: 14pt;"> slavery.<br></span><span style="font-size: 14pt;">Her easy humour and </span><i style="font-size: 14pt;">keen intellect</i><span style="font-size: 14pt;"> astonished/</span><i style="font-size: 14pt;">amazed</i><span style="font-size: 14pt;"> me.</span></p><p>
+A <i>weird</i> (unearthly, unnatural) adventures ...<br><span style="font-size: 14pt;">It's time to </span><i style="font-size: 14pt;">get rid of</i><span style="font-size: 14pt;"> (to <i>dispose of, ditch</i>, scrap, discard, throw away) this </span><i style="font-size: 14pt;">trash</i><span style="font-size: 14pt;"> and to </span><i style="font-size: 14pt;">abolish</i><span style="font-size: 14pt;"> slavery.<br></span><span style="font-size: 14pt;">Her easy humour and </span><i style="font-size: 14pt;">keen intellect</i><span style="font-size: 14pt;"> astonished/</span><i style="font-size: 14pt;">amazed</i><span style="font-size: 14pt;"> me.</span></p><p>
 The only left to think is that the goal of these publications is to impress the ones who <i>mix the confusion of expressions with their depth</i>.<br><span style="font-size: 14pt;">The question to be </span><i style="font-size: 14pt;">worth answering</i><span style="font-size: 14pt;"> is whether it shows signs to be designed by some sort of intelligence, as an irreducible mystery.<br></span><span style="font-size: 14pt;">The mind is like a parachute, it only operates when open.</span></p><p>
 It <i>transcends</i> the limits of thoughts.<br><span style="font-size: 14pt;">He </span><i style="font-size: 14pt;">captured</i><span style="font-size: 14pt;"> the flavor of reducing </span><i style="font-size: 14pt;">redundant</i><span style="font-size: 14pt;"> actions.</span></p>
 <hr>
@@ -474,7 +470,7 @@ To <i>seal the fate</i>, as we <i>termed</i> it in our <i>sketch</i>.<br><span s
 The <i>threshold of</i> a new carrier and a new project. <i>Doorstep</i>. Hurdle.<br><i style="font-size: 14pt;">Appreciation spurs ambition</i><span style="font-size: 14pt;">. </span><i style="font-size: 14pt;">Causal nexus</i><span style="font-size: 14pt;">.<br></span><span style="font-size: 14pt;">I </span><i style="font-size: 14pt;">plead for</i><span style="font-size: 14pt;"> his release. To </span><i style="font-size: 14pt;">quash</i><span style="font-size: 14pt;"> is to annul and </span><i style="font-size: 14pt;">set aside</i><span style="font-size: 14pt;">.</span></p><p>
 Adobe... house of bricks.<br><span style="font-size: 14pt;">We </span><i style="font-size: 14pt;">contend for</i><span style="font-size: 14pt;"> first prize as we struggle in opposition, </span><i style="font-size: 14pt;">contend with rivalry</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Contention</i><span style="font-size: 14pt;"> is strife.</span></p><p>
 I <i>assent</i> to the statement. We had to <i>resort</i> to this action...<br><i style="font-size: 14pt;">Conjecture</i><span style="font-size: 14pt;"> is not mere supposition, but also interpretation of omens.<br></span><span style="font-size: 14pt;">Documents </span><i style="font-size: 14pt;">pertained to</i><span style="font-size: 14pt;"> the lawsuit are </span><i style="font-size: 14pt;">dispensed</i><span style="font-size: 14pt;"> gratuitously... wisdom dispensed...</span></p><p>
-<i>Disseminate</i> information among...<br><span style="font-size: 14pt;">He was greatly </span><i style="font-size: 14pt;">exasperated</i><span style="font-size: 14pt;">&nbsp;(infuriated) by senseless delay...<br></span><span style="font-size: 14pt;">To go honourable through the </span><i style="font-size: 14pt;">vicissitudes of</i><span style="font-size: 14pt;"> the life... is a pathetic drama.</span></p><p>
+<i>Disseminate</i> information among...<br><span style="font-size: 14pt;">He was greatly </span><i style="font-size: 14pt;">exasperated</i><span style="font-size: 14pt;"> (infuriated) by senseless delay...<br></span><span style="font-size: 14pt;">To go honourable through the </span><i style="font-size: 14pt;">vicissitudes of</i><span style="font-size: 14pt;"> the life... is a pathetic drama.</span></p><p>
 He <i>contrived</i> a clever device or criminal scheme. This smart <i>contrivance</i>...<br><span style="font-size: 14pt;">We </span><i style="font-size: 14pt;">bestow</i><span style="font-size: 14pt;"> a precious gift on you.</span></p><p>
 An <i>inexorable</i>/implacable/sworn enemy (foe, nemesis)... not be persuaded or convinced...<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">exorcise</i><span style="font-size: 14pt;"> is seek to expel by </span><i style="font-size: 14pt;">adjuration</i><span style="font-size: 14pt;">, to abjure (to renounce with formal solemnity) from true principle... give up </span><i style="font-size: 14pt;">under oath</i><span style="font-size: 14pt;">. Galileo abjured his theory.</span></p><p>
 <i>Something is rotten in the state of Denmark</i>. Shakespeare.</p><p>
@@ -486,13 +482,13 @@ The desired target to be <i>borne in mind</i>...<br>The scratch <i>marred</i> th
 <i>Sagacity</i> is the soundness of judgment and <i>discernment</i>.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">embezzle</i><span style="font-size: 14pt;"> is to fraudulently misappropriate somebody's properties.<br>To investigate the </span><i style="font-size: 14pt;">embezzlement</i><span style="font-size: 14pt;">.</span></p><p>
 <i>Aggrieved</i> means <i>deprived of</i> legal rights... achieve <i>decent accuracy</i>, hard to <i>swallow</i>, this <i>encompasses</i> other features, to <i>repel</i> the ball, <i>junk</i>, <i>peculiar</i>/odd/strange happenings, <i>probative</i>.</p><p>
 My heart <i>ached</i> for starving animals. Body ache.<br><i style="font-size: 14pt;">Frame of reference</i><span style="font-size: 14pt;">. </span><i style="font-size: 14pt;">Henceforth</i><span style="font-size: 14pt;">. Ever-increasing.<br></span><i style="font-size: 14pt;">Encounter</i><span style="font-size: 14pt;"> one example earlier. </span><i style="font-size: 14pt;">Twisted</i><span style="font-size: 14pt;"> logic.<br>Don't bother me with </span><i style="font-size: 14pt;">trivial matters</i><span style="font-size: 14pt;">.</span></p><p>
-<i>Reward</i> the curiosity.<br><i>Quest to learn how</i> things move.<br>Undisturbed.<br><i>Forerunner</i>.<br><span style="font-size: 14pt;">Be </span><i style="font-size: 14pt;">in agreement with</i><span style="font-size: 14pt;">.<br>Thoughts are </span><i style="font-size: 14pt;">well worth reading</i><span style="font-size: 14pt;">.<br>Is </span><i style="font-size: 14pt;">bound to the relation</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">One remark is in order</i><span style="font-size: 14pt;">.</span></p><p><i style="font-size: 14pt;">Quiz</i><span style="font-size: 14pt;"> (test, questionnaire), </span><i style="font-size: 14pt;">galvanised the attention</i><span style="font-size: 14pt;"> (stimulated), it&nbsp;</span><i style="font-size: 14pt;">foreshadows</i><span style="font-size: 14pt;"> the subsequent event (prefigure).</span></p><p>
+<i>Reward</i> the curiosity.<br><i>Quest to learn how</i> things move.<br>Undisturbed.<br><i>Forerunner</i>.<br><span style="font-size: 14pt;">Be </span><i style="font-size: 14pt;">in agreement with</i><span style="font-size: 14pt;">.<br>Thoughts are </span><i style="font-size: 14pt;">well worth reading</i><span style="font-size: 14pt;">.<br>Is </span><i style="font-size: 14pt;">bound to the relation</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">One remark is in order</i><span style="font-size: 14pt;">.</span></p><p><i style="font-size: 14pt;">Quiz</i><span style="font-size: 14pt;"> (test, questionnaire), </span><i style="font-size: 14pt;">galvanised the attention</i><span style="font-size: 14pt;"> (stimulated), it </span><i style="font-size: 14pt;">foreshadows</i><span style="font-size: 14pt;"> the subsequent event (prefigure).</span></p><p>
 <i>Law-abiding citizen</i>, <i>share commonalities</i>, the approach <i>rests with a premise</i>/assumption that...</p><p>
 <i>Thorough analysis</i> - executed without negligence or omissions, extremely attentive to accuracy, aberration-deviation, <i>to err is human</i>, lapse - accidental or temporary decline from a standard expectation/condition - <i>lapse into</i> slavery, savagery.</p><p>
 To <i>infringe a rule</i>.<br>We are <i>accustomed to</i>... <i>familiarized with</i>... get familiar with... have a <i>groove</i> of...<br><span style="font-size: 14pt;">Wealth </span><i style="font-size: 14pt;">habituated</i><span style="font-size: 14pt;"> him to luxury. Get </span><i style="font-size: 14pt;">into habit</i><span style="font-size: 14pt;">.</span></p><p>
 It <i>steadily acquired</i> more and more leverage, constantly and <i>overwhelming</i>.</p><p>
 To force was <i>futile</i>, useless, pointless.<br>Frivolous suggestion.<br><span style="font-size: 14pt;">Since its inception, it was </span><i style="font-size: 14pt;">depicted as</i><span style="font-size: 14pt;">...<br>Depiction is illustrating in image.</span></p><p>
-A <i>noteworthy addition</i> to your collection.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">recount</i><span style="font-size: 14pt;"> is to narrate, to tell a story in details.<br>The </span><i style="font-size: 14pt;">narrative</i><span style="font-size: 14pt;">.&nbsp;</span>Kindly note that...</p><p>
+A <i>noteworthy addition</i> to your collection.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">recount</i><span style="font-size: 14pt;"> is to narrate, to tell a story in details.<br>The </span><i style="font-size: 14pt;">narrative</i><span style="font-size: 14pt;">. </span>Kindly note that...</p><p>
 A <i>sham</i> is a <i>spurious</i> imitation.<br>To <i>conceal</i> is to prevent divulging or disclosure.<br><i style="font-size: 14pt;">Embroiled into</i><span style="font-size: 14pt;"> endless litigations and controversies.</span></p><p>
 We are <i>tangled in</i> these litigations, as an <i>entanglement</i>.<br><span style="font-size: 14pt;">The </span><i style="font-size: 14pt;">vantage of</i><span style="font-size: 14pt;"> wisdom that often comes with age.</span></p>
 <hr>
@@ -511,28 +507,28 @@ When asked a direct question, he <i>dodged</i> (moved aside and suddenly changed
 <i>Wear a smile</i>. Until the <i>question gets answered</i>.<br><span style="font-size: 14pt;">This enables us to </span><i style="font-size: 14pt;">ascertain</i><span style="font-size: 14pt;"> many facts.<br>He fails to ascertain the fact that...</span></p><p>
 <i>Witty</i> remarks/sayings.<br>To <i>droll</i> is to amuse in a funny way.</p><p>
 Often-repeated tales. This <i>left him unable to speak</i>.<br><span style="font-size: 14pt;">To assign a ... </span><i style="font-size: 14pt;">lacking coherent meaning</i><span style="font-size: 14pt;">...<br>To </span><i style="font-size: 14pt;">tonisise</i><span style="font-size: 14pt;"> us.</span></p><p>
-All that <i>heightens the feeling</i> of power.<br><i style="font-size: 14pt;">Magnus opus</i><span style="font-size: 14pt;">/magna opera, </span>pièce de résistance, masterpiece, magnum opus, chef-d'œuvre<br><span style="font-size: 14pt;">literarus/literati,&nbsp;</span>intelligentsia.&nbsp;Ad fontes - back to sources.</p>
+All that <i>heightens the feeling</i> of power.<br><i style="font-size: 14pt;">Magnus opus</i><span style="font-size: 14pt;">/magna opera, </span>pièce de résistance, masterpiece, magnum opus, chef-d'œuvre<br><span style="font-size: 14pt;">literarus/literati, </span>intelligentsia. Ad fontes - back to sources.</p>
 <hr>
 <p>
 Redemption - <i>redeem</i> - repurchase what was sold.<br><span style="font-size: 14pt;">This effect </span><i style="font-size: 14pt;">sedated</i><span style="font-size: 14pt;"> him. This </span><i style="font-size: 14pt;">flatters</i><span style="font-size: 14pt;"> us.</span></p><p>
 <i>Recalling</i> the one's description.<br><i>Prolific</i> writer - producing many articles.<br><i>Prominent</i>, particularly <i>noticeable</i>.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">emulate</i><span style="font-size: 14pt;"> - imitate as equal or better.</span></p><p>
 <i>Gifted with clairvoyance</i>.<br>To pass the winter.<br>Gradually increase/augment - gradual increment.<br><i>Slide down into</i>...<br><i>Outright</i>/complete/total.<br><i>Proficient</i> - well-advanced, skilled, expert.</p><p>
 To <i>disdain</i> (treat as unworthy of notice/reply) other readers/readership - to disdain replying to an insult.</p><p>
-Then the pressure <i>waned</i>... or <i>mounted</i>.<br>Pile pressure over.</p><p>To <i>assert</i> as to affirm or posit,&nbsp;<i>postulate</i>.<br><span style="font-size: 14pt;">Innermost/</span><i style="font-size: 14pt;">cozy</i><span style="font-size: 14pt;">.<br>Evildoer, </span><i style="font-size: 14pt;">wrongdoing</i><span style="font-size: 14pt;">.</span></p><p>
+Then the pressure <i>waned</i>... or <i>mounted</i>.<br>Pile pressure over.</p><p>To <i>assert</i> as to affirm or posit, <i>postulate</i>.<br><span style="font-size: 14pt;">Innermost/</span>cosy<span style="font-size: 14pt;">.</span><br><span style="font-size: 14pt;">Evildoer, </span><i style="font-size: 14pt;">wrongdoing</i><span style="font-size: 14pt;">.</span></p><p>
 Sacrilege - profanation or violation of sacred, <i>ill-formed</i>, ill-constructed.<br>Perish.<br>Highest <i>desideratum</i>/desiderata.</p><p>
 He <i>conceived</i> the project while being on vacation.</p><p>
 Famous <i>dictum</i>/dicta - maxim or assertion.</p><p>
-Synopsis.<br><i>Alas</i>!<br>To <i>indict</i> - to bring an accusation/to <i>charge with an offense</i>.</p><p>
+Synopsis.<br><i>Alas</i>!<br>To <i>indict</i> - to bring an accusation/to <i>charge with an offence</i>.</p><p>
 <i>Seek redress</i> - setting right what is wrong, <i>relief from injury</i>.</p><p>
 Injury - harm or damage, <i>injustice suffered</i> - to be compensated.</p><p>
 To <i>rest assured that</i>...<br><i style="font-size: 14pt;">Everlasting process</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Thirst of triumph</i><span style="font-size: 14pt;">. </span><i style="font-size: 14pt;">Pain inflicted</i><span style="font-size: 14pt;"> - imposed to suffer.<br></span><span style="font-size: 14pt;">Pawn/pledge/deposit as security.</span></p><p>
 <i>Thwart in</i> our plans - oppose in accomplishing a purpose - hinder, baffle, confuse, muddle.</p><p>
 Systemic and sustained exposition of ideas and positions.<br><span style="font-size: 14pt;">In a </span><i style="font-size: 14pt;">looser sense</i><span style="font-size: 14pt;">. In loose manner.<br>To </span><i style="font-size: 14pt;">wipe out</i><span style="font-size: 14pt;"> the </span><i style="font-size: 14pt;">interbreed remnants</i><span style="font-size: 14pt;">.<br></span><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">give credence</i><span style="font-size: 14pt;"> and reassert - reasserting.</span></p><p>
-Gradually yet steadily acquired more leverage what <i>culminated with</i>&nbsp;(climax) the total <i>subversion of</i> the state authorities.</p><p>
+Gradually yet steadily acquired more leverage what <i>culminated with</i> (climax) the total <i>subversion of</i> the state authorities.</p><p>
 <i>Laudatory</i> remarks, expressing <i>praise</i>.<br><span style="font-size: 14pt;">The superstitious are </span><i style="font-size: 14pt;">vestiges of</i><span style="font-size: 14pt;"> ancient religion. Vestiges of Soviet-time repressive organs.<br></span><span style="font-size: 14pt;">Albeit/even if.<br>A peaceful, albeit brief retirement.</span></p><p>
 This was a terrible blow to us.<br>Strike a blow.<br><i style="font-size: 14pt;">Dizzy with success</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Reportedly</i><span style="font-size: 14pt;">, his is the thief (according to reports or rumours).</span></p><p>
 He distinguished the <i>stratum</i> of intellectuals.<br><i style="font-size: 14pt;">Stiff resistance</i><span style="font-size: 14pt;"> - rigid, forceful impossible to bend or flex.<br>Forcibly. </span><i style="font-size: 14pt;">Iron curtain</i><span style="font-size: 14pt;">.<br>Focused on his </span><i style="font-size: 14pt;">culpability</i><span style="font-size: 14pt;">.</span></p><p>
-Nicknames - "noms de guerre" - <i>dubbed</i> as... They didn't display any interest in establishing and maintaining...</p><p>
+Nickname - "nom de guerre" - nom de plume - <i>dubbed</i> as... They didn't display any interest in establishing and maintaining...</p><p>
 <i>Make sense</i>, give meaning.<br>His sudden disappearance <i>spawned many rumours</i>.</p><p>
 Instead of <i>shying away from</i> the conflict... weaknesses and vices.<br><span style="font-size: 14pt;">I don't want to be </span><i style="font-size: 14pt;">rude</i><span style="font-size: 14pt;"> or impolite, but...<br></span><span style="font-size: 14pt;">Threats of punishment don't usually </span><i style="font-size: 14pt;">deter him from</i><span style="font-size: 14pt;"> doing what he wants.</span></p><p>
 It <i>shapes the way it manifests</i>.
@@ -562,7 +558,7 @@ Yoke (jug), used <i>chiefly</i> as <i>draft animal</i> (beast of burden).</p><p>
 It <i>shields</i> his ignorance.<br>To <i>expose views about</i> the list of <i>banned books</i>.</p><p>
 <i>Exert influence</i>, <i>reluctantly dragged by hair</i>.<br>An <i>inveterate</i> gambler.</p><p>
 <i>Notwithstanding the laws of physics</i>, he <i>swings</i> (swung)(<i>budged</i>, stirred) the machinery into motion against the victims.<br>To <i>denounce</i> him to the inquisition.<br><i>Denunciation</i>.</p><p>
-<i>Deep-seated rancour</i> -&nbsp;resentment, malice, hatred.</p><p>
+<i>Deep-seated rancour</i> - resentment, malice, hatred.</p><p>
 We <i>endear</i> ourselves <i>with</i> this idea.</p><p>
 The doctor <i>enjoined</i> (prescribed) a strict diet.<br>The court enjoins (restrict) by an <i>injunction</i>.<br>To <i>weigh the arguments</i>.</p><p>
 To <i>relinquish</i> (renounce) the <i>possession over</i>... relinquish (give up) a plan.<br>He <i>procured his a fame of</i>...</p><p>
@@ -574,7 +570,7 @@ To <i>relinquish</i> (renounce) the <i>possession over</i>... relinquish (give u
 To <i>hatch the idea</i> - to bring it out of egg.<br><span style="font-size: 14pt;">His mind was </span><i style="font-size: 14pt;">incubating</i><span style="font-size: 14pt;"> schemes.</span></p><p>
 To <i>overthrow</i> (put an end by force) a tyrant, an illegality, an unfair judgment.<br><i>Put forth</i> the idea - advance the idea.</p><p>
 This <i>emboldens</i> him to do so and to leave <i>exotic conjectures</i>.<br><i>In the midst of</i> heaven.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">admonish about</i><span style="font-size: 14pt;"> irregularities and </span><i style="font-size: 14pt;">breach of rules</i><span style="font-size: 14pt;">.</span></p><p>
-<i>Charged with violation of</i>..., lately rejected.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">master techniques of</i><span style="font-size: 14pt;">... satisfactory.<br></span><i style="font-size: 14pt;">Dissimilarly</i><span style="font-size: 14pt;">.</span></p><p>
+<i>Charged with violation of</i>..., lately rejected.<br>He had to <i>stand trial</i> for perjury.<br>He <i>stands accused of</i> lying or of committing other crime.<br>These vague charges won't <i>stand up in court</i>.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">master techniques of</i><span style="font-size: 14pt;">... satisfactory.<br></span><i style="font-size: 14pt;">Dissimilarly</i><span style="font-size: 14pt;">.</span></p><p>
 They <i>banded together</i> to conspire for their benefits.<br>How to <i>untangle</i> (bring out of tangled state) this conspiracy?</p><p>
 A <i>drift towards</i> illegality. He drifts from one town to another.<br><span style="font-size: 14pt;">This question will </span><i style="font-size: 14pt;">come up</i><span style="font-size: 14pt;"> again.<br>He comes across as a mean, selfish, small-minded person.</span></p><p>
 We <i>came across</i> these documents only recently and quite by chance.<br>The accusation <i>came up with</i> new contrivances.</p><p>
@@ -583,7 +579,7 @@ The judge <i>overlooked</i> the mistakes, <i>failed to notice</i>, <i>disregarde
 To <i>cast doubts about</i>...<br>The snake cast its skin.<br>He cast the problem from his mind.<br>To <i>cast blessings upon someone</i>.</p><p>
 To <i>stretch</i> the rope across a road.<br>The stretching Universe. Stretch the string.</p><p>
 To <i>scatter seeds</i>.<br>To scatter crowd.<br>To <i>pour a glass</i> of water.</p><p>
-The epidemic is <i>raging</i>.<br>The corruption and arbitrariness raged.<br>To <i>wage a campaign against</i> the victims.</p><p>
+The epidemic is <i>raging</i>. Endemically.<br>The corruption and arbitrariness <i>raged</i>.<br>The corruption <i>plagues</i> the country.<br>To <i>wage a campaign against</i> the victims.</p><p>
 The <i>ostensible veracity of</i> her <i>testimonies</i>.<br>He went, <i>ostensibly to</i>...<br><i>Wanton disregard of</i> norms, of <i>cogent and conclusive evidence</i>, against <i>devious</i> schemes.</p><p>
 Plahotniuc's <i>grip</i> - his power to grasp, and in <i>procuring the investigation and trial</i>.</p><p>
 To <i>devise</i> (contrive) a plan, elaborate a method.<br><i>Compelling argument</i>.<br><i style="font-size: 14pt;">Mens rea</i><span style="font-size: 14pt;"> - necessary element of a crime, used along with </span><i style="font-size: 14pt;">actus reus</i><span style="font-size: 14pt;">.</span></p><p>
@@ -606,9 +602,9 @@ We <i>contended with</i> illegalities.<br>We contend for our legitimate rights, 
 To <i>waive privilege</i>.<br><i style="font-size: 14pt;">Aiming at</i><span style="font-size: 14pt;"> signing a waiver of their rights.<br>A </span><i style="font-size: 14pt;">ruthless manipulator</i><span style="font-size: 14pt;">, showing no compassion or mercy.</span></p><p>
 <i>Unrestrained</i>, unconstrained, wanton disregard, <i>outrageous breach of</i> all limits, of any restraint, outrage - <i>extreme illegality</i>.<br>He spins/forwards his version/interpretation.</p><p>
 He <i>severely trespasses upon</i> the tolerance.<br>To <i>trespass against the law and common sense</i>.<br>To trespass upon others' rights.</p><p>
-<i>Spooky actions</i>, coincidence (ghost), his stupid <i>blunder</i> (mistake, <i>slip</i>, gaffe), without glasses he blundered into a wrong room.<br>Tremendous talent.</p><p>
+<i>Spooky actions</i>, coincidence (ghost), his stupid <i>blunder</i> (mistake, <i>slip</i>, gaffe), without glasses he blundered into a wrong room.<br><span style="font-size: 14pt;">A slip of the tongue - a mistake.</span></p><p><span style="font-size: 14pt;">Tremendous talent.</span></p><p>
 Now the <i>floor is yours</i>.<br><i>Biased research</i> is the process where the scientists performing the research influence the results.<br><i>Taken on faith</i>, with little or no evidence at all.<br>The greatest minds of all time...<br><i style="font-size: 14pt;">Under the hood</i><span style="font-size: 14pt;">.</span></p><p>
-I was no longer satisfied with the life that had hitherto contented me.<br><span style="font-size: 14pt;">We'll have to content ourselves with it.<br>I'm </span><i style="font-size: 14pt;">content</i><span style="font-size: 14pt;">&nbsp;with... (agree, assenting, in agreement).</span></p><p>
+I was no longer satisfied with the life that had hitherto contented me.<br><span style="font-size: 14pt;">We'll have to content ourselves with it.<br>I'm </span><i style="font-size: 14pt;">content</i><span style="font-size: 14pt;"> with... (agree, assenting, in agreement).</span></p><p>
 *Virgil/Aeneid: Fortune <i>sides with</i> him who dares.<br>The <i>descent into</i> Hell is easy.<br>They can because they think they can.<br><i>Yield not</i> to evils.</p><p>
 *Ovid/Metamorphoses: Chance is always powerful. Let your <i>hook be always cast</i>; in the pool where you least expect it, there will be a fish. Anything <i>cracked</i> will <i>shatter</i> at a touch. Dignity and love do not blend well, nor do they continue long together. Nothing is stronger than habit. I am dragged along by a strange new force. Desire and reason are <i>pulling</i> in different directions. I see the right way and approve it, but follow the wrong. It is convenient that there be gods, and, as it is convenient, let us believe there are. By yielding you may obtain victory. The cause is hidden. The effect is visible to all. I am a <i>shipwrecked</i> man who fears every sea.</p><p>
 For the <i>betterment of</i> society.<br><span style="font-size: 14pt;">The </span><i style="font-size: 14pt;">bond</i><span style="font-size: 14pt;"> (ligament) </span><i style="font-size: 14pt;">between</i><span style="font-size: 14pt;"> one and another.<br></span><span style="font-size: 14pt;">It is </span><i style="font-size: 14pt;">paramount</i><span style="font-size: 14pt;"> in this case.</span></p>
@@ -617,7 +613,7 @@ For the <i>betterment of</i> society.<br><span style="font-size: 14pt;">The </sp
 This caused him to <i>faint</i> (lose consciousness).<br>He is traditionally <i>ranked</i> <i>alongside with</i>... as a canonical poet.<br>Banish: send (someone) away from a country or place as an official punishment: they were <i>banished</i> to Siberia for political crimes - forbid, abolish, or get rid of (something unwanted).</p><p>
 It was <i>tacitly assumed that</i>... significant contribution... <i>bold</i> (courageous, doughty, brave) conjecture.<br><span style="font-size: 14pt;">What had </span><i style="font-size: 14pt;">befallen</i><span style="font-size: 14pt;"> him, the </span><i style="font-size: 14pt;">tragedy befell the country</i><span style="font-size: 14pt;">.</span></p><p>
 They greatly <i>revered</i> the formal norms (feel deep respect or admiration for).<br><span style="font-size: 14pt;">Every writ is purposely </span><i style="font-size: 14pt;">crafted for</i><span style="font-size: 14pt;"> a particular end.<br></span><span style="font-size: 14pt;">It is perhaps </span><i style="font-size: 14pt;">worth reiterating</i><span style="font-size: 14pt;">... Zeno </span><i style="font-size: 14pt;">perplexed</i><span style="font-size: 14pt;"> Socrates with paradoxes.</span></p><p>
-Captive state with <i>decorative</i> institutions, with a democratic&nbsp;façade&nbsp;for the outer world (imitating democracy), with all signs of usurped power. Hijacked <i>confiscated</i> country.</p><p>
+Captive state with <i>decorative</i> institutions, with a democratic façade for the outer world (imitating democracy), with all signs of usurped power. Hijacked <i>confiscated</i> country.</p><p>
 It is <i>deceptively simple</i>.<br><span style="font-size: 14pt;">First dust off the discussion on this...<br></span><span style="font-size: 14pt;">Every body </span><i style="font-size: 14pt;">perseveres</i><span style="font-size: 14pt;"> in its state of rest, or of uniform motion in a right line, </span><i style="font-size: 14pt;">unless it is compelled to change</i><span style="font-size: 14pt;"> that state by </span><i style="font-size: 14pt;">forces impressed thereon</i><span style="font-size: 14pt;">.</span></p><p>
 We <i>gain</i> renewed <i>impetus</i> (incentive, stimulus, spur, momentum) in doing so.<br>There was no <i>impetus to enforce</i> it (force, incite, spur, urge).<br><span style="font-size: 14pt;">The former </span><i style="font-size: 14pt;">pimp</i><span style="font-size: 14pt;"> shyly </span><i style="font-size: 14pt;">mumbled</i><span style="font-size: 14pt;"> that...<br>This </span><i style="font-size: 14pt;">proved pointless</i><span style="font-size: 14pt;">.</span></p><p>
 He <i>praises us for</i> a <i>flurry of</i> activity.<br><i>System of checks and balances</i>.<br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">vest</i><span style="font-size: 14pt;"> the right, to </span><i style="font-size: 14pt;">vest</i><span style="font-size: 14pt;"> the person </span><i style="font-size: 14pt;">with the power of</i><span style="font-size: 14pt;">...<br></span><i style="font-size: 14pt;">Swim against the tide</i><span style="font-size: 14pt;">.<br>To </span><i style="font-size: 14pt;">attain the zenith of fame</i><span style="font-size: 14pt;">, in the zenith of power.</span></p><p>
@@ -670,7 +666,7 @@ Inexorable/implacable or <i>inflexible</i> judges, no remorse, <i>topics of the 
 <hr>
 <p>
  
-<i>Render a decision</i>&nbsp;(ruling) or a legal opinion.<br><span style="font-size: 14pt;">Discrepancy, pay a tribute, attention drown - </span><i style="font-size: 14pt;">grip attention</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Adjust</i><span style="font-size: 14pt;">, <i>tweak</i>, <i>tinker</i>,&nbsp;</span><i style="font-size: 14pt;">solely responsible</i><span style="font-size: 14pt;">. Do not </span><i style="font-size: 14pt;">toy with</i><span style="font-size: 14pt;">...</span></p><p>
+<i>Render a decision</i> (ruling) or a legal opinion.<br><span style="font-size: 14pt;">Discrepancy, pay a tribute, attention drown - </span><i style="font-size: 14pt;">grip attention</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Adjust</i><span style="font-size: 14pt;">, <i>tweak</i>, <i>tinker</i>, </span><i style="font-size: 14pt;">solely responsible</i><span style="font-size: 14pt;">. Do not </span><i style="font-size: 14pt;">toy with</i><span style="font-size: 14pt;">...</span></p><p>
 To <i>pursue a goal</i>... <i>emotional distress</i>.<br><span style="font-size: 14pt;">Landmark, to </span><i style="font-size: 14pt;">derail from</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Alienated</i><span style="font-size: 14pt;">. Rampant.<br></span><span style="font-size: 14pt;">Drawing analogies, facets. </span><i style="font-size: 14pt;">Cornerstone</i><span style="font-size: 14pt;">.</span></p><p>
 <i>Attunement</i>/tweak/finely tuned to...<br><i>Novel</i> tendencies.<br><i>Aligning with goals</i>.<br><i>Wielding</i> effective tactics.<br><i>Barely imitating/mimicking</i>...</p><p>
 Seize opportunity. Bend the rules.<br>Persist in seeking... <i>persevere</i>.<br>Yard-stick/ruler.<br>Empathy and persuasiveness.<br>This is no passing fad (whim, quirk).<br><i>Foster</i> or discourage.<br>Mix of competencies, clustered tightly around...</p><p>
@@ -701,9 +697,9 @@ Thinking behind his proposals. Indicator.<br><span style="font-size: 14pt;">Incl
 <i>Misjudge</i>, misjudgement, judged unjustly.<br><i style="font-size: 14pt;">Declines liabilities</i><span style="font-size: 14pt;">...<br>A tribute paid to...</span></p><p>
 Reduce uncertainty... <i>Thoroughly examined</i>.<br><span style="font-size: 14pt;">It is a </span><i style="font-size: 14pt;">confluence of</i><span style="font-size: 14pt;">... and ...<br></span><span style="font-size: 14pt;">Notwithstanding (</span><i style="font-size: 14pt;">in spite of</i><span style="font-size: 14pt;">, despite of) the defence, the court decided...</span></p><p>
 Nevertheless/nonetheless (adverb), the court disregarded the <i>testimony (confessed by witnesses)</i>, just <i>left it out of consideration</i>.<br><span style="font-size: 14pt;">Ambiguous=equivocal, deliberately misleading and elusive, </span><i style="font-size: 14pt;">leaving space for varying interpretation</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Unequivocal proof</i><span style="font-size: 14pt;">, unambiguous... univocal.</span></p><p>
-<i>Assent to this statement</i>, express the agreement.<br><span style="font-size: 14pt;">To consent to - to permit.<br>To contend with...</span></p><p>
-Applied in domains where they are not valid, the <i>reasoning</i> is wrong.<br>In short, ...<br><span style="font-size: 14pt;">If we are not </span><i style="font-size: 14pt;">burdened with ideological baggage</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Swamped with boring details</i><span style="font-size: 14pt;">.<br>The </span><i style="font-size: 14pt;">proponent of this allegation</i><span style="font-size: 14pt;">...</span></p><p>
-Litigants &amp; litigators, hearings &amp; pleadings, incurred loss &amp; <i>equitable relief</i>,<br><i>summons served</i>&nbsp;(subpoena) &amp; court imposes a temporary or permanent injunction.<br>Plaintiff has the <i>burden of proof</i> (beyond a reasonable doubt, or preponderance of evidence, in civil cases).<br>Lawsuit=civil action. Compensatory or punitive damages. All..., be they... or ... - are...</p><p>
+<i>Assent to this statement</i>, express the agreement.<br><span style="font-size: 14pt;">To consent to - to permit, assent, </span><i>acquiescence</i> - agreeing to by being silent or a bit reluctant.<br><span style="font-size: 14pt;">To contend with...</span></p><p>
+Applied in domains where they are not valid, the <i>reasoning</i> is wrong.<br>In short, ...<br><span style="font-size: 14pt;">To <i>say the least</i>.<br>To make a long story short.<br></span><span style="font-size: 14pt;">If we are not </span><i style="font-size: 14pt;">burdened with ideological baggage</i><span style="font-size: 14pt;">.</span></p><p><i style="font-size: 14pt;">Swamped with boring details</i><span style="font-size: 14pt;">.<br>The </span><i style="font-size: 14pt;">proponent of this allegation</i><span style="font-size: 14pt;">...</span></p><p>
+Litigants &amp; litigators, hearings &amp; pleadings, incurred loss &amp; <i>equitable relief</i>,<br><i>summons served</i> (subpoena) &amp; court imposes a temporary or permanent injunction.<br>Plaintiff has the <i>burden of proof</i> (beyond a reasonable doubt, or preponderance of evidence, in civil cases).<br>Lawsuit=civil action. Compensatory or punitive damages. All..., be they... or ... - are...</p><p>
 <i>Simplex siggilum veri</i>.<br>Appreciation spurs ambition.</p><p>
 This has proved to be... <i>well-founded</i>/ill-founded, fair-minded, carried out, his <i>appointee</i>.<br><i style="font-size: 14pt;">Grab</i><span style="font-size: 14pt;"> - take illegal possession.<br>Grasp is also understand. He was </span><i style="font-size: 14pt;">cleared of all allegations</i><span style="font-size: 14pt;">.</span></p>
 <hr>
@@ -722,7 +718,7 @@ They <i>crowd around</i>...<br><i>Apprehend</i> - to take in custody, to detain 
 Cogent evidence, compelling argument.<br><i>En route</i>.<br><span style="font-size: 14pt;">To be </span><i style="font-size: 14pt;">out of topic</i><span style="font-size: 14pt;">.<br>To overlook the facts.<br>The trial in question.</span></p><p>
 The case is <i>embellished</i> with bold conjectures...<br><span style="font-size: 14pt;">This </span><i style="font-size: 14pt;">impairs</i><span style="font-size: 14pt;"> the right.<br></span><i style="font-size: 14pt;">Feeble</i><span style="font-size: 14pt;"> argument.<br>Request </span><i style="font-size: 14pt;">lodged with</i><span style="font-size: 14pt;"> the Court.<br></span><i style="font-size: 14pt;">Retaliation</i><span style="font-size: 14pt;">.<br>Assessed on equitable (just) basis, relief, remedy.</span></p><p>
 Just satisfaction only if domestic law does not allow complete reparation to be made.</p><p>
-Legal assistance fees and <i>suchlike</i>.<br>Expenses only <i>in so far as</i> they are <i>referable to</i> the violations.<br><span style="font-size: 14pt;">Costs and expenses must have been </span><i style="font-size: 14pt;">actually incurred</i><span style="font-size: 14pt;">.<br>Parties </span><i style="font-size: 14pt;">signatories thereto</i><span style="font-size: 14pt;">.</span></p><p>
+Legal assistance fees and <i>suchlike</i>.<br>Expenses only <i>insofar as</i> they are <i>referable to</i> the violations.<br><span style="font-size: 14pt;">Costs and expenses must have been </span><i style="font-size: 14pt;">actually incurred</i><span style="font-size: 14pt;">.<br>Parties </span><i style="font-size: 14pt;">signatories thereto</i><span style="font-size: 14pt;">.</span></p><p>
 To determine <i>to what extent</i> the above requirements have been met.<br><i style="font-size: 14pt;">Irrespective of</i><span style="font-size: 14pt;"> the currency in which the applicant expresses his or her claims.</span></p><p>
 Art. 6 p.2: Everyone charged with a criminal offence shall be <i>presumed</i> innocent until proved guilty according to law.
  
@@ -756,11 +752,11 @@ Advantages and quirks (peculiar behaviour), joy and <i>grief</i>.<br>A final <i>
 <tr><td>(2) Absence of legal certainty</td></tr>
 <tr><td>(3) Unfair and unequal proceedings</td></tr>
 <tr><td>(4) No proper or sufficient reasons for the decisions</td></tr>
-<tr><td>(5) Violation of the "established by law" requirement<br><br>To <i>wrong</i> the defendant, to act injustly and dishonestly.<br>The <i>admission</i> of guilt, statement that it is true.<br>To contend that... to submit that... to assert.<br>A <i>tort</i>, a wrongdoing to cause damage or injury, for what the wrondoer can be sued.<br><br>The judge has <i>commuted</i> the sentence.</td></tr>
+<tr><td>(5) Violation of the "established by law" requirement<br><br><i>Adversarial</i> proceedins - burden of proof, independent and impartial tribunal, established by law; equality of arms; no proper or sufficient reasons for decisions; right to confront witnesses; unfair and unequal legal proceedings; absence oflegal certainty; principle of - audi alteram partem - adversarial/contradictoriality, presumption of innocence.<br><br>To <i>wrong</i> the defendant, to act injustly and dishonestly.<br>The <i>admission</i> of guilt, statement that it is true.<br>To contend that... to submit that... to assert, I put to you that.<br>A <i>tort</i>, a wrongdoing to cause damage or injury, for what the wrondoer can be sued.<br><br>The judge has <i>commuted</i> the sentence.<br></td></tr>
 </tbody></table>
 </p>
 
-<p><i>Felonies</i> include arson, rape, perjury and homicide.<br><span style="font-size: 14pt;"><i>Malfeasance</i> (wrongdoing or misconduct by a public official) includes dishonesty and abuse of authority.<br></span><span style="font-size: 14pt;">An intentional <i>tort</i> may also be a crime, such as battery, fraud or theft. Tort law is one of the largest areas of civil law.<br></span><span style="font-size: 14pt;">Moral <u>turpitude</u> - behavior that is contrary to accepted rules of behavior.</span></p><p>
+<p><i>Motion to quash</i> is an application to the court to set aside the complaint, indictment or subpoena due to a lack of probable cause.<br><span style="font-size: 14pt;">Quash a conviction, <i>acquit</i> the accused, to <i>set aside or annul</i> a conviction that was previously imposed.<br></span><span style="font-size: 14pt;">A <i>barrister</i> specialises in courtroom litigation, which is different to a <i>solicitor</i> who has direct contact with clients for instructions. Barristers are usually instructed by solicitors.<br></span><span style="font-size: 14pt;">A <i>count</i> is the distinct charge in an indictment.<br></span><span style="font-size: 14pt;"><i>Court transcript</i> is a written record of all that was said and done during the course of a hearing.<br></span><span style="font-size: 14pt;"><i>Hearsay evidence</i> is based on what has been reported to a witness by others rather than what he has himself observed or experienced.<br></span><span style="font-size: 14pt;"><i>I put it to you that</i>... I sumbit that... I contend that.<br></span><span style="font-size: 14pt;"><i>Indictable offence</i> is an offence making one liable to be indicted.<br></span><span style="font-size: 14pt;"><i>Mitigating circumstances</i>, for a <i>commuted sentence</i>.<br></span><span style="font-size: 14pt;">Self-<i>incriminating</i> evidence.<br></span><span style="font-size: 14pt;"><i>Privileged</i> information is details or information that is legally protected against disclosure.<br></span><span style="font-size: 14pt;"><i>Objective elements</i> are elements that are based on facts rather than thoughts or opinions.<br></span><span style="font-size: 14pt;"><i>Ex parte</i> hearing is a hearing done in in the <i>absence of a party</i>.<br></span><span style="font-size: 14pt;"><br>The <i>aggrieved</i> is the person in need of protection.<br></span><span style="font-size: 14pt;">The <i>respondent</i> (defendant) is the party who responds to a claim filed in court against them by a plaintiff.<br></span><span style="font-size: 14pt;">The <i>appellant</i> is the person who makes an appeal.<br></span><span style="font-size: 14pt;"><i>Self-representation</i> - where parties conduct their own case, without a third party representing them in the tribunal.<br>Also referred to as <i>litigant in person</i>.</span></p><p><i>Felonies</i> include arson, rape, perjury and homicide.<br><span style="font-size: 14pt;"><i>Malfeasance</i> (wrongdoing or misconduct by a public official) includes dishonesty and <i>abuse of authority</i>.<br></span><span style="font-size: 14pt;">An intentional <i>tort</i> may also be a crime, such as battery, fraud or theft. Tort law is one of the largest areas of civil law.<br></span><span style="font-size: 14pt;">Moral <i>turpitude</i> - behaviour that is contrary to accepted rules of behaviour.</span></p><p>
 This <i>mitigated</i> (made less severe, less sensible or serious, or painful) the effects.
 </p><p>
 Always <i>around the corner</i>. Fait accompli.
@@ -816,7 +812,7 @@ As regards the requirement of the "appearance of independence", this <i>entails<
 Tribunal <i>vested with jurisdiction</i> to determine the matter... <i>substantial disadvantage</i> vis-a-vis the <i>opposing party</i>...<br>aware of the <i>orchestrated nature of</i> the litigation...
 </p><p>
 
-The lack of impartiality manifested itself in, and is to be <i>inferred from</i>, amongst other things,<br>the facts and matters set out above and the following... gross distortion and <i>misapplication of the substantive law</i>&nbsp;and the Code of Civil Procedure with the purpose and effect of defeating the Applicants' cases before the Courts and <i>destroying their proprietary rights</i> and interests.
+The lack of impartiality manifested itself in, and is to be <i>inferred from</i>, amongst other things,<br>the facts and matters set out above and the following... gross distortion and <i>misapplication of the substantive law</i> and the Code of Civil Procedure with the purpose and effect of defeating the Applicants' cases before the Courts and <i>destroying their proprietary rights</i> and interests.
 </p><p>
 
 ...<i>serious procedural irregularities</i> in each of the Five Cases.<br><i>Secrecy was central to</i> the success of the raider attack.<br>...until the AGM itself or <i>very shortly beforehand</i>.<br>...In either case, the process of <i>summonsing</i> was a sham.
@@ -838,7 +834,7 @@ Case management and unlawful conduct.
 </p><p>
 Part of the same conspiracy, the Applicants <i>have been subjected to</i> politically motivated criminal proceedings after complaining publicly about... <i>biased and grossly unfair trials</i>... <i>misconduct</i>.
 </p><p>
-It is especially noteworthy that... <i>in the light of</i>...<br>This <i>makes clear the extent of</i> the subversion of the rule of law...<br>and lack of protection of human rights... of <i>utmost</i> importance...<br>any form of pressure intended to <i>hinder the exercise of</i> the right.
+It is especially noteworthy that... <i>in the light of</i>...<br>This <i>makes clear the extent of</i> the subversion of the rule of law... as opposed to the <i>culture of impunity</i>.<br>and lack of protection of human rights... of <i>utmost</i> importance...<br>any form of pressure intended to <i>hinder the exercise of</i> the right.
 </p><p>
 The Government appears <i>powerless to tackle</i> the improper influence and the <i>large-scale</i> raider attacks.<br>Acting as public <i>watchdogs</i>.
 </p><p>
@@ -866,7 +862,7 @@ The previous case is relied upon <i>mutatis mutandis</i> in Viorel Topa's case.
 Amass information... he had <i>amassed</i> a huge fortune/<i>plunder</i>.<br>Looters moved into the disaster area to <i>plunder</i> stores.<br>The farmers suffered the inhumanity and indignities of <i>pillage</i> (steal with violence) and <i>plunder</i> (misappropriated property).<br>Artworks <i>pillaged from</i> churches and museums.
 <br>This is <i>no match for</i> that...
 </p><p>
-Danger of collision <i>impends</i>.<br><i>Impending</i> trouble (<i>about to happen</i>).
+Danger of collision <i>impends</i>.<br><i>Impending</i> trouble (<i>about to happen</i>), he is <i>poised to</i> announce.
 </p><p>
 Tear the country apart (<i>torn apart</i>).<br>Or <i>carved</i>, cut in pieces.<br>We <i>carve off</i> a portion and wrap it up carefully in newspaper.
 </p><p>
@@ -886,7 +882,7 @@ For <i>dread of</i>..., dreadfully, in front of the <i>oppressors</i>.<br>
 <i>Alien</i> to us.<br>
 <i>To date</i>, i.e., until now. To <i>flex our muscles</i>.</p><p>An idea spinning in his head.<br>
 <i>To venture</i> further...<br>
-<i>Unshakeable determination</i>. <i>Scarce resources</i>. Resource hungry.&nbsp;<i>Momentous</i> pleads.<br>
+<i>Unshakeable determination</i>. <i>Scarce resources</i>. Resource hungry. <i>Momentous</i> pleads.<br>
 <i>Look up</i> in the files. You are <i>mocking</i> us (treat with ridicule and contempt) - a mockery of the system.
 
 </p><p>
@@ -929,7 +925,7 @@ The sale of the house is <i>subject to</i> our getting a report from the housing
 <i>Turn a blind eye to</i> (someone or something) - to pretend not to see someone who is doing something wrong, to pretend not to see something that may be troublesome.
 </p><p>
 <i>Under a cloud (of suspicion)</i> - to be suspected of doing something wrong or illegal.
-<br><i>Joint and several liability</i>, in civil cases - where two or more people are found liable for damages.<br>He <i>suborned</i>&nbsp;(bribed) the others to commit... through bribery or other illegal methods, to induce or instigate (another) to commit <i>perjury</i> (to falsely testify, after the oath).</p><p>
+<br><i>Joint and several liability</i>, in civil cases - where two or more people are found liable for damages.<br>He <i>suborned</i> (bribed) the others to commit... through bribery or other illegal methods, to induce or instigate (another) to commit <i>perjury</i> (to falsely testify, after the oath).</p><p>
 <i>Vicarious liability</i> - the liability of one person through the act of another.
 </p><p>
 <i>With impunity</i> - without risk of punishment.
@@ -973,16 +969,15 @@ If a contract is blatantly and obviously incorrect or illegal, it can be conside
 </p>
 <hr>
 <p>
-This is <i>pretty much</i> a hash of works.
-</p><p>
+This is <i>pretty much</i> a hash of works. In large part. Largely.</p><p>
 <i>From then on</i> it <i>encumbers</i> the company with invented debts. <i>Appearances deceive</i>.
 </p>
 <p>
-<i>First in line</i> with a <i>sage advice</i>. To spoil is also to cease by force, the spoils are <i>trophy</i>.<br><i>Put simply</i>,... he boasts of his <i>pedigree</i> (humble origin, ancestry), given the fact that...<br><i>defunct</i> is no longer existing or functioning, inoperational: now defunct.
+<i>First in line</i> with a <i>sage advice</i>. To spoil is also to cease by force, the spoils are <i>trophy</i>.<br><i>Put simply</i>,... he boasts of his <i>pedigree</i> (humble origin, ancestry), given the fact that...<br><i>defunct</i> is no longer existing or functioning, nonoperational: now defunct.
 </p>
 <p>
-Sources differ widely on... <i>self-bestowed</i> titles. One of the most <i>notorious</i> evil man, responsible for wiping out dinasties.
-<i>Untamed maniacal</i>... summoned to the palace. A miracle had occurred. In essence, <i>resist advances to</i> women...<br><i>Malevolent influence</i>. All fingers are pointing to... To what extent? <i>Mitigate</i> the risk, by incrimental improvements.<br>It is a <i>marvel</i> to me.<br>Have a major serious <i>drawback</i>.
+Sources differ widely on... <i>self-bestowed</i> titles. One of the most <i>notorious</i> evil man, responsible for wiping out dynasties.
+<i>Untamed maniacal</i>... summoned to the palace. A miracle had occurred. In essence, <i>resist advances to</i> women...<br><i>Malevolent influence</i>. All fingers are pointing to... To what extent? <i>Mitigate</i> the risk, by incremental improvements.<br>It is a <i>marvel</i> to me.<br>Have a major serious <i>drawback</i>.
 </p>
 <p>
 Thread of evidence, which needs to substantiate... ridiculed with contempt.<br>This <i>absolves</i> itself of proof.<br>
@@ -1012,15 +1007,15 @@ It is <i>seemingly</i> (appears to be) pretty much the...<br>There is a lot of i
 <p>
 	To meet the <i>deadline</i>. Their hopes <i>rest on</i>...<br><i>Resurrect</i> the old system. To <i>bypass</i> the obstacle.<br>
 	Man is <i>prone</i> to superstitions... error-prone (disposed, susceptible). He seemed prone to forget.<br>
-	A <i>fortuitous</i> encounter.<br><br>To <i>pass on</i> (convey, transmit, <i>relinquish</i>,&nbsp;<i>hand over</i>)... I'll give you a lot of credits...<br>
-	He <i>laid the foundation stone</i>... (bedrock) He <i>dissuaded him from</i>...<br>
+	A <i>fortuitous</i> encounter.<br><br>To <i>pass on</i> (convey, transmit, <i>relinquish</i>, <i>hand over</i>)... I'll give you a lot of credits...<br>
+	He <i>laid the foundation stone</i>... (bedrock), make <i>monolithic</i> contributions to.<br>He <i>dissuaded him from</i>...<br>
 	Don't <i>dump</i> (cast, drop) your troubles on me! A sewage pipe that <i>dumps in</i> the ocean.<br>His car <i>bumped</i> a truck. She <i>bumped into</i> me. I'm <i>keen to ask</i>... <i>fierce competition</i>.
 </p>
 <p>
 <i>Harness</i> the power of nature.<br>Awkward. This <i>annoys</i> us, we displease it.<br>To abandon or isolate with little hope of ready rescue or escape: The travellers were <i>marooned</i>.<br>This <i>embodies</i> the ideal of... <i>Embodiment</i>. The hall <i>echoes</i> the faintest sounds.<br>This echoed (<i>reverberated</i>) after a while. She has <i>forsaken</i> her country, way of living (renounced, abandon, desert, <i>forgo</i>).<br><i>Lofty</i>, high, sublime, arrogant. The treasury could not <i>forgo</i> putting its fingers on that.<br>The candidate <i>tapped</i> into (gain access to; become friendly with) some wealthy supporters, <i>tapped into</i> a new market for their products
 </p>
 <p>
-	The <i>focal point</i> of the conflict. They <i>rudely suppressed</i> the uprising/turmoil and many <i>got jailed</i>, facing uncertain future.<br>In <i>vivid details</i>.&nbsp;Grotesque - <i>ludicrous</i> - causing or deserving laughter because of absurdity; ridiculous; laughable.<br>The hikers <i>geared up</i> for (put on equipment or clothing for a particular purpose) the long trek down the mountain.<br>He had long <i>nourished</i> the dream of living abroad.<br><i>Boundless</i> opportunities.<br><i>Endure</i> all for the sake of... endure humiliation and persecutions.<br>Endured rather than enjoyed.<br><i>Devoured</i> by the system.
+	The <i>focal point</i> of the conflict. They <i>rudely suppressed</i> the uprising/turmoil and many <i>got jailed</i>, facing uncertain future.<br>In <i>vivid details</i>. Grotesque - <i>ludicrous</i> - causing or deserving laughter because of absurdity; ridiculous; laughable.<br>The hikers <i>geared up</i> for (put on equipment or clothing for a particular purpose) the long trek down the mountain.<br>He had long <i>nourished</i> the dream of living abroad.<br><i>Boundless</i> opportunities.<br><i>Endure</i> all for the sake of... endure humiliation and persecutions.<br>Endured rather than enjoyed.<br><i>Devoured</i> by the system.
 </p>
 <p>
 	This is a <i>big blow to</i> the EU and its principles. <i>Broadly speaking</i>, it was a decisive <i>inducement</i> (a thing that persuades or influences someone to do something).<br>To <i>induce</i> someone by misrepresentation, this induces (causes) laziness.<br>A recognition of a <i>blandishment</i> - a flattering or pleasing statement or action used to persuade/coax someone.<br><i>Threats emanating from</i> Moldova.<br>A <i>buzzword</i> or buzz phrase - a technical word or phrase that has become fashionable, typically as a slogan.<br><i>Grim</i> statistics. Everything <i>hinges on</i> (<i>contingent on</i>) this decision.<br>Contingent (possible) expenses, contingent (fortuitous, accidental) occurrences.<br><i>Chat with</i> smbd, in addition, <i>mess with</i> smbd childish.<br>By <i>sheer accident</i>(glitch). The civil war forged a new nation, in <i>stubborn</i> resistance.
@@ -1036,14 +1031,13 @@ It is <i>seemingly</i> (appears to be) pretty much the...<br>There is a lot of i
 	 <i>Flamboyant</i> speech. <i>Dispel a myth</i>.<br>He has a <i>vested interest</i> (strong reason to act).<br><i>Off topics</i>, out of context, off the subject.<br>At the <i>stretch of the fantasy</i>. <i>Blind spot</i>.<br>An <i>innumerable</i> collection of <i>malcontents</i> (chronically dissatisfied) and <i>undesirables</i>.
 </p>
 <p>
-	<i>Slip</i> on the ice, slipping in the mud. <i>Stumble</i>&nbsp;on somebody (encounter by chance).<br>News tends to get <i>stale</i>, like a stale bread or water.<br><i>Rebut</i> (refute, disprove): claim or prove that evidence or an accusation is false: he had to <i>rebut charges of acting</i> for the convenience of his political friends.<br>The right of last <i>rebuttal</i> always belonging to the defence counsel and the person brought to trial.<br>I hastened to <i>rebut this slur</i> (calumny).
+	<i>Slip</i> on the ice, slipping in the mud. <i>Stumble</i> on somebody (encounter by chance).<br>News tends to get <i>stale</i>, like a stale bread or water.<br><i>Rebut</i> (refute, disprove): claim or prove that evidence or an accusation is false: he had to <i>rebut charges of acting</i> for the convenience of his political friends.<br>The right of last <i>rebuttal</i> always belonging to the defence counsel and the person brought to trial.<br>I hastened to <i>rebut this slur</i> (calumny).
 </p>
 <p>
 	<i>Verbs followed by infinitive only:</i> agree, appear, arrange, ask, choose, decide, demand, encourage, fail, forbid, force, hope, instruct, invite, learn, manage, offer, order, permit, persuade, plan, prepare, pretend, promise, refuse, remind, seem, swear, warn.
 </p>
 <p>
-	<i>The verbs followed by gerund only:</i> admit, consider, delay, dislike, enjoy, escape, excuse, finish, forgive, imagine, insist, keep, mind, miss, practise, prevent, risk, suggest, understand.
-</p>
+	<i>The verbs followed by gerund only:</i> admit, consider, delay, dislike, enjoy, escape, excuse, finish, forgive, imagine, insist, keep, mind, miss, practise, prevent, risk, suggest, understand. </p><p><i style="font-size: 14pt;">Non-continuous or stative verbs:<br></i><span style="font-size: 14pt;">like, know, want, need, understand, seem, agree, mean, love, realise, fit, hate, suppose, contain, consist, prefer, believe, depend, remember, matter, mind, recognise, see, own, appear, look (=seem), sound, taste, smell, hear, astonish, deny, disagree, please, impress, satisfy, promise, surprise, doubt, think (=have an opinion), feel (=have an opinion), wish, imagine, concern, dislike, be, have, deserve, involve, include, lack, measure (=have length etc), belong, possess, owe, weigh (=have weight)</span></p>
 <p>
 	A <i>pejorative</i> word, having an unpleasant connotation.<br>A hostess who <i>mingles</i> diplomats with executives.
 </p>
@@ -1081,7 +1075,7 @@ To be <i>reckoned</i> (counted, calculated, esteemed, considered) an authority i
 </p>
 <hr>
 <p>
-	I give you a big <i>hug</i>&nbsp;(cuddly). You <i>tease</i> me? He's <i>cherry-picking</i> the facts.<br>
+	I give you a big <i>hug</i> (cuddly). You <i>tease</i> me? He's <i>cherry-picking</i> the facts.<br>
 	To <i>gear up for</i>... (prepare for). <i>Lavish</i> hospitality (generous, wasteful, handsome). A <i>relentless</i> (unyielding) enemy.<br>
 	Twist of the story. <i>Bending</i> the laws of physics for dramatic effects. To steer to the right path, or stray from the path.<br>To <i>circumvent</i> the real issues.<br><i>Cringe</i>, draw back, as with fear or pain, show submission or fear.<br><i>Gullible</i> - easily deceived or cheated, naive, credulous.<br>
 	Due to the <i>scarcity</i> or reliability of sources... The most natural <i>epithets</i> of...<br>
@@ -1116,7 +1110,7 @@ To be <i>reckoned</i> (counted, calculated, esteemed, considered) an authority i
 	<i>Stretch the truth</i>, to exaggerate.
 </p>
 <p>
-	<i>Above all</i>&nbsp;(else), patience rewarded. <i>Malleable</i>. He faces the abyss. Hard palpitations.<br><i>Nail</i> it.
+	<i>Above all</i> (else), patience rewarded. <i>Malleable</i>. He faces the abyss. Hard palpitations.<br><i>Nail</i> it.
 	<i>As we speak</i>... Make the vision flesh.
 	Your contract <i>sets out</i> the terms and conditions of your employment.<br>
 	Then the plans <i>go sour</i>. To <i>deride</i>/ridicule the others.<br>
@@ -1145,7 +1139,7 @@ To be <i>reckoned</i> (counted, calculated, esteemed, considered) an authority i
 </p>
 <p>
 	I scarcely <i>bluff myself with</i> this nasty <i>framed-up case</i>.<br>
-	Recede, recidivate, <i>mild</i> punishment.<br>
+	Recede, recidivate, <i>relapse</i>, <i>mild</i> punishment.<br>
 	Grasp the central point. In plain language.<br>
 	He remains <i>aloof</i> (at distance) from worldly matters. To look <i>from afar</i>.<br>
 	<i>Throughout</i> the development of...<br>
@@ -1178,7 +1172,7 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 	<i>Sneak preview</i> - film preview before the official release.<br>
 	Snap decision (quick, without thinking about consequences).<br>
 	Otherwise, I will proceed <i>on the above basis</i>.<br>
-	Unbeknownst to many, <i>unbeknown to</i> me until it had happened.<br>
+	Unbeknown to many, <i>unbeknown to</i> me until it had happened.<br>
 	To <i>lure</i> the customers, lure you to Hell, lure the cat out with a <i>bait</i>.<br>
 	I had to <i>concede</i> that I'd overreacted (admit as true after denying).<br>
 	<i>Heading toward</i> the parking. I'm on my way. En route to...<br>
@@ -1195,7 +1189,7 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 	The second feeling was a fear of <i>pursuit</i>. Pursuit of fugitives.<br>
 	I am <i>enthralled with</i> the idea of having... <i>Enthral by</i> the beauty of... Excited...<br>
 	I am <i>enthusiastic about</i>...<i>Thrilled at</i> the prospect of... thrilled to announce... <i>Enchanted of</i>...<br>
-	You're a <i>disgrace</i> (pozor) to the profession. Really <i>gratifying</i> to me.<br>
+	You're a downright <i>disgrace</i> (pozor) to the profession. Really <i>gratifying</i> to me.<br>
 	A <i>benchmark</i> (etalon).<br>
 	Rock the boat, <i>corrosive</i> to the system.<br>
 	<psan>Pernicious</psan> (destructive, detrimental) effect.<br>
@@ -1211,7 +1205,7 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 	We slid from... to...<br>
 	If you chase two rabbits, you will lose them both.<br>
 	If you run after two hares, you will catch neither.<br>
-	...<i>in tight schedule</i>, on short notice.<br><i>In the long run</i>.<br>
+	...<i>in tight schedule</i>, on short notice, <i>last-minute</i> notice.<br><i>In the long run</i>.<br>
 	High-profile: <i>conspicuous</i>, attracting attention, as by being unusual or remarkable, noticeable.<br>
 	<i>Giggle</i> is laugh in a silly way.<br>
 	Put the plan in practice.<br>
@@ -1281,10 +1275,10 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 	The big cheese.<br>
 	<i>In a nutshell</i>, in brief.<br>
 	They were always making <i>catty</i> (<i>spiteful</i>) comments about each other.<br>
-	<i>Lame</i> system (cripple), <i>cunning</i>&nbsp;(sly, vile, treacherous, callous, cruel<span style="font-size: 14pt;">) person, insidious, crafty.<br>To <i>cripple</i> is make someone unable to move, to <i>paralyse</i>, <i>mesmerise</i>, <i>transfix</i>.</span></p><p>
+	<i>Lame</i> system (cripple), <i>cunning</i> (sly, vile, treacherous, callous, cruel<span style="font-size: 14pt;">) person, insidious, crafty.<br>To <i>cripple</i> is make someone unable to move, to <i>paralyse</i>, <i>mesmerise</i>, <i>transfix</i>.</span></p><p>
 	<i>Untoward</i> and adverse. There was anything untoward going on. Nothing untoward occurred.<br>
 	To provide the <i>veneer of</i> legality.<br>
-	Legal <i>ruse</i> (dodge). Resort to a ruse or trickery, prank.<br>
+	Legal <i>ruse</i> (dodge). Resort to a ruse or trickery, ploy, subterfuge, prank.<br>
 	Otherwise any attempts to <i>reshuffle</i> personnel within the system would have been impossible.<br>
 </p>
 <p>
@@ -1299,7 +1293,7 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 <p>
 	She opened the window just enough to <i>eavesdrop on</i> the conversation outside.<br>
 	A display of unnecessary or excessive excitement, activity, or interest : I don't know what all the <i>fuss</i> is about.<br>
-	The <i>subterfuge</i>&nbsp;is a criminal scheme or stratagem employed to defraud.<br>
+	The <i>subterfuge</i> is a criminal scheme or stratagem employed to defraud.<br>
 	Justice <i>devoid of</i> independence.<br>
 	Time presses. Stubbornly optimistic.<br>
 	The resemblance isn't accidental.<br>
@@ -1317,5 +1311,550 @@ Carrot and stick. <i>Gain ground</i>, be in progress.<br>
 	Give a <i>cursory</i> (not thorough) glance at the wording….<br>
 	Room for manoeuvre, boiling point.<br>
 	There is something eluding you.<br>
-	The solution <i>lies in</i> the treatment.<br>Dire consequences, dire (grisly) threats (immediate and serious), unlike the others, dire need (desperate).
-<br>This pushes frontiers of... The report warns that... and lays out...<br>To <i>hype</i> its products (exaggerate with importance in publicising).<br><i>Abject</i> (degenerating, humiliating) misery, situation.<br>There is a subtle distinction <i>though</i>.<br>The term X&nbsp;<i>connotes</i> a positive and voluntary agreement.</p><p>People for whom power holds no <i>allure</i>.<br>Machiavelli, Prince, Chapter VIII, When the act accuses, the result excuses.<br>A rather long and <i>verbose</i> article (could you produce a more verbose version for me?).<br>A force&nbsp;to be <i>reckoned</i> with.<br>We are <i>flooded</i> with... to my <i>discontent</i>, in particular, a <i>remnant</i> of the effect...<br>Sometimes you get <i>bored</i>.<br>Don't <i>budge</i>! Peer to peer. Respect to my <i>peers</i>.<br>This <i>saddens</i> me. Laid the foundation for a new <i>landgrab</i>. It's too simplistic.<br>Handover ceremony - to transfer the authority.<br>Did you happen to see it?<br>Nature or nurture.<br></p><p>This is not <i>tenable</i>, it doesn't resist critics.<br><span style="font-size: 14pt;"><i>Infallible</i>, perfect, without errors.<br>Neither time nor </span><i style="font-size: 14pt;">inclination</i><span style="font-size: 14pt;">, at the best of his ability, with promptitude.</span><br><span style="font-size: 14pt;">This eludes me. An </span><i style="font-size: 14pt;">astute</i><span style="font-size: 14pt;"> reader (~heedless, impassive, reckless).</span><br>My soul soared, <i>soaring</i> success.</p><p>Which way the wind is blowing, <i>poke</i> our nose in your affairs.<br><span style="font-size: 14pt;">It doesn't require <i>much wisdom</i>, throw dust in the eyes.<br></span><span style="font-size: 14pt;"><i>Teething</i> problems, <i>impatiently</i> waiting.<br>To take the liberty, <i>on entering</i> the topics.<br></span><span style="font-size: 14pt;">It turned out well after all. There is little time left.<br></span><span style="font-size: 14pt;"><i>Align with</i> goals of the group.</span></p><p>Getting there is a long journey.<br><span style="font-size: 14pt;">From the dawn of humanity...<br></span><span style="font-size: 14pt;">Evil is real and it must be opposed.<br>Tediously repeating my <i>humble</i> opinion.<br>Read between lines.<br><i>Sober</i> discussion.<br>Who <i>bothers to</i> listen.<br>I don't <i>school</i> you.<br><i>Obtuse</i> jargon, circular reference.<br>To my mind... hypothetically.</span></p><p>The law still <i>stands</i> (is valid and effective).<br><span style="font-size: 14pt;">We <i>stand to</i> lose the battle (are in a position, in circumstances).<br></span><span style="font-size: 14pt;">To stand pain, stand the trip well (endure, resist, unaffected uninjured, withstand).<br></span><span style="font-size: 14pt;">To <i>stand trial</i> (undergo trial).<br></span><span style="font-size: 14pt;">To stand a chance of... (doing or achieving something).<br></span><span style="font-size: 14pt;">To stand for... to have a meaning of.<br></span><span style="font-size: 14pt;">To <i>stand up for</i>... to defend.<br></span></p><p><span style="font-size: 14pt;">He tried to </span><i style="font-size: 14pt;">feign</i><span style="font-size: 14pt;"> ignorance...</span><br>To <i>dissemble</i> fear by smiling.<br><span style="font-size: 14pt;">Quick response,&nbsp;</span><span style="font-size: 14pt;">on the <i>flip side</i>,<br></span><span style="font-size: 14pt;"><i>awakening</i>, suddenly become aware of,<br></span><span style="font-size: 14pt;">adopt your point,<br></span><span style="font-size: 14pt;">a <i>broad-brush</i> approach, general, <i>blanket</i> term.<br></span><span style="font-size: 14pt;">a mix of factors,&nbsp;</span><span style="font-size: 14pt;">it fills the vacuum, the hole,<br>undoubted fact.</span></p><p>But worst of all,<br><span style="font-size: 14pt;"><i>Rewind</i> the film, lift the veil,<br></span><span style="font-size: 14pt;">On the verge to get <i>wiped</i> down (roll back),<br></span><span style="font-size: 14pt;">I <i>vividly</i> remember,<br>To </span><i style="font-size: 14pt;">probe</i><span style="font-size: 14pt;"> the mud for worms. <i>Poke around</i> the terrain.</span><br>It conceals homicide,<br>I would turn to this subject,<br>They spring from the same source,<br>Let me take it in reverse order.</p><p>...<i>wielded as</i> a sword for the state.<br><span style="font-size: 14pt;">...has <i>betrayed</i> that promise.<br><i>Divvy up</i> the assets.<br>C</span><span style="font-size: 14pt;">linical dissection of Putin’s regime.<br>This <i>morphed into</i>...<br><i>Transfixed, motionless, mesmerise, crippled.<br></i></span><span style="font-size: 14pt;"><i>Mercurial</i> temperament, unpredictably ever changing.<br>C</span><span style="font-size: 14pt;">onstantly exposed to geopolitical <i>nightmares</i>.<br>I</span><span style="font-size: 14pt;">f repeated enough times can become infectious.<br></span><span style="font-size: 14pt;">The <i>flipside</i> of triumphant cynicism.</span></p><p>We cannot <i>condone</i> this behaviour (overlook).<br><span style="font-size: 14pt;">The </span><i style="font-size: 14pt;">onset</i><span style="font-size: 14pt;"> of the issue (beginning).</span><br><i>Unsurprisingly</i>, a growing chorus of voices is calling for...<br>This coercive strategy is also unlikely to work.<br>By the most <i>relaxed</i> standards...<br><i>Dubious</i> money...<br>To sniff and spew...<br>Or conversely, ..., even without leaving the armchair.<br>I <i>sneaked</i> in by the back exit.<br>It poses a thread.<br>Let's <i>sharpen</i> the question.<br>The flood waters had <i>receded</i>.</p><p>To <i>give credence</i> to... accreditate.<br><i>Marginal</i> notion. A backdoor to...<br><i>Long-standing</i>, existing or in effect for a long time period.<br><i>Get through to</i> you. I could not <i>get through to</i> the police because the telephone line was down. Can you <i>put me through to</i> him.<br>The issue I don't want to <i>pursue</i>.<br>...which I rather doubt. What I'm rather baffled of.<br>Advantages <i>over</i>...<br>The ideas don't <i>mesh</i> together too well. The proposals <i>mesh</i> with my plans.<br><i>Whetting</i> your appetite.<br>I'm <i>acutely</i> aware of...<br><i>Pitting</i> one against another. <i>Whet</i> the courage, stimulate.<br><i>Tautology</i> and tautological.</p><p>They <i>fall into</i> one of two camps.<br>Near-identical. An oligarch-run country.<br>To what end?<br>What do you hint at?<br>What you say <i>resonates</i> with our perception.<br>The <i>docket</i> (trial agenda), the docket date.<br><i>Immerse</i> in a book.<br><br>Over the time...<br>Chart the course, the reckoning.<br>We <i>grapple with</i> problems.<br><i>Beholder</i>, observer, witness, spectator.<br><span style="font-size: 14pt;">We have now sunk to a depth at which...<br>Mental gymnastics.<br><i>Clumsy</i> ~handy, freckle, <i>cuddle</i>, <i>ripe fruit</i>, I owe you an explanation, rubbish, baloney, nonsense.<br>There's no other way around.<br><i>Intermission</i>, a pause or a break.<br><i>Direct</i> the question to...<br>I came to the conclusion that...<br>Work around the clock, every waking hour.<br>On the brink of failure.<br>That's the way to go.</span></p><p><span style="font-size: 14pt;">The thorniest question is </span><i style="font-size: 14pt;">tantalising</i><span style="font-size: 14pt;"> me.</span><br>To <i>posit</i> (assert, claim) is to assume as a fact.<br>The <i>manhunt</i> by Interpol.<br>They <i>ripen</i> slowly. <i>Rotten</i> fruits, <i>rusted</i> apparatus.<br>I have to <i>pinch</i> myself.<br>A <i>pitfall</i> is a hidden trap.<br>Lack of necessary <i>savvy</i> (experience and know-how).<br>This can only <i>exacerbate</i> the sutiation (aggravate, worsen, strengthen).</p><p>The cash was <i>funnelled</i> (streamed, siphonned) through devious schemes (<i>scam</i>). To <i>tap</i> resources.<br>This <i>trims</i> ambitions.<br>Eagerly awaited.<br>For <i>furthering</i> changes (promote, continue in progress).<br>He <i>absconded</i> with... or from... (to leave hurriedly and secretly to avoid detection or arrest for an unlawful action, such as theft).</p><p>One of the crowd.<br>They rest on their <i>laurels</i>.<br><i>Faulty</i> data.<br>It is a <i>moot</i> question whether... (subject to discussion).<br><i>Tap</i> into a relationship.<br>You intend to <i>con</i> me into doing this.<br>It <i>slips</i> from my hands.<br>Pick an option that fits your needs.<br><i>Given</i> the choice, I'd <i>corner</i> him with my question.<br>It <i>pales in comparison with</i> the next unlawfulness. It pales into insignificance.<br><br>We are <i>quits</i> now, aren't we?<br>Too much to <i>bear</i>.<br>I <i>dates back</i> to 2009.<br>Where does the truth <i>lie</i>?<br>He decided to <i>set off</i> for home, or from there, he <i>set off</i> her crying.<br><i>Crony capitalism</i>, <i>bosom friends</i>.<br>Consider this your warning.<br>Career <i>ladder</i>, ascension.</p><p>Irritated at the <i>rebuke</i>. A rebuke for the mistake. To rebuke, <i>revile</i>, criticise with contemptuous language, invective.<br>With brutal honesty.<br>So simple you'll laugh out loud.<br><span style="font-size: 14pt;"><i>Clunky</i>, hard or heavy to do.<br>A <i>pun</i>, a wordplay, calambur.<br>Argumentum ad hominem.<br>Not only is the..., but also...<br><i>Once in a while</i>, from time to time, a <i>little while ago</i>.<br>Walks like a duck, swims like a duck, quacks like a duck.<br>Over the past decades, over the past five years.<br>A <i>mixture of both.</i><br>To <i>discount</i> evidence.<br>Set apart,&nbsp;</span><span style="font-size: 14pt;">make noticeable: character traits that <i>set her apart</i>.<br>Push your fears to rest.</span></p><p><span style="font-size: 14pt;">Cognitive bias.<br>They <i>misrepresented</i> the facts.<br>Frank and <i>outspoken</i>, frankness, candor.<br>Left to his </span><i style="font-size: 14pt;">whim</i><span style="font-size: 14pt;">.</span><br><span style="font-size: 14pt;">The </span><i style="font-size: 14pt;">surge of</i><span style="font-size: 14pt;"> interest.</span><br><span style="font-size: 14pt;">Can I </span><i style="font-size: 14pt;">interpose</i><span style="font-size: 14pt;">?</span><br><span style="font-size: 14pt;">To rid rid&nbsp;</span><span style="font-size: 14pt;">the politics.</span><br><span style="font-size: 14pt;">You're ok with either way.</span><br><i style="font-size: 14pt;">Cripple</i><span style="font-size: 14pt;"> the society.</span><br>The disease has a poor <i>prognosis</i>.<br>Troops are <i>tasked</i> with separating the warring parties.<br>The floor <i>tilted</i> slightly (inclined).<br>It has <i>fallen out of use</i>.<br>Famine often comes <i>in the wake of</i> the war, or in the eve of the war.<br><i>Unshackle</i>, unchain the feet.<br><span style="font-size: 14pt;">He constantly <i>dodges questions</i> about how one amassed his wealth.</span></p><p><span style="font-size: 14pt;">Be <i>tormented</i> by children's <i>plea</i>.<br>B</span><span style="font-size: 14pt;">umped into the table and <i>toppled</i> the lamp.<br>A great responsability <i>rests upon</i> you.<br>In the <i>back of your mind</i>.<br>Take the <i>liberty</i> to ask.</span></p><p>If I didn't study, I'd fail the test.<br><span style="font-size: 14pt;">If I had (not) applied, I would (not, might, could) have passed.<br></span><span style="font-size: 14pt;">I would be grateful if you would give me a little help.<br></span><span style="font-size: 14pt;">He'll accept the job <i>unless</i> the salary is too low (if not = unless).<br></span><span style="font-size: 14pt;">If you had warned me then, I would not be in trouble now.<br></span><span style="font-size: 14pt;"><i>Should you</i> wish to cancel, please contact us.<br></span><span style="font-size: 14pt;"><i>Had I known</i> you were waiting outside, I would have invited you to come in.<br></span><span style="font-size: 14pt;"><i>Were</i> the negotiations to fall through, it would bring about unforeseen problems.<br></span><span style="font-size: 14pt;">They may do whatever they like <i>provided that</i> it is within the law.<br></span><span style="font-size: 14pt;">We’<i>d better</i> send it express, <i>otherwise</i> it’ll take days.<br></span><span style="font-size: 14pt;"><i>Supposing he hadn’t</i> recognised us – he might never have spoken to us.<br></span><span style="font-size: 14pt;">If only he knew the truth. If only there was...</span></p><p><span style="font-size: 14pt;">Get or gain the </span><i style="font-size: 14pt;">upper hand</i><span style="font-size: 14pt;"> is to obtain the controlling position.</span><br><span style="font-size: 14pt;">He did a </span><i style="font-size: 14pt;">disfavour</i><span style="font-size: 14pt;">, he's in the </span><i style="font-size: 14pt;">disfavour with</i><span style="font-size: 14pt;"> the king.</span><br><span style="font-size: 14pt;">The car </span><i style="font-size: 14pt;">stalled</i><span style="font-size: 14pt;"> at the crossroad.</span><br>Despair <i>verging on</i> the suicidal.<br>A <i>workaround</i> is a method for achieving a task or goal when the usual or planned method isn't working.<br><span style="font-size: 14pt;">A <i>hipster</i> is a young, non-traditional person who is an independent thinker, believes in progressive politics and dresses in a trendy fashion.<br>A <i>tiny bit</i> more formal, but still interchangeable.<br></span><span style="font-size: 14pt;">A <i>bigot</i> is a narrow-minded, prejudiced person who holds blindly and intolerantly to a particular creed, opinion (<i>bigotry, zealotry</i>, <i>opinionated</i>, dogmatic, with fixed views).<br>A <i>convoluted</i> (too comlex, <i>intricate</i>) story. To convolute with...<br>First, nail your target.<br>I yearn for (<i>pine after</i>) that (<i>groovy</i>, exciting) time.</span></p><p><i>Filch</i> jokes from other comedians (steal, pull off), jokes that <i>fall flat</i>.<br><i>Snoop</i> around and see what he could <i>filch</i>.<br>Have the document <i>at your fingertips</i>.<br>The contract <i>sets out</i> the terms and the <i>venue</i> of the forthcoming meeting.<br>The country <i>set off</i> on the European course.<br>We are <i>set on</i> this approach.<br><span style="font-size: 14pt;">He didn't </span><i style="font-size: 14pt;">shy away from</i><span style="font-size: 14pt;"> doughty reforms.</span><br>This <i>falls under</i> the Dutch jurisdiction.<br>Sales <i>fell short of</i> the target.<br>I <i>sympathise with</i> you.<br>We <i>went through</i>.<br><i>Wrapped up with</i> (involved in) mystery.</p><p>They have <i>commissioned</i> a poll/study to determine the public opinion on the issue.<br>It is always a year away.<br>He is heavily <i>betting on</i> the wrong horse.<br>I can't hardly <i>contain</i> (restrain) myself and <i>contain</i> my curiosity.&nbsp;Method of containing the disease.<br>They <i>mop the floor with</i> him.<br>It <i>is bound to</i> (cannot be avoided) get explosive.<br>Have I <i>got the point across</i> to you?<br><i>Vortex</i> of arbitrariness, <i>overdue</i> justice.<br>He <i>vows</i>&nbsp;(solemny promises, and vouch) to <i>recoup</i> the stolen money from this badly <i>impoverished</i> country.<br>I'd <i>spare</i> your time.<br>He is a <i>nerd</i>, a <i>dull</i>, a computer nerd.<br>Clumsy use of language, things hard to reconcile.<br><i>Disenchanted</i> of politics, free of illusions.<br>The one captured and awaiting to be <i>randsomed</i>.<br>To <i>rehearse</i> is to repeat for a later performance. Rehearsal.</p><p>Designed <i>from the ground up</i> to serve...<br>Speak at the level of the <i>slowest kid in the class</i>.<br><i>Neat</i>&nbsp;and <i>tidy</i> (elegant) and <i>innocuous</i> (harmless, inoffensive).<br>Social <i>cohesion</i>, togetherness.<br>The code <i>brings about</i> (causes to happen) considerable changes. To flag up the concerns.<br><i>Hand it over</i> to me.<br>Jammed in traffic, got in a <i>traffic jam</i>.<br>It definitely has its <i>charms</i>.</p><p><i>Misnomer</i> is an improper name or term.<br><span style="font-size: 14pt;">The <i>landscape</i> didn't change.<br>A largely accepted <i>paradigm</i>, but not a <i>real world scenario</i>.<br>Don't be <i>hampered by the vocabulary</i>.<br>Does it </span><i style="font-size: 14pt;">make sense</i><span style="font-size: 14pt;">?</span><br><i style="font-size: 14pt;">Pass</i><span style="font-size: 14pt;"> my greetings to him.</span><br>This is often <i>equated with</i> stupidity.<br>I intend to <i>compromise on</i> this matter <i>with</i> them.<br>At your <i>first convenience</i>, as soon as possible.<br>Collecting praise.<br>To keep the country <i>afloat</i>.<br>Big picture <i>wise</i>.<br>Paid from the public <i>purse</i>.</p><p>To <i>awaken</i> one's interest.<br>Lair, hotbed, greenhouse.<br>The least likely.<br>A pressing problem, pushing, this is quite <i>telling</i>.<br>We can't <i>vouch</i> for each detail.<br>Caused me a <i>heap of troubles</i>.<br><span style="font-size: 14pt;">A </span><i style="font-size: 14pt;">timely</i><span style="font-size: 14pt;"> moment, opportune.</span><br><span style="font-size: 14pt;">It should be your </span><i style="font-size: 14pt;">last resort</i><span style="font-size: 14pt;">.</span><br><span style="font-size: 14pt;">To </span><i style="font-size: 14pt;">revamp</i><span style="font-size: 14pt;"> (rehabilitate, repair and improve an old thing) an old idea.</span><br>It <i>calls into</i> question.<br>If we <i>long for</i> this to be important (strongly wish and desire, pine for, crave).<br>To <i>crave</i> certainty (feel powerful desire for).<br><i>Self-congratulatory</i>&nbsp;puerile rhetoric (childishly silly and trivial).<br>Lust for power.<br>Blood feud.<br>Not that it matters.</p><p>Nobody wants to <i>partake in</i> it.<br><span style="font-size: 14pt;">The guests </span><i style="font-size: 14pt;">partook of</i><span style="font-size: 14pt;"> a delicious dinner.</span><br><span style="font-size: 14pt;">An attempt to </span><i style="font-size: 14pt;">hoodwink (bamboozle)</i><span style="font-size: 14pt;"> the public.</span><br>Human <i>conceit</i> (excessive pride in oneself).<br>She was preparing a <i>bogus</i> story.<br>He's light years ahead or behind.<br><span style="font-size: 14pt;">A </span><i style="font-size: 14pt;">congested</i><span style="font-size: 14pt;"> highway, to fill to excess; overcrowd.</span><br><i>Whims</i> of gods, qualms of humans.<br>Conventional wisdom.<br>I am <i>haunted</i> by this obsession.<br>Changes that occurred over such a short time <i>span</i>.<br>In the span of five minutes, within a span of an hour, across the span of history.</p><p>Let ambitions cloud thinking.<br>With the grace of god.<br>Are we ready to bring it about?<br>We must <i>bring about</i> what we plan to.<br>Preparations are <i>in full swings</i>.<br>For&nbsp;<i>vexatious</i> purpose, harassment and intimidation, <i>hounded</i>.<br><i>Pinpointed</i> guided strikes.<br>Keep up with your <i>train of thoughts</i>.<br><i>Silence descended</i> over the subject.</p><p>So <i>brazenly</i>&nbsp;<i>spout</i> lies.<br>Ascend to the summit of power.<br><i>Overtly or covertly</i>.<br><i>Lick the wounds</i>.<br><span style="font-size: 14pt;">To my <i>dismay</i> and consternation.<br></span><span style="font-size: 14pt;">He continually <i>disavows</i> his past.<br>He blew the trumpet.</span><br><span style="font-size: 14pt;">He </span><i style="font-size: 14pt;">repudiated</i><span style="font-size: 14pt;"> previous practices (refuse to be associated with).</span><br><i>Prefatory</i> remark, introductory note.<br>One can <i>readily conceive</i> that.<br><i>As time passes</i>, as time goes by. It's droll.</p><p><i>In the nick of time</i>, at the last possible time.<br>Time heals all wounds. It's <i>hazardous</i> to do it.<br>A <i>race against time</i>. Rush to do before the deadline.<br>Time will tell. The time is ripe.<br>To <i>go viral</i>. <i>Happily</i>, it went viral.<br>It goes without saying that.<br>I <i>carve out time</i> for reading.<br>Something significant is <i>afoot</i>,&nbsp;in preparation or progress, about to happen.<br>The report <i>downplays</i>&nbsp;(underestimates, diminishes) the seriousness of crisis.<br>I will <i>draw on</i> your advice, take advantage or benefit of it.</p><p>It is not <i>in dispute</i> that it was done.<br><span style="font-size: 14pt;">This is <i>beside the point</i>.<br></span><span style="font-size: 14pt;">Contrary to his <i>contentions</i>.<br></span><span style="font-size: 14pt;"><i>Merely for the sake of illustration</i>.<br>How nice of you to </span><i style="font-size: 14pt;">grace us with your presence</i><span style="font-size: 14pt;">.</span><br><span style="font-size: 14pt;">They plaintiffs content that... submit that...</span><br><i>Unapologetic</i> about our values, without regrets.<br>Meant to <i>muddle</i> us and quit the <i>assertive</i> approach.<br></p><p>To impose or lift sanctions.<br>Are you <i>stalking</i> me?<br>It soon <i>slid into</i> decline.<br>The difficulties that <i>ensued from</i> their commitment.</p><div><br></div>
+
+The solution <i>lies in</i> the treatment.<br>
+Dire consequences, dire (grisly) threats (immediate and serious), unlike the others, dire need (desperate).<br>
+This pushes frontiers of... The report warns that... and lays out...<br>
+To <i>hype</i> its products (exaggerate with importance in publicising).<br>
+<i>Abject</i> (degenerating, humiliating) misery, situation.<br>
+There is a subtle distinction <i>though</i>.<br>
+The term X <i>connotes</i> a positive and voluntary agreement.
+</p>
+
+<p>
+People for whom power holds no <i>allure</i>.<br>
+Machiavelli, Prince, Chapter VIII, When the act accuses, the result excuses.<br>
+A rather long and <i>verbose</i> article (could you produce a more verbose version for me?).<br>
+A force to be <i>reckoned</i> with.<br>
+We are <i>flooded</i> with... to my <i>discontent</i>, in particular, a <i>remnant</i> of the effect...<br>
+Sometimes you get <i>bored</i>.<br>
+Don't <i>budge</i>! Peer to peer. Respect to my <i>peers</i>.<br>
+This <i>saddens</i> me. Laid the foundation for a new <i>landgrab</i>. It's too simplistic.<br>
+Handover ceremony - to transfer the authority.<br>
+Did you happen to see it?<br>
+Nature or nurture.
+</p>
+
+<p>
+This is not <i>tenable</i>, it doesn't resist critics.<br>
+<i>Infallible</i>, perfect, without errors.<br>
+Neither time nor inclination, at the best of his ability, with promptitude.<br>
+This eludes me. An <i>astute</i> reader (~heedless, impassive, reckless).<br>
+My soul soared, <i>soaring</i> success.
+</p>
+
+<p>
+Which way the wind is blowing, <i>poke</i> our nose in your affairs.<br>
+It doesn't require <i>much wisdom</i>, throw dust in the eyes.<br>
+<i>Teething</i> problems, <i>impatiently</i> waiting.<br>
+To take the liberty, <i>on entering</i> the topics.<br>
+It turned out well after all. There is little time left.<br>
+<i>Align with</i> goals of the group.
+</p>
+
+<p>
+Getting there is a long journey.<br>
+From the dawn of humanity...<br>
+Evil is real and it must be opposed.<br>
+Tediously repeating my <i>humble</i> opinion.<br>
+Read between lines.<br>
+<i>Sober</i> discussion.<br>
+Who <i>bothers to</i> listen.<br>
+I don't <i>school</i> you.<br>
+<i>Obtuse</i> jargon, circular reference.<br>
+To my mind... hypothetically.
+</p>
+
+<p>
+The law still <i>stands</i> (is valid and effective).<br>
+We <i>stand to</i> lose the battle (are in a position, in circumstances).<br>
+To stand pain, stand the trip well (endure, resist, unaffected uninjured, withstand).<br>
+To <i>stand trial</i> (undergo trial).<br>
+To stand a chance of... (doing or achieving something).<br>
+To stand for... to have a meaning of.<br>
+To <i>stand up for</i>... to defend.<br>
+It <i>stands to reason that</i>... it is obvious.<br>
+People need to <i>take a stand on</i> this issue - firm decision.
+</p>
+
+<p>
+He tried to <i>feign</i> ignorance...<br>
+To <i>dissemble</i> fear by smiling.<br>
+Quick response, on the <i>flip side</i>,<br>
+<i>awakening</i>, suddenly become aware of,<br>
+adopt your point,<br>
+a <i>broad-brush</i> approach, general, <i>blanket</i> term.<br>
+a mix of factors, it fills the vacuum, the hole,<br>
+undoubted fact.
+</p>
+
+<p>
+But worst of all,<br>
+<i>Rewind</i> the film, lift the veil,<br>
+On the verge to get <i>wiped</i> down (roll back),<br>
+I <i>vividly</i> remember,<br>
+To <i>probe</i> the mud for worms. <i>Poke around</i> the terrain.<br>
+It conceals homicide.<br>
+I would turn to this subject.<br>
+They spring from the same source.<br>
+Let me take it in reverse order.
+</p>
+
+<p>
+...<i>wielded as</i> a sword for the state.<br>
+...has <i>betrayed</i> that promise.<br>
+<i>Divvy up</i> the assets.<br>
+Clinical dissection of Putin’s regime.<br>
+This <i>morphed into</i>...<br>
+<i>Transfixed, motionless, mesmerise, crippled.<br>
+</i><i>Mercurial</i> temperament, unpredictably ever changing.<br>
+Constantly exposed to geopolitical <i>nightmares</i>.<br>
+If repeated enough times can become infectious.<br>
+The <i>flipside</i> of triumphant cynicism.
+</p>
+
+<p>
+We cannot <i>condone</i> this behaviour (overlook).<br>
+The <i>onset</i> of the issue (beginning).<br>
+<i>Unsurprisingly</i>, a growing chorus of voices is calling for...<br>
+This coercive strategy is also unlikely to work.<br>
+By the most <i>relaxed</i> standards...<br>
+<i>Dubious</i> money...<br>
+To sniff and spew...<br>
+Or conversely, ..., even without leaving the armchair.<br>
+I <i>sneaked</i> in by the back exit.<br>
+It poses a thread.<br>
+Let's <i>sharpen</i> the question.<br>
+The flood waters had <i>receded</i>.
+</p>
+
+<p>
+To <i>give credence</i> to... accreditate.<br>
+<i>Marginal</i> notion. A backdoor to...<br>
+<i>Long-standing</i>, existing or in effect for a long time period.<br>
+<i>Get through to</i> you. I could not <i>get through to</i> the police because the telephone line was down. Can you <i>put me through to</i> him.<br>
+The issue I don't want to <i>pursue</i>.<br>
+...which I rather doubt. What I'm rather baffled of.<br>
+Advantages <i>over</i>...<br>
+The ideas don't <i>mesh</i> together too well. The proposals <i>mesh</i> with my plans.<br>
+<i>Whetting</i> your appetite.<br>
+I'm <i>acutely</i> aware of...<br>
+<i>Pitting</i> one against another. <i>Whet</i> the courage, stimulate.<br>
+<i>Tautology</i> and tautological.
+</p>
+
+<p>
+They <i>fall into</i> one of two camps.<br>
+Near-identical. An oligarch-run country.<br>
+To what end?<br>
+What do you hint at?<br>
+What you say <i>resonates</i> with our perception.<br>
+The <i>docket</i> (trial agenda), the docket date.<br>
+<i>Immerse</i> in a book.<br>
+Over the time...<br>
+Chart the course, the reckoning.<br>
+We <i>grapple with</i> problems.<br>
+<i>Beholder</i>, observer, witness, spectator.<br>
+We have now sunk to a depth at which...<br>
+Mental gymnastics.<br>
+<i>Clumsy</i> ~handy, freckle, <i>cuddle</i>, <i>ripe fruit</i>, I owe you an explanation, rubbish, baloney, nonsense.<br>
+There's no other way around.<br>
+<i>Intermission</i>, a pause or a break.<br>
+<i>Direct</i> the question to...<br>
+I came to the conclusion that...<br>
+Work around the clock, every waking hour.<br>
+On the brink of failure.<br>
+That's the way to go.
+</p>
+
+<p>
+The thorniest question is <i>tantalising</i> me.<br>
+To <i>posit</i> (assert, claim) is to assume as a fact.<br>
+The <i>manhunt</i> by Interpol.<br>
+They <i>ripen</i> slowly. <i>Rotten</i> fruits, <i>rusted</i> apparatus.<br>
+I have to <i>pinch</i> myself.<br>
+A <i>pitfall</i> is a hidden trap.<br>
+Lack of necessary <i>savvy</i> (experience and know-how).<br>
+This can only <i>exacerbate</i> the sutiation (aggravate, worsen, strengthen).
+</p>
+
+<p>
+The cash was <i>funnelled</i> (streamed, siphonned) through devious schemes (<i>scam</i>). To <i>tap</i> resources.<br>
+This <i>trims</i> ambitions.<br>
+Eagerly awaited.<br>
+For <i>furthering</i> changes (promote, continue in progress).<br>
+He <i>absconded</i> with... or from... (to leave hurriedly and secretly to avoid detection or arrest for an unlawful action, such as theft).
+</p>
+
+<p>
+One of the crowd.<br>
+They rest on their <i>laurels</i>.<br>
+<i>Faulty</i> data.<br>
+It is a <i>moot</i> question whether... (subject to discussion).<br>
+<i>Tap</i> into a relationship.<br>
+You intend to <i>con</i> me into doing this.<br>
+It <i>slips</i> from my hands.<br>
+Pick an option that fits your needs.<br>
+<i>Given</i> the choice, I'd <i>corner</i> him with my question.<br>
+It <i>pales in comparison with</i> the next unlawfulness. It pales into insignificance.<br>
+We are <i>quits</i> now, aren't we?<br>
+Too much to <i>bear</i>.<br>
+I <i>dates back</i> to 2009.<br>
+Where does the truth <i>lie</i>?<br>
+He decided to <i>set off</i> for home, or from there, he <i>set off</i> her crying.<br>
+<i>Crony capitalism</i>, <i>bosom friends</i>.<br>
+Consider this your warning.<br>
+Career <i>ladder</i>, ascension.
+</p>
+
+<p>
+Irritated at the <i>rebuke</i>. A rebuke for the mistake. To rebuke, <i>revile</i>, criticise with contemptuous language, invective.<br>
+With brutal honesty.<br>
+So simple you'll laugh out loud.<br>
+<i>Clunky</i>, hard or heavy to do.<br>
+A <i>pun</i>, a wordplay, calambur.<br>
+Argumentum ad hominem.<br>
+Not only is the..., but also...<br>
+<i>Once in a while</i>, from time to time, a <i>little while ago</i>.<br>
+Walks like a duck, swims like a duck, quacks like a duck.<br>
+Over the past decades, over the past five years.<br>
+A <i>mixture of both.</i><br>
+To <i>discount</i> evidence.<br>
+Set apart, make noticeable: character traits that <i>set her apart</i>.<br>
+Push your fears to rest.
+</p>
+
+<p>
+Cognitive bias.<br>
+They <i>misrepresented</i> the facts.<br>
+Frank and <i>outspoken</i>, frankness, candor.<br>
+Left to his <i>whim</i>.<br>
+The <i>surge of</i> interest.<br>
+Can I <i>interpose</i>?<br>
+To rid rid the politics.<br>
+You're ok with either way.<br>
+<i>Cripple</i> the society.<br>
+The disease has a poor <i>prognosis</i>.<br>
+Troops are <i>tasked</i> with separating the warring parties.<br>
+The floor <i>tilted</i> slightly (inclined).<br>
+It has <i>fallen out of use</i>.<br>
+Famine often comes <i>in the wake of</i> the war, or in the eve of the war.<br>
+<i>Unshackle</i>, unchain the feet.<br>
+He constantly <i>dodges questions</i> about how one amassed his wealth.
+</p>
+
+<p>
+Be <i>tormented</i> by children's <i>plea</i>.<br>
+Bumped into the table and <i>toppled</i> the lamp.<br>
+A great responsibility <i>rests upon</i> you.<br>
+In the <i>back of your mind</i>.<br>
+<i>Take the liberty</i> to ask.
+</p>
+
+<p>
+If I didn't study, I'd fail the test.<br>
+If I had (not) applied, I would (not, might, could) have passed.<br>
+I would be grateful if you would give me a little help.<br>
+He'll accept the job <i>unless</i> the salary is too low (if not = unless).<br>
+If you had warned me then, I would not be in trouble now.<br>
+<i>Should you</i> wish to cancel, please contact us.<br>
+<i>Had I known</i> you were waiting outside, I would have invited you to come in.<br>
+<i>Were</i> the negotiations to fall through, it would bring about unforeseen problems.<br>
+They may do whatever they like <i>provided that</i> it is within the law.<br>
+We’<i>d better</i> send it express, <i>otherwise</i> it’ll take days.<br>
+<i>Supposing he hadn’t</i> recognised us – he might never have spoken to us.<br>
+If only he knew the truth. If only there was...
+</p>
+
+<p>
+Get or gain the <i>upper hand</i> is to obtain the controlling position.<br>
+He did a <i>disfavour</i>, he's in the <i>disfavour with</i> the king.<br>
+The car <i>stalled</i> at the crossroad.<br>
+Despair <i>verging on</i> the suicidal.<br>
+A <i>workaround</i> is a method for achieving a task or goal when the usual or planned method isn't working.<br>
+A <i>hipster</i> is a young, non-traditional person who is an independent thinker, believes in progressive politics and dresses in a trendy fashion.<br>
+A <i>tiny bit</i> more formal, but still interchangeable.<br>
+A <i>bigot</i> is a narrow-minded, prejudiced person who holds blindly and intolerantly to a particular creed, opinion (bigotry, <i>zealotry</i>, <i>opinionated</i>, dogmatic, with fixed views).<br>
+A <i>convoluted</i> (too complex, <i>intricate</i>) story. To convolute with...<br>
+First, nail your target.<br>
+I yearn for (<i>pine after</i>) that (<i>groovy</i>, exciting) time.
+</p>
+
+<p>
+<i>Filch</i> jokes from other comedians (steal, pull off), jokes that <i>fall flat</i>.<br>
+<i>Snoop</i> around and see what he could <i>filch</i>.<br>
+Have the document <i>at your fingertips</i>.<br>
+The contract <i>sets out</i> the terms and the <i>venue</i> of the forthcoming meeting.<br>
+The country <i>set off</i> on the European course.<br>
+We are <i>set on</i> this approach.<br>
+He didn't <i>shy away from</i> doughty reforms.<br>
+This <i>falls under</i> the Dutch jurisdiction.<br>
+Sales <i>fell short of</i> the target.<br>
+I <i>sympathise with</i> you.<br>
+We <i>went through</i>.<br>
+<i>Wrapped up with</i> (involved in) mystery.
+</p>
+
+<p>
+They have <i>commissioned</i> a poll/study to determine the public opinion on the issue.<br>
+It is always a year away.<br>
+He is heavily <i>betting on</i> the wrong horse.<br>
+I can't hardly <i>contain</i> (restrain) myself and <i>contain</i> my curiosity. Method of containing the disease.<br>
+They <i>mop the floor with</i> him.<br>
+It <i>is bound to</i> (cannot be avoided) get explosive.<br>
+Have I <i>got the point across</i> to you?<br>
+<i>Vortex</i> of arbitrariness, <i>overdue</i> justice.<br>
+He <i>vows</i> (solemny promises, and vouch) to <i>recoup</i> the stolen money from this badly <i>impoverished</i> country.<br>
+I'd <i>spare</i> your time.<br>
+He is a <i>nerd</i>, a <i>dull</i>, a computer nerd.<br>
+Clumsy use of language, things hard to reconcile.<br>
+<i>Disenchanted</i> of politics, free of illusions.<br>
+The one captured and awaiting to be <i>ransomed</i>.<br>
+To <i>rehearse</i> is to repeat for a later performance. Rehearsal.
+</p>
+
+<p>
+Designed <i>from the ground up</i> to serve...<br>
+Speak at the level of the <i>slowest kid in the class</i>.<br>
+<i>Neat</i> and <i>tidy</i> (elegant) and <i>innocuous</i> (harmless, inoffensive).<br>
+Social <i>cohesion</i>, togetherness.<br>
+The code <i>brings about</i> (causes to happen) considerable changes. To flag up the concerns.<br>
+<i>Hand it over</i> to me.<br>
+Jammed in traffic, got in a <i>traffic jam</i>.<br>
+It definitely has its <i>charms</i>.
+</p>
+
+<p>
+<i>Misnomer</i> is an improper name or term.<br>
+The <i>landscape</i> didn't change.<br>
+A largely accepted <i>paradigm</i>, but not a <i>real world scenario</i>.<br>
+Don't be <i>hampered by the vocabulary</i>.<br>
+<i>Does it make sense</i>?<br>
+<i>Pass</i> my greetings to him.<br>
+This is often <i>equated with</i> stupidity.<br>
+I intend to <i>compromise on</i> this matter <i>with</i> them.<br>
+At your <i>first convenience</i>, as soon as possible.<br>
+Collecting praise.<br>
+To keep the country <i>afloat</i>.<br>
+Big picture <i>wise</i>.<br>
+Paid from the public <i>purse</i>.
+</p>
+
+<p>
+To <i>awaken</i> one's interest.<br>
+Lair, hotbed, greenhouse.<br>
+The least likely.<br>
+A pressing problem, pushing, this is quite <i>telling</i>.<br>
+We can't <i>vouch</i> for each detail.<br>
+Caused me a <i>heap of troubles</i>.<br>
+A <i>timely</i> moment, opportune.<br>
+It should be your <i>last resort</i>.<br>
+To <i>revamp</i> (rehabilitate, repair and improve an old thing) an old idea.<br>
+It <i>calls into</i> question.<br>
+If we <i>long for</i> this to be important (strongly wish and desire, pine for, crave).<br>
+To <i>crave</i> certainty (feel powerful desire for).<br>
+<i>Self-congratulatory</i> puerile rhetoric (childishly silly and trivial).<br>
+Lust for power.<br>
+Blood feud.<br>
+Not that it matters.
+</p>
+
+<p>
+Nobody wants to <i>partake in</i> it.<br>
+The guests <i>partook of</i> a delicious dinner.<br>
+An attempt to <i>hoodwink (bamboozle)</i> the public.<br>
+Human <i>conceit</i> (excessive pride in oneself).<br>
+She was preparing a <i>bogus</i> story.<br>
+He's light years ahead or behind.<br>
+A <i>congested</i> highway, to fill to excess; overcrowd.<br>
+<i>Whims</i> of gods, qualms of humans.<br>
+Conventional wisdom.<br>
+I am <i>haunted</i> by this obsession.<br>
+Changes that occurred over such a short time <i>span</i>.<br>
+In the span of five minutes, within a span of an hour, across the span of history.
+</p>
+
+<p>
+Let ambitions cloud thinking.<br>
+With the grace of god.<br>
+Are we ready to bring it about?<br>
+We must <i>bring about</i> what we plan to.<br>
+Preparations are <i>in full swings</i>.<br>
+For <i>vexatious</i> purpose, harassment and intimidation, <i>hounded</i>.<br>
+<i>Pinpointed</i> guided strikes.<br>
+Keep up with your <i>train of thoughts</i>.<br>
+<i>Silence descended</i> over the subject.
+</p>
+
+<p>
+So <i>brazenly spout</i> lies.<br>
+Ascend to the summit of power.<br>
+<i>Overtly or covertly</i>.<br>
+<i>Lick the wounds</i>.<br>
+To my <i>dismay</i> and consternation.<br>
+He continually <i>disavows</i> his past.<br>
+He blew the trumpet.<br>
+He repudiated previous practices (refuse to be associated with).<br>
+<i>Prefatory</i> remark, introductory note.<br>
+One can <i>readily conceive</i> that, readily accepted that.<br>
+<i>As time passes</i>, as time goes by. It's droll.
+</p>
+
+<p>
+<i>In the nick of time</i>, at the last possible time.<br>
+Time heals all wounds. It's <i>hazardous</i> to do it.<br>
+A <i>race against time</i>. Rush to do before the deadline.<br>
+Time will tell. The time is ripe.<br>
+To <i>go viral</i>. <i>Happily</i>, it went viral.<br>
+It goes without saying that.<br>
+I <i>carve out time</i> for reading.<br>
+Something significant is <i>afoot</i>, in preparation or progress, about to happen.<br>
+The report <i>downplays</i> (underestimates, diminishes) the seriousness of crisis.<br>
+I will <i>draw on</i> your advice, take advantage or benefit of it.
+</p>
+
+<p>
+It is not <i>in dispute</i> that it was done.<br>
+This is <i>beside the point</i>.<br>
+Contrary to his <i>contentions</i>.<br>
+<i>Merely for the sake of illustration</i>.<br>
+How nice of you to grace us with your presence.<br>
+They plaintiffs content that... submit that...<br>
+<i>Unapologetic</i> about our values, without regrets.<br>
+Meant to <i>muddle</i> us and quit the <i>assertive</i> approach.
+</p>
+
+<p>
+To impose or lift sanctions.<br>
+Are you <i>stalking</i> me?<br>
+It soon <i>slid into</i> decline.<br>
+The difficulties that <i>ensued from</i> their commitment.<br>
+Not just <i>parrot</i> (repeat mechanically) the others' views.<br>
+It is <i>justly (rightly) regarded</i> as the most important.<br>
+<i>Shed light on</i> thus subject.
+</p>
+
+<p>
+I feign no hypotheses (Newton).<br>
+<i>Lay aside the prejudices</i>.<br>
+Some priority claims, but failed to substantiate them, causing some delay.<br>
+<i>T</i><i>actfully persuaded</i> Newton to withdraw his threat.<br>
+Causing <i>severe strain</i> (tension) on the finances.<br>
+The <i>leftover</i> (surplus) copies.<br>
+When the dust settled.<br>
+<i>Plug in</i> the fragment into the text.
+</p>
+
+<p>
+I'm pressed for the time, for the money.<br>
+Beat around the bush.<br>
+I'll <i>do my bit</i>, you can count on me.<br>
+I tried to keep a <i>straight face</i> but failed.<br>
+Let it go and get it over.<br>
+He <i>loses his temper</i> very often.<br>
+Give it a try, a go, a shot.<br>
+Backseat driver.<br>
+On second thought - after thinking again.<br>
+They <i>twisted</i> his arm to sell the house.<br>
+He is an <i>up-and-coming</i> young lawyer who might help you with your case.<br>
+A <i>white lie</i> is told to spare your feelings.<br>
+The report aroused them to take action. The insult aroused him to anger.
+</p>
+
+<p>
+<table style="border:1 solid orange;font: normal 14pt Calibri,Arial,sans-serif;" cellpadding="8" cellspacing="0">
+<tr><td valign="top">
+
+Misfortunes never come alone.<br>
+Better safe than sorry.<br>
+East or West, home is best.<br>
+Many a true word is spoken in jest.<br>
+Every why has a wherefore.<br>
+Every cook praises his own broth.<br>
+Still waters run deep.<br>
+The chain is no stronger than its weakest link.<br>
+A friend in need is a friend indeed.<br>
+He that once deceives is ever suspected.<br>
+Two wrongs do not make a right.<br>
+The game is not worth the candle.<br>
+It is never too late to mend (repair).<br>
+Truth lies at the bottom of a well.<br>
+Don't change horses in midstream. Don't swap horses when crossing a stream.<br>
+When the cat is away, the mice will play.<br>
+Too far East is West. Opposites attract.<br>
+Brevity is the soul of wit.<br>
+Rats desert a sinking ship. Rats leave a sinking ship.<br>
+Great talkers are little doers.<br>
+Best defence is offence.<br>
+Silence gives consent. Silence means consent.<br>
+God helps those who help themselves.<br>
+Don't trouble trouble until trouble troubles you.<br>
+
+</td><td valign="top">
+
+Don't make a mountain out of a molehill.<br>
+Catch the bear before you sell his skin.<br>
+No safe wading in an unknown water.<br>
+He who makes no mistakes makes nothing.<br>
+There is but one step from the sublime to the ridiculous.<br>
+A fault confessed is half redressed.<br>
+Like cures like.<br>
+After us the deluge.<br>
+Prevention is better than cure. A stitch in time saves nine.<br>
+Forewarned is forearmed.<br>
+Habit is a second nature. Custom is a second nature.<br>
+One must drink as one brews.<br>
+Who keeps company with the wolf will learn to howl.<br>
+A man is known by the company he keeps.<br>
+Death pays all debts. Death squares all accounts. Death quits all scores.<br>
+Great barkers are no biters.<br>
+The proof of the pudding is in the eating.<br>
+More haste, less speed.<br>
+Too many cooks spoil the broth. Everybody's business is nobody's business.<br>
+A drowning man will catch at a straw.<br>
+A bad compromise is better than a good lawsuit.<br>
+The end justifies the means.<br>
+To err is human.<br>
+You never know what you have till it's gone.<br>
+The pen is mightier than the sword.<br>
+Drunkenness reveals what soberness conceals.
+
+</td></tr></table>
+</p>
+
+<p>
+He called a meeting to <i>solicit</i> their views.<br>
+All the more, (much) <i>the more so</i>, a fortiori.<br>
+The man of prejudice is, a <i>fortiori</i>, a man of limited mental vision.<br>
+Just a <i>tip of the iceberg</i>.<br>
+The <i>gist</i>, essence, central theme, nub, crux, kernel, point at a matter.<br>
+You jest, surely? (fool around, joke).<br>
+It <i>leaves us with the question</i>... as you may have it guessed.<br>
+Expanding deficits is the <i>corollary</i> to any new spending program.<br>
+A (tough) hard nut to crack. To <i>crack</i> the problem.<br>
+Whatever the reasons behind the claim, continuation.
+</p>
+
+<p>
+To <i>take its toll on</i> - cause damage, harm, loss or destruction, take its tribute - The war has taken its toll on both sides - The heavy traffic has taken its toll on the highways.<br>
+Large portion of the additional <i>warmth</i>.<br>
+The work regarded as her outstanding achievement.<br>
+He felt <i>at ease</i> with the group.<br>
+One can easily <i>cast doubt on</i> his understanding.<br>
+He did not <i>reciprocate</i>.<br>
+This inspired us <i>to engage</i> more closely <i>with</i> your project.<br>
+Haughtiness, quite <i>conceited</i>.<br>
+<i>Succumb</i> - fail to resist pressure or temptation, submit, yield, surrender - the latest to succumb to commands.<br>
+<i>Intercede</i> - intervene on behalf of another.<br>
+Which <i>sources</i> its information <i>from</i> specific websites.<br>
+To let out a stream of crude, violent and satirical <i>invective</i> (against somebody).
+</p>
+
+<p>
+Be <i>slammed</i> for <i>whitewashing</i> his crimes.<br>
+We are not <i>complacent</i> (self-satisfied, conceited) about this position.<br>
+How did all this <i>come about</i> (happen)? Take place - come to pass.<br>
+Gaze, look closely, <i>peer</i> into (gaze) the sky.<br>
+Applications, to be considered on their individual merits.<br>
+Problems have <i>built up</i> over decades.
+</p>
