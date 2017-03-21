@@ -3,11 +3,22 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>★ Edit for Facebook</title>
-  <style></style>
   <style>
     .iS { cursor:pointer; margin:1px; padding:2px; border:none; font-size:18px; color: grey; background-color: #111111;}
     .bT { cursor:pointer; margin:2px; border:1px solid #222;padding:6px; border-radius:6px; font-size:14px; color: grey; background-color: #111111; outline:none;}
     .bT:hover { border:1px solid blue; }
+  
+  .EdDiv {
+    font:normal 16pt Ubuntu,Verdana,Arimo;
+    background-color:black;
+    color:lightgreen;
+    margin-right:80px;
+    position:absolute;
+    top:30px; left: 330px;
+    border:1px solid #222222;
+    padding:100px;
+  }
+
   </style>
   <script type="text/javascript">
 
@@ -30,9 +41,11 @@
     function retrieve(ob) { setT(ob); id('basic').innerText = localStorage.getItem("facebook_edit"); Foc(); }
     function setT(ob) { ob.style.backgroundColor = 'blue'; setTimeout(function(){ ob.style.backgroundColor = ''; }, 600); }
     function Foc() { id('basic').focus(); }
-    function manageEnter(event) {
-      var key = event.which || event.keyCode;
-      if(key===13) { fDoc('insertHTML', '<br>'); return false; } return true;
+    function manageEnter(e) {
+      //event.preventDefault();
+      //var key = event.keyCode;
+      //if(key===13) alert(id('basic').innerHTML);
+      //{ document.execCommand('insertHTML', false, '<br>'); alert(id('basic').innerHTML); return false; } return true;
     }
 
 </script>
@@ -151,10 +164,12 @@
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⑦'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⑧'/>
       <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⑨'/>
-      <INPUT class='iS' type='button' onClick='fDoc("insertText",this)' value='⑩'/>
+      <INPUT class='iS' type='button' onClick='alert(document.getElementById("basic").innerHTML); fDoc("insertText",this)' value='⑩'/>
 
   </div>
-  <div id='basic' contentEditable=true onKeyDown='return manageEnter(event);' style='font:normal 16pt Ubuntu,Verdana,Arimo; background-color:black; color:lightgreen; margin-right:80px; position:absolute; top:30px; left: 330px; border:1px solid #222222; padding:100px; outline:none;'></div>
+  <div class='EdDiv'>
+    <div id='basic' contentEditable='true' style='display: inline-block;outline:none;'></div>
+  </div>
 
 </body>
 </html>
