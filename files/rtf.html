@@ -119,7 +119,7 @@ function changeTable() {
   var obj = id('makeTb'); if(memoTable != obj.innerText) norm(obj); else return;
   var fCell, notCol, rS, ts, tL;
 
-  if(id('thisTable').checked) ts = [whichTable];
+  if(id('thisTable').checked) ts = whichTable;
   else { ts = id('basic').getElementsByTagName('TABLE'); if(ts.length<1) return; }
   var v = getJson(obj);
     for(var i=0, tL = ts.length; i<tL; i++) {
@@ -484,7 +484,7 @@ It is valued at US$18 billion, as of November 2013. His annual salary at Tesla i
 <tr>
   <td valign='top'>
     <img class="intLink" title="Insert Table" onclick="insertTable()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAIAAABL1vtsAAAApElEQVQ4je2UQRGAIBBFP44FqIARtoIVqGAXK1iBLETQCkZYD6CoK+OgHn0XmGH/Z/9hVzEz3lG91AOow6GUA6x4dTkZcyredyEF0hTrl8OlRZlL38/hEoOMY2uMPhVNUyhqpb5pHADvQbTrYhUkjNHSVxK78F4H1ytuXKIF0ZwPcsMfRHTxB0kW1h6Gr4h6uzF32/AVoU6LL5MlC5GweMAHu3MBFuBJXeryqLsAAAAASUVORK5CYII=" />
-    <br><input id='thisTable' type="checkbox" onClick='currentTable(this)'>
+    <br><input id='thisTable' type="checkbox" onClick='currentTable(this)' title='Applies only to selected table'>
   </td>
   <td>
     <DIV id='makeTb' style="width:400px;padding:4px;border:1px solid lightgray;" contentEditable="true" onFocus='memorize(this)' onBlur='changeTable();Ch();'>3|20%|40%|40%|border:1px solid gold;|padding:6px; background-color: white; border-bottom:1px solid gold;</DIV>

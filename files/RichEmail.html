@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>✎ Rich Email</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .board { color:lightgrey; }
+    .board button {
+        background-color: white; border: 1px solid white;
+        font-size: 14px;
+    }
+    .board button:hover { border-color:red; cursor:pointer; }
+    .board select { background-color: white; border: 1px solid #ccc; }
+    
+    .modal {
+        display: none; position: fixed; z-index: 1;
+        padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.4); }
+    .modal-content {
+        background-color: #fff; padding: 20px; border-radius:8px;
+        border: 1px solid #888; width: 60%; margin:auto; font-family:sans-serif;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .modal-close { color: #aaaaaa; float: right; font-size: 28px; font-weight: bold; }
+    .modal-close:hover { color: #000; cursor: pointer; }
+
+/*------------------------ Grey Style -------------------------*/
+    .txtStyle {
+      border:1px solid #ddd; padding:40px; border-radius:8px;
+      font: normal .9em Sans-serif; outline:none;
+      background-color:#eee; line-height: 1.3;
+    }
+    .txtStyle b { border: 1px solid #ccc;
+      background-color:#fff; padding:0px 6px; border-radius:4px; font-weight:normal;
+    }
+    .txtStyle i { color:darkred; }
+    .txtStyle u { text-decoration:none; border-bottom:1px solid red; }
+    .txtStyle hr { border:none; border-top:1px dashed #99b; height:0px; }
+    .txtStyle sup, .txtStyle sub { color:red; font-size:.7em; }
+    .txtStyle strike { color:darkred; }
+    .txtStyle H1 { border: 1px solid #444; font-size:1.4em; color:#fff;
+      background-color:#666; padding: 14px; border-radius:8px; font-weight:normal;
+    }
+    .txtStyle H2 { border: 1px solid #ccc; font-size: 1em;
+      background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
+    }
+    .txtStyle blockquote { padding-left:12px;
+      border-left: 8px solid #ccc;
+    }
+    .txtStyle span[blockOK] { color:#fff; background-color:darkgreen; padding:0px 6px; border-radius:4px; }
+    .txtStyle span[blockNo] { color:#fff; background-color:darkred; padding:0px 6px; border-radius:4px; }
+
+/*.TB { font:normal 1em Sans-serif; }*/
+    .txtStyle td[qL] { vertical-align: top; padding-right:12px; color:red; text-align:right; width: 60px; }
+    .txtStyle td[q1] { vertical-align: top; padding-right:12px; font-size:4em; color:#ccc; text-align:right; width: 60px; border-right:1px solid #ccc; }
+    .txtStyle td[q2] { vertical-align: top; padding-left:12px; }
+    /*
+    .txtStyle ul { list-style: none; }
+    .txtStyle ul li { margin-bottom:1em; }
+    .txtStyle ul li::before {content: "•"; color: red; display: inline-block;
+      width: 1.4em; margin-left: -1.4em;}
+    .txtStyle ol {list-style: none; counter-reset: li; }
+    .txtStyle ol li {counter-increment: li; margin-bottom:1em; }
+    .txtStyle ol li::before {content: counter(li); color: red; display: inline-block;
+      width: 1.2em; margin-left: -2.2em; margin-right: 1em; text-align: right; direction: rtl}
+    */
+
+/*------------------------ Blue Style -------------------------*/
+    .blueStyle {
+      border:1px solid #dde; padding:40px; border-radius:8px;
+      font: normal .8em Verdana,Sans-serif; outline:none;
+      background-color:#eef; line-height: 1.3; color:#224;
+    }
+    .blueStyle b { border: 1px solid #ccd; color:#228;
+      background-color:#fff; padding:0px 6px; border-radius:4px; font-weight:normal;
+    }
+    .blueStyle i { color:#33a; }
+    .blueStyle u { text-decoration:none; border-bottom:2px solid blue; }
+    .blueStyle hr { border:none; border-top:1px dashed #99d; height:0px; }
+    .blueStyle sup, .txtStyle sub { color:blue; font-size:.7em; }
+    .blueStyle strike { color:#33a; }
+    .blueStyle H1 { border: 1px solid #224; font-size:1.4em; color:#fff;
+      background-color:#669; padding: 14px; border-radius:8px; font-weight:normal;
+    }
+    .blueStyle H2 { border: 1px solid #ccd; font-size: 1em;
+      background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
+    }
+    .blueStyle blockquote { padding-left:12px;
+      border-left: 8px solid #cce;
+    }
+    .blueStyle span[blockOK] { color:#fff; background-color:darkgreen; padding:0px 6px; border-radius:4px; }
+    .blueStyle span[blockNo] { color:#fff; background-color:darkred; padding:0px 6px; border-radius:4px; }
+
+    .blueStyle td[qL] { vertical-align: top; padding-right:12px; color:blue; text-align:right; width: 60px; }
+    .blueStyle td[q1] { vertical-align: top; padding-right:12px; font-size:4em; color:#ccd; text-align:right; width: 60px; border-right:1px solid #ccd; }
+    .blueStyle td[q2] { vertical-align: top; padding-left:12px; }
+
+/*------------------------ Yellow Style -------------------------*/
+    .yelStyle {
+      border:1px solid #edd; padding:40px; border-radius:8px;
+      font: normal .9em Sans-serif; outline:none;
+      background-color:#ffa; line-height: 1.3; color:#622;
+    }
+    .yelStyle b { border: 1px solid #ed4; color:#622;
+      background-color:#fff; padding:0px 6px; border-radius:4px; font-weight:normal;
+    }
+    .yelStyle i { color:#b22; }
+    .yelStyle u { text-decoration:none; border-bottom:1px solid red; }
+    .yelStyle hr { border:none; border-top:1px dashed #b96; height:0px; }
+    .yelStyle sup, .txtStyle sub { color:red; font-size:.7em; }
+    .yelStyle strike { color:#b22; }
+    .yelStyle H1 { border: 1px solid #f09030; font-size:1.4em; color:#fff;
+      background-color:#ff9933; padding: 14px; border-radius:8px; font-weight:normal;
+    }
+    .yelStyle H2 { border: 1px solid #ed4; font-size: 1em;
+      background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
+    }
+    .yelStyle blockquote { padding-left:12px;
+      border-left: 8px solid #ffdf80;
+    }
+    .yelStyle span[blockOK] { color:#fff; background-color:darkgreen; padding:0px 6px; border-radius:4px; }
+    .yelStyle span[blockNo] { color:#fff; background-color:darkred; padding:0px 6px; border-radius:4px; }
+
+    .yelStyle td[qL] { vertical-align: top; padding-right:12px; color:red; text-align:right; width: 60px; }
+    .yelStyle td[q1] { vertical-align: top; padding-right:12px; font-size:4em; color:#ffdf80; text-align:right; width: 60px; border-right:1px solid #ffdf80; }
+    .yelStyle td[q2] { vertical-align: top; padding-left:12px; }
+
+/*------------------------ Normal Style -------------------------*/
+    .nrmStyle {
+      border:1px solid #ddd; padding:40px; border-radius:8px;
+      font: normal .8em Verdana, Sans-serif; outline:none;
+      background-color:#eee; line-height: 1.3;
+    }
+    .nrmStyle hr { border:none; border-top:1px dashed #99b; height:0px; }
+    .nrmStyle sup, .txtStyle sub { color:red; font-size:.7em; }
+    .nrmStyle H1 { border: 1px solid #444; font-size:1.4em; color:#fff;
+      background-color:#666; padding: 14px; border-radius:8px; font-weight:normal;
+    }
+    .nrmStyle H2 { border: 1px solid #ccc; font-size: 1em;
+      background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
+    }
+    .nrmStyle blockquote { padding-left:12px;
+      border-left: 8px solid #ccc;
+    }
+
+    .nrmStyle td[qL] { vertical-align: top; padding-right:12px; color:red; text-align:right; width: 60px; }
+    .nrmStyle td[q1] { vertical-align: top; padding-right:12px; font-size:4em; color:#ccc; text-align:right; width: 60px; border-right:1px solid #ccc; }
+    .nrmStyle td[q2] { vertical-align: top; padding-left:12px; }
+
+  </style>
+</head>
+<body style="font-size:12pt" margin='10px' onResize='reSize()'>
+
+<div id='board' class='board'>
+  <button onClick='toClipBoard(this)' title='Copy in Clipboard'><i class="fa fa-scissors"></i></button>
+  <button onClick='exe("removeFormat")' title='Remove format'><i class="fa fa-eraser"></i></button>
+  <button onClick='exe("redo",null)' title='Repeat'><i class="fa fa-repeat"></i></button>
+  <button onClick='exe("undo",null)' title='Undo'><i class="fa fa-undo"></i></button>
+
+  <select onChange='toggleClass(this)'>
+        <option value='txtStyle' selected>Grey</option>
+        <option value='blueStyle'>Blue</option>
+        <option value='yelStyle'>Yellow</option>
+        <option value='nrmStyle'>Normal</option>
+  </select>
+
+  <button onClick='exe("bold",null)' title='Bold'><i class="fa fa-bold"></i></button>
+  <button onClick='exe("italic", null)' title='Italic'><i class="fa fa-italic"></i></button>
+  <button onClick='exe("underline", null)' title='Underline'><i class="fa fa-underline"></i></button>
+  <button onClick='exe("strikeThrough",null)' title='Strikethrough'><i class="fa fa-strikethrough" style='font-size:11px;'></i></button>
+
+  | <button onClick='exe("justifyleft",null)' title='Align left'><i class="fa fa-align-left"></i></button>
+  <button onClick='exe("justifycenter",null)' title='Align center'><i class="fa fa-align-center"></i></button>
+  <button onClick='exe("justifyright",null)' title='Align right'><i class="fa fa-align-right"></i></button>
+  <button onClick='exe("justifyFull",null)' title='Justify'><i class="fa fa-align-justify"></i></button>
+
+  | <button onClick='exe("insertunorderedlist",null)' title='Unordered list'><i class="fa fa-list-ul"></i></button>
+  <button onClick='exe("insertorderedlist",null)' title='Ordered list'><i class="fa fa-list-ol"></i></button>
+  <button onClick='exe("indent",null)' title='Indent'><i class="fa fa-indent"></i></button>
+  <button onClick='exe("outdent",null)' title='Dedent'><i class="fa fa-dedent"></i></button>
+
+  | <button onClick='exe("insertHorizontalRule",null)' title='Horizontal line'>┄</button>
+  <button onClick='sel("<H1>","</H1>")' title='Title'><i class="fa fa-header"></i></button>
+  <button onClick='sel("<H2>","</H2>")' title='Subtitle'><i class="fa fa-header" style='font-size:11px;'></i></button>
+  <button onClick='insQuote()' title='Quotation area'><i class="fa fa-quote-left"></i></button>
+
+  | <button onClick='exe("superscript",null)' title='Superscript'><i class="fa fa-superscript"></i></button>
+  <button onClick='exe("subscript",null)' title='Subscript'><i class="fa fa-subscript"></i></button>
+  <button onClick='up_low(true)' title='Upper case font'><i class="fa fa-font"></i><i class="fa fa-long-arrow-up"></i></button>
+  <button onClick='up_low(false)' title='Lower case font'><i class="fa fa-font" style="font-size:.7em"></i><i class="fa fa-long-arrow-down"></i></button>
+  
+  | <button onClick='incFontSize()' title='Change Font Size'><i class="fa fa-text-width"></i></button>
+  <button onClick='insTable()' title='List of items'><i class="fa fa-table"></i></button>
+  <button onClick='insLink()' title='Insert link'><i class="fa fa-link"></i></button>
+  <button onClick='show_modal()' title='Settings'><i class="fa fa-gear"></i></button>
+
+  | <button onClick='ins(this)' title='Flag'>⚑</button>
+  <button onClick='ins(this)' title='Pen'>✎</button>
+  <button onClick='ins(this)' title='OK'>✓</button>
+  <button onClick='ins(this)' title='No'>✘</button>
+  <button onClick='ins(this)' title='Attention'>⚠</button>
+
+  | <button onClick='ins(this)' title='Euro'>€</button>
+  <button onClick='ins(this)' title='Paragraph'>§</button>
+  <button onClick='ins(this)' title='Plus/Minus'>±</button>
+  <button onClick='ins(this)' title='Approximately'>≈</button>
+  <button onClick='ins(this)' title='Degree'>°</button>
+
+  | <button onClick='ins(this)' title='Long dash'>―</button>
+  <button onClick='ins(this)' title='Subtle arrow'>➝</button>
+  <button onClick='ins(this)' title='Bold arrow'>➜</button>
+  <button onClick='ins(this)' title='Telephone'>☎</button>
+  <button onClick='ins(this)' title='Email'>✉</button>
+
+  | <button onClick='cul(this)' title='Red font' style='color:red'>▣</button>
+  <button onClick='cul(this)' title='Dark red font' style='color:darkred'>▣</button>
+  <button onClick='cul(this)' title='Blue font' style='color:blue'>▣</button>
+  <button onClick='cul(this)' title='Green font' style='color:green'>▣</button>
+  <button onClick='cul(this)' title='Custom color' style='color:'>▨</button>
+
+  <button onClick='insYesNo(true)' title='OK confirmation (green)'><i class="fa fa-check"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
+  <button onClick='insYesNo(false)' title='Bad confirmation (red)'><i class="fa fa-remove"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
+
+</div>
+<div id='inCapsul' style='overflow-y:auto'>
+<table><tr><td id='txt' class='txtStyle' contentEditable>
+  <h1>Header of the main section</h1>
+  He has <b>favoured</b> building a <i>sub-$30,000</i> subcompact and <u>building</u> and <strike>selling</strike> electric.
+  <H2>Subtitle of the second section</H2>
+  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.<br>
+  <br><hr><br>He has favoured building a sub-$30,000 subcompact.<br>Quotation:
+  <blockquote>He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.</blockquote>
+  <br><br>Several mainstream publications<sup>2</sup> have compared him with Henry Ford for his work on advanced vehicle power trains.<br>
+  Unordered list:<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul><hr>Ordered list:<ol><li>Coffee</li><li>Tea</li><li>Milk</li></ol>
+</td></tr></table>
+</div>
+
+<div id="modal-w" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onClick='modal_shut()'>&times;</span>
+    <div id='modal-out' style='max-height:400px;overflow-y:auto'></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function id(x) { return document.getElementById(x); }
+
+  const T = id('txt');
+
+  function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); }
+
+  function sel(tgBeg, tgEnd) { exe("insertHTML", tgBeg + window.getSelection().toString() + tgEnd); }
+
+  function toClipBoard(ob) {
+    let p = id('inCapsul');
+    p.contentEditable = true; p.focus();
+    document.execCommand("selectAll", false, null);
+    document.execCommand("copy", false, null);
+    p.contentEditable = false;
+    ob.style.backgroundColor = '#FF0'; window.setTimeout( function() { ob.style.backgroundColor=''; }, 500);
+    T.focus();
+  }
+  
+  function ins(o) { exe('insertText', o.textContent); }
+  
+  function up_low(F) {
+    let s = window.getSelection().toString();
+    exe('insertText', F?s.toUpperCase():s.toLowerCase());
+  }
+  
+  function toggleClass(ob) { T.className = ob.options[ob.selectedIndex].value; }
+  
+  function cul(ob) {
+    let s = window.getSelection().toString(), cl = ob.style.color;
+    if(cl != '') exe("insertHTML", '<font color="'+ cl + '">' + s + '</font>');
+    else {
+      var Fs = prompt('Enter the Color Code here:','#ff0000');
+      if(Fs && Fs != '') exe("insertHTML", '<span style="color:'+ Fs + '">' + s + '</span>');
+    }
+  }
+  
+  function insLink() {
+    var sLnk=prompt('Write the URL here','http:\/\/');
+    if(sLnk && sLnk != '' && sLnk != 'http://') exe("createLink", sLnk);
+  }
+
+  function incFontSize() {
+    let s = window.getSelection().toString();
+    var Fs = prompt('Enter new Font Size here:','2em');
+    if(Fs && Fs != '') exe("insertHTML", '<span style="font-size:'+ Fs + '">' + s + '</span>');
+  }
+
+  function insYesNo(F) { exe("insertHTML", '<span ' + (F?'blockOK':'blockNo')  + '>' + (F?'✓&nbsp;OK':'✘&nbsp;No') + '</span>'); }
+  
+  function reSize() {
+    const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
+    if(w > 800) { d1.style.width = '800px'; d2.style.width = '800px'; } else { d1.style.width = ''; d2.style.width = ''; }
+    d2.style.height = (h - d1.offsetHeight - M) + 'px';
+  }
+  
+  function insQuote() {
+    let s = window.getSelection().toString(); if(s=='') s='...';
+    exe('insertHTML','<table><tr><td q1>❝</td><td q2>' + s + '</table>');
+  }
+  
+  function insTable() {
+    var Fs = prompt('Enter Ordered/Unordered + number of row (ex: o3, u5):','u3');
+    if(Fs && (Fs.charAt(0)=='o' || Fs.charAt(0)=='u')) {
+      const F = Fs.charAt(0)=='u'?true:false, r = parseInt(Fs.substr(1),10);
+      var T = '<table>';
+      for(let i=0; i<r; i++)
+      T += '<tr><td qL>' + (F?'•':(i+1)+'.') +'</td><td q2>...</td></tr>';
+      exe('insertHTML', T + '</table>');
+    }
+  }
+  
+  reSize();
+
+  var Modal = id("modal-w");
+  
+  function show_modal() {
+    id("modal-out").textContent = T.innerHTML;
+    Modal.style.display = "block";
+  }
+  function modal_shut() { Modal.style.display = "none"; }
+  window.onclick = function(event) {
+    if (event.target == Modal) Modal.style.display = "none";
+  }
+
+</script>
+
+</body>
+</html>
