@@ -25,8 +25,8 @@
     .modal-close { color: #aaaaaa; float: right; font-size: 28px; font-weight: bold; }
     .modal-close:hover { color: #000; cursor: pointer; }
 
-    code[block="1"] { color:#fff; background-color:#080; padding:0px 6px; border-radius:4px; }
-    code[block="0"] { color:#fff; background-color:#c00; padding:0px 6px; border-radius:4px; }
+    code[block="1"] { color:#fff; background-color:#080; padding:0px 8px; border-radius:4px; }
+    code[block="0"] { color:#fff; background-color:#c00; padding:0px 8px; border-radius:4px; }
 
 /*------------------------ Grey Style -------------------------*/
     .txtStyle {
@@ -237,6 +237,7 @@
 
   | <button onClick='insYesNo(1)' title='OK confirmation (green)'><i class="fa fa-check"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
   <button onClick='insYesNo(0)' title='Bad confirmation (red)'><i class="fa fa-remove"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
+  <button onClick='toggleWidth(this)' title='Compress width to 600px' class="fa fa-compress"></button>
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
@@ -249,6 +250,7 @@
     <!-- <div id='modal-out' style='max-height:400px;overflow-y:auto'></div> -->
     <textArea id='modal-out' style='font:normal 10pt Tahoma,Sans-serif; height:400px; width:100%; overflow-y:auto'></textArea>
     <button onClick='Modal_OK()'>Modify</button>
+    <button onClick='norm()'>Normalize</button>
   </div>
 </div>
 
@@ -332,19 +334,33 @@
   }
   
   function insTable() {
-    var F, cnt = -1, arr, s = window.getSelection().toString();
-        if(s) { arr = s.split('\n'); cnt = arr.length; }
-    var Fs = prompt('Enter Ordered/Unordered/Enum/Big + number of row (ex: o3, u5, e4, b5):','u'+(cnt>-1?cnt-1:3));
+    var F, cnt = 0, arr, s = window.getSelection().toString().trim();
+        if(s) { arr = s.replace(/^\n|\n$/,'').replace(/\n{2,}/g,'\n').split('\n'); cnt = arr.length; }
+    var Fs = prompt('Enter Ordered/Unordered/Enum/Big + number of row (ex: o3, u5, e4, b5):','u'+(cnt?cnt:3));
     if(Fs && ('oueb'.indexOf(F=Fs.charAt(0))>-1)) {
       var r = parseInt(Fs.substr(1),10), pref = (F!='b')?'<tr><td qL>':'<tr><td q1>'; if(F=='b') F='o';
       var T = '<table border="0" cellSpacing="0">';
       for(let i=0; i<r; i++)
-      T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<span enum>'+ String.fromCharCode(65+i) +'</span>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'</td></tr>';
+      T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<span enum>'+ String.fromCharCode(65+i) +'</span>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'<br><br></td></tr>';
       exe('insertHTML', T + '</table>');
     }
   }
   
   function Cleanse() { exe('insertHTML',window.getSelection().toString()); }
+
+  function norm() {
+    var dst = id('modal-out'), x = dst.value;
+    x = x.replace(/\s*\n+\s*/g,'');
+    x = x.replace(/&nbsp;+|\s+/g,' ');
+    x = x.replace(/\s*(<\/h1>|<\/h2>|<br>|<\/tr>|<\/div>|<\/li>|<\/table>|<hr>|<ol>|<ul>)/g,'$1\n');
+    x = x.replace(/(<h1>|<h2>|<table>|<tr>|<div>)/g,'\n$1');
+    dst.value = x;
+  }
+  
+  function toggleWidth(o) {
+    if(T.style.width != '600px') { T.style.width = '600px'; o.className = 'fa fa-expand'; o.title = 'Expand width to 100%'; }
+    else { T.style.width = ''; o.className = 'fa fa-compress'; o.title = 'Compress width to 600px'; }
+  }
   
   var Modal = id("modal-w"), patt, modal_mode = true;
 
