@@ -11,8 +11,13 @@
         font-size: 14px;
     }
     .board button:hover { border-color:red; cursor:pointer; }
-    .board select { background-color: white; border: 1px solid #ccc; }
-    
+
+    .sel {
+   	  display:inline-block; border:1px solid lightgrey;
+      padding-left:4px; color:#000; font-size:12px; }
+    .sel * { background-color:#fff; outline:none;
+   	  padding:0px; border:none; cursor:pointer; }
+
     .modal {
         display: none; position: fixed; z-index: 1;
         padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%;
@@ -126,7 +131,7 @@
       background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
     }
 
-    .nrmStyle td[qL] { vertical-align: top; padding-right:12px; color:red; text-align:right; width: 60px; }
+    .nrmStyle td[qL] { vertical-align: top; padding-right:12px; color:#99b; text-align:right; width: 60px; }
     .nrmStyle td[q1] { vertical-align: top; padding-right:12px; font-size:42pt; color:#ccc; text-align:right; width: 60px; border-right:1px solid #ccc; }
     .nrmStyle td[q2] { vertical-align: top; padding-left:12px; }
 
@@ -135,22 +140,22 @@
 /*------------------------ Black Style -------------------------*/
     .blckStyle {
       border:1px solid #002; padding:40px; border-radius:8px;
-      font: normal 10.5pt Sans-serif; outline:none;
-      background-color:#334; line-height: 1.3; color:#aae;
+      font: normal 11pt Sans-serif; outline:none;
+      background-color:#445; line-height: 1.3; color:#aae;
     }
     .blckStyle b {
       background-color:#000; padding:0px 6px; border-radius:4px; font-weight:normal;
     }
-    .blckStyle i { color:#fff; }
-    .blckStyle u { text-decoration:none; border-bottom:2px solid #000; }
+    .blckStyle i { color:#fff; font-style:normal; }
+    .blckStyle u { text-decoration:none; border-bottom:4px solid #000; }
     .blckStyle hr { border:none; border-top:1px dashed #000; height:0px; }
     .blckStyle sup, .blckStyle sub { color:#000; font-size:7pt; font-weight: bold; }
     .blckStyle strike { color:#000; }
     .blckStyle H1 { font-size:16pt; color:#aae;
       background-color:#000; padding: 14px; border-radius:8px; font-weight:normal;
     }
-    .blckStyle H2 { font-size: 10.5pt; color:#000;
-      background-color:#779; padding: 16px; border-radius:8px; font-weight:normal;
+    .blckStyle H2 { font-size: 11pt; color:#002;
+      background-color:#889; padding: 16px; border-radius:8px; font-weight:normal;
     }
 
     .blckStyle td[qL] { vertical-align: top; padding-right:12px; color:#000; text-align:right; width: 60px; }
@@ -170,19 +175,21 @@
   <button onClick='exe("redo",null)' title='Repeat'><i class="fa fa-repeat"></i></button>
   <button onClick='exe("undo",null)' title='Undo'><i class="fa fa-undo"></i></button>
 
+  <div class='sel' title='Theme (template)'>
+  <i class="fa fa-image"></i>
   <select onChange='toggleClass(this)'>
         <option value='txtStyle' selected>Grey</option>
         <option value='blueStyle'>Blue</option>
         <option value='yelStyle'>Yellow</option>
         <option value='nrmStyle'>Normal</option>blckStyle
-        <option value='blckStyle'>Black</option>
+        <option value='blckStyle'>Dark</option>
   </select>
+  </div>
 
   <button onClick='exe("bold",null)' title='Bold'><i class="fa fa-bold"></i></button>
   <button onClick='exe("italic", null)' title='Italic'><i class="fa fa-italic"></i></button>
   <button onClick='exe("underline", null)' title='Underline'><i class="fa fa-underline"></i></button>
   <button onClick='exe("strikeThrough",null)' title='Strikethrough'><i class="fa fa-strikethrough" style='font-size:11px;'></i></button>
-  <button onClick='exe("hiliteColor","#ff4")' title='Yellow highlight'><i class="fa fa-paint-brush"></i></button>
 
   | <button onClick='just("left")' title='Align left'><i class="fa fa-align-left"></i></button>
   <button onClick='just("center")' title='Align center'><i class="fa fa-align-center"></i></button>
@@ -210,6 +217,37 @@
   <button onClick='show_modal(false)' title='Edit HTML'><i class="fa fa-file-code-o"></i></button>
   <button onClick='show_modal(true)' title='Edit Style Sheet'><i class="fa fa-file-text-o"></i></button>
 
+  | <button onClick='insYesNo(1)' title='OK confirmation (green)'><i class="fa fa-check"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
+  <button onClick='insYesNo(0)' title='Bad confirmation (red)'><i class="fa fa-remove"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
+  <button onClick='toggleWidth(this)' title='Compress width to 600px' class="fa fa-compress"></button>
+  <button onClick='insRemark()' title='Insert a remark/note' class="fa fa-edit"></button>
+
+  <div class='sel' title='font color'>
+    <i class="fa fa-pencil"></i>
+    <button onClick='cul(this,0)' style='color:red'>▣</button><select style='width:14px' onFocus='unsel(this)' onChange='ch_Sibling(this,0)'>
+    <option value="red" selected>red</option>
+    <option value="green">green</option>
+    <option value="blue">blue</option>
+    <option value="white">white</option>
+    <option value="black">black</option>
+    <option value="yellow">yellow</option>
+    <option value="">*custom</option>
+  </select>
+  </div>
+
+  <div class='sel' title='highlight color'>
+    <i class="fa fa-paint-brush"></i>
+    <button onClick='cul(this,1)' style='color:#ff9'>▨</button><select style='width:14px' onFocus='unsel(this)' onChange='ch_Sibling(this,1)'>
+    <option value='#ff9' selected>canary</option>
+    <option value="#ff0">yellow</option>
+    <option value="#bf9">green</option>
+    <option value="#fd9">orange</option>
+    <option value="#fff">white</option>
+    <option value="#000">black</option>
+    <option value="">*custom</option>
+  </select>
+  </div>
+
   | <button onClick='ins(this)' title='Flag'>⚑</button>
   <button onClick='ins(this)' title='Pen'>✎</button>
   <button onClick='ins(this)' title='OK'>✓</button>
@@ -226,18 +264,7 @@
   <button onClick='ins(this)' title='Subtle arrow'>➝</button>
   <button onClick='ins(this)' title='Bold arrow'>➜</button>
   <button onClick='ins(this)' title='Telephone'>☎</button>
-  <button onClick='ins(this)' title='Email'>✉</button>
-
-  | <button onClick='cul(this)' title='Red font' style='color:red'>▣</button>
-  <button onClick='cul(this)' title='Dark red font' style='color:darkred'>▣</button>
-  <button onClick='cul(this)' title='Blue font' style='color:blue'>▣</button>
-  <button onClick='cul(this)' title='Green font' style='color:green'>▣</button>
-  <button onClick='cul(this)' title='Black font' style='color:black'>▣</button>
-  <button onClick='cul(this)' title='Custom color' style='color:'>▨</button>
-
-  | <button onClick='insYesNo(1)' title='OK confirmation (green)'><i class="fa fa-check"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
-  <button onClick='insYesNo(0)' title='Bad confirmation (red)'><i class="fa fa-remove"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
-  <button onClick='toggleWidth(this)' title='Compress width to 600px' class="fa fa-compress"></button>
+  <button onClick='ins(this)' title='Email'>✉</button> |
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
@@ -259,19 +286,31 @@
   function id(x) { return document.getElementById(x); }
 
   const T = id('txt');
+  var isDirty = false;
 
+  function reSize() {
+    const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
+    if(w > 800) { d1.style.width = '800px'; d2.style.width = '800px'; } else { d1.style.width = ''; d2.style.width = ''; }
+    d2.style.height = (h - d1.offsetHeight - M) + 'px';
+  }
+  
+  reSize(); T.focus();
+  
   function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); }
 
   function sel(tgBeg, tgEnd) { exe("insertHTML", tgBeg + window.getSelection().toString() + tgEnd); }
 
   function toClipBoard(ob) {
+    //T.innerHTML = T.innerHTML.replace(/\s*\n+\s*/g,'').replace(/&nbsp;+|\s+/g,' ');
     let p = id('inCapsul');
     p.contentEditable = true; p.focus();
     document.execCommand("selectAll", false, null);
     document.execCommand("copy", false, null);
     p.contentEditable = false;
     ob.style.backgroundColor = '#FF0'; window.setTimeout( function() { ob.style.backgroundColor=''; }, 500);
-    T.focus();
+    T.focus(); isDirty = false;
   }
   
   function ins(o) { exe('insertText', o.textContent); }
@@ -282,15 +321,22 @@
   }
   
   function toggleClass(ob) { T.className = ob.options[ob.selectedIndex].value; }
+  function ch_Sibling(o, bg) { o.previousSibling.style.color = o.options[o.selectedIndex].value; cul(o.previousSibling, bg);
+  }
   
-  function cul(ob) {
-    let s = window.getSelection().toString(), cl = ob.style.color;
-    if(cl != '') exe("insertHTML", '<font color="'+ cl + '">' + s + '</font>');
+  function cul(ob, bg) {
+    let cl = ob.style.color, s = window.getSelection().toString();
+    if(cl && s) exe("insertHTML", '<span style="'+(bg?'background-':'')+'color:'+ cl + '">' + s + '</span>');
     else {
-      var Fs = prompt('Enter the Color Code here:','#ff0000');
-      if(Fs && Fs != '') exe("insertHTML", '<span style="color:'+ Fs + '">' + s + '</span>');
+      var Fs = prompt('Enter the '+ (bg?'Background':'Font') +' Color here:','red');
+      if(Fs && Fs != '') {
+        ob.style.color = Fs;
+        if(s) exe("insertHTML", '<span style="'+(bg?'background-':'')+'color:'+ Fs + '">' + s + '</span>');
+      }
     }
   }
+
+  function unsel( ob ) { var x = ob.options[ob.options.length-1]; if(x.selected) x.selected = false; }
   
   function insLink() {
     var sLnk=prompt('Write the URL here','http:\/\/');
@@ -310,18 +356,9 @@
 
   function insYesNo(F) { exe("insertHTML", '<code block="'+ F  + '">' + (F?'✓ OK':'✘ No') + '</code>'); }
   
-  function reSize() {
-    const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
-    if(w > 800) { d1.style.width = '800px'; d2.style.width = '800px'; } else { d1.style.width = ''; d2.style.width = ''; }
-    d2.style.height = (h - d1.offsetHeight - M) + 'px';
-  }
-  
-  reSize(); T.focus();
-  
+  T.addEventListener("keypress", function(){ isDirty = true; });
   T.addEventListener("paste",function(e) {
-    e.preventDefault();
+    e.preventDefault(); isDirty = true;
     exe('insertHTML', e.clipboardData.getData('text/plain'));
   });
 /*T.addEventListener("paste",function() { setTimeout( function()
@@ -356,6 +393,24 @@
     x = x.replace(/(<h1>|<h2>|<table>|<tr>|<div>)/g,'\n$1');
     dst.value = x;
   }
+  
+  function insRemark() {
+    var par, s = window.getSelection().toString();
+    var F = '20px,|1|background-color:#a00;color:#fff;padding:16px;border:1px solid #800;border-radius:8px;width:100%';
+    F = prompt('Enter Cols|Rows|Style:', F); if(!F) return; par = F.split('|'); if(par.length<3) return;
+      const cls = par[0].split(','), clsL = cls.length, rws = par[1], dc = (clsL==2 && rws==1 && s);
+      var T = '<table border="0" cellSpacing="0" style="'+ par[2] +'">';
+      for(let r=0; r<rws; r++) {
+        T += '<tr>';
+        for(let c=0; c<clsL; c++) T += '<td valign="top" width="' + cls[c] + '">' + (dc?(c?s:'⚑'):'*') + '</td>';
+        T += '</tr>';
+      }
+      exe('insertHTML', T + '</table>');
+  }
+  
+  window.addEventListener("beforeunload", function(event) {
+    if(isDirty) event.returnValue = "Do you want to quit changes?";
+  });
   
   function toggleWidth(o) {
     if(T.style.width != '600px') { T.style.width = '600px'; o.className = 'fa fa-expand'; o.title = 'Expand width to 100%'; }
