@@ -30,8 +30,8 @@
     .modal-close { color: #aaaaaa; float: right; font-size: 28px; font-weight: bold; }
     .modal-close:hover { color: #000; cursor: pointer; }
 
-    code[block="1"] { color:#fff; background-color:#080; padding:0px 8px; border-radius:4px; }
-    code[block="0"] { color:#fff; background-color:#c00; padding:0px 8px; border-radius:4px; }
+    div[block="1"] { display: inline-block; color:#fff; background-color:#080; padding:0px 8px; border-radius:4px; }
+    div[block="0"] { display: inline-block; color:#fff; background-color:#c00; padding:0px 8px; border-radius:4px; }
 
 /*------------------------ Grey Style -------------------------*/
     .txtStyle {
@@ -58,7 +58,7 @@
     .txtStyle td[q1] { vertical-align: top; padding-right:12px; font-size:42pt; color:#ccc; text-align:right; width: 60px; border-right:1px solid #ccc; }
     .txtStyle td[q2] { vertical-align: top; padding-left:12px; }
 
-    .txtStyle span[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#fff;
+    .txtStyle div[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#fff;
       background-color:#666; padding:6px; border-radius:8px; text-align:center; }
 
 /*------------------------ Blue Style -------------------------*/
@@ -86,7 +86,7 @@
     .blueStyle td[q1] { vertical-align: top; padding-right:12px; font-size:42pt; color:#ccd; text-align:right; width: 60px; border-right:1px solid #ccd; }
     .blueStyle td[q2] { vertical-align: top; padding-left:12px; }
 
-    .blueStyle span[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#fff;
+    .blueStyle div[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#fff;
       background-color:#669; padding:6px; border-radius:8px; text-align:center; }
 
 /*------------------------ Yellow Style -------------------------*/
@@ -114,7 +114,7 @@
     .yelStyle td[q1] { vertical-align: top; padding-right:12px; font-size:42pt; color:#ffdf80; text-align:right; width: 60px; border-right:1px solid #ffdf80; }
     .yelStyle td[q2] { vertical-align: top; padding-left:12px; }
 
-    .yelStyle span[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#622;
+    .yelStyle div[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#622;
       background-color:#ee4; padding:6px; border-radius:8px; text-align:center; }
 /*------------------------ Normal Style -------------------------*/
     .nrmStyle {
@@ -135,7 +135,7 @@
     .nrmStyle td[q1] { vertical-align: top; padding-right:12px; font-size:42pt; color:#ccc; text-align:right; width: 60px; border-right:1px solid #ccc; }
     .nrmStyle td[q2] { vertical-align: top; padding-left:12px; }
 
-    .nrmStyle span[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#fff;
+    .nrmStyle div[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#fff;
       background-color:#666; padding:6px; border-radius:8px; text-align:center; }
 /*------------------------ Black Style -------------------------*/
     .blckStyle {
@@ -162,7 +162,7 @@
     .blckStyle td[q1] { vertical-align: top; padding-right:12px; font-size:42pt; color:#000; text-align:right; width: 60px; border-right:1px solid #000; }
     .blckStyle td[q2] { vertical-align: top; padding-left:12px; }
 
-    .blckStyle span[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#aae;
+    .blckStyle div[enum] { display: inline-block; width:20px; font:bold 14px Sans-serif; color:#aae;
       background-color:#000; padding:6px; border-radius:8px; text-align:center; }
 
   </style>
@@ -298,12 +298,20 @@
   
   reSize(); T.focus();
   
-  function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); }
+  function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); isDirty = true; }
+  
+  function clr(fnd) {
+    let n, c, tgs = T.querySelectorAll(fnd), tgsL = tgs.length, nxt = /^\xA0/, prv = /\xA0$/;
+    for(let i=0; i<tgsL; i++) {
+      n = tgs[i].nextSibling; c = n.textContent; if(nxt.test(c)) n.textContent = c.replace(nxt,' ');
+      n = tgs[i].previousSibling; c = n.textContent; if(prv.test(c)) n.textContent = c.replace(prv,' ');
+    }
+  }
 
-  function sel(tgBeg, tgEnd) { exe("insertHTML", tgBeg + window.getSelection().toString() + tgEnd); }
+  function sel(tgBeg, tgEnd) { let s = window.getSelection().toString(); if(!s) return; exe("insertHTML", tgBeg + s + tgEnd); }
 
   function toClipBoard(ob) {
-    //T.innerHTML = T.innerHTML.replace(/\s*\n+\s*/g,'').replace(/&nbsp;+|\s+/g,' ');
+    if(T.innerHTML.indexOf('&nbsp;') >-1) T.innerHTML = T.innerHTML.replace(/&nbsp;+/g,' ');
     let p = id('inCapsul');
     p.contentEditable = true; p.focus();
     document.execCommand("selectAll", false, null);
@@ -316,7 +324,7 @@
   function ins(o) { exe('insertText', o.textContent); }
   
   function up_low(F) {
-    let s = window.getSelection().toString();
+    let s = window.getSelection().toString(); if(!s) return;
     exe('insertText', F?s.toUpperCase():s.toLowerCase());
   }
   
@@ -326,14 +334,11 @@
   
   function cul(ob, bg) {
     let cl = ob.style.color, s = window.getSelection().toString();
-    if(cl && s) exe("insertHTML", '<span style="'+(bg?'background-':'')+'color:'+ cl + '">' + s + '</span>');
-    else {
-      var Fs = prompt('Enter the '+ (bg?'Background':'Font') +' Color here:','red');
-      if(Fs && Fs != '') {
-        ob.style.color = Fs;
-        if(s) exe("insertHTML", '<span style="'+(bg?'background-':'')+'color:'+ Fs + '">' + s + '</span>');
-      }
+    if(!cl) {
+      if( !(cl = prompt('Enter the '+ (bg?'Background':'Font') +' Color here:','red'))) return;
+      ob.style.color = cl;
     }
+    if(s) { exe("insertHTML", '<span style="'+(bg?'background-':'')+'color:'+ cl + '">' + s + '</span>'); clr('span[style]'); }
   }
 
   function unsel( ob ) { var x = ob.options[ob.options.length-1]; if(x.selected) x.selected = false; }
@@ -344,9 +349,9 @@
   }
 
   function incFontSize() {
-    let s = window.getSelection().toString();
+    let s = window.getSelection().toString(); if(!s) return;
     var Fs = prompt('Enter new Font Size here:','14pt');
-    if(Fs && Fs != '') exe("insertHTML", '<span style="font-size:'+ Fs + '">' + s + '</span>');
+    if(Fs && Fs != '') { exe("insertHTML", '<span style="font-size:'+ Fs + '">' + s + '</span>'); clr('span[style]'); }
   }
 
   function just(j) {
@@ -354,7 +359,7 @@
     exe("insertHTML", '<div style="text-align:'+ j + '">' + c + '</div>');
   }
 
-  function insYesNo(F) { exe("insertHTML", '<code block="'+ F  + '">' + (F?'✓ OK':'✘ No') + '</code>'); }
+  function insYesNo(F) { exe("insertHTML", '<div block="'+ F  + '">' + (F?'✓ OK':'✘ No') + '</div>'); clr('div[block]'); }
   
   T.addEventListener("keypress", function(){ isDirty = true; });
   T.addEventListener("paste",function(e) {
@@ -366,7 +371,7 @@
   });*/
 
   function insQuote() {
-    let s = window.getSelection().toString(); if(s=='') s='...';
+    let s = window.getSelection().toString(); if(!s) s='...';
     exe('insertHTML','<table><tr><td q1>❝</td><td q2>' + s + '</table>');
   }
   
@@ -378,13 +383,11 @@
       var r = parseInt(Fs.substr(1),10), pref = (F!='b')?'<tr><td qL>':'<tr><td q1>'; if(F=='b') F='o';
       var T = '<table border="0" cellSpacing="0">';
       for(let i=0; i<r; i++)
-      T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<span enum>'+ String.fromCharCode(65+i) +'</span>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'<br><br></td></tr>';
+      T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<div enum>'+ String.fromCharCode(65+i) +'</div>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'<br><br></td></tr>';
       exe('insertHTML', T + '</table>');
     }
   }
   
-  function Cleanse() { exe('insertHTML',window.getSelection().toString()); }
-
   function norm() {
     var dst = id('modal-out'), x = dst.value;
     x = x.replace(/\s*\n+\s*/g,'');

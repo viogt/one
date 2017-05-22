@@ -460,7 +460,7 @@ The ship was <i>jammed between</i> rocks.<br><span style="font-size: 14pt;">We w
 The fog <i>blurred</i> the outline of the car.<br><span style="font-size: 14pt;">We </span><i style="font-size: 14pt;">glow (shine)</i><span style="font-size: 14pt;"> with pride after getting punished harshly (sternly).<br></span><span style="font-size: 14pt;">This impression will gradually </span><i style="font-size: 14pt;">fade out</i><span style="font-size: 14pt;">.</span></p><p>
 We <i>shade</i> our eyes from light.
 Ordinarily, the tax cut <i>boosts</i> the economy.<br><span style="font-size: 14pt;">He was </span><i style="font-size: 14pt;">barred from</i><span style="font-size: 14pt;"> membership because of this reputation.<br></span><i style="font-size: 14pt;">Confine your attention to</i><span style="font-size: 14pt;">...<br>To </span><i style="font-size: 14pt;">get relief</i><span style="font-size: 14pt;">, to remove the pain... to get the ease.</span></p><p>
-His controversial views were <i>coupled with</i> his abrasive sarcasm.<br><span style="font-size: 14pt;">There is a narrow margin to explore an </span><i style="font-size: 14pt;">exquisite</i><span style="font-size: 14pt;"> sense of schadenfreude (adiabatic).<br></span><span style="font-size: 14pt;">Finding a decent place to have lunch in this neighbourhood is always a </span><i style="font-size: 14pt;">hassle</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Leaving aside</i><span style="font-size: 14pt;"> such controversies...</span></p>
+His controversial views were <i>coupled with</i> his abrasive sarcasm.<br><span style="font-size: 14pt;">There is a narrow margin to explore an </span><i style="font-size: 14pt;">exquisite</i><span style="font-size: 14pt;"> sense of schadenfreude (adiabatic), freudian <i>slip</i>.<br></span><span style="font-size: 14pt;">Finding a decent place to have lunch in this neighbourhood is always a </span><i style="font-size: 14pt;">hassle</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">Leaving aside</i><span style="font-size: 14pt;"> such controversies...</span></p>
 <hr>
 <p>
 <i>Hinder</i> the progress, hinder somebody from committing a crime, bona fide, ...<br><i style="font-size: 14pt;">Chase</i><span style="font-size: 14pt;"> a person, </span><i style="font-size: 14pt;">drop</i><span style="font-size: 14pt;"> an email... </span><i style="font-size: 14pt;">expeditious</i><span style="font-size: 14pt;">... challenge... </span><i style="font-size: 14pt;">team up with</i><span style="font-size: 14pt;"> him...<br><br></span><i style="font-size: 14pt;">Hijack</i><span style="font-size: 14pt;"> or kidnap in <i>either way</i>,<br><i>one way or the other</i>, loot, rape,<br></span><i style="font-size: 14pt;">raise a question</i><span style="font-size: 14pt;">, raise a doubt, indubitable, </span><i style="font-size: 14pt;">overstate</i><span style="font-size: 14pt;">, </span><i style="font-size: 14pt;">adjourn<br></i><span style="font-size: 14pt;">Topic, with </span><i style="font-size: 14pt;">no remorse</i><span style="font-size: 14pt;"> or compassion.<br>Ruthless, remorseless.</span></p><p>
@@ -1763,7 +1763,7 @@ The report aroused them to take action. The insult aroused him to anger.
 
 <p>
 <table style="border:1 solid orange;font: normal 14pt Calibri,Arial,sans-serif;" cellpadding="8" cellspacing="0">
-<tr><td valign="top">
+<tbody><tr><td valign="top">
 
 Misfortunes never come alone.<br>
 Better safe than sorry.<br>
@@ -1819,7 +1819,7 @@ You never know what you have till it's gone.<br>
 The pen is mightier than the sword.<br>
 Drunkenness reveals what soberness conceals.
 
-</td></tr></table>
+</td></tr></tbody></table>
 </p>
 
 <p>
@@ -1857,4 +1857,4 @@ How did all this <i>come about</i> (happen)? Take place - come to pass.<br>
 Gaze, look closely, <i>peer</i> into (gaze) the sky.<br>
 Applications, to be considered on their individual merits.<br>
 Problems have <i>built up</i> over decades.
-</p>
+<br>Civil rights will be <i>curtailed</i>&nbsp;and corruption will remain <i>entrenched</i> (deeply ingrained, established, deep-seated).&nbsp;<br>The government systematically <i>clamped down on</i> media and internet freedom.<br>Behind the <i>bluster</i> (masquerade), the <i>torchbearer</i>.<br>It <i>casts an image of</i> a strong and powerful country.<br>This is not an issue that can be resolved by <i>invoking authority</i>.</p>
