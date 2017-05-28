@@ -191,10 +191,10 @@
   <button onClick='exe("underline", null)' title='Underline'><i class="fa fa-underline"></i></button>
   <button onClick='exe("strikeThrough",null)' title='Strikethrough'><i class="fa fa-strikethrough" style='font-size:11px;'></i></button>
 
-  | <button onClick='just("left")' title='Align left'><i class="fa fa-align-left"></i></button>
-  <button onClick='just("center")' title='Align center'><i class="fa fa-align-center"></i></button>
-  <button onClick='just("right")' title='Align right'><i class="fa fa-align-right"></i></button>
-  <button onClick='just("justify")' title='Justify'><i class="fa fa-align-justify"></i></button>
+  | <button onClick='exe("justifyLeft",null)' title='Align left'><i class="fa fa-align-left"></i></button>
+  <button onClick='exe("justifyCenter",null)' title='Align center'><i class="fa fa-align-center"></i></button>
+  <button onClick='exe("justifyRight",null)' title='Align right'><i class="fa fa-align-right"></i></button>
+  <button onClick='exe("justifyFull",null)' title='Justify'><i class="fa fa-align-justify"></i></button>
 
   | <button onClick='exe("insertunorderedlist",null)' title='Unordered list'><i class="fa fa-list-ul"></i></button>
   <button onClick='exe("insertorderedlist",null)' title='Ordered list'><i class="fa fa-list-ol"></i></button>
@@ -307,7 +307,7 @@
       n = tgs[i].previousSibling; c = n.textContent; if(prv.test(c)) n.textContent = c.replace(prv,' ');
     }
   }
-
+  
   function sel(tgBeg, tgEnd) { let s = window.getSelection().toString(); if(!s) return; exe("insertHTML", tgBeg + s + tgEnd); }
 
   function toClipBoard(ob) {
@@ -354,11 +354,6 @@
     if(Fs && Fs != '') { exe("insertHTML", '<span style="font-size:'+ Fs + '">' + s + '</span>'); clr('span[style]'); }
   }
 
-  function just(j) {
-    const c = window.getSelection().toString(); if(!c) return;
-    exe("insertHTML", '<div style="text-align:'+ j + '">' + c + '</div>');
-  }
-
   function insYesNo(F) { exe("insertHTML", '<div block="'+ F  + '">' + (F?'✓ OK':'✘ No') + '</div>'); clr('div[block]'); }
   
   T.addEventListener("keypress", function(){ isDirty = true; });
@@ -376,8 +371,9 @@
   }
   
   function insTable() {
-    var F, cnt = 0, arr, s = window.getSelection().toString().trim();
-        if(s) { arr = s.replace(/^\n|\n$/,'').replace(/\n{2,}/g,'\n').split('\n'); cnt = arr.length; }
+    var F, cnt = 0, arr, s = window.getSelection();
+        if(arr = isInsideTable(s)) cnt = arr.length;
+        else if(s = s.toString()) { arr = s.replace(/^\n|\n$/,'').replace(/\n{2,}/g,'\n').split('\n'); cnt = arr.length; }
     var Fs = prompt('Enter Ordered/Unordered/Enum/Big + number of row (ex: o3, u5, e4, b5):','u'+(cnt?cnt:3));
     if(Fs && ('oueb'.indexOf(F=Fs.charAt(0))>-1)) {
       var r = parseInt(Fs.substr(1),10), pref = (F!='b')?'<tr><td qL>':'<tr><td q1>'; if(F=='b') F='o';
@@ -387,7 +383,18 @@
       exe('insertHTML', T + '</table>');
     }
   }
-  
+
+  function isInsideTable(sel) {
+    var n = sel.focusNode.parentElement;
+    while(n.tagName != 'TABLE')
+      if(n.tagName == 'TD' && n.id) return null;
+      else n = n.parentElement;
+    let ret = [], rs = n.rows, L = rs.length;
+    for(let r=0; r<L; r++) ret.push(rs[r].cells[1].textContent);
+    sel.getRangeAt(0).selectNodeContents(n);
+    return ret;
+  }
+
   function norm() {
     var dst = id('modal-out'), x = dst.value;
     x = x.replace(/\s*\n+\s*/g,'');
