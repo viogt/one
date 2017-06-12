@@ -7,7 +7,7 @@
 	<tbody><tr><td valign="top">
 encumber, thwart, hinder, foil, embarrass, obstruct,
 hamper, burden, interfere, resonates with</td><td valign="top">
-mitigate, diminish-downplay, disparage-discredit, commute, wane, dwindle, shrink, abate, exacerbate-worsen, decrease, reduce, discount, enfeeble,
+mitigate, diminish-downplay, belittle, disparage-discredit, commute, wane, dwindle, shrink, abate, exacerbate-worsen, decrease, reduce, discount, enfeeble,
 relent, concede, succumb, undercut; assuage grief, pain, fear, anguish;
 attenuate, temper,
 fade out</td><td valign="top">
@@ -44,7 +44,7 @@ surpass, (trump, overtop, prevail), surmount,
 overcome, lay down, set out/forth
 	</td><td valign="top">
 despise, hatred, contempt,
-disconsider, detest, resent, retaliation, revenge, deep-seated rancour, spite, resentment, malice</td></tr>
+disconsider, detest, resent, retaliation, tit-for-tat, revenge, deep-seated rancour, spite, resentment, malice</td></tr>
 	<tr><td valign="top">
 pop up, come up with,
 arise, appear, emerge,
@@ -52,7 +52,7 @@ bump into-stumble on smbd,
 come across,<br>proliferate, mashroom, boom.</td><td valign="top">
 alienate, maroon, forsake,
 forgo-refrain from, desist from, divert, forestall that by doing this, preclude from,
-gather/coalesce, marshal/rally, assent/dissent from the view, bestow/confer, trespass on/cut into
+gather/coalesce, marshal/rally, pull together, assent/dissent from the view, bestow/confer, trespass on/cut into
 	</td><td valign="top">
 embodies, embed, enclose,
 encompass, incorporate,
@@ -84,7 +84,7 @@ expel, evacuate, exorcise, elude,
 relinquish, renounce, concede, fall back</span></td><td valign="top">
 thorough ~cursory, accurate, astute, perspicacious, shrewd, scarcely, hardly, barely;
 dispatch, dispense, apportion, divvy, divide, distribute,
-in due course, crowd/flock around, amass;<br><br>pitfall, trap, cage;<br>moron, nutcase, foe</td><td valign="top">
+in due course, crowd/flock around, amass;<br><br>pitfall, trap, cage;<br>moron, nutcase, jerk, nutjob, jackass</td><td valign="top">
 flee, banish, exile,
 compel to refuge,
 unpalatable truth, benchmark,
@@ -117,7 +117,7 @@ cluttered with/by, infest with</td></tr>
 accounts for, accountable for,
 Dammit! Who the hell is...
 Symbiotic, hybrid, bonanza.</td><td valign="top">
-scatter, crack/bust,
+scatter, crack, sunder, bust,
 shatter-crumble, fall apart/disintegrate, dissipate, dispense,
 cast, shed,
 pour, discern, susceptible to,
@@ -147,14 +147,13 @@ interconnected, interdependent,
 coupled with, corroborated,
 glued, weld, alongside with, combined,
 conjointly with, fused with,
-confluence, merging, embroiled, entangled
-	</td></tr>
+confluence, merging, embroiled, entangled, côte-à-côte</td></tr>
 	<tr><td valign="top">
 cheat, screw up, scam, deceive,
 delude, mislead, (out)fox,
 bluff, hoodwink, bamboozle, dissemble, feign, misrepresent, discernment, sagacity</td><td valign="top">
 gauge, measure, appraise,
-evaluate, assess, parse, ponder,<br>dependably rely on, confidently, contend that, submit that.</td><td valign="top">
+evaluate, assess, parse, ponder, dependably rely on, confidently, contend that, submit that.</td><td valign="top">
 galvanised, clustered tightly around,
 drain from, detach from,
 	</td></tr>
@@ -170,7 +169,7 @@ hook, bend rules, inflect, by no means</td></tr>
 tip, allude, hint,
 indication, clue,
 conjecture, finding, estimation, figure out</td><td valign="top">
-obey, abide, exert, pile on,
+obey, abide by, exert, pile on,
 impinge, influence,
 impart, jammed
 	</td><td valign="top">
@@ -254,7 +253,7 @@ it stinks
 	<tr><td valign="top">
 cogent, evident,
 obvious, manifest, patently,
-blatant, genuinely, brute fact, wanton, outrageous, unrestrained.</td><td valign="top">
+blatant, ostensive, genuinely, brute fact, wanton, outrageous, unrestrained.</td><td valign="top">
 striking, gross,
 severe, rampant,
 flagrant, egregious, flamboyant, colourful,
@@ -446,7 +445,7 @@ What I <i>imply/assert is</i>... to <i>bridge the gap</i>, to <i>narrow the gap<
 <i>Ascribe significance</i>.<br><i>Unimpeachable witness</i>.<br><i style="font-size: 14pt;">Afflict people</i><span style="font-size: 14pt;">, greatly afflicted by disease/afflicted with disease.<br></span><i style="font-size: 14pt;">Wicked things</i><span style="font-size: 14pt;">.<br></span><i style="font-size: 14pt;">I rest my case</i><span style="font-size: 14pt;">.<br>You'd be </span><i style="font-size: 14pt;">better off</i><span style="font-size: 14pt;"> in an another entourage (millieu).</span></p><p>
 <i>Secular state</i>.<br><i>To stand up for</i>... to defend; to stand up to... to <i>confront fearlessly</i>.<br>How come you imply this?<br>The defence mechanism <i>kicks in</i> - makes its effects operatively.</p><p>
  
-It is <i>worthwhile</i>.<br>In <i>colloquial language</i>.<br>Don't <i>embellish</i> facts. Embellishment.<br><i>Incidentally</i>, not purposely.<br>Dichotomy, mutually antagonistic halves of the integer.
+It is <i>worthwhile</i>. Politically <i>expedient</i>, advantagious.<br>In <i>colloquial language</i>.<br>Don't <i>embellish</i> facts. Embellishment.<br><i>Incidentally</i>, not purposely.<br>Dichotomy, mutually antagonistic halves of the integer.
 
 </p>
 <hr>
@@ -1419,7 +1418,7 @@ The <i>onset</i> of the issue (beginning).<br>
 <i>Unsurprisingly</i>, a growing chorus of voices is calling for...<br>
 This coercive strategy is also unlikely to work.<br>
 By the most <i>relaxed</i> standards...<br>
-<i>Dubious</i> money...<br>
+<i>Dubious</i> money... (<i>murky</i>, doubtful, questionable, equivocal).<br>
 To sniff and spew...<br>
 Or conversely, ..., even without leaving the armchair.<br>
 I <i>sneaked</i> in by the back exit.<br>
@@ -1459,7 +1458,7 @@ We have now sunk to a depth at which...<br>
 Mental gymnastics.<br>
 <i>Clumsy</i> ~handy, freckle, <i>cuddle</i>, <i>ripe fruit</i>, I owe you an explanation, rubbish, baloney, nonsense.<br>
 There's no other way around.<br>
-<i>Intermission</i>, a pause or a break.<br>
+<i>Intermission</i>, a pause or a break, a <i>recess</i> in the court of law.<br>
 <i>Direct</i> the question to...<br>
 I came to the conclusion that...<br>
 Work around the clock, every waking hour.<br>
@@ -1857,4 +1856,4 @@ How did all this <i>come about</i> (happen)? Take place - come to pass.<br>
 Gaze, look closely, <i>peer</i> into (gaze) the sky.<br>
 Applications, to be considered on their individual merits.<br>
 Problems have <i>built up</i> over decades.
-<br>Civil rights will be <i>curtailed</i>&nbsp;and corruption will remain <i>entrenched</i> (deeply ingrained, established, deep-seated).&nbsp;<br>The government systematically <i>clamped down on</i> media and internet freedom.<br>Behind the <i>bluster</i> (masquerade), the <i>torchbearer</i>.<br>It <i>casts an image of</i> a strong and powerful country.<br>This is not an issue that can be resolved by <i>invoking authority</i>.</p>
+<br>Civil rights will be <i>curtailed</i>&nbsp;and corruption will remain <i>entrenched</i> (deeply ingrained, established, deep-seated).&nbsp;<br>The government systematically <i>clamped down on</i> media and internet freedom.<br>Behind the <i>bluster</i> (masquerade), the <i>torchbearer</i>.<br>It <i>casts an image of</i> a strong and powerful country.<br>This is not an issue that can be resolved by <i>invoking authority</i>.</p><p>If we all <i>pull together</i> we should get the job done.<br>They <i>deprecate</i> it as unscientific (show&nbsp;disapproval, protest).<br><i>Platitude</i> is a banality (or commonplace) used too often.<br>A <i>foregone</i> conclusion, which is formed in advance of argument or consideration.<br>It <i>bears witness</i> of the crime.<br><i>Settle scores</i> amongst former partners.</p>

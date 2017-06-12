@@ -108,7 +108,7 @@ function pipping( file, body, resp ){
 
     if(cnt.bkgr) { //opts.border = '0px';
         const o = opts.border;
-        o.top = o.left = o.right = o.bottom = '0px';
+        o.top = o.left = o.right = '0px';
     }
   
   if(wh=='Q' || wh=='S') {
