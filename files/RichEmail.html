@@ -214,8 +214,8 @@
   | <button onClick='incFontSize()' title='Change Font Size'><i class="fa fa-text-width"></i></button>
   <button onClick='insTable()' title='List of items'><i class="fa fa-table"></i></button>
   <button onClick='insLink()' title='Insert link'><i class="fa fa-link"></i></button>
-  <button onClick='show_modal(false)' title='Edit HTML'><i class="fa fa-file-code-o"></i></button>
-  <button onClick='show_modal(true)' title='Edit Style Sheet'><i class="fa fa-file-text-o"></i></button>
+  <button onClick='show_modal(0)' title='Edit HTML'><i class="fa fa-file-code-o"></i></button>
+  <button onClick='show_modal(1)' title='Edit Style Sheet'><i class="fa fa-file-text-o"></i></button>
 
   | <button onClick='insYesNo(1)' title='OK confirmation (green)'><i class="fa fa-check"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
   <button onClick='insYesNo(0)' title='Bad confirmation (red)'><i class="fa fa-remove"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
@@ -266,10 +266,11 @@
   <button onClick='ins(this)' title='Telephone'>☎</button>
   <button onClick='ins(this)' title='Email'>✉</button> |
 
-<form id='Frm' style='display:inline' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='return downPDF();'>
+  <form id='Frm' style='display:inline' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='return downPDF();'>
     <input id='Hdn' name='S' type="hidden" value="">
     <button id='canSend' type="submit" title="Get PDF" class="fa fa-file-pdf-o"></button>
-</form>
+  </form>
+  <button onClick='show_modal(2)' title='Edit PDF settings'><i class="fa fa-gear"></i></button>
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
@@ -441,7 +442,7 @@
     else { T.style.width = ''; o.className = 'fa fa-compress'; o.title = 'Compress width to 600px'; }
   }
   
-  var Modal = id("modal-w"), patt, modal_mode = true;
+  var Modal = id("modal-w"), patt, modal_mode;
 
   function winClick(event) {
     if(event.target == Modal) {
@@ -452,7 +453,7 @@
   
   function show_modal(fl) {
     modal_mode = fl;
-    id("modal-out").value = fl?getCurrStyle():T.innerHTML.trim();
+    id("modal-out").value = fl==1?getCurrStyle():(fl==0?T.innerHTML.trim():JSON.stringify(jPDF));
     Modal.style.display = "block";
     window.addEventListener("click", winClick);
   }
@@ -470,26 +471,27 @@
   }
   
   function Modal_OK() {
-    if(modal_mode) {
+    if(modal_mode == 1) {
       const s = document.querySelector("style");
       s.textContent = s.textContent.replace(patt,id("modal-out").value);
     }
-    else T.innerHTML = id("modal-out").value;
+    else if(modal_mode == 0) T.innerHTML = id("modal-out").value;
+    else jPDF = JSON.parse(id("modal-out").value);
     modal_shut();
   }
   
   function downPDF() {
-    let j = jPDF, F = prompt('Enter Cols|Rows|Style:', j.fileName); if(!F) return;
+    let j = jPDF, F = prompt('Enter the title:', j.fileName); if(!F) return false;
     if(T.innerHTML.indexOf('&nbsp;') >-1) T.innerHTML = T.innerHTML.replace(/&nbsp;+/g,' ');
     const el = document.querySelector('select'), w = el.options[el.selectedIndex].value;
     j.fileName = F.trim(); jPDF.fileName = j.fileName; j.footer = j.footer.replace('{{title}}',j.fileName);
     j.content = "<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY class='"+ w +"' style='border:none;"+(j.bkgr?'':'background-color:transparent;padding:0px')+"'>"+ T.innerHTML +"</HTML>"  ;
-    id('Frm').action = 'pipe/' + j.fileName;
+    id('Frm').action = 'pipe/' + j.fileName + '.pdf';
     id('Hdn').value = JSON.stringify(j);
     return true;
   }
   var jPDF = {
-    fileName:"Untitled.pdf",
+    fileName:"Untitled",
     borders:{top:"20mm",right:"20mm",bottom:"15mm",left:"20mm",footer:"5mm"},
     footer:"<table style=\"width:100%; border-top:1px solid lightgray;font:normal 8pt Sans-serif;color:grey\"><TR><td>{{title}}</td><TD align=\"right\">Page {{page}} of {{pages}}</td></TR></table>",
     bkgr:false, body:"1",
