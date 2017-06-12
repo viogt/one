@@ -480,15 +480,17 @@
   
   function downPDF() {
     if(T.innerHTML.indexOf('&nbsp;') >-1) T.innerHTML = T.innerHTML.replace(/&nbsp;+/g,' ');
+    const el = document.querySelector('select');
+    const w = el.options[el.selectedIndex].value;
     let j = {"fileName":"A new file to display.pdf",
         "borders":{"top":"20mm","right":"20mm","bottom":"15mm","left":"20mm","footer":"5mm"},
         "footer":"<table style=\"width:100%; border-top:1px solid lightgray;font:normal 8pt Sans-serif;color:grey\"><TR><td>A new file to display</td><TD align=\"right\">Page {{page}} of {{pages}}</td></TR></table>",
         "bkgr":"false","body":"1",
-        "content":"<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY>"+ id('inCapsul').innerHTML +"</HTML>"};
+        "content":"<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY class='"+ w +"'>"+ T.innerHTML +"</HTML>"};
     id('Frm').action = 'pipe/' + j.fileName;
     id('Hdn').value = JSON.stringify(j);
-    alert(id('Frm').action + '\n' + id('Hdn').value);
-    alert(id('inCapsul').innerHTML);
+    //alert(id('Frm').action + '\n' + id('Hdn').value);
+    //alert(id('inCapsul').innerHTML);
     return true;
   }
 
