@@ -392,7 +392,7 @@
     var Fs = prompt('Enter Ordered/Unordered/Enum/Big + number of row (ex: o3, u5, e4, b5):','u'+(cnt?cnt:3));
     if(Fs && ('oueb'.indexOf(F=Fs.charAt(0))>-1)) {
       var r = parseInt(Fs.substr(1),10), pref = (F!='b')?'<tr><td qL>':'<tr><td q1>'; if(F=='b') F='o';
-      var T = '<table border="0" cellSpacing="0">';
+      var T = '<table border="0" cellSpacing="0" style="font-size:1em">';
       for(let i=0; i<r; i++)
       T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<div enum>'+ String.fromCharCode(65+i) +'</div>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'<br><br></td></tr>';
       exe('insertHTML', T + '</table>');
