@@ -481,13 +481,14 @@
   }
   
   function downPDF() {
-    let j = {}, F = prompt('Enter the title:', jPDF.fileName); if(!F) return false;
+    let j, F = prompt('Enter the title:', jPDF.fileName); if(!F) return false;
     if(T.innerHTML.indexOf('&nbsp;') >-1) T.innerHTML = T.innerHTML.replace(/&nbsp;+/g,' ');
     const el = document.querySelector('select'), w = el.options[el.selectedIndex].value;
     jPDF.fileName = F.trim();
     j = JSON.parse(JSON.stringify(jPDF));
     j.footer = j.footer.replace('{{title}}',j.fileName);
     j.content = "<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY class='"+ w +"' style='border:none;"+(j.bkgr?'':'background-color:transparent;padding:0px')+"'>"+ T.innerHTML +"</HTML>"  ;
+alert(j.content);
     id('Frm').action = 'pipe/' + j.fileName + '.pdf';
     id('Hdn').value = JSON.stringify(j);
     return true;
