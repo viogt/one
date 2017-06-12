@@ -106,7 +106,10 @@ function pipping( file, body, resp ){
       "quality": "100"
     };
 
-    if(cnt.bkgr) opts.border = '0px';
+    if(cnt.bkgr) { //opts.border = '0px';
+        const o = opts.border;
+        o.top = o.left = o.right = o.bottom = '0px';
+    }
   
   if(wh=='Q' || wh=='S') {
     resp.writeHead(200,{'Content-disposition': 'inline; filename='+cnt.fileName});
