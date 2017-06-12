@@ -487,7 +487,7 @@
     jPDF.fileName = F.trim();
     j = JSON.parse(JSON.stringify(jPDF));
     j.footer = j.footer.replace('{{title}}',j.fileName);
-    j.content = "<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY class='"+ w +"' style='border:none;"+(j.bkgr?'':'background-color:transparent;padding:0px')+"'>"+ T.innerHTML +"</HTML>"  ;
+    j.content = "<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY class='"+ w +"' style='border:none;"+(j.bkgr?'':'background-color:transparent;padding:0px;')+(j.Times_New_Roman?'font:normal 12pt "Times New Roman";':'') +"'>"+ T.innerHTML +"</HTML>"  ;
     id('Frm').action = 'pipe/' + j.fileName + '.pdf';
     id('Hdn').value = JSON.stringify(j);
     return true;
@@ -496,7 +496,7 @@
     fileName:"Untitled",
     borders:{top:"20mm",right:"20mm",bottom:"15mm",left:"20mm",footer:"5mm"},
     footer:"<table style=\"width:100%; border-top:1px solid lightgray;font:normal 8pt Sans-serif;color:grey\"><TR><td>{{title}}</td><TD align=\"right\">Page {{page}} of {{pages}}</td></TR></table>",
-    bkgr:false, body:"1",
+    bkgr:false, body:"1", Times_New_Roman:false,
     content:null
   }
 
