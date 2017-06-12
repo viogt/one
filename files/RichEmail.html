@@ -382,7 +382,7 @@
 
   function insQuote() {
     let s = window.getSelection().toString(); if(!s) s='...';
-    exe('insertHTML','<table><tr><td q1>❝</td><td q2>' + s + '</table>');
+    exe('insertHTML','<table style="font-size:1em;"><tr><td q1>❝</td><td q2>' + s + '</table>');
   }
   
   function insTable() {
@@ -419,12 +419,12 @@
     dst.value = x;
   }
   
+  var iRemark = '20px,|1|background-color:#a00;color:#fff;padding:16px;border:1px solid #800;border-radius:8px;width:100%';
   function insRemark() {
     var par, s = window.getSelection().toString();
-    var F = '20px,|1|background-color:#a00;color:#fff;padding:16px;border:1px solid #800;border-radius:8px;width:100%';
-    F = prompt('Enter Cols|Rows|Style:', F); if(!F) return; par = F.split('|'); if(par.length<3) return;
+    var F = prompt('Enter Cols|Rows|Style:', iRemark); if(!F) return; par = F.split('|'); if(par.length<2) return; iRemark = F;
       const cls = par[0].split(','), clsL = cls.length, rws = par[1], dc = (clsL==2 && rws==1 && s);
-      var T = '<table border="0" cellSpacing="0" style="'+ par[2] +'">';
+      var T = '<table border="0" cellSpacing="0" style="font-size:1em;'+ par[2] +'">';
       for(let r=0; r<rws; r++) {
         T += '<tr>';
         for(let c=0; c<clsL; c++) T += '<td valign="top" width="' + cls[c] + '">' + (dc?(c?s:'⚑'):'*') + '</td>';
