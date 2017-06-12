@@ -47,10 +47,10 @@
     .txtStyle hr { border:none; border-top:1px dashed #99b; height:0px; }
     .txtStyle sup, .txtStyle sub { color:red; font-size:7pt; }
     .txtStyle strike { color:darkred; }
-    .txtStyle H1 { border: 1px solid #444; font-size:16pt; color:#fff;
+    .txtStyle H1 { border: 1px solid #444; font-size:1.4em; color:#fff;
       background-color:#666; padding: 14px; border-radius:8px; font-weight:normal;
     }
-    .txtStyle H2 { border: 1px solid #ccc; font-size: 10.5pt;
+    .txtStyle H2 { border: 1px solid #ccc; font-size: 1em;
       background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
     }
 /*.TB { font:normal 1em Sans-serif; }*/
@@ -75,10 +75,10 @@
     .blueStyle hr { border:none; border-top:1px dashed #99d; height:0px; }
     .blueStyle sup, .blueStyle sub { color:blue; font-size:7pt; }
     .blueStyle strike { color:#33a; }
-    .blueStyle H1 { border: 1px solid #224; font-size:16pt; color:#fff;
+    .blueStyle H1 { border: 1px solid #224; font-size:1.4em; color:#fff;
       background-color:#669; padding: 14px; border-radius:8px; font-weight:normal;
     }
-    .blueStyle H2 { border: 1px solid #ccd; font-size: 10pt;
+    .blueStyle H2 { border: 1px solid #ccd; font-size: 1em;
       background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
     }
 
@@ -103,10 +103,10 @@
     .yelStyle hr { border:none; border-top:1px dashed #b96; height:0px; }
     .yelStyle sup, .yelStyle sub { color:red; font-size:7pt; }
     .yelStyle strike { color:#b22; }
-    .yelStyle H1 { border: 1px solid #cc8; font-size:16pt;
+    .yelStyle H1 { border: 1px solid #cc8; font-size:1.4em;
       background-color:#ee4; padding: 14px; border-radius:8px; font-weight:normal;
     }
-    .yelStyle H2 { border: 1px solid #ed4; font-size: 10.5pt;
+    .yelStyle H2 { border: 1px solid #ed4; font-size: 1em;
       background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
     }
 
@@ -124,10 +124,10 @@
     }
     .nrmStyle hr { border:none; border-top:1px dashed #99b; height:0px; }
     .nrmStyle sup, .nrmStyle sub { color:red; font-size:7pt; }
-    .nrmStyle H1 { border: 1px solid #444; font-size:16pt; color:#fff;
+    .nrmStyle H1 { border: 1px solid #444; font-size:1.4em; color:#fff;
       background-color:#666; padding: 14px; border-radius:8px; font-weight:normal;
     }
-    .nrmStyle H2 { border: 1px solid #ccc; font-size: 10pt;
+    .nrmStyle H2 { border: 1px solid #ccc; font-size: 1em;
       background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
     }
 
@@ -151,10 +151,10 @@
     .blckStyle hr { border:none; border-top:1px dashed #000; height:0px; }
     .blckStyle sup, .blckStyle sub { color:#000; font-size:7pt; font-weight: bold; }
     .blckStyle strike { color:#000; }
-    .blckStyle H1 { font-size:16pt; color:#aae;
+    .blckStyle H1 { font-size:1.4em; color:#aae;
       background-color:#000; padding: 14px; border-radius:8px; font-weight:normal;
     }
-    .blckStyle H2 { font-size: 11pt; color:#002;
+    .blckStyle H2 { font-size: 1em; color:#002;
       background-color:#889; padding: 16px; border-radius:8px; font-weight:normal;
     }
 
@@ -453,7 +453,7 @@
   
   function show_modal(fl) {
     modal_mode = fl;
-    id("modal-out").value = fl==1?getCurrStyle():(fl==0?T.innerHTML.trim():JSON.stringify(jPDF));
+    id("modal-out").value = fl==1?getCurrStyle():(fl==0?T.innerHTML.trim():JSON.stringify(jPDF).replace(/,/g,',\n'));
     Modal.style.display = "block";
     window.addEventListener("click", winClick);
   }
@@ -488,7 +488,6 @@
     j = JSON.parse(JSON.stringify(jPDF));
     j.footer = j.footer.replace('{{title}}',j.fileName);
     j.content = "<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY class='"+ w +"' style='border:none;"+(j.bkgr?'':'background-color:transparent;padding:0px')+"'>"+ T.innerHTML +"</HTML>"  ;
-alert(j.content);
     id('Frm').action = 'pipe/' + j.fileName + '.pdf';
     id('Hdn').value = JSON.stringify(j);
     return true;
