@@ -266,9 +266,23 @@
   <button onClick='ins(this)' title='Telephone'>☎</button>
   <button onClick='ins(this)' title='Email'>✉</button> |
 
+<form id='Frm' style='display:inline' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='return downPDF();'>
+    <input id='Hdn' name='S' type="hidden" value="">
+    <button id='canSend' type="submit" title="Get PDF" class="fa fa-file-pdf-o"></button>
+</form>
+
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
-<table><tr><td id='txt' class='txtStyle' contentEditable>...</td></tr></table>
+<table><tr><td id='txt' class='txtStyle' contentEditable>
+  What?<h1>Header of the main section</h1>
+  He has <b>favoured</b> building a <i>sub-$30,000</i> subcompact and <u>building</u> and <strike>selling</strike> electric.
+  <H2>Subtitle of the second section</H2>
+  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.<br>
+  <br><hr><br>He has favoured building a sub-$30,000 subcompact.<br>Quotation:<br>
+  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.
+  <br><br>Several mainstream publications<sup>2</sup> have compared him with Henry Ford for his work on advanced vehicle power trains.<br>
+  Unordered list:<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul><hr>Ordered list:<ol><li>Coffee</li><li>Tea</li><li>Milk</li></ol>
+</td></tr></table>
 </div>
 
 <div id="modal-w" class="modal">
@@ -298,7 +312,7 @@
   
   reSize(); T.focus();
   
-  function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); isDirty = true; }
+  function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); }
   
   function clr(fnd) {
     let n, c, tgs = T.querySelectorAll(fnd), tgsL = tgs.length, nxt = /^\xA0/, prv = /\xA0$/;
@@ -356,10 +370,10 @@
 
   function insYesNo(F) { exe("insertHTML", '<div block="'+ F  + '">' + (F?'✓ OK':'✘ No') + '</div>'); clr('div[block]'); }
   
-  T.addEventListener("keypress", function(){ isDirty = true; });
+  T.addEventListener("input", function(){ isDirty = true; }, false);
   T.addEventListener("paste",function(e) {
-    e.preventDefault(); isDirty = true;
-    exe('insertHTML', e.clipboardData.getData('text/plain'));
+    e.preventDefault();
+    exe('insertText', e.clipboardData.getData('text/plain'));
   });
 /*T.addEventListener("paste",function() { setTimeout( function()
     { T.innerHTML = T.innerHTML.replace(/<div>/gi,'').replace(/<\/div><br>|<\/div>/gi,'<br>'); } ,0);
@@ -462,6 +476,20 @@
     }
     else T.innerHTML = id("modal-out").value;
     modal_shut();
+  }
+  
+  function downPDF() {
+    if(T.innerHTML.indexOf('&nbsp;') >-1) T.innerHTML = T.innerHTML.replace(/&nbsp;+/g,' ');
+    let j = {"fileName":"A new file to display.pdf",
+        "borders":{"top":"20mm","right":"20mm","bottom":"15mm","left":"20mm","footer":"5mm"},
+        "footer":"<table style=\"width:100%; border-top:1px solid lightgray;font:normal 8pt Sans-serif;color:grey\"><TR><td>A new file to display</td><TD align=\"right\">Page {{page}} of {{pages}}</td></TR></table>",
+        "bkgr":"false","body":"1",
+        "content":"<HTML><HEAD><STYLE>"+ getCurrStyle() +"</STYLE></HEAD><BODY>"+ id('inCapsul').innerHTML +"</HTML>"};
+    id('Frm').action = 'pipe/' + j.fileName;
+    id('Hdn').value = JSON.stringify(j);
+    alert(id('Frm').action + '\n' + id('Hdn').value);
+    alert(id('inCapsul').innerHTML);
+    return true;
   }
 
 </script>
