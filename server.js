@@ -90,7 +90,7 @@ function pipping( file, body, resp ){
   if(wh == 'S') html = cnt.content;
   else html = '<HTML><BODY style="'+ cnt.body +'">'+cnt.content+'</BODY></HTML>';
 
-    	var opts = {
+    var opts = {
       "format": 'A4',
       "footer": {
         "height": cnt.borders.footer,
@@ -106,10 +106,7 @@ function pipping( file, body, resp ){
       "quality": "100"
     };
 
-    if(cnt.bkgr) { //opts.border = '0px';
-        const o = opts.border;
-        o.top = o.left = o.right = '0px';
-    }
+    if(cnt.bkgr) opts.border = '0px';
   
   if(wh=='Q' || wh=='S') {
     resp.writeHead(200,{'Content-disposition': 'inline; filename='+cnt.fileName});
