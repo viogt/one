@@ -212,10 +212,9 @@
   <button onClick='up_low(false)' title='Lower case font'><i class="fa fa-font" style="font-size:.7em"></i><i class="fa fa-long-arrow-down"></i></button>
   
   | <button onClick='incFontSize()' title='Change Font Size'><i class="fa fa-text-width"></i></button>
-  <button onClick='insTable()' title='List of items'><i class="fa fa-table"></i></button>
+  <button onClick='insTable()' title='List of items'><i class="fa fa-list"></i></button>
+  <button onClick='insColumns()' title='Two columns with separator'><i class="fa fa-columns"></i></button>
   <button onClick='insLink()' title='Insert link'><i class="fa fa-link"></i></button>
-  <button onClick='show_modal(0)' title='Edit HTML'><i class="fa fa-file-code-o"></i></button>
-  <button onClick='show_modal(1)' title='Edit Style Sheet'><i class="fa fa-file-text-o"></i></button>
 
   | <button onClick='insYesNo(1)' title='OK confirmation (green)'><i class="fa fa-check"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
   <button onClick='insYesNo(0)' title='Bad confirmation (red)'><i class="fa fa-remove"></i><i class="fa fa-font" style='font-size:11px;'></i></button>
@@ -266,24 +265,21 @@
   <button onClick='ins(this)' title='Telephone'>☎</button>
   <button onClick='ins(this)' title='Email'>✉</button> |
 
+  <button onClick='show_modal(0)' title='Edit HTML'><i class="fa fa-file-code-o"></i></button>
+  <button onClick='show_modal(1)' title='Edit Style Sheet'><i class="fa fa-file-text-o"></i></button>
   <form id='Frm' style='display:inline' action='pipe/AAA.pdf' enctype='text/plain' target='_blank' method='POST' onSubmit='return downPDF();'>
     <input id='Hdn' name='S' type="hidden" value="">
     <button id='canSend' type="submit" title="Get PDF" class="fa fa-file-pdf-o"></button>
   </form>
-  <button onClick='show_modal(2)' title='Edit PDF settings'><i class="fa fa-gear"></i></button>
+  <button onClick='show_modal(2)' title='Edit PDF settings'><i class="fa fa-gear"></i></button> |
+  
+  <button onClick='removeDiacrit()' title='Remove Romanian diacritics' class="fa fa-check-square"></button>
+  <button onClick='correctDiacrit()' title='Correct the old Romanian diacritics' class="fa fa-check-square-o"></button>
+
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
-<table><tr><td id='txt' class='txtStyle' contentEditable>
-  What?<h1>Header of the main section</h1>
-  He has <b>favoured</b> building a <i>sub-$30,000</i> subcompact and <u>building</u> and <strike>selling</strike> electric.
-  <H2>Subtitle of the second section</H2>
-  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.<br>
-  <br><hr><br>He has favoured building a sub-$30,000 subcompact.<br>Quotation:<br>
-  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.
-  <br><br>Several mainstream publications<sup>2</sup> have compared him with Henry Ford for his work on advanced vehicle power trains.<br>
-  Unordered list:<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul><hr>Ordered list:<ol><li>Coffee</li><li>Tea</li><li>Milk</li></ol>
-</td></tr></table>
+<table><tr><td id='txt' class='txtStyle' contentEditable>...</td></tr></table>
 </div>
 
 <div id="modal-w" class="modal">
@@ -382,7 +378,7 @@
 
   function insQuote() {
     let s = window.getSelection().toString(); if(!s) s='...';
-    exe('insertHTML','<table style="font-size:1em;"><tr><td q1>❝</td><td q2>' + s + '</table>');
+    exe('insertHTML','<table style="font-size:1em;"><tr><td q1>❝</td><td q2>' + s + '</td></tr></table>');
   }
   
   function insTable() {
@@ -498,6 +494,21 @@
     footer:"<table style=\"width:100%; border-top:1px solid lightgray;font:normal 8pt Sans-serif;color:grey\"><TR><td>{{title}}</td><TD align=\"right\">Page {{page}} of {{pages}}</td></TR></table>",
     bkgr:false, body:"1", Times_New_Roman:false,
     content:null
+  }
+  
+  function insColumns() {
+    let Fs = prompt('Padding, Separation line style:','10px,1px solid lightgrey'); if(!Fs) return;
+    let s = Fs.split(','); if(s.length<2) return;
+    exe('insertHTML','<table style="table-layout:fixed;width:100%;font-size:1em;"><tr><td valign="top" style="padding-right:'+ s[0] +';border-right:'+ s[1] +'">*</td><td valign="top" style="padding-left:'+ s[0] +';">*</td></tr></table>');
+  }
+  
+  function removeDiacrit() {
+    const r = /Ă|ă|Î|î|Ș|ș|Ț|ț|Â|â/g; if(r.test(T.textContent))
+    T.innerHTML = T.innerHTML.replace(r, function(x){ return "AaIiSsTtAa".charAt("ĂăÎîȘșȚțÂâ".indexOf(x)); });
+  }
+  function correctDiacrit() {
+    const r = /Ş|ş|Ţ|ţ/g; if(r.test(T.textContent))
+    T.innerHTML = T.innerHTML.replace(r, function(x){ return "ȘșȚț".charAt("ŞşŢţ".indexOf(x)); });
   }
 
 </script>
