@@ -247,23 +247,25 @@
   </select>
   </div>
 
-  | <button onClick='ins(this)' title='Flag'>⚑</button>
-  <button onClick='ins(this)' title='Pen'>✎</button>
-  <button onClick='ins(this)' title='OK'>✓</button>
-  <button onClick='ins(this)' title='No'>✘</button>
-  <button onClick='ins(this)' title='Attention'>⚠</button>
-
-  | <button onClick='ins(this)' title='Euro'>€</button>
-  <button onClick='ins(this)' title='Paragraph'>§</button>
-  <button onClick='ins(this)' title='Plus/Minus'>±</button>
-  <button onClick='ins(this)' title='Approximately'>≈</button>
-  <button onClick='ins(this)' title='Degree'>°</button>
-
-  | <button onClick='ins(this)' title='Long dash'>―</button>
-  <button onClick='ins(this)' title='Subtle arrow'>➝</button>
-  <button onClick='ins(this)' title='Bold arrow'>➜</button>
-  <button onClick='ins(this)' title='Telephone'>☎</button>
-  <button onClick='ins(this)' title='Email'>✉</button> |
+  <div class='sel' title='Insert a symbol'>
+    <button style='width:24px' onClick='ins(this)'>⚑</button><select style='width:14px' onChange='symChange(this)'>
+    <option selected>⚑</option>
+    <option >✎</option>
+    <option >✓</option>
+    <option >✘</option>
+    <option >⚠</option>
+    <option >€</option>
+    <option >§</option>
+    <option >±</option>
+    <option >≈</option>
+    <option >°</option>
+    <option >―</option>
+    <option >➝</option>
+    <option >➜</option>
+    <option >☎</option>
+    <option >✉</option>
+  </select>
+  </div>
 
   <button onClick='show_modal(0)' title='Edit HTML'><i class="fa fa-file-code-o"></i></button>
   <button onClick='show_modal(1)' title='Edit Style Sheet'><i class="fa fa-file-text-o"></i></button>
@@ -279,7 +281,16 @@
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
-<table><tr><td id='txt' class='txtStyle' contentEditable>...</td></tr></table>
+<table><tr><td id='txt' class='txtStyle' contentEditable>
+  What?<h1>Header of the main section</h1>
+  He has <b>favoured</b> building a <i>sub-$30,000</i> subcompact and <u>building</u> and <strike>selling</strike> electric.
+  <H2>Subtitle of the second section</H2>
+  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.<br>
+  <br><hr><br>He has favoured building a sub-$30,000 subcompact.<br>Quotation:<br>
+  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.
+  <br><br>Several mainstream publications<sup>2</sup> have compared him with Henry Ford for his work on advanced vehicle power trains.<br>
+  Unordered list:<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul><hr>Ordered list:<ol><li>Coffee</li><li>Tea</li><li>Milk</li></ol>
+</td></tr></table>
 </div>
 
 <div id="modal-w" class="modal">
@@ -303,7 +314,9 @@
     const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
-    if(w > 800) { d1.style.width = '800px'; d2.style.width = '800px'; } else { d1.style.width = ''; d2.style.width = ''; }
+    const isMob = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(navigator.userAgent);
+    const a = isMob?'400px':(w>800?'800px':'');
+    d1.style.width = a; d2.style.width = a;
     d2.style.height = (h - d1.offsetHeight - M) + 'px';
   }
   
@@ -372,15 +385,51 @@
     e.preventDefault();
     exe('insertText', e.clipboardData.getData('text/plain'));
   });
+  window.addEventListener("beforeunload", function(event) {
+    if(isDirty) event.returnValue = "Do you want to quit changes?";
+  });
 /*T.addEventListener("paste",function() { setTimeout( function()
     { T.innerHTML = T.innerHTML.replace(/<div>/gi,'').replace(/<\/div><br>|<\/div>/gi,'<br>'); } ,0);
   });*/
 
   function insQuote() {
-    let s = window.getSelection().toString(); if(!s) s='...';
+    let s = gSel(); if(!s) s='...';
     exe('insertHTML','<table style="font-size:1em;"><tr><td q1>❝</td><td q2>' + s + '</td></tr></table>');
   }
   
+  function gSel() {
+    const SL = window.getSelection(); if(SL.isCollapsed) return null;
+    const d = document.createElement('div'); d.appendChild(SL.getRangeAt(0).cloneContents());
+    return d.innerHTML;
+  }
+
+//--------------------------------------------------------------------------------------------------
+  function insTable() {
+    var F, arr = isInsideTable(), cnt = arr.length;
+    var Fs = prompt('Enter Ordered/Unordered/Enum/Big + number of row (ex: o3, u5, e4, b5):','u'+(cnt?cnt:3));
+    if(Fs && ('oueb'.indexOf(F=Fs.charAt(0))>-1)) {
+      var r = parseInt(Fs.substr(1),10), pref = (F!='b')?'<tr><td qL>':'<tr><td q1>'; if(F=='b') F='o';
+      var T = '<table border="0" cellSpacing="0" style="font-size:1em">';
+      for(let i=0; i<r; i++)
+      T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<div enum>'+ String.fromCharCode(65+i) +'</div>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'<br><br></td></tr>';
+      exe('insertHTML', T + '</table>');
+    }
+  }
+
+  function isInsideTable() {
+    let s = gSel(); if(s) return s.replace(/\n/g,'').replace(/(\s*<br>\s*)+/g,'<br>').replace(/^<br>|<br>$/g,'').split('<br>');
+    s = window.getSelection();
+    var n = s.focusNode.parentElement;
+    while(n.tagName != 'TABLE')
+      if(n.tagName == 'TD' && n.id) return [];
+      else n = n.parentElement;
+    let ret = [], rs = n.rows, L = rs.length;
+    for(let r=0; r<L; r++) ret.push(rs[r].cells[1].innerHTML.replace(/<br><br>$/,''));
+    s.getRangeAt(0).selectNodeContents(n);
+    return ret;
+  }
+
+ /*
   function insTable() {
     var F, cnt = 0, arr, s = window.getSelection();
         if(arr = isInsideTable(s)) cnt = arr.length;
@@ -405,7 +454,7 @@
     sel.getRangeAt(0).selectNodeContents(n);
     return ret;
   }
-
+*/
   function norm() {
     var dst = id('modal-out'), x = dst.value;
     x = x.replace(/\s*\n+\s*/g,'');
@@ -429,9 +478,7 @@
       exe('insertHTML', T + '</table>');
   }
   
-  window.addEventListener("beforeunload", function(event) {
-    if(isDirty) event.returnValue = "Do you want to quit changes?";
-  });
+  function symChange(o) { o.previousSibling.textContent = o.options[o.selectedIndex].text; ins(o.previousSibling); }
   
   function toggleWidth(o) {
     if(T.style.width != '600px') { T.style.width = '600px'; o.className = 'fa fa-expand'; o.title = 'Expand width to 100%'; }
