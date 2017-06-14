@@ -312,10 +312,15 @@
 
   function reSize() {
     const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
-    const isMob = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(navigator.userAgent);
-    const a = isMob?'400px':(w>800?'800px':'');
+    let a = w>800?'800px':'', Zoom = 1;
+    if(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(window.navigator.userAgent)) {
+      a = '360px';
+      Zoom = Math.floor((w-M)/360*100)/100;
+      h = Math.floor(h/Zoom);
+      document.body.style.zoom = Zoom;
+    }
     d1.style.width = a; d2.style.width = a;
     d2.style.height = (h - d1.offsetHeight - M) + 'px';
   }
