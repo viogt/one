@@ -277,7 +277,7 @@
   
   <button onClick='removeDiacrit()' title='Remove Romanian diacritics' class="fa fa-check-square"></button>
   <button onClick='correctDiacrit()' title='Correct the old Romanian diacritics' class="fa fa-check-square-o"></button>
-
+  <button onClick='mkCol()' title='Make new color pettern' class="fa fa-wrench"></button>
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
@@ -316,8 +316,8 @@
     const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
     let a = w>800?'800px':'', Zoom = 1;
     if(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(window.navigator.userAgent)) {
-      a = '360px';
-      Zoom = Math.floor((w-M)/360*100)/100;
+      a = '340px';
+      Zoom = Math.floor((w-M)/340*100)/100;
       h = Math.floor(h/Zoom);
       document.body.style.zoom = Zoom;
     }
@@ -555,12 +555,74 @@
   }
   
   function removeDiacrit() {
-    const r = /Ă|ă|Î|î|Ș|ș|Ț|ț|Â|â/g; if(r.test(T.textContent))
+    const r = /[ĂăÎîȘșȚțÂâ]/g; if(r.test(T.textContent))
     T.innerHTML = T.innerHTML.replace(r, function(x){ return "AaIiSsTtAa".charAt("ĂăÎîȘșȚțÂâ".indexOf(x)); });
   }
   function correctDiacrit() {
-    const r = /Ş|ş|Ţ|ţ/g; if(r.test(T.textContent))
+    const r = /[ŞşŢţ]/g; if(r.test(T.textContent))
     T.innerHTML = T.innerHTML.replace(r, function(x){ return "ȘșȚț".charAt("ŞşŢţ".indexOf(x)); });
+  }
+  
+  function mkHex(x,f) { let r = Math.floor(255-(255-x)*f); return (r>15?'':'0')+r.toString(16); }
+  function mkRGB(r,g,b,factor) {
+    //return 'rgb(' + (255-(255-r)*factor).toFixed(0) + ',' + (255-(255-g)*factor).toFixed(0) + ',' + (255-(255-b)*factor).toFixed(0) + ')';
+    return '#' + mkHex(r,factor) + mkHex(g,factor) + mkHex(b,factor);
+  }
+  function mkCol() {
+  try {
+    let F = prompt('Enter the title:', '#335'); if(!F) return false;
+    if(/^#([a-f\d])([a-f\d])([a-f\d])$/.test(F))
+    F = F.replace(/[a-f\d]/g, function(x){ return x+x; });
+    let res = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(F); if(!res) return;
+    let R = parseInt(res[1], 16), G = parseInt(res[2], 16), B = parseInt(res[3], 16);
+
+    const def = { background: .1, bkgr_border: .25, font_color: .9 }
+    
+    let _style = `.custom {
+      border:1px solid #BORDER; padding:40px; border-radius:8px;
+      font: normal 10.5pt Sans-serif; outline:none;
+      background-color:#LIGHT; line-height: 1.3; color:#DARK;
+    }
+    .custom b { border: 1px solid #BORDER;
+      background-color:#fff; padding:0px 6px; border-radius:4px; font-weight:normal;
+    }
+    .custom i { color:#ITALIC; }
+    .custom u { text-decoration:none; border-bottom:1px solid #EMPH; }
+    .custom hr { border:none; border-top:1px dashed #B_DARK; height:0px; }
+    .custom sup, .txtStyle sub { color:#EMPH; font-size:7pt; }
+    .custom strike { color:#ITALIC; }
+    .custom H1 { font-size:1.4em; color:#fff;
+      background-color:#DARK; padding: 14px; border-radius:8px; font-weight:normal;
+    }
+    .custom H2 { border: 1px solid #BORDER; font-size: 1em;
+      background-color:#fff; padding: 16px; border-radius:8px; font-weight:normal;
+    }
+    .custom td[qL] { vertical-align: top; padding-right:12px; color:#EMPH; text-align:right; width: 60px; }
+    .custom td[q1] { vertical-align: top; padding-right:12px; font-size:4em; color:#BORDER; text-align:right; width: 60px; border-right:1px solid #B_DARK; }
+    .custom td[q2] { vertical-align: top; padding-left:12px; }
+
+    .custom div[enum] { display: inline-block; width:20px; font:bold 1.2em Sans-serif; color:#fff;
+      background-color:#B_DARK; padding:6px; border-radius:8px; text-align:center; }`;
+    
+    _style = _style.replace(/#DARK/g,mkRGB(R,G,B,def.font_color));
+    _style = _style.replace(/#LIGHT/g,mkRGB(R,G,B,def.background));
+    _style = _style.replace(/#BORDER/g,mkRGB(R,G,B,def.bkgr_border));
+    _style = _style.replace(/#B_DARK/g,mkRGB(R,G,B,def.bkgr_border+.15));
+
+    if(B>G && B>R) B=255; else if(G>R && G>B) G=170; else R=255;
+
+	  _style = _style.replace(/#ITALIC/g,mkRGB(R,G,B,.9));
+    _style = _style.replace(/#EMPH/g,mkRGB(R,G,B,1));
+
+    const el = document.querySelector('select');
+    const w = el.options[el.selectedIndex].value;
+    patt = new RegExp('\\.'+w+'[\\s\\S]+\\.'+w+'[\\s\\S]+?}');
+
+    _style = _style.replace(/\.custom/g,'.'+w);
+    const s = document.querySelector("style");
+    s.textContent = s.textContent.replace(patt,_style);
+
+    } catch(e) { alert('ERROR: ' + e.message); }
   }
 
 </script>
