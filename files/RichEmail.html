@@ -32,7 +32,11 @@
 
     div[block="1"] { display: inline-block; color:#fff; background-color:#080; padding:0px 8px; border-radius:4px; }
     div[block="0"] { display: inline-block; color:#fff; background-color:#c00; padding:0px 8px; border-radius:4px; }
-
+    
+    .keyBtn { background-color: white; border: 1px solid lightgrey; border-radius:6px;
+        font-size: 14px; width:28px;height:24px; position:absolute; left:13px; top:0px;
+    }
+    .keyBtn:hover { border-color:red; cursor:pointer; }
 /*------------------------ Grey Style -------------------------*/
     .txtStyle {
       border:1px solid #ddd; padding:40px; border-radius:8px;
@@ -168,9 +172,11 @@
   </style>
 </head>
 <body style="font-size:12pt" margin='10px' onResize='reSize()'>
+  
+  <button id='clpBoard' onClick='toClipBoard(this)' title='Copy in Clipboard' class="keyBtn fa fa-scissors"></button>
+  <button id='showHide' onClick='reSize()' title='Show/Hide the Pannel' class="keyBtn fa fa-sort-desc"></button>
 
 <div id='board' class='board'>
-  <button onClick='toClipBoard(this)' title='Copy in Clipboard'><i class="fa fa-scissors"></i></button>
   <button onClick='exe("removeFormat")' title='Remove format'><i class="fa fa-eraser"></i></button>
   <button onClick='exe("redo",null)' title='Repeat'><i class="fa fa-repeat"></i></button>
   <button onClick='exe("undo",null)' title='Undo'><i class="fa fa-undo"></i></button>
@@ -281,16 +287,7 @@
 
 </div>
 <div id='inCapsul' style='overflow-y:auto'>
-<table><tr><td id='txt' class='txtStyle' contentEditable>
-  What?<h1>Header of the main section</h1>
-  He has <b>favoured</b> building a <i>sub-$30,000</i> subcompact and <u>building</u> and <strike>selling</strike> electric.
-  <H2>Subtitle of the second section</H2>
-  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.<br>
-  <br><hr><br>He has favoured building a sub-$30,000 subcompact.<br>Quotation:<br>
-  He has favoured building a sub-$30,000 subcompact and building and selling electric vehicle power train components so that other automakers can produce electric vehicles at affordable prices without having to develop the products in house.
-  <br><br>Several mainstream publications<sup>2</sup> have compared him with Henry Ford for his work on advanced vehicle power trains.<br>
-  Unordered list:<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul><hr>Ordered list:<ol><li>Coffee</li><li>Tea</li><li>Milk</li></ol>
-</td></tr></table>
+<table><tr><td id='txt' class='txtStyle' contentEditable>...</td></tr></table>
 </div>
 
 <div id="modal-w" class="modal">
@@ -309,12 +306,25 @@
 
   const T = id('txt');
   var isDirty = false;
-
+  
   function reSize() {
+    const bt1 = id('showHide'), bt0 = id('clpBoard'), d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
     const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    const d1 = id('board'), d2 = id('inCapsul'), M = 20; // body margin as set
-    let a = w>800?'800px':'', Zoom = 1;
+    const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    let offs;
+    if(d1.style.display != 'none') {
+      bt1.className = 'keyBtn fa fa-sort-desc';
+      offs = 0;
+      d1.style.display ='none';
+    }
+    else {
+      d1.style.display = 'block';
+      offs = d1.offsetHeight;
+      bt1.className = 'keyBtn fa fa-sort-asc';
+    }
+    bt1.style.top = (offs+39) + 'px'; bt0.style.top = (offs+13) + 'px';
+    
+    let a = w>800?'800px':'100%', Zoom = 1;
     if(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(window.navigator.userAgent)) {
       a = '340px';
       Zoom = Math.floor((w-M)/340*100)/100;
@@ -322,10 +332,11 @@
       document.body.style.zoom = Zoom;
     }
     d1.style.width = a; d2.style.width = a;
-    d2.style.height = (h - d1.offsetHeight - M) + 'px';
+    d2.style.height = (h - offs - M) + 'px';
+    T.focus();
   }
   
-  reSize(); T.focus();
+  reSize();
   
   function exe(sCmd, sValue) { T.focus(); document.execCommand(sCmd, false, sValue); }
   
@@ -434,32 +445,6 @@
     return ret;
   }
 
- /*
-  function insTable() {
-    var F, cnt = 0, arr, s = window.getSelection();
-        if(arr = isInsideTable(s)) cnt = arr.length;
-        else if(s = s.toString()) { arr = s.replace(/^\n|\n$/,'').replace(/\n{2,}/g,'\n').split('\n'); cnt = arr.length; }
-    var Fs = prompt('Enter Ordered/Unordered/Enum/Big + number of row (ex: o3, u5, e4, b5):','u'+(cnt?cnt:3));
-    if(Fs && ('oueb'.indexOf(F=Fs.charAt(0))>-1)) {
-      var r = parseInt(Fs.substr(1),10), pref = (F!='b')?'<tr><td qL>':'<tr><td q1>'; if(F=='b') F='o';
-      var T = '<table border="0" cellSpacing="0" style="font-size:1em">';
-      for(let i=0; i<r; i++)
-      T += pref + (F=='u'?'▸':(F=='o'?(i+1)+'.':('<div enum>'+ String.fromCharCode(65+i) +'</div>'))) +'</td><td q2>'+ (i<cnt?arr[i]:'...') +'<br><br></td></tr>';
-      exe('insertHTML', T + '</table>');
-    }
-  }
-
-  function isInsideTable(sel) {
-    var n = sel.focusNode.parentElement;
-    while(n.tagName != 'TABLE')
-      if(n.tagName == 'TD' && n.id) return null;
-      else n = n.parentElement;
-    let ret = [], rs = n.rows, L = rs.length;
-    for(let r=0; r<L; r++) ret.push(rs[r].cells[1].textContent);
-    sel.getRangeAt(0).selectNodeContents(n);
-    return ret;
-  }
-*/
   function norm() {
     var dst = id('modal-out'), x = dst.value;
     x = x.replace(/\s*\n+\s*/g,'');
