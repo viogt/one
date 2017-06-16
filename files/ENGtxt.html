@@ -1,20 +1,27 @@
-<html lang="en-gb"><head>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>✎ Rich Email</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style type="text/css">
 P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
 i { border-bottom: 2px solid orange; font-style: normal; }
-HR {  noshade size="5"; border: 0; color: orange; background-color: orange; height: 5px; width: 100%; }
-.Inp { display: inline; margin: 10px; color: black; padding: 8px;
-	background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif;
-	width: 120px; text-decoration:none;
+
+.Inp { background-color: white; border: 1px solid lightgrey; border-radius:6px;
+        font-size: 14px; width:28px;height:28px; margin-bottom:16px;
 }
-.Inp:hover { border:1px solid red; }
+.Inp:hover { border-color:red; cursor:pointer; }
+
 </style>
 <script type="text/javascript">
 
 function id(x) { return document.getElementById(x); }
 
 function rSave(){
-		var b = document.getElementById('out');
+		var b = id('out');
 		b.disabled = true;
 		b.style.backgroundColor = 'yellow';
 		b.value = 'Saving...';
@@ -22,40 +29,37 @@ function rSave(){
 }
 function Save() {
 	try {
-		
 		var xmlhttp = new XMLHttpRequest();
-		//var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
 		xmlhttp.open('POST', 'eng.txt', false);
 		var msg = document.getElementById('Continut').innerHTML;
 		xmlhttp.send(msg);
-		
-		var b = document.getElementById('out');
-		b.style.backgroundColor = 'lightgreen';
-		b.value = xmlhttp.responseText;
-		window.setTimeout("document.getElementById('out').value='Save Content';document.getElementById('out').style.backgroundColor='';", 2000);
-		b.disabled = false;
 		isDirty = false;
 		
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 
+function goTo( ps ) {
+	if(ps == 'top') window.scrollTo(0,0);
+	else if(ps == 'end') window.scrollTo(0, document.body.scrollHeight);
+	else window.scrollTo(0, Math.floor(document.body.scrollHeight/2));
+}
+
+function E(ob) { ob.style.backgroundColor = '#FF0'; window.setTimeout( function() { ob.style.backgroundColor=''; }, 500); }
+
 function Receive() {
 	try {
-		var xmlhttp = window.XMLHttpRequest?(new XMLHttpRequest()):(new ActiveXObject("Microsoft.XMLHTTP"));
+		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open('GET','eng.txt', false);
 		xmlhttp.send('x');
 		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
-		window.scrollTo(0, document.body.scrollHeight);
+		goTo('end');
 	} catch(e) { alert(e.message); return 'Error!'; }
 }
 
 var isDirty = false;
-window.addEventListener("beforeunload", function(e) {
-    var cMes = 'Au fost modificari la text!';
-    if (!isDirty) return undefined;
-    (e || window.event).returnValue = cMes; //Gecko + IE
-    return cMes; //Gecko + Webkit, Safari, Chrome etc.
-});
+  window.addEventListener("beforeunload", function(event) {
+    if(isDirty) event.returnValue = "Do you want to quit changes?";
+  });
 
 //-----------------------------------------------------------------------
 function saveMng() {
@@ -65,6 +69,7 @@ function saveMng() {
       http.open('POST', 'mng', false);
       http.send(msg);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
+	isDirty = false;
       return true;
     } catch(e) { alert(e.message); return 'Error!'; }
 }
@@ -76,25 +81,40 @@ function readMng() {
       http.open('POST', 'mng', false);
       http.send(msg);
       if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
-      alert(http.responseText);
       const j = JSON.parse(http.responseText);
       id('Continut').innerHTML = j.content;
+      goTo('end');
       return true;
     } catch(e) { alert(e.message); return 'Error!'; }
+}
+
+function culege(v) {
+	const s = v.trim().replace(/\?/g,"\\w").replace(/\*/g,"\\w*");
+    const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim');
+	const res = id('source').textContent.match(rgx);
+    id('Res').textContent = res?res.join('\n\n'):'> NOT FOUND!';
 }
 </script>
 
 </head>
-<body onLoad='Receive()'>
-<INPUT class='Inp' type='button' value='Go to Bottom' onClick='window.scrollTo(0,document.body.scrollHeight)'/><br>
-	
-<DIV id='Continut' contentEditable='true' onInput="isDirty=true;"></DIV>
-<hr>
-<INPUT id='out' class='Inp' type='button' value='Save Content' onClick='rSave()'/>
-<a href='down/eng.txt' class='Inp'>Download eng.txt</a>
-<INPUT class='Inp' type='button' value='Go to Top' onClick='window.scrollTo(0,0)'/>
+<body onLoad='Receive()' style='margin-left:42px'>
 
-<INPUT class='Inp' type='button' value='Write to DB' onClick='saveMng()'/>
-<INPUT class='Inp' type='button' value='Read from DB' onClick='readMng()'/>
+<div style='position:fixed;left:3px;'>
+
+  <button onClick='goTo("top")' title='Search' class="Inp fa fa-search"></button><br><br>
+
+  <button onClick='goTo("top")' title='To the top' class="Inp fa fa-arrow-up"></button><br>
+  <button onClick='goTo("middle")' title='To the middle' class="Inp fa fa-unsorted"></button><br>
+  <button onClick='goTo("end")' title='To the bottom' class="Inp fa fa-arrow-down"></button><br><br>
+
+  <button onClick='E(this);Save()' title='Save content' class="Inp fa fa-save"></button><br>
+  <a href='down/eng.txt' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br><br>
+
+  <button onClick='E(this);saveMng()' title='Save to DB' class="Inp fa fa-pencil"></button><br>
+  <button onClick='E(this);readMng()' title='Read from DB' class="Inp fa fa-upload"></button><br>
+</div>
+
+<DIV id='Continut' contentEditable='true' onInput="isDirty=true;" style='outline:none;'></DIV>
+
 </body>
 </html>
