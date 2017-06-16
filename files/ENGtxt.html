@@ -3,10 +3,15 @@
 P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
 i { border-bottom: 2px solid orange; font-style: normal; }
 HR {  noshade size="5"; border: 0; color: orange; background-color: orange; height: 5px; width: 100%; }
-.Inp { margin: 10px; color: black; padding: 8px; background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif; width: 120px; text-decoration:none; }
+.Inp { display: inline; margin: 10px; color: black; padding: 8px;
+	background-color: white; border:1px solid lightgrey; font: normal 11pt Arial, sans-serif;
+	width: 120px; text-decoration:none;
+}
 .Inp:hover { border:1px solid red; }
 </style>
 <script type="text/javascript">
+
+function id(x) { return document.getElementById(x); }
 
 function rSave(){
 		var b = document.getElementById('out');
@@ -51,6 +56,32 @@ window.addEventListener("beforeunload", function(e) {
     (e || window.event).returnValue = cMes; //Gecko + IE
     return cMes; //Gecko + Webkit, Safari, Chrome etc.
 });
+
+//-----------------------------------------------------------------------
+function saveMng() {
+    try {
+      var msg = JSON.stringify({ action: 'save', file: 'eng.txt', content: id('Continut').innerHTM, collection: 'files' });
+      var http = new XMLHttpRequest();
+      http.open('POST', 'mng', false);
+      http.send(msg);
+      if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
+      return true;
+    } catch(e) { alert(e.message); return 'Error!'; }
+}
+
+function readMng() {
+    try {
+      var msg = JSON.stringify({ action: 'get one', file: 'eng.txt', collection: 'files' });
+      var http = new XMLHttpRequest();
+      http.open('POST', 'mng', false);
+      http.send(msg);
+      if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
+      alert(http.responseText);
+      const j = JSON.parse(http.responseText);
+      id('Continut').innerHTML = j.content;
+      return true;
+    } catch(e) { alert(e.message); return 'Error!'; }
+}
 </script>
 
 </head>
@@ -62,5 +93,8 @@ window.addEventListener("beforeunload", function(e) {
 <INPUT id='out' class='Inp' type='button' value='Save Content' onClick='rSave()'/>
 <a href='down/eng.txt' class='Inp'>Download eng.txt</a>
 <INPUT class='Inp' type='button' value='Go to Top' onClick='window.scrollTo(0,0)'/>
+
+<INPUT class='Inp' type='button' value='Write to DB' onClick='saveMng()'/>
+<INPUT class='Inp' type='button' value='Read from DB' onClick='readMng()'/>
 </body>
 </html>
