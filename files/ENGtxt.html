@@ -60,7 +60,7 @@ window.addEventListener("beforeunload", function(e) {
 //-----------------------------------------------------------------------
 function saveMng() {
     try {
-      var msg = JSON.stringify({ action: 'save', file: 'eng.txt', content: id('Continut').innerHTM, collection: 'files' });
+      var msg = JSON.stringify({ action: 'save', file: 'eng.txt', content: id('Continut').innerHTML, collection: 'files' });
       var http = new XMLHttpRequest();
       http.open('POST', 'mng', false);
       http.send(msg);
