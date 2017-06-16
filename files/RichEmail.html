@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>✎ Rich Email</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -324,13 +325,13 @@
     }
     bt1.style.top = (offs+39) + 'px'; bt0.style.top = (offs+13) + 'px';
     
-    let a = w>800?'800px':'100%', Zoom = 1;
-    if(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(window.navigator.userAgent)) {
+    let a = w>800?'800px':'', Zoom = 1;
+    /*if(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Windows Phone/i.test(window.navigator.userAgent)) {
       a = '340px';
       Zoom = Math.floor((w-M)/340*100)/100;
       h = Math.floor(h/Zoom);
       document.body.style.zoom = Zoom;
-    }
+    }*/
     d1.style.width = a; d2.style.width = a;
     d2.style.height = (h - offs - M) + 'px';
     T.focus();
