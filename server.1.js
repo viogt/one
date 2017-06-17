@@ -1,6 +1,5 @@
 var http	= require('http'),
     fs		= require('fs'),
-    path = require('path'),
     pdf = require('html-pdf'),
     Mng   = require('mongodb'),
     MngIp = 'mongodb://127.0.0.1:27017/test',
@@ -91,7 +90,7 @@ function pipping( file, body, resp ){
   if(wh == 'S') html = cnt.content;
   else html = '<HTML><BODY style="'+ cnt.body +'">'+cnt.content+'</BODY></HTML>';
 
-    	var opts = {
+    var opts = {
       "format": 'A4',
       "footer": {
         "height": cnt.borders.footer,
@@ -123,42 +122,46 @@ function pipping( file, body, resp ){
 function operate( js, resp ) {
     resp.writeHead(200, {'Content-Type': 'text/plain' });
     Mng.MongoClient.connect(MngIp, function(err, db) {
-        if(err) return shucher(resp, err, null);
-        var cll= db.collection( js.collection );
+        if(err) { resp.end('0 Database cannot be opened!'); return; }
         
+        db.collection(js.collection, {strict:true}, function(err, collection) {
+        var cll = collection, collExists = err?false:true;
         switch( js.action ) {
             case 'get one':
-                cll.findOne({file: js.file}, function(err, obj) {
-                    if(err) return shucher(resp, err, db); db.close();
-                    resp.end(JSON.stringify(obj));
-		        });
+                if(!collExists) { resp.end('null'); db.close(); return; }
+                cll.findOne({file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
 		    case 'list':
-                cll.find({}, { file:1, modified:1 }).sort({modified:-1}).toArray(function(err, recs) {
-                    if(err) return shucher(resp, err, db); db.close();
-			        resp.end(JSON.stringify(recs));
-		        });
+                db.collection(js.collection).find({}, { file:1, modified:1 }).sort({modified:-1}).toArray(function(err, recs) { sc(recs, err, resp, db); });
 		        return;
             case 'save':
                 js.modified = new Date();
-                cll.update({file: js.file}, js, {upsert: true}, function(err, obj) {
-                    if(err) return shucher(resp, err, db); db.close();
-			        resp.end(JSON.stringify(obj));
-		        });
+                db.collection(js.collection).update({file: js.file}, js, {upsert: true}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'remove':
-                cll.remove( {file: js.file}, function(err, obj) {
-                    if(err) return shucher(resp, err, db); db.close();
-                    resp.end(JSON.stringify(obj));
-                });
+                cll.remove( {file: js.file}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
             case 'rename':
-                cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) {
-                    if(err) return shucher(resp, err, db); db.close();
-			        resp.end(JSON.stringify(obj));
-		        });
+                cll.update({ _id: new Mng.ObjectID(js.id) }, {$set: { file: js.file, modified: new Date() }}, function(err, obj) { sc(obj, err, resp, db); });
 		        return;
-            /*
+            case 'usrGet':
+                if(!collExists) { scr('*', resp, db); return; }
+                cll.findOne({user: js.user}, function(err, obj) {
+                  if(err || obj==null) { scr('*', resp, db); return; }
+                  if(js.hasOwnProperty('psw')) scr((obj.psw == js.psw)?'1':'*', resp, db);
+                  else scr('1', resp, db);
+                });
+		        return;
+            case 'usrCreate':
+                js.modified = new Date();
+                db.collection(js.collection).update({user: js.user}, js, {upsert: true}, function(err, obj) { scr(err?'*':'1', resp, db); return; });
+		        return;
+            case 'usrDelete':
+                db.collection(js.collection).remove( {user: js.user}, function(err, obj) {
+                    if(!err) db.collection(js.delCollection).drop( function(err, res) { scr(err?'*':'1', resp, db); return; });
+                    else scr('*', resp, db);
+                });
+		        return;
             case 'download':
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db); db.close();
@@ -168,15 +171,35 @@ function operate( js, resp ) {
                     resp.end(html);
 		        });
 		        return;
-            */
             case 'coll exists':
-                    db.collection(js.collection, {strict:true}, function(err, collection) {
-                    resp.end(err?'-':'+');
-		        });
-		        return;
-		    default: shucher(resp, {error: 'Unknown command'}, db);
+                resp.end(collExists?'+':'-'); return;
+            case 'readDir':
+                var p = './files';
+                fs.readdir(p, function (err, files){
+                    if(err) return shucher(resp, err, db); db.close();
+                    resp.end( JSON.stringify(files) );
+                }); 
+                return;
+            case 'getFile':
+                var file = fs.createReadStream('./files/'+js.file); file.pipe(resp);
+                return;
+            case 'putFile':
+                //var writeStream = fs.createWriteStream('./output'); req.pipe(writeStream);
+            	fs.writeFile('./files/'+js.file, js.fileBody, function(err) {
+            	  if (err) return shucher(resp, err, db); db.close();
+            	  resp.end('File saved!');
+                });
+                return;
+		    default: resp.end('0 Unknown command'); db.close();
         }
+        });
     });
+}
+
+function scr(what, res, DB) { res.end(what); DB.close(); }
+function sc(obj, err, res, DB) {
+    res.end(err?('0' + JSON.stringify(err)):JSON.stringify(obj));
+    DB.close();
 }
 
 function returnFile(fl, resp){
