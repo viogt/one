@@ -20,11 +20,18 @@ i { border-bottom: 2px solid orange; font-style: normal; }
 
 function id(x) { return document.getElementById(x); }
 
-function inCorp(_cont) { id('Continut').innerHTML = _cont; goTo('end'); }
-function inCorpDB(_cont) {
-  const j = JSON.parse(_cont);
-  id('Continut').innerHTML = j.content;
-  goTo('end');
+function inCorp(_cont) { setCont(_cont); goTo('end'); }
+function inCorpDB(_cont) { const j = JSON.parse(_cont); setCont(j.content); goTo('end'); }
+
+function setCont(_cnt) {
+  if(totFiles[curFile].type == 'html') {
+    id('Continut').innerHTML = _cnt;
+    totFiles[curFile].depot = _cnt;
+  }
+  else {
+    id('Continut').textContent = _cnt;
+    totFiles[curFile].depot = _cnt;
+  }
 }
 
 function Http( _btn, _meth, _resrc, _msg, _callback){
@@ -43,7 +50,9 @@ function Http( _btn, _meth, _resrc, _msg, _callback){
   } catch(e) { alert('ERROR: ' + e.message); return; } 
 }
 
-function Save(bt) { Http(bt, 'POST', 'eng.txt', id('Continut').innerHTML, null); }
+function getCnt() { return (totFiles[curFile].type == 'html')?id('Continut').innerHTML:id('Continut').textContent; }
+
+function Save(bt) { Http(bt, 'POST', totFiles[curFile].name, getCnt(), null); }
 
 function goTo( ps ) {
 	if(ps == 'top') window.scrollTo(0,0);
@@ -51,21 +60,21 @@ function goTo( ps ) {
 	else window.scrollTo(0, Math.floor(document.body.scrollHeight/2));
 }
 
-function Receive() { Http(null, 'GET', 'eng.txt', 'x', inCorp); }
+function Receive() { Http(null, 'GET', totFiles[curFile].name, 'x', inCorp); }
 
 var isDirty = false;
-  window.addEventListener("beforeunload", function(event) {
-    if(isDirty) event.returnValue = "Do you want to quit changes?";
-  });
+window.addEventListener("beforeunload", function(event) {
+  if(isDirty) event.returnValue = "Do you want to quit changes?";
+});
 
 //-----------------------------------------------------------------------
 function saveMng(bt) {
-  const msg = JSON.stringify({ action: 'save', file: 'eng.txt', content: id('Continut').innerHTML, collection: 'files' });
+  const msg = JSON.stringify({ action: 'save', file: totFiles[curFile].name, content: getCnt(), collection: 'files' });
   Http(bt, 'POST', 'mng', msg, null);
 }
 
 function readMng(bt) {
-  const msg = JSON.stringify({ action: 'get one', file: 'eng.txt', collection: 'files' });
+  const msg = JSON.stringify({ action: 'get one', file: totFiles[curFile].name, collection: 'files' });
   Http(bt, 'POST', 'mng', msg, inCorpDB);
 }
 
@@ -75,12 +84,23 @@ function culege(v) {
 	const res = id('source').textContent.match(rgx);
   id('Res').textContent = res?res.join('\n\n'):'> NOT FOUND!';
 }
+
+var curFile = 0, totFiles = [ {name:'eng.txt', depot:null, type:'html'}, {name:'rand.txt',depot:null, type:'text'} ];
+
+function toggleFiles() {
+  curFile++; if(curFile >= totFiles.length) curFile = 0;
+  if( totFiles[curFile].depot ) {
+    if(totFiles[curFile].type == 'html') id('Continut').innerHTML = totFiles[curFile].depot;
+    else id('Continut').textContent = totFiles[curFile].depot;
+  }
+  else Receive();
+}
 </script>
 
 </head>
 <body onLoad='Receive()' style='margin:10px; margin-left:42px;'>
 
-<div style='position:fixed;left:3px;top:0px;'>
+<div style='position:fixed;left:3px;top:10px;'>
 
   <button onClick='goTo("top")' title='Search' class="Inp fa fa-search"></button><br><br>
 
