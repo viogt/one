@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style type="text/css">
-P { font: normal 14pt Ubuntu,Calibri,sans-serif; padding-bottom: 20px; }
+.continut { font: normal 14pt Ubuntu,Calibri,sans-serif; outline:none; }
 i { border-bottom: 2px solid orange; font-style: normal; }
 
 .Inp { background-color: white; border: 1px solid lightgrey; border-radius:6px;
@@ -29,20 +29,20 @@ function setCont(_cnt) {
     totFiles[curFile].depot = _cnt;
   }
   else {
-    id('Continut').textContent = _cnt;
+    id('Continut').innerText = _cnt;
     totFiles[curFile].depot = _cnt;
   }
 }
 
 function Http( _btn, _meth, _resrc, _msg, _callback){
   try {
-      if(_btn) _btn.style.backgroundColor = '#FF0';
+      var _icon; if(_btn) { _btn.style.backgroundColor = '#FF0'; _icon = _btn.className; _btn.className = 'Inp fa fa-refresh fa-spin'; }
       const http = new XMLHttpRequest();
       http.onreadystatechange = function() {
           if(this.readyState == 4 && this.status == 200) {
                 if(http.responseText.charAt(0) == '0') { alert('Error: ' + http.responseText.substr(1)); return; }
                 if(_callback) _callback(http.responseText);
-                if(_btn) _btn.style.backgroundColor = '';
+                if(_btn) { _btn.style.backgroundColor = ''; _btn.className = _icon; }
                 return;
           }
       };
@@ -78,11 +78,39 @@ function readMng(bt) {
   Http(bt, 'POST', 'mng', msg, inCorpDB);
 }
 
+function xCleanse(x) {
+  x = x.replace(/<td>|<tr>|<table>|<\/table>|<\/tr>/gim,'');
+  return x.replace(/(<br>)+|<\/td>/gim,'\n');
+}
+
 function culege(v) {
 	const s = v.trim().replace(/\?/g,"\\w").replace(/\*/g,"\\w*");
-  const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim');
-	const res = id('source').textContent.match(rgx);
-  id('Res').textContent = res?res.join('\n\n'):'> NOT FOUND!';
+  const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim'), wrd = new RegExp("(\\b" + s + "\\b)");
+  const Rs = id('Res'); if(!id('mustAdd').checked) Rs.innerHTML = '';
+  for(let i in totFiles) if(totFiles[i].depot) {
+    	let res;
+    	if(totFiles[i].type == 'html') { if(!totFiles[i].aux) totFiles[i].aux = xCleanse(totFiles[i].depot); res = totFiles[i].aux.match(rgx); }
+    	else res = totFiles[i].depot.match(rgx);
+    	if(res) for(let k in res) res[k] = res[k].replace(wrd,'<span style="background-color:#ff8">$1</span>');
+      Rs.innerHTML += res?res.join('<br><br>'):'<br><span style="padding:4px 8px; border-radius:8px; background-color:#a00;color:#fff">NOT FOUND!</span><br><br>';
+  }
+}
+
+var TglSrch = false;
+function Srch(ob) {
+  if((TglSrch = !TglSrch)) ob.style.backgroundColor = '#ff0';
+  else {
+    ob.style.backgroundColor = '';
+    if(totFiles[curFile].type == 'html') id('Continut').innerHTML = totFiles[curFile].depot;
+    else id('Continut').innerText = totFiles[curFile].depot;
+    goTo('end'); return;
+  }
+  let s = window.getSelection().toString();
+  let umpl = 'Search: <input type="text" value="' + s + '" onchange="culege(this.value)">';
+  umpl += ' Add results: ' + '<input type="checkbox" id="mustAdd">';
+  umpl += '<div id="Res" style="margin-top:20px"></div>';
+  id('Continut').innerHTML = umpl;
+  if(s) culege(s);
 }
 
 var curFile = 0, totFiles = [ {name:'eng.txt', depot:null, type:'html'}, {name:'rand.txt',depot:null, type:'text'} ];
@@ -91,31 +119,34 @@ function toggleFiles() {
   curFile++; if(curFile >= totFiles.length) curFile = 0;
   if( totFiles[curFile].depot ) {
     if(totFiles[curFile].type == 'html') id('Continut').innerHTML = totFiles[curFile].depot;
-    else id('Continut').textContent = totFiles[curFile].depot;
+    else id('Continut').innerText = totFiles[curFile].depot;
   }
   else Receive();
 }
+
+function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; }
 </script>
 
 </head>
-<body onLoad='Receive()' style='margin:10px; margin-left:42px;'>
+<body onLoad='Receive()' style='margin:10px; margin-left:52px;'>
 
 <div style='position:fixed;left:3px;top:10px;'>
 
-  <button onClick='goTo("top")' title='Search' class="Inp fa fa-search"></button><br><br>
+  <button onClick='Srch(this)' title='Search' class="Inp fa fa-search"></button><br>
 
   <button onClick='goTo("top")' title='To the top' class="Inp fa fa-arrow-up"></button><br>
   <button onClick='goTo("middle")' title='To the middle' class="Inp fa fa-unsorted"></button><br>
-  <button onClick='goTo("end")' title='To the bottom' class="Inp fa fa-arrow-down"></button><br><br>
+  <button onClick='goTo("end")' title='To the bottom' class="Inp fa fa-arrow-down"></button><br>
 
+  <button onClick='toggleFiles()' title='Toggle/exhange files' class="Inp fa fa-exchange"></button><br>
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
-  <a href='down/eng.txt' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br><br>
+  <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
 
   <button onClick='saveMng(this)' title='Save to DB' class="Inp fa fa-pencil"></button><br>
   <button onClick='readMng(this)' title='Read from DB' class="Inp fa fa-upload"></button><br>
+  
 </div>
 
-<DIV id='Continut' contentEditable='true' onInput="isDirty=true;" style='outline:none;'></DIV>
-
+<table><tr><td id='Continut' contentEditable='true' onInput="isDirty=true;" class="continut"></td></tr></table>
 </body>
 </html>
