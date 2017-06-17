@@ -123,12 +123,12 @@ function operate( js, resp ) {
     if(_DB) { _oper( _DB, js, resp ); return; }
     Mng.MongoClient.connect(MngIp, function(err, db) {
         if(err) { resp.end('0 Database cannot be opened!'); return; }
-        _oper( _DB = db, js, resp ); return;
+        _DB = db; _oper( _DB, js, resp ); return;
     });
 }
 
 
-function _oper( js, resp, db ) {
+function _oper( db, js, resp) {
     resp.writeHead(200, {'Content-Type': 'text/plain' });
     db.collection(js.collection, {strict:true}, function(err, collection) {
         var cll = collection, collExists = err?false:true;
