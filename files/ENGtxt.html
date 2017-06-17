@@ -50,7 +50,7 @@ function Http( _btn, _meth, _resrc, _msg, _callback){
   } catch(e) { alert('ERROR: ' + e.message); return; } 
 }
 
-function getCnt() { return (totFiles[curFile].type == 'html')?id('Continut').innerHTML:id('Continut').textContent; }
+function getCnt() { return (totFiles[curFile].type == 'html')?id('Continut').innerHTML:id('Continut').innerText; }
 
 function Save(bt) { Http(bt, 'POST', totFiles[curFile].name, getCnt(), null); }
 
@@ -85,7 +85,7 @@ function xCleanse(x) {
 
 function culege(v) {
 	const s = v.trim().replace(/\?/g,"\\w").replace(/\*/g,"\\w*");
-  const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim'), wrd = new RegExp("(\\b" + s + "\\b)");
+  const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim'), wrd = new RegExp("(\\b" + s + "\\b)",'gi');
   const Rs = id('Res'); if(!id('mustAdd').checked) Rs.innerHTML = '';
   for(let i in totFiles) if(totFiles[i].depot) {
     	let res;
@@ -106,10 +106,10 @@ function Srch(ob) {
     goTo('end'); return;
   }
   let s = window.getSelection().toString();
-  let umpl = 'Search: <input type="text" value="' + s + '" onchange="culege(this.value)">';
+  let umpl = 'Search: <input id="srchBox" type="text" value="' + s + '" onchange="culege(this.value)">';
   umpl += ' Add results: ' + '<input type="checkbox" id="mustAdd">';
   umpl += '<div id="Res" style="margin-top:20px"></div>';
-  id('Continut').innerHTML = umpl;
+  id('Continut').innerHTML = umpl; id("srchBox").focus();
   if(s) culege(s);
 }
 
