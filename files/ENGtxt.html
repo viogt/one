@@ -20,23 +20,30 @@ i { border-bottom: 2px solid orange; font-style: normal; }
 
 function id(x) { return document.getElementById(x); }
 
-function rSave(){
-		var b = id('out');
-		b.disabled = true;
-		b.style.backgroundColor = 'yellow';
-		b.value = 'Saving...';
-		window.setTimeout(Save, 10);
+function inCorp(_cont) { id('Continut').innerHTML = _cont; goTo('end'); }
+function inCorpDB(_cont) {
+  const j = JSON.parse(_cont);
+  id('Continut').innerHTML = j.content;
+  goTo('end');
 }
-function Save() {
-	try {
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open('POST', 'eng.txt', false);
-		var msg = document.getElementById('Continut').innerHTML;
-		xmlhttp.send(msg);
-		isDirty = false;
-		
-	} catch(e) { alert(e.message); return 'Error!'; }
+
+function Http( _btn, _meth, _resrc, _msg, _callback){
+  try {
+      if(_btn) _btn.style.backgroundColor = '#FF0';
+      const http = new XMLHttpRequest();
+      http.onreadystatechange = function() {
+          if(this.readyState == 4 && this.status == 200) {
+                if(http.responseText.charAt(0) == '0') { alert('Error: ' + http.responseText.substr(1)); return; }
+                if(_callback) _callback(http.responseText);
+                if(_btn) _btn.style.backgroundColor = '';
+                return;
+          }
+      };
+      http.open(_meth, _resrc, true); http.send(_msg);
+  } catch(e) { alert('ERROR: ' + e.message); return; } 
 }
+
+function Save(bt) { Http(bt, 'POST', 'eng.txt', id('Continut').innerHTML, null); }
 
 function goTo( ps ) {
 	if(ps == 'top') window.scrollTo(0,0);
@@ -44,17 +51,7 @@ function goTo( ps ) {
 	else window.scrollTo(0, Math.floor(document.body.scrollHeight/2));
 }
 
-function E(ob) { ob.style.backgroundColor = '#FF0'; window.setTimeout( function() { ob.style.backgroundColor=''; }, 500); }
-
-function Receive() {
-	try {
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open('GET','eng.txt', false);
-		xmlhttp.send('x');
-		document.getElementById('Continut').innerHTML = xmlhttp.responseText;
-		goTo('end');
-	} catch(e) { alert(e.message); return 'Error!'; }
-}
+function Receive() { Http(null, 'GET', 'eng.txt', 'x', inCorp); }
 
 var isDirty = false;
   window.addEventListener("beforeunload", function(event) {
@@ -62,44 +59,28 @@ var isDirty = false;
   });
 
 //-----------------------------------------------------------------------
-function saveMng() {
-    try {
-      var msg = JSON.stringify({ action: 'save', file: 'eng.txt', content: id('Continut').innerHTML, collection: 'files' });
-      var http = new XMLHttpRequest();
-      http.open('POST', 'mng', false);
-      http.send(msg);
-      if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
-	isDirty = false;
-      return true;
-    } catch(e) { alert(e.message); return 'Error!'; }
+function saveMng(bt) {
+  const msg = JSON.stringify({ action: 'save', file: 'eng.txt', content: id('Continut').innerHTML, collection: 'files' });
+  Http(bt, 'POST', 'mng', msg, null);
 }
 
-function readMng() {
-    try {
-      var msg = JSON.stringify({ action: 'get one', file: 'eng.txt', collection: 'files' });
-      var http = new XMLHttpRequest();
-      http.open('POST', 'mng', false);
-      http.send(msg);
-      if(http.responseText.charAt(0) == '0') { alert(http.responseText.substr(1)); return false; }
-      const j = JSON.parse(http.responseText);
-      id('Continut').innerHTML = j.content;
-      goTo('end');
-      return true;
-    } catch(e) { alert(e.message); return 'Error!'; }
+function readMng(bt) {
+  const msg = JSON.stringify({ action: 'get one', file: 'eng.txt', collection: 'files' });
+  Http(bt, 'POST', 'mng', msg, inCorpDB);
 }
 
 function culege(v) {
 	const s = v.trim().replace(/\?/g,"\\w").replace(/\*/g,"\\w*");
-    const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim');
+  const rgx = new RegExp("^(.*\\b" + s + "\\b.*)$",'gim');
 	const res = id('source').textContent.match(rgx);
-    id('Res').textContent = res?res.join('\n\n'):'> NOT FOUND!';
+  id('Res').textContent = res?res.join('\n\n'):'> NOT FOUND!';
 }
 </script>
 
 </head>
-<body onLoad='Receive()' style='margin-left:42px'>
+<body onLoad='Receive()' style='margin:10px; margin-left:42px;'>
 
-<div style='position:fixed;left:3px;'>
+<div style='position:fixed;left:3px;top:0px;'>
 
   <button onClick='goTo("top")' title='Search' class="Inp fa fa-search"></button><br><br>
 
@@ -107,11 +88,11 @@ function culege(v) {
   <button onClick='goTo("middle")' title='To the middle' class="Inp fa fa-unsorted"></button><br>
   <button onClick='goTo("end")' title='To the bottom' class="Inp fa fa-arrow-down"></button><br><br>
 
-  <button onClick='E(this);Save()' title='Save content' class="Inp fa fa-save"></button><br>
+  <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <a href='down/eng.txt' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br><br>
 
-  <button onClick='E(this);saveMng()' title='Save to DB' class="Inp fa fa-pencil"></button><br>
-  <button onClick='E(this);readMng()' title='Read from DB' class="Inp fa fa-upload"></button><br>
+  <button onClick='saveMng(this)' title='Save to DB' class="Inp fa fa-pencil"></button><br>
+  <button onClick='readMng(this)' title='Read from DB' class="Inp fa fa-upload"></button><br>
 </div>
 
 <DIV id='Continut' contentEditable='true' onInput="isDirty=true;" style='outline:none;'></DIV>
