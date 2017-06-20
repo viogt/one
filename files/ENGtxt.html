@@ -15,6 +15,8 @@ i { border-bottom: 2px solid orange; font-style: normal; }
 }
 .Inp:hover { border-color:red; cursor:pointer; }
 
+.notFound { padding:4px 8px; border-radius:8px; background-color:#a00; color:#fff; margin: 20px 0px; }
+
 </style>
 <script type="text/javascript">
 
@@ -92,7 +94,7 @@ function culege(v) {
     	if(totFiles[i].type == 'html') { if(!totFiles[i].aux) totFiles[i].aux = xCleanse(totFiles[i].depot); res = totFiles[i].aux.match(rgx); }
     	else res = totFiles[i].depot.match(rgx);
     	if(res) for(let k in res) res[k] = res[k].replace(wrd,'<span style="background-color:#ff8">$1</span>');
-      Rs.innerHTML += res?res.join('<br><br>'):'<br><span style="padding:4px 8px; border-radius:8px; background-color:#a00;color:#fff">NOT FOUND!</span><br><br>';
+      Rs.innerHTML += res?'<br><br>'+res.join('<br><br>'):'<div class="notFound"><span class="fa fa-warning"></span> Not found in <b>'+ totFiles[i].name +'</b>!</div>';
   }
 }
 
