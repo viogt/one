@@ -18,7 +18,7 @@ i { border-bottom: 2px solid orange; font-style: normal; }
 .InpFile {
   position:fixed;left:3px;top:80px;
     background-color: white; border: 1px solid lightgrey; border-radius:6px;
-    width:60px;height:18px; padding:4px; outline:none; text-align:center;
+    width:60px;height:28px; padding:4px; outline:none;
     font: normal 14px Arial,sans-serif;
   transform: rotate(-90deg);
   transform-origin: left top;
@@ -54,7 +54,7 @@ var _busyIC = null;
 function busy(ob) {
   alert(ob?ob.tagName:'No object supplied');
   if(!ob) return; ob=ob.firstChild;
-  if(!_busyIC) {
+  if(_busyIC == null) {
     ob.style.backgroundColor = '#FF0';
     var _busyIC = ob.className;
     ob.className = 'Inp fa fa-refresh fa-spin';
@@ -205,8 +205,8 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
 
-  <button onClick='saveMng(this,curFile)' title='Save to DB' class='Inp'><span class="fa fa-pencil"></span></button><br>
-  <button onClick='readMng(this,curFile)' title='Read from DB' class='Inp'><span class="fa fa-upload"></span></button><br>
+  <button onClick='saveMng(this,curFile)' title='Save to DB' class='Inp fa fa-pencil'></button><br>
+  <button onClick='readMng(this,curFile)' title='Read from DB' class='Inp fa fa-upload'></button><br>
   
 </div>
 
