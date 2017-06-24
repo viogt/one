@@ -52,7 +52,8 @@ function setCont(_cnt) {
 
 var _busyIC;
 function busy(ob) {
-  if(!ob) return;
+  alert(ob?ob.tagName:'No object supplied');
+  if(!ob) return; ob=ob.firstChild;
   if(ob.style.backgroundColor != '#FF0') {
     ob.style.backgroundColor = '#FF0';
     var _busyIC = ob.className;
@@ -202,8 +203,8 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
 
-  <button onClick='saveMng(this,curFile)' title='Save to DB' class="Inp fa fa-pencil"></button><br>
-  <button onClick='readMng(this,curFile)' title='Read from DB' class="Inp fa fa-upload"></button><br>
+  <button onClick='saveMng(this,curFile)' title='Save to DB'><i class="Inp fa fa-pencil"></i></button><br>
+  <button onClick='readMng(this,curFile)' title='Read from DB'><i class="Inp fa fa-upload"></i></button><br>
   
 </div>
 
