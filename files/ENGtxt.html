@@ -75,7 +75,7 @@ function Http( _btn, _meth, _resrc, _msg, _callback ){
                 return;
           }
       };
-      if(_msg.length < 1000 && _resrc=='mng') { _msg = encodeURIComponent(_msg); _meth = 'GET'; alert(_msg); }
+      if(_msg.length < 1000 && _resrc=='mng') { alert(_msg); _msg = encodeURIComponent(_msg); _meth = 'GET'; alert(_msg); }
       http.open(_meth, _resrc, true); http.send(_msg);
   } catch(e) { alert('ERROR: ' + e.message); return; } 
 }
