@@ -192,7 +192,8 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
 
 <div style='position:fixed;left:3px;top:90px;'>
 
-  <div id='InpFile' class="InpFile"></div>
+  <!-- <div id='InpFile' class="InpFile"></div> -->
+  <button id='InpFile' onClick='saveMng(null,curFile)' title='Save to DB' class='InpFile'></button><br>
   <button onClick='Srch(this)' title='Search' class="Inp fa fa-search"></button><br>
 
   <button onClick='goTo("top")' title='To the top' class="Inp fa fa-arrow-up"></button><br>
@@ -203,8 +204,8 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
 
-  <button onClick='saveMng(this,curFile)' title='Save to DB'><i class="Inp fa fa-pencil"></i></button><br>
-  <button onClick='readMng(this,curFile)' title='Read from DB'><i class="Inp fa fa-upload"></i></button><br>
+  <button onClick='saveMng(this,curFile)' title='Save to DB' class='Inp'><i class="fa fa-pencil"></i></button><br>
+  <button onClick='readMng(this,curFile)' title='Read from DB' class='Inp'><i class="fa fa-upload"></i></button><br>
   
 </div>
 
