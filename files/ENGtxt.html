@@ -53,7 +53,7 @@ function setCont(_cnt) {
 var _busyIC = null;
 function busy(ob) {
   alert(ob?ob.tagName:'No object supplied');
-  if(!ob) return; ob=ob.firstChild;
+  if(!ob) return;
   if(_busyIC == null) {
     ob.style.backgroundColor = '#FF0';
     _busyIC = ob.className;
@@ -163,18 +163,18 @@ function _putCnt(Fid) {
   if(totFiles[Fid].isDirty) { totFiles[Fid].isDirty = false;
   totFiles[Fid].depot = (totFiles[Fid].type == 'html') ? id('Continut').innerHTML : id('Continut').innerText; }
 }
-function _getCnt(Fid) {
+function _getCnt(Fid, ob) {
   if( totFiles[Fid].depot ) {
     if(totFiles[Fid].type == 'html') id('Continut').innerHTML = totFiles[Fid].depot;
     else id('Continut').innerText = totFiles[Fid].depot;
   }
-  else readMng(null,curFile);
+  else readMng(ob,curFile);
 }
 
 function toggleFiles(ob) {
   _putCnt(curFile);
   curFile++; if(curFile >= totFiles.length) curFile = 0;
-  _getCnt(curFile);
+  _getCnt(curFile, ob);
   id('InpFile').textContent = totFiles[curFile].name;
 }
 
@@ -201,7 +201,7 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   <button onClick='goTo("middle")' title='To the middle' class="Inp fa fa-unsorted"></button><br>
   <button onClick='goTo("end")' title='To the bottom' class="Inp fa fa-arrow-down"></button><br>
 
-  <button onClick='toggleFiles()' title='Toggle/exhange files' class="Inp fa fa-exchange"></button><br>
+  <button onClick='toggleFiles(this)' title='Toggle/exhange files' class="Inp fa fa-exchange"></button><br>
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
 
