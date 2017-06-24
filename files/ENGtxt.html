@@ -69,15 +69,15 @@ function Http( _btn, _meth, _resrc, _msg, _callback ){
       const http = new XMLHttpRequest();
       http.onreadystatechange = function() {
           if(this.readyState == 4 && this.status == 200) {
-                if(http.responseText.charAt(0) == '0') { alert('Error: ' + http.responseText.substr(1)); return; }
+                if(http.responseText.charAt(0) == '0') { alert('Error: ' + http.responseText.substr(1)); busy(_btn); return; }
                 if(_callback) _callback(http.responseText);
                 busy(_btn);
                 return;
           }
       };
-      if(_msg.length < 1000 && _resrc=='mng') { alert(_msg); _msg = encodeURIComponent(_msg); _meth = 'GET'; alert(_msg); }
+      if(_msg.length < 1000 && _resrc=='mng') { alert(_msg); _resrc += '?q=' + encodeURIComponent(_msg); _meth = 'GET'; alert(_resrc); _msg='x'; }
       http.open(_meth, _resrc, true); http.send(_msg);
-  } catch(e) { alert('ERROR: ' + e.message); return; } 
+  } catch(e) { alert('ERROR: ' + e.message); busy(_btn); return; } 
 }
 
 function getCnt() { return (totFiles[curFile].type == 'html')?id('Continut').innerHTML:id('Continut').innerText; }
