@@ -60,6 +60,7 @@ function busy(ob) {
     return;
   }
   ob.style.backgroundColor = '';
+  alert(ob.tagName + '\n' + _busyIC);
   ob.className = _busyIC;
 }
 
@@ -75,7 +76,7 @@ function Http( _btn, _meth, _resrc, _msg, _callback ){
                 return;
           }
       };
-      if(_msg.length < 1000 && _resrc=='mng') { alert(_msg); _resrc += '?q=' + encodeURIComponent(_msg); _meth = 'GET'; alert(_resrc); _msg='x'; }
+      if(_msg.length < 1000 && _resrc=='mng') { _resrc += '?q=' + encodeURIComponent(_msg); _meth = 'GET'; _msg='x'; } else _meth = 'POST';
       http.open(_meth, _resrc, true); http.send(_msg);
   } catch(e) { alert('ERROR: ' + e.message); busy(_btn); return; } 
 }
