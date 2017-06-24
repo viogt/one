@@ -52,15 +52,13 @@ function setCont(_cnt) {
 
 var _busyIC = null;
 function busy(ob) {
-  alert(ob?ob.tagName:'No object supplied');
   if(!ob) return;
-  if(_busyIC == null) {
+  if(!_busyIC ) {
     ob.style.backgroundColor = '#FF0';
     _busyIC = ob.className;
     ob.className = 'Inp fa fa-refresh fa-spin';
     return;
   }
-  alert(ob.tagName + '\n' + _busyIC);
   ob.style.backgroundColor = '';
   ob.className = _busyIC;
   _busyIC = null;
