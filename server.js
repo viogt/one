@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
 	if(req.method == 'GET') {
 		if(req.url == '/') returnFile('./index.html', res);
 		else if(req.url.substr(0,10)=='/files/mng') {
-		    res.end( '0'+decodeURIComponent( req.url.substr(10)) );
+		    res.end( '0'+decodeURIComponent( req.url );
 		    //operate( JSON.parse( decodeURIComponent( req.url.substr(11) ) ), res );
 		}
     	else if(req.url.substr(0,12)=='/files/down/') download('./files/'+req.url.substr(12) ,res);
