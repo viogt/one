@@ -15,6 +15,19 @@ i { border-bottom: 2px solid orange; font-style: normal; }
 }
 .Inp:hover { border-color:red; cursor:pointer; }
 
+.InpFile {
+  position:fixed;left:3px;top:80px;
+    background-color: white; border: 1px solid lightgrey; border-radius:6px;
+    width:60px;height:18px; padding:4px; outline:none; text-align:center;
+    font: normal 14px Arial,sans-serif;
+  transform: rotate(-90deg);
+  transform-origin: left top;
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  -webkit-transform-origin: left top;
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -ms-transform-origin: left top;
+}
+
 .notFound { padding:4px 8px; border-radius:8px; background-color:#a00; color:#fff; margin: 20px 0px; }
 
 </style>
@@ -34,20 +47,35 @@ function setCont(_cnt) {
     id('Continut').innerText = _cnt;
     totFiles[curFile].depot = _cnt;
   }
+  id('InpFile').textContent = totFiles[curFile].name;
 }
 
-function Http( _btn, _meth, _resrc, _msg, _callback){
+var _busyIC;
+function busy(ob) {
+  if(!ob) return;
+  if(ob.style.backgroundColor != '') {
+    ob.style.backgroundColor = '#FF0';
+    var _busyIC = ob.className;
+    ob.className = 'Inp fa fa-refresh fa-spin';
+    return;
+  }
+  ob.style.backgroundColor = '';
+  ob.className = _busyIC;
+}
+
+function Http( _btn, _meth, _resrc, _msg, _callback ){
   try {
-      var _icon; if(_btn) { _btn.style.backgroundColor = '#FF0'; _icon = _btn.className; _btn.className = 'Inp fa fa-refresh fa-spin'; }
+      busy(_btn);
       const http = new XMLHttpRequest();
       http.onreadystatechange = function() {
           if(this.readyState == 4 && this.status == 200) {
                 if(http.responseText.charAt(0) == '0') { alert('Error: ' + http.responseText.substr(1)); return; }
                 if(_callback) _callback(http.responseText);
-                if(_btn) { _btn.style.backgroundColor = ''; _btn.className = _icon; }
+                busy(_btn);
                 return;
           }
       };
+      if(_msg.length < 1000 && _resrc=='mng') { _msg = encodeURIComponent(_msg); _meth = 'GET'; alert(_msg); }
       http.open(_meth, _resrc, true); http.send(_msg);
   } catch(e) { alert('ERROR: ' + e.message); return; } 
 }
@@ -64,19 +92,22 @@ function goTo( ps ) {
 
 function Receive() { Http(null, 'GET', totFiles[curFile].name, 'x', inCorp); }
 
-var isDirty = false;
 window.addEventListener("beforeunload", function(event) {
-  if(isDirty) event.returnValue = "Do you want to quit changes?";
+  for(let i in totFiles) if(!totFiles[i].saved) event.returnValue = "Do you want to quit changes?";
 });
 
+
 //-----------------------------------------------------------------------
-function saveMng(bt) {
-  const msg = JSON.stringify({ action: 'save', file: totFiles[curFile].name, content: getCnt(), collection: 'files' });
+function saveMng(bt,Fid) {
+  _putCnt(Fid);
+  const msg = JSON.stringify({ action: 'save', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' });
   Http(bt, 'POST', 'mng', msg, null);
+  totFiles[Fid].saved = true;
+  id("InpFile").style.color = '';
 }
 
-function readMng(bt) {
-  const msg = JSON.stringify({ action: 'get one', file: totFiles[curFile].name, collection: 'files' });
+function readMng(bt,Fid) {
+  const msg = JSON.stringify({ action: 'get one', file: totFiles[Fid].name, collection: 'files' });
   Http(bt, 'POST', 'mng', msg, inCorpDB);
 }
 
@@ -115,16 +146,41 @@ function Srch(ob) {
   if(s) culege(s);
 }
 
-var curFile = 0, totFiles = [ {name:'eng.txt', depot:null, type:'html'}, {name:'rand.txt',depot:null, type:'text'} ];
+var curFile = 0, totFiles = [
+  {name:'new.txt', depot:null, type:'text', isDirty:false, saved:true },
+  {name:'eng.txt', depot:null, type:'html', isDirty:false, saved:true },
+  {name:'rand.txt',depot:null, type:'text', isDirty:false, saved:true }
+];
 
-function toggleFiles() {
-  curFile++; if(curFile >= totFiles.length) curFile = 0;
-  if( totFiles[curFile].depot ) {
-    if(totFiles[curFile].type == 'html') id('Continut').innerHTML = totFiles[curFile].depot;
-    else id('Continut').innerText = totFiles[curFile].depot;
+function _smthCh() { if(totFiles[curFile].isDirty) return;
+  totFiles[curFile].isDirty = true; totFiles[curFile].saved = false;
+}
+
+function _putCnt(Fid) {
+  if(totFiles[Fid].isDirty) { totFiles[Fid].isDirty = false;
+  totFiles[Fid].depot = (totFiles[Fid].type == 'html') ? id('Continut').innerHTML : id('Continut').innerText; }
+}
+function _getCnt(Fid) {
+  if( totFiles[Fid].depot ) {
+    if(totFiles[Fid].type == 'html') id('Continut').innerHTML = totFiles[Fid].depot;
+    else id('Continut').innerText = totFiles[Fid].depot;
   }
   else Receive();
 }
+
+function toggleFiles(ob) {
+  _putCnt(curFile);
+  curFile++; if(curFile >= totFiles.length) curFile = 0;
+  _getCnt(curFile);
+  id('InpFile').textContent = totFiles[curFile].name;
+}
+
+function _verDirty() {
+  let s = id("InpFile").style;
+  if(totFiles[curFile].saved) { if(s.color != '') s.color = ''; return; }
+  s.color = s.color==''?'#f00':'';
+}
+window.setInterval(_verDirty,1000);
 
 function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; }
 </script>
@@ -132,8 +188,9 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
 </head>
 <body onLoad='Receive()' style='margin:10px; margin-left:52px;'>
 
-<div style='position:fixed;left:3px;top:10px;'>
+<div style='position:fixed;left:3px;top:90px;'>
 
+  <div id='InpFile' class="InpFile"></div>
   <button onClick='Srch(this)' title='Search' class="Inp fa fa-search"></button><br>
 
   <button onClick='goTo("top")' title='To the top' class="Inp fa fa-arrow-up"></button><br>
@@ -144,11 +201,11 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
 
-  <button onClick='saveMng(this)' title='Save to DB' class="Inp fa fa-pencil"></button><br>
-  <button onClick='readMng(this)' title='Read from DB' class="Inp fa fa-upload"></button><br>
+  <button onClick='saveMng(this,curFile)' title='Save to DB' class="Inp fa fa-pencil"></button><br>
+  <button onClick='readMng(this,curFile)' title='Read from DB' class="Inp fa fa-upload"></button><br>
   
 </div>
 
-<table><tr><td id='Continut' contentEditable='true' onInput="isDirty=true;" class="continut"></td></tr></table>
+<table><tr><td id='Continut' contentEditable='true' onInput="_smthCh()" class="continut"></td></tr></table>
 </body>
 </html>
