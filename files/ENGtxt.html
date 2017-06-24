@@ -53,14 +53,13 @@ function setCont(_cnt) {
 var _busyIC;
 function busy(ob) {
   if(!ob) return;
-  if(ob.style.backgroundColor != '') {
+  if(ob.style.backgroundColor != '#FF0') {
     ob.style.backgroundColor = '#FF0';
     var _busyIC = ob.className;
     ob.className = 'Inp fa fa-refresh fa-spin';
     return;
   }
   ob.style.backgroundColor = '';
-  alert(ob.tagName + '\n' + _busyIC);
   ob.className = _busyIC;
 }
 
@@ -166,7 +165,7 @@ function _getCnt(Fid) {
     if(totFiles[Fid].type == 'html') id('Continut').innerHTML = totFiles[Fid].depot;
     else id('Continut').innerText = totFiles[Fid].depot;
   }
-  else Receive();
+  else readMng(null,curFile);
 }
 
 function toggleFiles(ob) {
@@ -187,7 +186,7 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
 </script>
 
 </head>
-<body onLoad='Receive()' style='margin:10px; margin-left:52px;'>
+<body onLoad='readMng(null,curFile)' style='margin:10px; margin-left:52px;'>
 
 <div style='position:fixed;left:3px;top:90px;'>
 
