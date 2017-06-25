@@ -100,6 +100,7 @@ window.addEventListener("beforeunload", function(event) {
 
 //-----------------------------------------------------------------------
 function saveMng(bt,Fid) {
+  if(TglSrch) return;
   _putCnt(Fid);
   const msg = JSON.stringify({ action: 'save', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' });
   Http(bt, 'POST', 'mng', msg, null);
@@ -108,6 +109,7 @@ function saveMng(bt,Fid) {
 }
 
 function readMng(bt,Fid) {
+  if(TglSrch) return;
   const msg = JSON.stringify({ action: 'get one', file: totFiles[Fid].name, collection: 'files' });
   Http(bt, 'POST', 'mng', msg, inCorpDB);
 }
@@ -135,8 +137,7 @@ function Srch(ob) {
   if((TglSrch = !TglSrch)) ob.style.backgroundColor = '#ff0';
   else {
     ob.style.backgroundColor = '';
-    if(totFiles[curFile].type == 'html') id('Continut').innerHTML = totFiles[curFile].depot;
-    else id('Continut').innerText = totFiles[curFile].depot;
+    _getCnt(curFile, null);
     goTo('end'); return;
   }
   let s = window.getSelection().toString();
@@ -153,7 +154,7 @@ var curFile = 0, totFiles = [
   {name:'rand.txt',depot:null, type:'text', isDirty:false, saved:true }
 ];
 
-function _smthCh() { if(totFiles[curFile].isDirty) return;
+function _smthCh() { if(TglSrch || totFiles[curFile].isDirty) return;
   totFiles[curFile].isDirty = true; totFiles[curFile].saved = false;
 }
 
@@ -170,6 +171,7 @@ function _getCnt(Fid, ob) {
 }
 
 function toggleFiles(ob) {
+  if(TglSrch) return;
   _putCnt(curFile);
   curFile++; if(curFile >= totFiles.length) curFile = 0;
   _getCnt(curFile, ob);
