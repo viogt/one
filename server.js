@@ -36,8 +36,9 @@ http.createServer(function (req, res) {
     body = '';
     req.on('data', function (chunk) { body += chunk; });
     req.on('end', function () { try { operate( JSON.parse(body), res ); } catch(e) {
-        if(body.charAt(1)=='=') operate( JSON.parse(body.substr(2)), res );
-        else shucher(res, {error: 'Bad request/json'}, null);
+        res.end(body.substr(0,400)); return;
+        //if(body.charAt(1)=='=') operate( JSON.parse(body.substr(2)), res );
+        //else shucher(res, {error: 'Bad request/json'}, null);
     } });
   }
     
