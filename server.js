@@ -26,30 +26,28 @@ http.createServer(function (req, res) {
     	return;
   	}
 
-  if(req.url.substr(0,12)=='/files/pipe/') {
+    if(req.url.substr(0,12)=='/files/pipe/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { pipping(req.url.substr(12), body, res); });
-  	}
+    }
 
-  else if(req.url.substr(0,10)=='/files/mng') {
-    body = '';
-    req.on('data', function (chunk) { body += chunk; });
-    req.on('end', function () { try { operate( JSON.parse(body), res ); } catch(e) {
-        //res.end(decodeURIComponent(body).substr(0,400)); return;
-        //if(body.charAt(1)=='=') operate( JSON.parse(decodeURIComponent(body).substr(2)), res );
-        if(body.charAt(1)=='=') operate( JSON.parse(body.substr(2)), res );
-        //else shucher(res, {error: 'Bad request/json'}, null);
-    } });
-  }
+    else if(req.url.substr(0,10)=='/files/mng') {
+        body = '';
+        req.on('data', function (chunk) { body += chunk; });
+        req.on('end', function () { try { operate( JSON.parse(body), res ); } catch(e) {
+            if(body.charAt(1)=='=') operate( JSON.parse(body.substr(2)), res );
+            else shucher(res, {error: 'Bad request/json'}, null);
+        }});
+    }
     
-	else if(req.url.substr(0,7)=='/files/') {
+    else if(req.url.substr(0,7)=='/files/') {
 		body = '';
 		req.on('data', function (chunk) { body += chunk; });
 		req.on('end', function () { saveFile('.' + req.url, body, res); });
-  }
+    }
 
-	else res.end('Error: unknown request! (' + req.url + ')');
+    else res.end('Error: unknown request! (' + req.url + ')');
   
 }).listen(port, ipadd);
 
@@ -174,15 +172,6 @@ function _oper( db, js, resp) {
                 });
 		        return;
             case 'download':
-                /*
-                cll.findOne({file: js.file}, function(err, obj) {
-                    if(err) return shucher(resp, err, db);
-	                resp.writeHead(200, {'Content-disposition': 'attachment; filename='+obj.file});
-                    var html = '<HTML><HEAD><TITLE>' + obj.file + '</TITLE><STYLE>' + obj.theme + '</STYLE></HEAD>';
-	                html += '<BODY>' + obj.content + '</BODY></HTML>';
-                    resp.end(html);
-		        });
-		        */
 		        resp.writeHead(200, {'Content-disposition': 'attachment; filename='+js.file});
 		        resp.end(js.content);
 		        return;
