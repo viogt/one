@@ -216,7 +216,7 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
   <!-- <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br> -->
 
-  <form id='Frm' style='display:inline' action='mng' method='POST' onSubmit='return dwnLoad();'>
+  <form id='Frm' style='display:inline' action='mng' method='POST' enctype='text/plain' onSubmit='return dwnLoad();'>
     <input id='beforePost' name='S' type="hidden" value="">
     <button title='Download file' class="Inp fa fa-download"></button><br>
   </form>
