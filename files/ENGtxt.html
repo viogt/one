@@ -109,12 +109,11 @@ function saveMng(bt,Fid) {
   id("InpFile").style.color = '';
 }
 
-function dwnLoad(bt,Fid) {
+function dwnLoad() {
   if(TglSrch) return;
-  busy(bt);
+  let Fid = curFile;
   _putCnt(Fid);
   id('beforePost').value = JSON.stringify({ action: 'download', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' });
-  busy(bt);
   alert(id('beforePost').value);
   return true;
 }
