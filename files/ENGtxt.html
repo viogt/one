@@ -64,7 +64,7 @@ function busy(ob) {
   _busyIC = null;
 }
 
-function Http( _btn, _meth, _resrc, _msg, _callback ){
+function Http( _btn, _resrc, _msg, _callback ){
   try {
       busy(_btn);
       const http = new XMLHttpRequest();
@@ -76,6 +76,7 @@ function Http( _btn, _meth, _resrc, _msg, _callback ){
                 return;
           }
       };
+      var _meth;
       if(_msg.length < 1000 && _resrc=='mng') { _resrc += '?q=' + encodeURIComponent(_msg); _meth = 'GET'; _msg='x'; } else _meth = 'POST';
       http.open(_meth, _resrc, true); http.send(_msg);
   } catch(e) { alert('ERROR: ' + e.message); busy(_btn); return; } 
@@ -83,7 +84,7 @@ function Http( _btn, _meth, _resrc, _msg, _callback ){
 
 function getCnt() { return (totFiles[curFile].type == 'html')?id('Continut').innerHTML:id('Continut').innerText; }
 
-function Save(bt) { Http(bt, 'POST', totFiles[curFile].name, getCnt(), null); }
+function Save(bt) { Http(bt, totFiles[curFile].name, getCnt(), null); }
 
 function goTo( ps ) {
 	if(ps == 'top') window.scrollTo(0,0);
@@ -91,7 +92,7 @@ function goTo( ps ) {
 	else window.scrollTo(0, Math.floor(document.body.scrollHeight/2));
 }
 
-function Receive() { Http(null, 'GET', totFiles[curFile].name, 'x', inCorp); }
+function Receive() { Http(null, totFiles[curFile].name, 'x', inCorp); }
 
 window.addEventListener("beforeunload", function(event) {
   for(let i in totFiles) if(!totFiles[i].saved) event.returnValue = "Do you want to quit changes?";
@@ -103,7 +104,16 @@ function saveMng(bt,Fid) {
   if(TglSrch) return;
   _putCnt(Fid);
   const msg = JSON.stringify({ action: 'save', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' });
-  Http(bt, 'POST', 'mng', msg, null);
+  Http(bt, 'mng', msg, null);
+  totFiles[Fid].saved = true;
+  id("InpFile").style.color = '';
+}
+
+function dwnLoad(bt,Fid) {
+  if(TglSrch) return;
+  _putCnt(Fid);
+  const msg = JSON.stringify({ action: 'download', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' });
+  Http(bt, 'mng', msg, null);
   totFiles[Fid].saved = true;
   id("InpFile").style.color = '';
 }
@@ -111,7 +121,7 @@ function saveMng(bt,Fid) {
 function readMng(bt,Fid) {
   if(TglSrch) return;
   const msg = JSON.stringify({ action: 'get one', file: totFiles[Fid].name, collection: 'files' });
-  Http(bt, 'POST', 'mng', msg, inCorpDB);
+  Http(bt, 'mng', msg, inCorpDB);
 }
 
 function xCleanse(x) {
@@ -203,7 +213,8 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
 
   <button onClick='toggleFiles(this)' title='Toggle/exhange files' class="Inp fa fa-exchange"></button><br>
   <button onClick='Save(this)' title='Save content' class="Inp fa fa-save"></button><br>
-  <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br>
+  <!-- <a href='down/eng.txt' onClick='reAddress(this)' title='Download the file' class='Inp fa fa-download' style='color:#000; padding-top:10px; text-decoration:none; text-align:center;'></a><br> -->
+  <button onClick='dwnLoad(this,curFile)' title='Download file' class="Inp fa fa-download"></button><br>
 
   <button onClick='saveMng(this,curFile)' title='Save to DB' class='Inp fa fa-pencil'></button><br>
   <button onClick='readMng(this,curFile)' title='Read from DB' class='Inp fa fa-upload'></button><br>

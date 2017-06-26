@@ -169,6 +169,7 @@ function _oper( db, js, resp) {
                 });
 		        return;
             case 'download':
+                /*
                 cll.findOne({file: js.file}, function(err, obj) {
                     if(err) return shucher(resp, err, db);
 	                resp.writeHead(200, {'Content-disposition': 'attachment; filename='+obj.file});
@@ -176,6 +177,9 @@ function _oper( db, js, resp) {
 	                html += '<BODY>' + obj.content + '</BODY></HTML>';
                     resp.end(html);
 		        });
+		        */
+		        resp.writeHead(200, {'Content-disposition': 'attachment; filename='+js.file});
+		        resp.end(js.content);
 		        return;
             case 'coll exists':
                 resp.end(collExists?'+':'-'); return;
