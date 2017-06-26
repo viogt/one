@@ -111,10 +111,12 @@ function saveMng(bt,Fid) {
 
 function dwnLoad() {
   if(TglSrch) return;
-  let Fid = curFile;
+  let Fid = curFile, ob = id('beforePost');
+  busy(ob);
   _putCnt(Fid);
-  id('beforePost').value = JSON.stringify({ action: 'download', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' });
+  ob.value = encodeURIComponent(JSON.stringify({ action: 'download', file: totFiles[Fid].name, content: totFiles[Fid].depot, collection: 'files' }));
   alert(id('beforePost').value);
+  setTimeout(function(){ busy(ob); },1000);
   return true;
 }
 
