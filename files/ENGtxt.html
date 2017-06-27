@@ -94,12 +94,17 @@ function goTo( ps ) {
 
 function Receive() { Http(null, totFiles[curFile].name, 'x', inCorp); }
 
-window.addEventListener("beforeunload", function(event) {
-  for(let i in totFiles) if(!totFiles[i].saved) event.returnValue = "Do you want to quit changes?";
-});
-/*id('Continut').addEventListener("paste",function(e) {
-    e.preventDefault(); document.execCommand('insertText', false, e.clipboardData.getData('text/plain'));
-});*/
+function init() {
+  window.addEventListener("beforeunload", function(event) {
+    for(let i in totFiles) if(!totFiles[i].saved) event.returnValue = "Do you want to quit changes?";
+  });
+
+  id('Continut').addEventListener("paste",function(e) {
+      e.preventDefault(); document.execCommand('insertText', false, e.clipboardData.getData('text/plain'));
+  });
+
+  readMng(null,curFile);
+}
 
 //-----------------------------------------------------------------------
 function saveMng(bt,Fid) {
@@ -202,7 +207,7 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
 </script>
 
 </head>
-<body onLoad='readMng(null,curFile)' style='margin:10px; margin-left:52px;'>
+<body onLoad='init()' style='margin:10px; margin-left:52px;'>
 
 <div style='position:fixed;left:3px;top:90px;'>
 
