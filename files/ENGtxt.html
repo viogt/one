@@ -97,9 +97,9 @@ function Receive() { Http(null, totFiles[curFile].name, 'x', inCorp); }
 window.addEventListener("beforeunload", function(event) {
   for(let i in totFiles) if(!totFiles[i].saved) event.returnValue = "Do you want to quit changes?";
 });
-id('Continut').addEventListener("paste",function(e) {
+/*id('Continut').addEventListener("paste",function(e) {
     e.preventDefault(); document.execCommand('insertText', false, e.clipboardData.getData('text/plain'));
-});
+});*/
 
 //-----------------------------------------------------------------------
 function saveMng(bt,Fid) {
