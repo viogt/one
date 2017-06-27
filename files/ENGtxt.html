@@ -11,15 +11,15 @@
 i { border-bottom: 2px solid orange; font-style: normal; }
 
 .Inp { background-color: white; border: 1px solid lightgrey; border-radius:6px;
-        font-size: 14px; width:28px;height:28px; margin-bottom:16px; outline:none;
+      font-size: 14px; width:28px;height:28px; margin-bottom:16px; outline:none;
 }
-.Inp:hover { border-color:red; cursor:pointer; }
+.Inp:hover, .InpFile:hover { border-color:red; cursor:pointer; }
 
 .InpFile {
   position:fixed;left:3px;top:80px;
-    background-color: white; border: 1px solid lightgrey; border-radius:6px;
-    width:60px;height:28px; padding:4px; outline:none;
-    font: normal 14px Arial,sans-serif;
+  background-color: white; border: 1px solid lightgrey; border-radius:6px;
+  width:60px;height:28px; padding:4px; outline:none;
+  font: normal 14px Arial,sans-serif;
   transform: rotate(-90deg);
   transform-origin: left top;
   -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
@@ -97,7 +97,9 @@ function Receive() { Http(null, totFiles[curFile].name, 'x', inCorp); }
 window.addEventListener("beforeunload", function(event) {
   for(let i in totFiles) if(!totFiles[i].saved) event.returnValue = "Do you want to quit changes?";
 });
-
+id('Continut').addEventListener("paste",function(e) {
+    e.preventDefault(); document.execCommand('insertText', false, e.clipboardData.getData('text/plain'));
+});
 
 //-----------------------------------------------------------------------
 function saveMng(bt,Fid) {
@@ -226,6 +228,6 @@ function reAddress(o) { o.href = 'down/' + totFiles[curFile].name; return true; 
   
 </div>
 
-<table><tr><td id='Continut' contentEditable='true' onInput="_smthCh()" class="continut"></td></tr></table>
+<table><tr><td id='Continut' contentEditable='true' onInput="_smthCh()" class="continut" spellcheck="false"></td></tr></table>
 </body>
 </html>
