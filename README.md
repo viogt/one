@@ -6,7 +6,8 @@ http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
 > git push --set-upstream one master (-f to force)
 > git remote add one -m master ssh://567d59697628e13771000237@one-postviorel.rhcloud.com/~/git/one.git/
 
----
+> new push to: git@github.com:vioreltopa/one.git
+
 
 > git init
 > git remote add <app> -m master ssh://5468e9e2e0b8cd1a5800000d@the-postviorel.rhcloud.com/~/git/the.git/
