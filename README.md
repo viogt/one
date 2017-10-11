@@ -8,6 +8,16 @@ http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
 
 > new push to: git@github.com:vioreltopa/one.git
 
+HEROKU
+$ /usr/bin/heroku --version
+/usr/bin/heroku login
+
+git commit -am "make it better"
+
+git push heroku master
+/usr/bin/heroku ps:scale web=1
+
+https://dry-castle-17069.herokuapp.com/ | https://git.heroku.com/dry-castle-17069.git
 
 > git init
 > git remote add <app> -m master ssh://5468e9e2e0b8cd1a5800000d@the-postviorel.rhcloud.com/~/git/the.git/
